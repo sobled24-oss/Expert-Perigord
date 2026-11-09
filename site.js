@@ -55,21 +55,32 @@ function poids(p){
     c += `<span class="m"><svg viewBox="0 0 24 24"><path class="bg" d="${MEEPLE}"/></svg><svg viewBox="0 0 24 24" style="clip-path:inset(0 ${100-f}% 0 0)"><path class="fg" d="${MEEPLE}"/></svg></span>`; }
   return `<div class="poids"><div class="row"><span>Poids</span><b>${v?fr1(v):"–"} / 5</b></div><div class="bar" aria-hidden="true">${c}</div></div>`;
 }
+function slug(s){ return String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "article"; }
+function idOf(x){ return x.id || slug(x.nom || x.jeu); }
+function artUrl(type, x){ return `article.html?type=${type}&id=${encodeURIComponent(idOf(x))}`; }
+function gameCover(t){
+  return t.couverture
+    ? `<div class="cover photo-cover"><img src="${esc(t.couverture)}" alt="" loading="lazy"><h3>${esc(t.jeu)}</h3></div>`
+    : `<div class="cover" style="--h:${hueOf(t.jeu)}"><span class="mono" aria-hidden="true">${esc(String(t.jeu||"?").slice(0,2))}</span><h3>${esc(t.jeu)}</h3></div>`;
+}
 function gameCard(t){
-  return `<article class="card game ${VCLASS[t.verdict]||""}">
-    <div class="cover" style="--h:${hueOf(t.jeu)}"><span class="mono" aria-hidden="true">${esc(String(t.jeu||"?").slice(0,2))}</span><h3>${esc(t.jeu)}</h3></div>
+  return `<a class="card game ${VCLASS[t.verdict]||""}" href="${artUrl("jeu",t)}">
+    ${gameCover(t)}
     <div class="inner">
       <div class="game-top">${t.verdict?`<span class="verdict">${esc(VERDICTS[t.verdict]||t.verdict)}</span>`:"<span></span>"}${ex(t)}</div>
       ${poids(t.poids)}
       <div class="meta">${t.joueurs?`<span class="tag">${meeple()} ${esc(t.joueurs)}</span>`:""}${t.duree?`<span class="tag">${esc(t.duree)}</span>`:""}</div>
-      ${t.auteurs?`<p class="note">${esc(t.auteurs)}</p>`:""}${t.texte?`<p>${esc(t.texte)}</p>`:""}
-    </div></article>`;
+      ${t.texte?`<p>${esc(t.texte)}</p>`:""}
+      <span class="read">Lire l'article →</span>
+    </div></a>`;
 }
 function festCard(f){
-  return `<article class="card fest"><div class="cal"><span>Date</span><b>${esc(f.date||"À venir")}</b></div>
+  return `<a class="card fest${f.couverture?" has-cover":""}" href="${artUrl("festival",f)}">
+    ${f.couverture?`<div class="fest-cover"><img src="${esc(f.couverture)}" alt="" loading="lazy"></div>`:""}
+    <div class="fest-row"><div class="cal"><span>Date</span><b>${esc(f.date||"À venir")}</b></div>
     <div class="body">${ex(f)}<h3>${esc(f.nom)}</h3>
       <div class="meta">${f.lieu?`<span class="tag">${esc(f.lieu)}</span>`:""}${f.role?`<span class="tag">${esc(f.role)}</span>`:""}</div>
-      ${f.texte?`<p>${esc(f.texte)}</p>`:""}</div></article>`;
+      ${f.texte?`<p>${esc(f.texte)}</p>`:""}<span class="read">Lire l'article →</span></div></div></a>`;
 }
 function orgaBand(){
   const O = C.organisateurs;
@@ -106,7 +117,7 @@ R.accueil = () => {
         <div class="btnrow"><a class="btn" href="equipe.html">Découvrir l'équipe</a><a class="btn ghost" href="contact.html?objet=seance">Venir jouer avec nous</a></div></div></div>`)}
   ${sec(head("Banc d'essai","Nos derniers jeux testés","",`<a class="btn ghost" href="jeux.html">Tous nos tests →</a>`) + (T.length?`<div class="grid g3">${T.map(gameCard).join("")}</div>`:empty("Aucun test publié pour le moment.")), "dark")}
   ${sec(`<div class="duo">
-      <a class="card link" href="festivals.html"><span class="hand">Prochaine table</span>${F?`<h3 class="big">${esc(F.nom)}</h3><div class="meta">${F.date?`<span class="tag">${esc(F.date)}</span>`:""}${F.lieu?`<span class="tag">${esc(F.lieu)}</span>`:""}</div>${F.texte?`<p class="note">${esc(F.texte)}</p>`:""}`:`<h3 class="big">Annonce à venir</h3>`}<span class="go">Tous nos festivals →</span></a>
+      <a class="card link" href="${F?artUrl("festival",F):"festivals.html"}"><span class="hand">Prochaine table</span>${F?`<h3 class="big">${esc(F.nom)}</h3><div class="meta">${F.date?`<span class="tag">${esc(F.date)}</span>`:""}${F.lieu?`<span class="tag">${esc(F.lieu)}</span>`:""}</div>${F.texte?`<p class="note">${esc(F.texte)}</p>`:""}`:`<h3 class="big">Annonce à venir</h3>`}<span class="go">${F?"Lire l'article →":"Tous nos festivals →"}</span></a>
       <a class="card link dark" href="evenement.html"><span class="hand">Notre projet</span><h3 class="big">${esc(E.titre)}</h3><div class="progress"><i style="width:${(k+1)*20}%"></i></div><p>Étape ${k+1} sur 5 : ${esc(ETAPES[k])}</p><span class="go">Suivre le projet →</span></a>
     </div>`)}
   ${orgaBand()}`;
@@ -163,10 +174,42 @@ R.contact = () => {
         <div class="card"><h3>Ce qu'on y trouve</h3><ul>${lines(X.salons).map(l=>`<li>${meeple()}<span>${esc(l)}</span></li>`).join("")}</ul></div></div>`, "sand");
 };
 
+
+R.article = () => {
+  const q = new URLSearchParams(location.search), type = q.get("type")==="festival" ? "festival" : "jeu", id = q.get("id")||"";
+  const list = type==="festival" ? C.festivals : C.tests, x = list.find(it=>idOf(it)===id);
+  const back = type==="festival" ? ["festivals.html","Tous nos festivals"] : ["jeux.html","Tous nos jeux testés"];
+  if(!x) return pageHero(type==="festival"?"Festival":"Jeu testé","Article introuvable","Cet article a peut-être été retiré ou renommé.","40%") + sec(`<a class="btn" href="${back[0]}">← ${back[1]}</a>`);
+  const titre = type==="festival" ? x.nom : x.jeu;
+  document.title = `${titre} · ${NOM}`;
+  const photos = ((window.PHOTOS||{})[idOf(x)]||[]).filter(p=>p&&p.src);
+  const texte = String(x.article||x.texte||"").split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean);
+  const fiche = type==="festival"
+    ? `<dl class="kv"><dt>Date</dt><dd>${esc(x.date||"À venir")}</dd>${x.lieu?`<dt>Lieu</dt><dd>${esc(x.lieu)}</dd>`:""}${x.role?`<dt>Notre table</dt><dd>${esc(x.role)}</dd>`:""}</dl>`
+    : `${x.verdict?`<span class="verdict ${VCLASS[x.verdict]||""}">${esc(VERDICTS[x.verdict]||"")}</span>`:""}${poids(x.poids)}
+       <dl class="kv">${x.joueurs?`<dt>Joueurs</dt><dd>${esc(x.joueurs)}</dd>`:""}${x.duree?`<dt>Durée</dt><dd>${esc(x.duree)}</dd>`:""}${x.auteurs?`<dt>Auteurs</dt><dd>${esc(x.auteurs)}</dd>`:""}</dl>`;
+  const others = list.filter(it=>it!==x).slice(0,3);
+  return pageHero(type==="festival"?"Festival":"Jeu testé", titre, "", "40%")
+    + sec(`<a class="back" href="${back[0]}">← ${back[1]}</a>
+      <div class="article-layout">
+        <article class="article-body">
+          ${x.couverture?`<img class="article-cover" src="${esc(x.couverture)}" alt="">`:""}
+          ${ex(x)}
+          ${texte.length?texte.map(p=>`<p>${esc(p)}</p>`).join(""):`<p class="note">L'article arrive bientôt.</p>`}
+        </article>
+        <aside class="card article-fiche"><h3>${type==="festival"?"En bref":"Fiche du jeu"}</h3>${fiche}
+          ${type==="festival"?`<a class="btn yellow" href="contact.html?objet=festival">Inviter les Experts</a>`:`<a class="btn" href="contact.html?objet=seance">Y jouer avec nous</a>`}</aside>
+      </div>
+      ${photos.length?`<h2 class="photos-title">Photos <span>${photos.length}</span></h2><div class="art-gallery">${photos.map((p,i)=>`<button type="button" class="ph-btn" data-ph="${i}"><img src="${esc(p.src)}" alt="${esc(p.legende||"Photo "+(i+1))}" loading="lazy">${p.legende?`<span>${esc(p.legende)}</span>`:""}</button>`).join("")}</div>
+        <dialog class="lightbox" id="lightbox"><figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+          <button type="button" class="lb-close" id="lb-close" aria-label="Fermer">✕</button><button type="button" class="lb-nav prev" id="lb-prev" aria-label="Photo précédente">‹</button><button type="button" class="lb-nav next" id="lb-next" aria-label="Photo suivante">›</button></dialog>`:""}`)
+    + (others.length ? sec(head("", type==="festival"?"Nos autres festivals":"D'autres jeux testés") + `<div class="grid g3">${others.map(type==="festival"?festCard:gameCard).join("")}</div>`, type==="jeu"?"dark":"sand") : "");
+};
+
 const main = document.getElementById("main");
 main.innerHTML = (R[PAGE] || R.accueil)();
 const titles = {accueil:"", festivals:"Festivals", jeux:"Jeux testés", evenement:"Notre événement", equipe:"L'équipe", photos:"Photos", contact:"Contact"};
-document.title = titles[PAGE] ? `${titles[PAGE]} · ${NOM}` : NOM;
+if(PAGE!=="article") document.title = titles[PAGE] ? `${titles[PAGE]} · ${NOM}` : NOM;
 
 /* Filtres des jeux testés */
 document.addEventListener("click", e=>{
@@ -193,5 +236,22 @@ if(form){
     }catch(_){ st.className="status err"; st.textContent = C.contact.email ? "L'envoi a échoué. Écrivez-nous à "+C.contact.email+"." : "L'envoi a échoué. Réessayez dans un moment."; }
     btn.disabled = false;
   });
+}
+
+/* Galerie photo d'un article : agrandissement */
+const lbx = document.getElementById("lightbox");
+if(lbx){
+  const q = new URLSearchParams(location.search), t = q.get("type")==="festival" ? C.festivals : C.tests;
+  const it = t.find(x=>idOf(x)===(q.get("id")||""));
+  const P = ((window.PHOTOS||{})[it?idOf(it):""]||[]).filter(p=>p&&p.src);
+  let cur = 0;
+  const show = i => { cur = (i+P.length)%P.length; document.getElementById("lb-img").src = P[cur].src; document.getElementById("lb-img").alt = P[cur].legende||""; document.getElementById("lb-cap").textContent = (P[cur].legende?P[cur].legende+" · ":"")+(cur+1)+" / "+P.length; };
+  document.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{ show(Number(b.dataset.ph)); lbx.showModal(); }));
+  document.getElementById("lb-close").addEventListener("click",()=>lbx.close());
+  document.getElementById("lb-prev").addEventListener("click",()=>show(cur-1));
+  document.getElementById("lb-next").addEventListener("click",()=>show(cur+1));
+  lbx.addEventListener("click",e=>{ if(e.target===lbx) lbx.close(); });
+  lbx.addEventListener("keydown",e=>{ if(e.key==="ArrowLeft") show(cur-1); if(e.key==="ArrowRight") show(cur+1); });
+  if(P.length<2){ document.getElementById("lb-prev").hidden = true; document.getElementById("lb-next").hidden = true; }
 }
 })();

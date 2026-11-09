@@ -31,6 +31,15 @@ details.panel[open] > summary::after{content:"–"}
 .hint{font-size:.82rem;color:var(--faint);font-weight:400}
 .photo{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .photo img,.photo .ini{width:72px;height:72px;border-radius:50%;object-fit:cover;background:var(--surface-2);display:grid;place-items:center;color:var(--muted);font-weight:700}
+.gal-field{display:grid;gap:10px}
+.gal-label{font-weight:700;font-size:.9rem}
+.gal-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.gal-item{display:grid;gap:6px;background:rgba(0,0,0,.2);border-radius:12px;padding:8px}
+.gal-item img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
+.gal-item input{padding:7px 10px;font-size:.85rem}
+.gal-act{display:flex;gap:4px;flex-wrap:wrap}
+.gal-add{cursor:pointer}
+.btn.pulse{background:var(--meeple-y);color:#231A00;border-color:var(--meeple-y)}
 .savebar{position:fixed;left:0;right:0;bottom:0;padding:12px max(16px,env(safe-area-inset-left,0px));background:rgba(26,19,14,.95);backdrop-filter:blur(12px);border-top:1px solid var(--line-2);z-index:10}
 .savebar .in{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
 .savebar .grow{flex:1;min-width:0;font-size:.9rem;color:var(--muted)}
@@ -42,10 +51,10 @@ details.panel[open] > summary::after{content:"–"}
   <div class="card">
     <h3>Comment ça marche</h3>
     <ol class="steps-help">
-      <li><span>Modifiez les textes ci-dessous, ajoutez des festivals, des jeux testés ou des membres.</span></li>
-      <li><span>Cliquez sur <b>Télécharger contenu.js</b> en bas de l'écran.</span></li>
-      <li><span>Remplacez l'ancien fichier <b>contenu.js</b> du dossier du site par celui que vous venez de télécharger (même nom, exactement <b>contenu.js</b>).</span></li>
-      <li><span>Remettez le dossier en ligne chez votre hébergeur (voir le mode d'emploi). Le site est à jour.</span></li>
+      <li><span>Modifiez les textes ci-dessous, ajoutez des festivals, des jeux testés, leurs articles et leurs photos.</span></li>
+      <li><span>En bas de l'écran, cliquez sur <b>Télécharger contenu.js</b>, et aussi sur <b>Télécharger photos.js</b> si vous avez ajouté ou retiré des photos d'articles.</span></li>
+      <li><span>Sur GitHub, ouvrez le dépôt du site, cliquez sur <b>Add file</b> puis <b>Upload files</b>, glissez-y le ou les fichiers téléchargés (ils doivent s'appeler exactement <b>contenu.js</b> et <b>photos.js</b>), puis cliquez sur <b>Commit changes</b>.</span></li>
+      <li><span>Une à deux minutes plus tard, le site en ligne est à jour.</span></li>
     </ol>
   </div>
   <div id="forms"></div>
@@ -53,10 +62,12 @@ details.panel[open] > summary::after{content:"–"}
 <div class="savebar"><div class="in">
   <span class="grow" id="save-msg">Aucune modification pour l'instant.</span>
   <a class="btn ghost small" href="index.html" target="_blank" rel="noopener">Voir le site actuel</a>
+  <button class="btn ghost" id="dl-photos">Télécharger photos.js</button>
   <button class="btn" id="dl">Télécharger contenu.js</button>
 </div></div>
 
 <script src="contenu.js"></script>
+<script src="photos.js"></script>
 <script>
 (function(){
 "use strict";
@@ -64,6 +75,10 @@ const state = JSON.parse(JSON.stringify(window.CONTENU || {}));
 ["site","contact","echanges","evenement"].forEach(k=>state[k]=state[k]||{});
 ["festivals","tests","membres","piliers","galerie","temoignages"].forEach(k=>state[k]=state[k]||[]);
 ["histoire","organisateurs"].forEach(k=>state[k]=state[k]||{});
+const PH = JSON.parse(JSON.stringify(window.PHOTOS || {}));
+const slug = t => String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "article";
+state.festivals.forEach(f=>{ if(!f.id) f.id = slug(f.nom); });
+state.tests.forEach(t=>{ if(!t.id) t.id = slug(t.jeu); });
 const ETAPES = ["Idée","Recherche du lieu","Date fixée","Programme","Ouverture"];
 const VERDICTS = [["coeur","Coup de cœur"],["rejouer","À rejouer"],["mitige","Mitigé"],["non","Pas pour nous"]];
 const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -79,8 +94,8 @@ const S = {
   evenement:{t:"Notre événement", f:[["titre","Titre du projet"],["texte","Description","area"],["etape","Où en est le projet","select",ETAPES.map((e,i)=>[i,e])],["date","Date prévue"],["lieu","Lieu prévu"],["besoins","Ce que nous cherchons","area","Un besoin par ligne"]]},
   echanges:{t:"Discord", f:[["discord","Lien d'invitation Discord","","Ex. : https://discord.gg/xxxxxx (invitation sans date d'expiration)"],["texte","Texte de présentation","area"],["salons","Ce qu'on y trouve","area","Une ligne par point"]]},
   contact:{t:"Contact", f:[["texte","Texte d'introduction","area"],["email","Adresse e-mail de l'association"],["telephone","Téléphone (facultatif)"],["formspree","Adresse du formulaire Formspree (facultatif)","","Ex. : https://formspree.io/f/abcdwxyz. Sans elle, le formulaire est masqué et seule l'adresse e-mail s'affiche."],["facebook","Page Facebook (facultatif)"],["instagram","Compte Instagram (facultatif)"]]},
-  festivals:{t:"Festivals", item:"festival", label:"nom", f:[["nom","Nom du festival"],["date","Date(s)"],["lieu","Lieu"],["role","Ce que nous y faisons"],["texte","Description","area"]]},
-  tests:{t:"Jeux testés", item:"jeu", label:"jeu", f:[["jeu","Nom du jeu"],["auteurs","Auteur(s)"],["joueurs","Nombre de joueurs","","Ex. : 2 à 4"],["duree","Durée","","Ex. : 120 à 180 min"],["poids","Poids sur 5 (BoardGameGeek)","number","Le « Weight » affiché sur la fiche BoardGameGeek du jeu"],["verdict","Verdict","select",VERDICTS],["texte","Notre avis","area"]]},
+  festivals:{t:"Festivals", item:"festival", label:"nom", f:[["nom","Nom du festival"],["date","Date(s)"],["lieu","Lieu"],["role","Ce que nous y faisons"],["texte","Résumé (affiché sur la carte)","area","Deux ou trois phrases"],["article","Article complet","area","Le texte de la page de l'article. Sautez une ligne pour faire un nouveau paragraphe."],["couverture","Image de couverture (facultatif)","photo",1200],["photos","Photos de l'article","gallery"]]},
+  tests:{t:"Jeux testés", item:"jeu", label:"jeu", f:[["jeu","Nom du jeu"],["auteurs","Auteur(s)"],["joueurs","Nombre de joueurs","","Ex. : 2 à 4"],["duree","Durée","","Ex. : 120 à 180 min"],["poids","Poids sur 5 (BoardGameGeek)","number","Le « Weight » affiché sur la fiche BoardGameGeek du jeu"],["verdict","Verdict","select",VERDICTS],["texte","Résumé de notre avis (affiché sur la carte)","area","Deux ou trois phrases"],["article","Article complet","area","Le texte de la page de l'article. Sautez une ligne pour faire un nouveau paragraphe."],["couverture","Image de couverture (facultatif)","photo",1200],["photos","Photos de l'article","gallery"]]},
   membres:{t:"L'équipe", item:"membre", label:"nom", f:[["nom","Prénom ou pseudo"],["role","Rôle dans l'association"],["jeux","Jeux préférés"],["texte","Quelques mots","area"],["couleur","Couleur (celle de son meeple)","select",[["vert","Vert"],["jaune","Jaune"],["rouge","Rouge"],["bleu","Bleu"]]],["photo","Photo","photo"]]}
 };
 const ORDER = ["site","piliers","histoire","organisateurs","festivals","tests","galerie","temoignages","evenement","membres","echanges","contact"];
@@ -90,7 +105,11 @@ function field(path, [k,l,t,extra], v){
   if(t==="area") return `<label for="${id}">${esc(l)} ${hint}<textarea id="${id}" data-p="${path}" data-k="${k}">${esc(v)}</textarea></label>`;
   if(t==="select") return `<label for="${id}">${esc(l)}<select id="${id}" data-p="${path}" data-k="${k}">${extra.map(([a,b])=>`<option value="${a}"${String(v)===String(a)?" selected":""}>${esc(b)}</option>`).join("")}</select></label>`;
   if(t==="number") return `<label for="${id}">${esc(l)} ${hint}<input id="${id}" type="number" min="1" max="5" step="0.1" data-p="${path}" data-k="${k}" value="${esc(v)}"></label>`;
-  if(t==="photo") return `<div class="photo">${v?`<img src="${esc(v)}" alt="">`:`<span class="ini">?</span>`}<label for="${id}">${esc(l)} <span class="hint">JPG ou PNG, redimensionnée automatiquement</span><input id="${id}" type="file" accept="image/*" data-photo="${path}" data-max="${extra||500}"></label>${v?`<button type="button" class="linkbtn" data-nophoto="${path}">Retirer la photo</button>`:""}</div>`;
+  if(t==="photo") return `<div class="photo">${v?`<img src="${esc(v)}" alt="">`:`<span class="ini">?</span>`}<label for="${id}">${esc(l)} <span class="hint">JPG ou PNG, redimensionnée automatiquement</span><input id="${id}" type="file" accept="image/*" data-photo="${path}" data-k2="${k}" data-max="${extra||500}"></label>${v?`<button type="button" class="linkbtn" data-nophoto="${path}" data-k2="${k}">Retirer la photo</button>`:""}</div>`;
+  if(t==="gallery"){ const it = target(path), L = PH[it.id]||[];
+    return `<div class="gal-field"><span class="gal-label">${esc(l)} <span class="hint">${L.length} photo${L.length>1?"s":""} · sélectionnez plusieurs fichiers d'un coup si vous voulez</span></span>
+      <div class="gal-list">${L.map((p,j)=>`<div class="gal-item"><img src="${esc(p.src)}" alt=""><input aria-label="Légende" placeholder="Légende (facultatif)" data-leg="${esc(it.id)}:${j}" value="${esc(p.legende||"")}"><div class="gal-act"><button type="button" class="btn ghost small" data-gmove="${esc(it.id)}:${j}:-1" ${j===0?"disabled":""} aria-label="Avancer">←</button><button type="button" class="btn ghost small" data-gmove="${esc(it.id)}:${j}:1" ${j===L.length-1?"disabled":""} aria-label="Reculer">→</button><button type="button" class="btn danger small" data-gdel="${esc(it.id)}:${j}">Retirer</button></div></div>`).join("")}</div>
+      <label class="btn small gal-add" for="${id}">+ Ajouter des photos<input id="${id}" type="file" accept="image/*" multiple data-gallery="${esc(it.id)}" hidden></label></div>`; }
   return `<label for="${id}">${esc(l)} ${hint}<input id="${id}" data-p="${path}" data-k="${k}" value="${esc(v)}"></label>`;
 }
 function render(){
@@ -109,40 +128,60 @@ function render(){
   }).join("");
 }
 function target(path){ const [sec,i] = path.split("."); return i===undefined ? state[sec] : state[sec][Number(i)]; }
-let dirty = false;
+let dirty = false, dirtyPhotos = false;
+function photosTouched(){ dirtyPhotos = true; document.getElementById("dl-photos").classList.add("pulse"); document.getElementById("save-msg").textContent = "Photos modifiées : pensez à télécharger photos.js (et contenu.js si vous avez changé des textes)."; }
 function touched(){ dirty = true; document.getElementById("save-msg").textContent = "Modifications en cours : pensez à télécharger contenu.js avant de fermer la page."; }
 document.addEventListener("input", e=>{
-  const el = e.target; if(!el.dataset || !el.dataset.p) return;
+  const el = e.target;
+  if(el.dataset && el.dataset.leg){ const [id,j]=el.dataset.leg.split(":"); PH[id][Number(j)].legende = el.value; photosTouched(); return; }
+  if(!el.dataset || !el.dataset.p) return;
   const o = target(el.dataset.p); let v = el.value;
   if(el.type==="number") v = v===""?"":Math.max(1,Math.min(5,parseFloat(v)||1));
   if(el.dataset.k==="etape") v = Number(v);
   o[el.dataset.k] = v; delete o.exemple; touched();
 });
-document.addEventListener("change", e=>{
-  const el = e.target; if(!el.dataset || !el.dataset.photo || !el.files[0]) return;
+function shrink(file, max){ return new Promise((ok,ko)=>{ const rd = new FileReader(); rd.onerror = ko; rd.onload = () => { const img = new Image(); img.onerror = ko; img.onload = () => { const r = Math.min(1, max/Math.max(img.width,img.height)); const cv = document.createElement("canvas"); cv.width = Math.round(img.width*r); cv.height = Math.round(img.height*r); cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height); ok(cv.toDataURL("image/jpeg",.8)); }; img.src = rd.result; }; rd.readAsDataURL(file); }); }
+document.addEventListener("change", async e=>{
+  const el = e.target;
+  if(el.dataset && el.dataset.gallery && el.files.length){
+    const id = el.dataset.gallery; PH[id] = PH[id]||[];
+    document.getElementById("save-msg").textContent = "Préparation des photos…";
+    for(const f of el.files){ try{ PH[id].push({src: await shrink(f,1400), legende:""}); }catch(_){} }
+    photosTouched(); render(); return;
+  }
+  if(!el.dataset || !el.dataset.photo || !el.files[0]) return;
   const img = new Image(), rd = new FileReader();
   rd.onload = () => { img.onload = () => {
     const max = Number(el.dataset.max)||500, r = Math.min(1, max/Math.max(img.width,img.height));
     const cv = document.createElement("canvas"); cv.width = Math.round(img.width*r); cv.height = Math.round(img.height*r);
     cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);
-    const o = target(el.dataset.photo); o.photo = cv.toDataURL("image/jpeg",max>600?.8:.82); delete o.exemple; touched(); render();
+    const o = target(el.dataset.photo); o[el.dataset.k2||"photo"] = cv.toDataURL("image/jpeg",max>600?.8:.82); delete o.exemple; touched(); render();
   }; img.src = rd.result; };
   rd.readAsDataURL(el.files[0]);
 });
 document.addEventListener("click", e=>{
   const b = e.target.closest("button"); if(!b) return;
-  if(b.dataset.add){ const sec=b.dataset.add, o={}; S[sec].f.forEach(([k])=>o[k]=""); if(sec==="tests") o.verdict="coeur"; state[sec].unshift(o); touched(); render(); const d=document.querySelector(`details[data-sec="${sec}"]`); d.open=true; const f=d.querySelector(".item input"); if(f) f.focus(); }
-  if(b.dataset.del){ if(!b.dataset.ok){ b.dataset.ok="1"; b.textContent="Confirmer"; return; } const [sec,i]=b.dataset.del.split(":"); state[sec].splice(Number(i),1); touched(); render(); }
+  if(b.dataset.add){ const sec=b.dataset.add, o={}; S[sec].f.forEach(([k,,t])=>{ if(t!=="gallery") o[k]=""; }); if(sec==="tests") o.verdict="coeur"; if(sec==="tests"||sec==="festivals") o.id = "a-"+Date.now().toString(36); state[sec].unshift(o); touched(); render(); const d=document.querySelector(`details[data-sec="${sec}"]`); d.open=true; const f=d.querySelector(".item input"); if(f) f.focus(); }
+  if(b.dataset.del){ if(!b.dataset.ok){ b.dataset.ok="1"; b.textContent="Confirmer"; return; } const [sec,i]=b.dataset.del.split(":"); const gone = state[sec].splice(Number(i),1)[0]; if(gone && gone.id && PH[gone.id]){ delete PH[gone.id]; photosTouched(); } touched(); render(); }
   if(b.dataset.move){ const [sec,i,d]=b.dataset.move.split(":"), a=Number(i), z=a+Number(d), L=state[sec]; [L[a],L[z]]=[L[z],L[a]]; touched(); render(); }
-  if(b.dataset.nophoto!==undefined && b.dataset.nophoto){ target(b.dataset.nophoto).photo=""; touched(); render(); }
+  if(b.dataset.nophoto!==undefined && b.dataset.nophoto){ target(b.dataset.nophoto)[b.dataset.k2||"photo"]=""; touched(); render(); }
+  if(b.dataset.gdel){ if(!b.dataset.ok){ b.dataset.ok="1"; b.textContent="Confirmer"; return; } const [id,j]=b.dataset.gdel.split(":"); PH[id].splice(Number(j),1); if(!PH[id].length) delete PH[id]; photosTouched(); render(); }
+  if(b.dataset.gmove){ const [id,j,d]=b.dataset.gmove.split(":"), a=Number(j), z=a+Number(d), L=PH[id]; [L[a],L[z]]=[L[z],L[a]]; photosTouched(); render(); }
 });
 document.getElementById("dl").addEventListener("click", ()=>{
   const txt = "/* Contenu du site Les Experts en Périgord.\n   Ne modifiez pas ce fichier à la main : utilisez la page admin.html,\n   puis remplacez ce fichier par celui qu'elle vous fait télécharger. */\nwindow.CONTENU = " + JSON.stringify(state, null, 2) + ";\n";
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([txt],{type:"text/javascript"})); a.download = "contenu.js";
   document.body.appendChild(a); a.click(); a.remove();
-  dirty = false; document.getElementById("save-msg").textContent = "contenu.js téléchargé. Remplacez l'ancien fichier dans le dossier du site, puis remettez-le en ligne.";
+  dirty = false; document.getElementById("save-msg").textContent = "contenu.js téléchargé. Envoyez-le sur GitHub (Add file > Upload files) pour mettre le site à jour.";
 });
-window.addEventListener("beforeunload", e=>{ if(dirty){ e.preventDefault(); e.returnValue=""; } });
+document.getElementById("dl-photos").addEventListener("click", ()=>{
+  const txt = "/* Photos des articles (festivals et jeux testés).\n   Ne modifiez pas ce fichier à la main : utilisez la page admin.html. */\nwindow.PHOTOS = " + JSON.stringify(PH) + ";\n";
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([txt],{type:"text/javascript"})); a.download = "photos.js";
+  document.body.appendChild(a); a.click(); a.remove();
+  dirtyPhotos = false; document.getElementById("dl-photos").classList.remove("pulse");
+  document.getElementById("save-msg").textContent = "photos.js téléchargé. Envoyez-le sur GitHub avec contenu.js si vous avez aussi changé des textes.";
+});
+window.addEventListener("beforeunload", e=>{ if(dirty||dirtyPhotos){ e.preventDefault(); e.returnValue=""; } });
 render();
 })();
 </script>

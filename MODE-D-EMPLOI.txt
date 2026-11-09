@@ -10,8 +10,10 @@ CONTENU DU DOSSIER
   equipe.html         notre histoire, les membres, les témoignages
   photos.html         la galerie (dans le menu dès qu'il y a une photo)
   contact.html        contact et Discord
+  article.html        la page d'un festival ou d'un jeu testé (article et photos)
   site.js             le programme commun qui affiche toutes les pages
-  contenu.js          tous les textes, festivals, jeux testés, photos, membres…
+  contenu.js          tous les textes, festivals, jeux testés, membres…
+  photos.js           les photos des articles
   style.css           l'apparence du site
   admin.html          la page pour modifier le contenu (à garder sur votre ordinateur)
   images/             le logo et la bannière
@@ -34,20 +36,26 @@ Pour voir le site sur votre ordinateur, double-cliquez sur index.html.
      pour votre domaine, pour avoir le cadenas https.
 
 
-2. MODIFIER LE CONTENU
-----------------------
+2. MODIFIER LE CONTENU (SITE HÉBERGÉ SUR GITHUB)
+------------------------------------------------
   1. Sur votre ordinateur, double-cliquez sur admin.html.
-  2. Modifiez ce que vous voulez : textes, piliers, histoire, festivals,
-     jeux testés, photos, témoignages, membres… Les flèches ↑ ↓ changent
-     l'ordre d'affichage.
-  3. Cliquez sur « Télécharger contenu.js ».
-  4. Remplacez l'ancien contenu.js du dossier par celui-ci.
-     Attention : le fichier doit s'appeler exactement contenu.js
-     (pas contenu (1).js). Renommez-le si besoin.
-  5. Double-cliquez sur index.html pour vérifier le résultat.
-  6. Dans le Gestionnaire de fichiers o2switch, ouvrez public_html et
-     chargez le nouveau contenu.js en remplaçant l'ancien.
-     Le site est à jour (rechargez la page avec Ctrl + F5 pour le voir).
+  2. Modifiez ce que vous voulez : textes, festivals, jeux testés,
+     membres… Pour chaque festival et chaque jeu testé, vous pouvez
+     écrire un article complet, choisir une image de couverture et
+     ajouter des photos : tout cela s'affiche sur la page de l'article,
+     ouverte quand un visiteur clique sur la carte.
+  3. En bas de l'écran, cliquez sur « Télécharger contenu.js ».
+     Si vous avez ajouté, retiré ou légendé des photos d'articles,
+     cliquez aussi sur « Télécharger photos.js » (le bouton devient jaune
+     pour vous le rappeler).
+  4. Les fichiers doivent s'appeler exactement contenu.js et photos.js
+     (pas contenu (1).js). Renommez-les si besoin.
+  5. Sur GitHub, ouvrez le dépôt du site, cliquez sur « Add file »,
+     puis « Upload files ». Glissez-y le ou les fichiers, puis cliquez
+     sur « Commit changes ».
+  6. Une à deux minutes plus tard, le site en ligne est à jour.
+     Pensez aussi à remplacer contenu.js et photos.js dans votre dossier
+     sur l'ordinateur, pour repartir de la bonne version la prochaine fois.
 
 Bon à savoir
   - Les fiches marquées « Exemple » montrent la présentation :
@@ -56,8 +64,9 @@ Bon à savoir
     sur la page L'équipe, que lorsqu'il y a au moins un élément.
   - Toutes les pages lisent le même fichier contenu.js : une seule
     mise à jour suffit pour tout le site.
-  - Les photos sont réduites automatiquement. Pour garder un site rapide,
-    une vingtaine de photos dans la galerie est un bon maximum.
+  - Les photos sont réduites automatiquement. Les photos d'articles ne se
+    chargent que sur la page de l'article concerné : le reste du site reste
+    rapide. Comptez une dizaine de photos par article au maximum.
   - À plusieurs administrateurs : partagez le dossier (Google Drive…)
     pour que chacun parte toujours de la dernière version de contenu.js.
 

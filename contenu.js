@@ -42,7 +42,10 @@ window.CONTENU = {
       "lieu": "Ville, département",
       "role": "Table de jeux experts animée",
       "texte": "Remplacez cette fiche par un festival où vous animez une table : ce que vous y proposez, les jeux présentés, les horaires.",
-      "exemple": true
+      "exemple": true,
+      "id": "exemple-de-festival",
+      "article": "",
+      "couverture": ""
     }
   ],
   "tests": [
@@ -54,7 +57,10 @@ window.CONTENU = {
       "poids": 3.9,
       "verdict": "coeur",
       "texte": "Exemple de fiche de test. Remplacez ce texte par votre avis : ce qui vous a plu, à qui vous le conseillez, combien de parties vous avez faites.",
-      "exemple": true
+      "exemple": true,
+      "id": "brass-birmingham",
+      "article": "",
+      "couverture": ""
     },
     {
       "jeu": "Gaia Project",
@@ -64,7 +70,10 @@ window.CONTENU = {
       "poids": 4.4,
       "verdict": "rejouer",
       "texte": "Exemple de fiche de test. Indiquez ici votre avis après vos parties.",
-      "exemple": true
+      "exemple": true,
+      "id": "gaia-project",
+      "article": "",
+      "couverture": ""
     }
   ],
   "evenement": {
