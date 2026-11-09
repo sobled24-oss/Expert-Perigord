@@ -44,6 +44,9 @@ Pour voir le site sur votre ordinateur, double-cliquez sur index.html.
      écrire un article complet, choisir une image de couverture et
      ajouter des photos : tout cela s'affiche sur la page de l'article,
      ouverte quand un visiteur clique sur la carte.
+     Pour chaque jeu testé, la rubrique « L'avis des Experts » permet à
+     chaque membre de donner une note sur 10 et son avis. La moyenne des
+     notes s'affiche sur la carte du jeu et dans sa fiche.
   3. En bas de l'écran, cliquez sur « Télécharger contenu.js ».
      Si vous avez ajouté, retiré ou légendé des photos d'articles,
      cliquez aussi sur « Télécharger photos.js » (le bouton devient jaune

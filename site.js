@@ -57,6 +57,10 @@ function poids(p){
 }
 function slug(s){ return String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "article"; }
 function idOf(x){ return x.id || slug(x.nom || x.jeu); }
+function mkey(m){ return slug(m.nom); }
+function notes(t){ const a = t.avis||{}; return C.membres.map(m=>a[mkey(m)]).filter(v=>v && v.note!=="" && v.note!=null && !isNaN(Number(v.note))).map(v=>Number(v.note)); }
+function moyenne(t){ const n = notes(t); return n.length ? n.reduce((a,b)=>a+b,0)/n.length : null; }
+const fr = v => (Math.round(v*10)/10).toString().replace(".",",");
 function artUrl(type, x){ return `article.html?type=${type}&id=${encodeURIComponent(idOf(x))}`; }
 function gameCover(t){
   return t.couverture
@@ -69,7 +73,7 @@ function gameCard(t){
     <div class="inner">
       <div class="game-top">${t.verdict?`<span class="verdict">${esc(VERDICTS[t.verdict]||t.verdict)}</span>`:"<span></span>"}${ex(t)}</div>
       ${poids(t.poids)}
-      <div class="meta">${t.joueurs?`<span class="tag">${meeple()} ${esc(t.joueurs)}</span>`:""}${t.duree?`<span class="tag">${esc(t.duree)}</span>`:""}</div>
+      <div class="meta">${moyenne(t)!==null?`<span class="tag score">Experts ${fr(moyenne(t))}/10</span>`:""}${t.joueurs?`<span class="tag">${meeple()} ${esc(t.joueurs)}</span>`:""}${t.duree?`<span class="tag">${esc(t.duree)}</span>`:""}</div>
       ${t.texte?`<p>${esc(t.texte)}</p>`:""}
       <span class="read">Lire l'article →</span>
     </div></a>`;
@@ -186,7 +190,7 @@ R.article = () => {
   const texte = String(x.article||x.texte||"").split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean);
   const fiche = type==="festival"
     ? `<dl class="kv"><dt>Date</dt><dd>${esc(x.date||"À venir")}</dd>${x.lieu?`<dt>Lieu</dt><dd>${esc(x.lieu)}</dd>`:""}${x.role?`<dt>Notre table</dt><dd>${esc(x.role)}</dd>`:""}</dl>`
-    : `${x.verdict?`<span class="verdict ${VCLASS[x.verdict]||""}">${esc(VERDICTS[x.verdict]||"")}</span>`:""}${poids(x.poids)}
+    : `${moyenne(x)!==null?`<div class="moy"><b>${fr(moyenne(x))}</b><span>/10<br>note moyenne des Experts (${notes(x).length} avis)</span></div>`:""}${x.verdict?`<span class="verdict ${VCLASS[x.verdict]||""}">${esc(VERDICTS[x.verdict]||"")}</span>`:""}${poids(x.poids)}
        <dl class="kv">${x.joueurs?`<dt>Joueurs</dt><dd>${esc(x.joueurs)}</dd>`:""}${x.duree?`<dt>Durée</dt><dd>${esc(x.duree)}</dd>`:""}${x.auteurs?`<dt>Auteurs</dt><dd>${esc(x.auteurs)}</dd>`:""}</dl>`;
   const others = list.filter(it=>it!==x).slice(0,3);
   return pageHero(type==="festival"?"Festival":"Jeu testé", titre, "", "40%")
@@ -200,6 +204,9 @@ R.article = () => {
         <aside class="card article-fiche"><h3>${type==="festival"?"En bref":"Fiche du jeu"}</h3>${fiche}
           ${type==="festival"?`<a class="btn yellow" href="contact.html?objet=festival">Inviter les Experts</a>`:`<a class="btn" href="contact.html?objet=seance">Y jouer avec nous</a>`}</aside>
       </div>
+      ${type==="jeu" && C.membres.length ? `<h2 class="photos-title">L'avis des Experts</h2><div class="avis-grid">${C.membres.map(m=>{ const v = (x.avis||{})[mkey(m)]||{}; const has = v.texte || (v.note!==""&&v.note!=null);
+        return `<article class="avis${has?"":" vide"}" data-c="${esc(m.couleur||"")}"><header>${m.photo?`<img src="${esc(m.photo)}" alt="">`:`<span class="ini">${esc(initials(m.nom))}</span>`}<div><b>${esc(m.nom)}</b>${m.role?`<span>${esc(m.role)}</span>`:""}</div>${v.note!==""&&v.note!=null?`<span class="note10">${fr(Number(v.note))}<small>/10</small></span>`:""}</header>
+          ${v.texte?String(v.texte).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join(""):(has?"":`<p class="note">${esc(m.nom)} n'a pas encore donné son avis.</p>`)}</article>`; }).join("")}</div>` : ""}
       ${photos.length?`<h2 class="photos-title">Photos <span>${photos.length}</span></h2><div class="art-gallery">${photos.map((p,i)=>`<button type="button" class="ph-btn" data-ph="${i}"><img src="${esc(p.src)}" alt="${esc(p.legende||"Photo "+(i+1))}" loading="lazy">${p.legende?`<span>${esc(p.legende)}</span>`:""}</button>`).join("")}</div>
         <dialog class="lightbox" id="lightbox"><figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
           <button type="button" class="lb-close" id="lb-close" aria-label="Fermer">✕</button><button type="button" class="lb-nav prev" id="lb-prev" aria-label="Photo précédente">‹</button><button type="button" class="lb-nav next" id="lb-next" aria-label="Photo suivante">›</button></dialog>`:""}`)

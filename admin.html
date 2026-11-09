@@ -31,6 +31,14 @@ details.panel[open] > summary::after{content:"–"}
 .hint{font-size:.82rem;color:var(--faint);font-weight:400}
 .photo{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .photo img,.photo .ini{width:72px;height:72px;border-radius:50%;object-fit:cover;background:var(--surface-2);display:grid;place-items:center;color:var(--muted);font-weight:700}
+.avis-field{display:grid;gap:12px}
+.avis-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px;background:rgba(0,0,0,.2);border-radius:12px;padding:12px}
+.avis-who{display:grid;gap:6px;align-content:start;justify-items:start}
+.avis-who img{width:56px;height:56px;object-fit:contain}
+.avis-note{font-size:.82rem}
+.avis-note input{width:90px;padding:7px 10px}
+.avis-row textarea{min-height:110px}
+@media (max-width:640px){.avis-row{grid-template-columns:1fr}}
 .gal-field{display:grid;gap:10px}
 .gal-label{font-weight:700;font-size:.9rem}
 .gal-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
@@ -95,7 +103,7 @@ const S = {
   echanges:{t:"Discord", f:[["discord","Lien d'invitation Discord","","Ex. : https://discord.gg/xxxxxx (invitation sans date d'expiration)"],["texte","Texte de présentation","area"],["salons","Ce qu'on y trouve","area","Une ligne par point"]]},
   contact:{t:"Contact", f:[["texte","Texte d'introduction","area"],["email","Adresse e-mail de l'association"],["telephone","Téléphone (facultatif)"],["formspree","Adresse du formulaire Formspree (facultatif)","","Ex. : https://formspree.io/f/abcdwxyz. Sans elle, le formulaire est masqué et seule l'adresse e-mail s'affiche."],["facebook","Page Facebook (facultatif)"],["instagram","Compte Instagram (facultatif)"]]},
   festivals:{t:"Festivals", item:"festival", label:"nom", f:[["nom","Nom du festival"],["date","Date(s)"],["lieu","Lieu"],["role","Ce que nous y faisons"],["texte","Résumé (affiché sur la carte)","area","Deux ou trois phrases"],["article","Article complet","area","Le texte de la page de l'article. Sautez une ligne pour faire un nouveau paragraphe."],["couverture","Image de couverture (facultatif)","photo",1200],["photos","Photos de l'article","gallery"]]},
-  tests:{t:"Jeux testés", item:"jeu", label:"jeu", f:[["jeu","Nom du jeu"],["auteurs","Auteur(s)"],["joueurs","Nombre de joueurs","","Ex. : 2 à 4"],["duree","Durée","","Ex. : 120 à 180 min"],["poids","Poids sur 5 (BoardGameGeek)","number","Le « Weight » affiché sur la fiche BoardGameGeek du jeu"],["verdict","Verdict","select",VERDICTS],["texte","Résumé de notre avis (affiché sur la carte)","area","Deux ou trois phrases"],["article","Article complet","area","Le texte de la page de l'article. Sautez une ligne pour faire un nouveau paragraphe."],["couverture","Image de couverture (facultatif)","photo",1200],["photos","Photos de l'article","gallery"]]},
+  tests:{t:"Jeux testés", item:"jeu", label:"jeu", f:[["jeu","Nom du jeu"],["auteurs","Auteur(s)"],["joueurs","Nombre de joueurs","","Ex. : 2 à 4"],["duree","Durée","","Ex. : 120 à 180 min"],["poids","Poids sur 5 (BoardGameGeek)","number","Le « Weight » affiché sur la fiche BoardGameGeek du jeu"],["verdict","Verdict","select",VERDICTS],["texte","Résumé de notre avis (affiché sur la carte)","area","Deux ou trois phrases"],["article","Article complet","area","Le texte de la page de l'article. Sautez une ligne pour faire un nouveau paragraphe."],["couverture","Image de couverture (facultatif)","photo",1200],["avis","L'avis des Experts","avis"],["photos","Photos de l'article","gallery"]]},
   membres:{t:"L'équipe", item:"membre", label:"nom", f:[["nom","Prénom ou pseudo"],["role","Rôle dans l'association"],["jeux","Jeux préférés"],["texte","Quelques mots","area"],["couleur","Couleur (celle de son meeple)","select",[["vert","Vert"],["jaune","Jaune"],["rouge","Rouge"],["bleu","Bleu"]]],["photo","Photo","photo"]]}
 };
 const ORDER = ["site","piliers","histoire","organisateurs","festivals","tests","galerie","temoignages","evenement","membres","echanges","contact"];
@@ -106,6 +114,13 @@ function field(path, [k,l,t,extra], v){
   if(t==="select") return `<label for="${id}">${esc(l)}<select id="${id}" data-p="${path}" data-k="${k}">${extra.map(([a,b])=>`<option value="${a}"${String(v)===String(a)?" selected":""}>${esc(b)}</option>`).join("")}</select></label>`;
   if(t==="number") return `<label for="${id}">${esc(l)} ${hint}<input id="${id}" type="number" min="1" max="5" step="0.1" data-p="${path}" data-k="${k}" value="${esc(v)}"></label>`;
   if(t==="photo") return `<div class="photo">${v?`<img src="${esc(v)}" alt="">`:`<span class="ini">?</span>`}<label for="${id}">${esc(l)} <span class="hint">JPG ou PNG, redimensionnée automatiquement</span><input id="${id}" type="file" accept="image/*" data-photo="${path}" data-k2="${k}" data-max="${extra||500}"></label>${v?`<button type="button" class="linkbtn" data-nophoto="${path}" data-k2="${k}">Retirer la photo</button>`:""}</div>`;
+  if(t==="avis"){ const it = target(path), A = it.avis||{};
+    if(!state.membres.length) return `<p class="note">Ajoutez d'abord les membres dans la rubrique « L'équipe ».</p>`;
+    return `<div class="avis-field"><span class="gal-label">${esc(l)} <span class="hint">Une note sur 10 (facultative) et l'avis de chaque membre. Laissez vide si le membre n'a pas joué.</span></span>
+      ${state.membres.map(m=>{ const key = slug(m.nom), v = A[key]||{};
+        return `<div class="avis-row"><div class="avis-who">${m.photo?`<img src="${esc(m.photo)}" alt="">`:""}<b>${esc(m.nom||"Membre")}</b>
+          <label class="avis-note">Note /10<input type="number" min="0" max="10" step="0.5" data-avis="${path}|${key}|note" value="${esc(v.note??"")}"></label></div>
+          <textarea aria-label="Avis de ${esc(m.nom)}" placeholder="L'avis et l'expertise de ${esc(m.nom)} sur ce jeu…" data-avis="${path}|${key}|texte">${esc(v.texte||"")}</textarea></div>`; }).join("")}</div>`; }
   if(t==="gallery"){ const it = target(path), L = PH[it.id]||[];
     return `<div class="gal-field"><span class="gal-label">${esc(l)} <span class="hint">${L.length} photo${L.length>1?"s":""} · sélectionnez plusieurs fichiers d'un coup si vous voulez</span></span>
       <div class="gal-list">${L.map((p,j)=>`<div class="gal-item"><img src="${esc(p.src)}" alt=""><input aria-label="Légende" placeholder="Légende (facultatif)" data-leg="${esc(it.id)}:${j}" value="${esc(p.legende||"")}"><div class="gal-act"><button type="button" class="btn ghost small" data-gmove="${esc(it.id)}:${j}:-1" ${j===0?"disabled":""} aria-label="Avancer">←</button><button type="button" class="btn ghost small" data-gmove="${esc(it.id)}:${j}:1" ${j===L.length-1?"disabled":""} aria-label="Reculer">→</button><button type="button" class="btn danger small" data-gdel="${esc(it.id)}:${j}">Retirer</button></div></div>`).join("")}</div>
@@ -133,6 +148,10 @@ function photosTouched(){ dirtyPhotos = true; document.getElementById("dl-photos
 function touched(){ dirty = true; document.getElementById("save-msg").textContent = "Modifications en cours : pensez à télécharger contenu.js avant de fermer la page."; }
 document.addEventListener("input", e=>{
   const el = e.target;
+  if(el.dataset && el.dataset.avis){ const [path,key,f]=el.dataset.avis.split("|"), it=target(path); it.avis=it.avis||{}; it.avis[key]=it.avis[key]||{};
+    let v = el.value; if(f==="note") v = v===""?"":Math.max(0,Math.min(10,parseFloat(v)||0)); it.avis[key][f]=v;
+    if(!it.avis[key].texte && (it.avis[key].note===""||it.avis[key].note==null)) delete it.avis[key];
+    delete it.exemple; touched(); return; }
   if(el.dataset && el.dataset.leg){ const [id,j]=el.dataset.leg.split(":"); PH[id][Number(j)].legende = el.value; photosTouched(); return; }
   if(!el.dataset || !el.dataset.p) return;
   const o = target(el.dataset.p); let v = el.value;
@@ -161,7 +180,7 @@ document.addEventListener("change", async e=>{
 });
 document.addEventListener("click", e=>{
   const b = e.target.closest("button"); if(!b) return;
-  if(b.dataset.add){ const sec=b.dataset.add, o={}; S[sec].f.forEach(([k,,t])=>{ if(t!=="gallery") o[k]=""; }); if(sec==="tests") o.verdict="coeur"; if(sec==="tests"||sec==="festivals") o.id = "a-"+Date.now().toString(36); state[sec].unshift(o); touched(); render(); const d=document.querySelector(`details[data-sec="${sec}"]`); d.open=true; const f=d.querySelector(".item input"); if(f) f.focus(); }
+  if(b.dataset.add){ const sec=b.dataset.add, o={}; S[sec].f.forEach(([k,,t])=>{ if(t!=="gallery") o[k]=""; }); if(sec==="tests"){ o.verdict="coeur"; delete o.avis; } if(sec==="tests"||sec==="festivals") o.id = "a-"+Date.now().toString(36); state[sec].unshift(o); touched(); render(); const d=document.querySelector(`details[data-sec="${sec}"]`); d.open=true; const f=d.querySelector(".item input"); if(f) f.focus(); }
   if(b.dataset.del){ if(!b.dataset.ok){ b.dataset.ok="1"; b.textContent="Confirmer"; return; } const [sec,i]=b.dataset.del.split(":"); const gone = state[sec].splice(Number(i),1)[0]; if(gone && gone.id && PH[gone.id]){ delete PH[gone.id]; photosTouched(); } touched(); render(); }
   if(b.dataset.move){ const [sec,i,d]=b.dataset.move.split(":"), a=Number(i), z=a+Number(d), L=state[sec]; [L[a],L[z]]=[L[z],L[a]]; touched(); render(); }
   if(b.dataset.nophoto!==undefined && b.dataset.nophoto){ target(b.dataset.nophoto)[b.dataset.k2||"photo"]=""; touched(); render(); }
