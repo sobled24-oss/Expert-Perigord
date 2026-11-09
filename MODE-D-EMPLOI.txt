@@ -1,0 +1,87 @@
+SITE « LES EXPERTS EN PÉRIGORD » — MODE D'EMPLOI
+=================================================
+
+CONTENU DU DOSSIER
+------------------
+  index.html          page d'accueil
+  festivals.html      nos tables en festival
+  jeux.html           les jeux testés (avec filtres par verdict)
+  evenement.html      notre événement
+  equipe.html         notre histoire, les membres, les témoignages
+  photos.html         la galerie (dans le menu dès qu'il y a une photo)
+  contact.html        contact et Discord
+  site.js             le programme commun qui affiche toutes les pages
+  contenu.js          tous les textes, festivals, jeux testés, photos, membres…
+  style.css           l'apparence du site
+  admin.html          la page pour modifier le contenu (à garder sur votre ordinateur)
+  images/             le logo et la bannière
+
+Gardez toujours ces fichiers ensemble, dans le même dossier.
+Pour voir le site sur votre ordinateur, double-cliquez sur index.html.
+
+
+1. METTRE LE SITE EN LIGNE CHEZ O2SWITCH
+----------------------------------------
+  1. Connectez-vous à votre cPanel o2switch.
+  2. Ouvrez le « Gestionnaire de fichiers », puis le dossier public_html.
+  3. Cliquez sur « Charger » et envoyez le fichier zip du site.
+  4. Clic droit sur le zip > « Extraire ». Vérifiez que les fichiers .html,
+     site.js, contenu.js, style.css et le dossier images se trouvent
+     directement dans public_html (pas dans un sous-dossier).
+  5. Supprimez le zip ET le fichier admin.html de public_html :
+     la page d'administration reste sur votre ordinateur.
+  6. Dans cPanel, activez le certificat SSL gratuit (Let's Encrypt)
+     pour votre domaine, pour avoir le cadenas https.
+
+
+2. MODIFIER LE CONTENU
+----------------------
+  1. Sur votre ordinateur, double-cliquez sur admin.html.
+  2. Modifiez ce que vous voulez : textes, piliers, histoire, festivals,
+     jeux testés, photos, témoignages, membres… Les flèches ↑ ↓ changent
+     l'ordre d'affichage.
+  3. Cliquez sur « Télécharger contenu.js ».
+  4. Remplacez l'ancien contenu.js du dossier par celui-ci.
+     Attention : le fichier doit s'appeler exactement contenu.js
+     (pas contenu (1).js). Renommez-le si besoin.
+  5. Double-cliquez sur index.html pour vérifier le résultat.
+  6. Dans le Gestionnaire de fichiers o2switch, ouvrez public_html et
+     chargez le nouveau contenu.js en remplaçant l'ancien.
+     Le site est à jour (rechargez la page avec Ctrl + F5 pour le voir).
+
+Bon à savoir
+  - Les fiches marquées « Exemple » montrent la présentation :
+    modifiez-les ou supprimez-les.
+  - La page « Photos » n'apparaît dans le menu, et les « Témoignages »
+    sur la page L'équipe, que lorsqu'il y a au moins un élément.
+  - Toutes les pages lisent le même fichier contenu.js : une seule
+    mise à jour suffit pour tout le site.
+  - Les photos sont réduites automatiquement. Pour garder un site rapide,
+    une vingtaine de photos dans la galerie est un bon maximum.
+  - À plusieurs administrateurs : partagez le dossier (Google Drive…)
+    pour que chacun parte toujours de la dernière version de contenu.js.
+
+Changer la bannière : remplacez images/banniere.jpg (grand écran) et
+images/banniere-1200.jpg (tablette et téléphone) par vos nouvelles images,
+en gardant les mêmes noms et le même format (environ 2048 x 768 pixels).
+
+
+3. LE DISCORD (ESPACE D'ÉCHANGE)
+--------------------------------
+  1. Créez un serveur Discord pour l'association.
+  2. Créez un lien d'invitation « qui n'expire jamais ».
+  3. Collez-le dans admin.html, rubrique « Discord ».
+
+
+4. LE FORMULAIRE DE CONTACT (FACULTATIF)
+----------------------------------------
+Sans réglage, le site affiche simplement votre adresse e-mail.
+Pour avoir un formulaire qui vous envoie les messages par e-mail :
+  1. Créez un compte gratuit sur https://formspree.io
+  2. Créez un formulaire : Formspree vous donne une adresse
+     du type https://formspree.io/f/abcdwxyz
+  3. Collez-la dans admin.html, rubrique « Contact ».
+
+Astuce : avec o2switch, créez une adresse à votre nom de domaine
+(ex. contact@votre-domaine.fr) dans cPanel > « Comptes de messagerie »,
+et indiquez-la dans la rubrique « Contact ».
