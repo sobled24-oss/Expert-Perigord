@@ -1,0 +1,427 @@
+# Configuration de Pages CMS (https://app.pagescms.org) pour le site Les Experts en Périgord.
+# Chaque jeu testé et chaque festival est un fichier séparé : plusieurs membres peuvent
+# écrire en même temps sans s'écraser.
+
+media:
+  input: images/uploads
+  output: images/uploads
+  rename: safe
+  categories: [image]
+
+components:
+  avis_membre:
+    type: object
+    fields:
+      - name: note
+        label: Note sur 10
+        type: number
+        description: Facultatif. De 0 à 10, les demi-points sont acceptés (ex. 7.5).
+        options:
+          min: 0
+          max: 10
+          step: 0.5
+      - name: texte
+        label: Son avis
+        type: text
+        description: L'avis et l'expertise du membre sur ce jeu. Laissez vide s'il n'a pas joué.
+
+content:
+  - name: jeux
+    label: Jeux testés
+    type: collection
+    path: _jeux
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      fields: [title, verdict, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Nom du jeu
+        type: string
+        required: true
+      - name: date
+        label: Date du test
+        type: date
+        description: Sert à classer les jeux, du plus récent au plus ancien.
+        options:
+          format: yyyy-MM-dd
+      - name: verdict
+        label: Verdict
+        type: select
+        options:
+          values:
+            - name: coeur
+              label: Coup de cœur
+            - name: rejouer
+              label: À rejouer
+            - name: mitige
+              label: Mitigé
+            - name: non
+              label: Pas pour nous
+      - name: resume
+        label: Résumé (affiché sur la carte)
+        type: text
+        description: Deux ou trois phrases.
+      - name: body
+        label: Article complet
+        type: rich-text
+      - name: couverture
+        label: Image de couverture
+        type: image
+        description: Facultatif. Sinon, une couverture colorée est générée.
+      - name: auteurs
+        label: Auteur(s) du jeu
+        type: string
+      - name: joueurs
+        label: Nombre de joueurs
+        type: string
+        description: "Ex. : 2 à 4"
+      - name: duree
+        label: Durée
+        type: string
+        description: "Ex. : 120 à 180 min"
+      - name: poids
+        label: Poids BoardGameGeek (sur 5)
+        type: number
+        description: Le « Weight » affiché sur la fiche BoardGameGeek du jeu.
+        options:
+          min: 1
+          max: 5
+          step: 0.01
+      - name: avis
+        label: L'avis des Experts
+        type: object
+        fields:
+          - name: philou
+            label: Avis de Philou
+            component: avis_membre
+          - name: pat
+            label: Avis de Pat
+            component: avis_membre
+          - name: tim
+            label: Avis de Tim
+            component: avis_membre
+          - name: thyl
+            label: Avis de Thyl
+            component: avis_membre
+      - name: photos
+        label: Photos de l'article
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "Photo {index}"
+        fields:
+          - name: image
+            label: Photo
+            type: image
+          - name: legende
+            label: Légende (facultatif)
+            type: string
+
+  - name: festivals
+    label: Festivals
+    type: collection
+    path: _festivals
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      fields: [title, dates, lieu]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Nom du festival
+        type: string
+        required: true
+      - name: date
+        label: Date de début
+        type: date
+        description: Sert à classer les festivals, du plus récent au plus ancien.
+        options:
+          format: yyyy-MM-dd
+      - name: dates
+        label: Dates affichées
+        type: string
+        description: "Ex. : du 21 au 22 novembre 2026"
+      - name: lieu
+        label: Lieu
+        type: string
+      - name: role
+        label: Ce que nous y faisons
+        type: string
+      - name: resume
+        label: Résumé (affiché sur la carte)
+        type: text
+      - name: body
+        label: Article complet
+        type: rich-text
+      - name: couverture
+        label: Image de couverture
+        type: image
+      - name: photos
+        label: Photos de l'article
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "Photo {index}"
+        fields:
+          - name: image
+            label: Photo
+            type: image
+          - name: legende
+            label: Légende (facultatif)
+            type: string
+
+  - name: equipe
+    label: L'équipe
+    type: file
+    path: _data/equipe.yml
+    format: yaml
+    fields:
+      - name: membres
+        label: Membres
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nom}"
+        fields:
+          - name: nom
+            label: Prénom ou pseudo
+            type: string
+          - name: role
+            label: Rôle dans l'association
+            type: string
+          - name: jeux
+            label: Jeux préférés
+            type: string
+          - name: texte
+            label: Quelques mots
+            type: text
+          - name: couleur
+            label: Couleur (celle de son meeple)
+            type: select
+            options:
+              values:
+                - name: vert
+                  label: Vert
+                - name: jaune
+                  label: Jaune
+                - name: rouge
+                  label: Rouge
+                - name: bleu
+                  label: Bleu
+          - name: photo
+            label: Portrait
+            type: image
+
+  - name: textes
+    label: Textes du site
+    type: group
+    items:
+      - name: site
+        label: Informations générales
+        type: file
+        path: _data/site.yml
+        format: yaml
+        fields:
+          - name: nom
+            label: Nom de l'association
+            type: string
+          - name: intro
+            label: Présentation courte
+            type: text
+          - name: criteres
+            label: Ce qu'on joue (un critère par ligne)
+            type: text
+          - name: ville
+            label: Où nous trouver
+            type: string
+          - name: seances
+            label: Séances de jeu
+            type: string
+            description: "Jour et horaires, ex. : le vendredi à partir de 20 h"
+
+      - name: accueil
+        label: Accueil et histoire
+        type: file
+        path: _data/accueil.yml
+        format: yaml
+        fields:
+          - name: piliers
+            label: Les trois piliers (sous la bannière)
+            type: object
+            list:
+              min: 3
+              max: 3
+            fields:
+              - name: titre
+                label: Titre
+                type: string
+              - name: texte
+                label: Texte
+                type: text
+          - name: histoire
+            label: Notre histoire
+            type: object
+            fields:
+              - name: titre
+                label: Titre
+                type: string
+              - name: texte
+                label: Votre histoire (sautez une ligne entre deux paragraphes)
+                type: text
+              - name: signature
+                label: Signature manuscrite
+                type: string
+              - name: photo
+                label: Photo de groupe (sinon le logo s'affiche)
+                type: image
+          - name: organisateurs
+            label: Bandeau organisateurs de festivals
+            type: object
+            fields:
+              - name: titre
+                label: Titre
+                type: string
+              - name: texte
+                label: Texte
+                type: text
+              - name: bouton
+                label: Texte du bouton
+                type: string
+
+      - name: evenement
+        label: Notre événement
+        type: file
+        path: _data/evenement.yml
+        format: yaml
+        fields:
+          - name: titre
+            label: Titre du projet
+            type: string
+          - name: texte
+            label: Description
+            type: text
+          - name: etape
+            label: Où en est le projet
+            type: select
+            options:
+              values:
+                - name: 0
+                  label: 1. Idée
+                - name: 1
+                  label: 2. Recherche du lieu
+                - name: 2
+                  label: 3. Date fixée
+                - name: 3
+                  label: 4. Programme
+                - name: 4
+                  label: 5. Ouverture
+          - name: date
+            label: Date prévue
+            type: string
+          - name: lieu
+            label: Lieu prévu
+            type: string
+          - name: besoins
+            label: Ce que nous cherchons (un besoin par ligne)
+            type: text
+
+      - name: contact
+        label: Contact et Discord
+        type: file
+        path: _data/contact.yml
+        format: yaml
+        fields:
+          - name: contact
+            label: Contact
+            type: object
+            fields:
+              - name: texte
+                label: Texte d'introduction
+                type: text
+              - name: email
+                label: Adresse e-mail de l'association
+                type: string
+              - name: telephone
+                label: Téléphone (facultatif)
+                type: string
+              - name: formspree
+                label: Adresse du formulaire Formspree (facultatif)
+                type: string
+                description: "Ex. : https://formspree.io/f/abcdwxyz. Sans elle, seule l'adresse e-mail s'affiche."
+              - name: facebook
+                label: Page Facebook (facultatif)
+                type: string
+              - name: instagram
+                label: Compte Instagram (facultatif)
+                type: string
+          - name: discord
+            label: Discord
+            type: object
+            fields:
+              - name: discord
+                label: Lien d'invitation Discord
+                type: string
+              - name: texte
+                label: Texte de présentation
+                type: text
+              - name: salons
+                label: Ce qu'on y trouve (une ligne par point)
+                type: text
+
+      - name: galerie
+        label: Galerie photos
+        type: file
+        path: _data/galerie.yml
+        format: yaml
+        fields:
+          - name: photos
+            label: Photos
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "Photo {index}"
+            fields:
+              - name: image
+                label: Photo
+                type: image
+              - name: legende
+                label: Légende (facultatif)
+                type: string
+
+      - name: temoignages
+        label: Témoignages
+        type: file
+        path: _data/temoignages.yml
+        format: yaml
+        fields:
+          - name: liste
+            label: Témoignages
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{auteur}"
+            fields:
+              - name: texte
+                label: Témoignage
+                type: text
+              - name: auteur
+                label: Prénom ou nom
+                type: string
+              - name: contexte
+                label: Contexte (facultatif)
+                type: string

@@ -1,0 +1,13 @@
+# Site Les Experts en Périgord — construit automatiquement par GitHub Pages (Jekyll).
+# Le contenu se modifie avec Pages CMS (https://app.pagescms.org), pas ici.
+title: Les Experts en Périgord
+lang: fr
+markdown: kramdown
+collections:
+  jeux:
+    output: false
+  festivals:
+    output: false
+exclude:
+  - MODE-D-EMPLOI.txt
+  - README.md

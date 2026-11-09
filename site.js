@@ -23,7 +23,7 @@ function hueOf(s){ let h=0; for(const ch of String(s)) h=(h*31+ch.codePointAt(0)
 function initials(n){ return String(n||"?").split(/\s+/).map(w=>w[0]||"").join("").slice(0,2).toUpperCase(); }
 const ex = x => x.exemple ? `<span class="chip">Exemple à remplacer</span>` : "";
 const S = C.site, NOM = S.nom || "Les Experts en Périgord";
-const hasPhotos = C.galerie.some(g=>g.photo);
+const hasPhotos = C.galerie.some(g=>g && (g.image||g.photo));
 
 /* ---------- Menu et pied de page ---------- */
 const PAGES = [
@@ -150,7 +150,7 @@ R.equipe = () => {
   + (TM.length ? sec(head("Ils ont joué avec nous","Ce qu'on dit de nos tables") + `<div class="grid">${TM.map(t=>`<blockquote class="card temoin"><p>${esc(t.texte)}</p><footer>${esc(t.auteur||"")}${t.contexte?`<span>${esc(t.contexte)}</span>`:""}</footer></blockquote>`).join("")}</div>`) : "");
 };
 R.photos = () => {
-  const G = C.galerie.filter(g=>g.photo);
+  const G = C.galerie.filter(g=>g && (g.image||g.photo)).map(g=>({photo:g.image||g.photo, legende:g.legende}));
   return pageHero("En images","Autour de nos tables","","70%")
     + sec(G.length?`<div class="galerie">${G.map(g=>`<figure><img src="${esc(g.photo)}" alt="${esc(g.legende||"Photo de l'association")}" loading="lazy">${g.legende?`<figcaption>${esc(g.legende)}</figcaption>`:""}</figure>`).join("")}</div>`:empty("Les photos arrivent bientôt."));
 };
@@ -186,7 +186,7 @@ R.article = () => {
   if(!x) return pageHero(type==="festival"?"Festival":"Jeu testé","Article introuvable","Cet article a peut-être été retiré ou renommé.","40%") + sec(`<a class="btn" href="${back[0]}">← ${back[1]}</a>`);
   const titre = type==="festival" ? x.nom : x.jeu;
   document.title = `${titre} · ${NOM}`;
-  const photos = ((window.PHOTOS||{})[idOf(x)]||[]).filter(p=>p&&p.src);
+  const photos = (x.photos||[]).map(p=>({src:p.image||p.src, legende:p.legende||""})).filter(p=>p.src);
   const texte = String(x.article||x.texte||"").split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean);
   const fiche = type==="festival"
     ? `<dl class="kv"><dt>Date</dt><dd>${esc(x.date||"À venir")}</dd>${x.lieu?`<dt>Lieu</dt><dd>${esc(x.lieu)}</dd>`:""}${x.role?`<dt>Notre table</dt><dd>${esc(x.role)}</dd>`:""}</dl>`
@@ -199,7 +199,7 @@ R.article = () => {
         <article class="article-body">
           ${x.couverture?`<img class="article-cover" src="${esc(x.couverture)}" alt="">`:""}
           ${ex(x)}
-          ${texte.length?texte.map(p=>`<p>${esc(p)}</p>`).join(""):`<p class="note">L'article arrive bientôt.</p>`}
+          ${x.article_html && x.article_html.trim() ? `<div class="prose">${x.article_html}</div>` : texte.length?texte.map(p=>`<p>${esc(p)}</p>`).join(""):`<p class="note">L'article arrive bientôt.</p>`}
         </article>
         <aside class="card article-fiche"><h3>${type==="festival"?"En bref":"Fiche du jeu"}</h3>${fiche}
           ${type==="festival"?`<a class="btn yellow" href="contact.html?objet=festival">Inviter les Experts</a>`:`<a class="btn" href="contact.html?objet=seance">Y jouer avec nous</a>`}</aside>
@@ -250,7 +250,7 @@ const lbx = document.getElementById("lightbox");
 if(lbx){
   const q = new URLSearchParams(location.search), t = q.get("type")==="festival" ? C.festivals : C.tests;
   const it = t.find(x=>idOf(x)===(q.get("id")||""));
-  const P = ((window.PHOTOS||{})[it?idOf(it):""]||[]).filter(p=>p&&p.src);
+  const P = ((it&&it.photos)||[]).map(p=>({src:p.image||p.src, legende:p.legende||""})).filter(p=>p.src);
   let cur = 0;
   const show = i => { cur = (i+P.length)%P.length; document.getElementById("lb-img").src = P[cur].src; document.getElementById("lb-img").alt = P[cur].legende||""; document.getElementById("lb-cap").textContent = (P[cur].legende?P[cur].legende+" · ":"")+(cur+1)+" / "+P.length; };
   document.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{ show(Number(b.dataset.ph)); lbx.showModal(); }));

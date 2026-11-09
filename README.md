@@ -2,8 +2,10 @@
 
 Site de l'association de jeux de société experts Les Experts en Périgord.
 
-- Le site : `index.html` et les autres pages `.html`
-- Le contenu (textes, festivals, jeux testés, membres…) : `contenu.js`
-- Pour modifier le contenu : ouvrez `admin.html` sur votre ordinateur, puis remplacez `contenu.js` par le fichier téléchargé.
+Le contenu se modifie avec [Pages CMS](https://app.pagescms.org) : voir `MODE-D-EMPLOI.txt`.
 
-Le mode d'emploi complet est dans `MODE-D-EMPLOI.txt`.
+- `_jeux/` : un fichier par jeu testé
+- `_festivals/` : un fichier par festival
+- `_data/` : équipe, textes du site, contact…
+- `images/uploads/` : photos ajoutées depuis Pages CMS
+- `contenu.js` : assemblé automatiquement par GitHub Pages (Jekyll) à partir des fichiers ci-dessus

@@ -1,99 +1,54 @@
 SITE « LES EXPERTS EN PÉRIGORD » — MODE D'EMPLOI
 =================================================
 
-CONTENU DU DOSSIER
-------------------
-  index.html          page d'accueil
-  festivals.html      nos tables en festival
-  jeux.html           les jeux testés (avec filtres par verdict)
-  evenement.html      notre événement
-  equipe.html         notre histoire, les membres, les témoignages
-  photos.html         la galerie (dans le menu dès qu'il y a une photo)
-  contact.html        contact et Discord
-  article.html        la page d'un festival ou d'un jeu testé (article et photos)
-  site.js             le programme commun qui affiche toutes les pages
-  contenu.js          tous les textes, festivals, jeux testés, membres…
-  photos.js           les photos des articles
-  style.css           l'apparence du site
-  admin.html          la page pour modifier le contenu (à garder sur votre ordinateur)
-  images/             le logo et la bannière
+Le contenu du site se modifie en ligne avec Pages CMS :
+https://app.pagescms.org
 
-Gardez toujours ces fichiers ensemble, dans le même dossier.
-Pour voir le site sur votre ordinateur, double-cliquez sur index.html.
+Plus besoin de télécharger ni d'envoyer de fichiers : on écrit, on enregistre,
+et le site en ligne se met à jour tout seul en une à deux minutes.
 
 
-1. METTRE LE SITE EN LIGNE CHEZ O2SWITCH
-----------------------------------------
-  1. Connectez-vous à votre cPanel o2switch.
-  2. Ouvrez le « Gestionnaire de fichiers », puis le dossier public_html.
-  3. Cliquez sur « Charger » et envoyez le fichier zip du site.
-  4. Clic droit sur le zip > « Extraire ». Vérifiez que les fichiers .html,
-     site.js, contenu.js, style.css et le dossier images se trouvent
-     directement dans public_html (pas dans un sous-dossier).
-  5. Supprimez le zip ET le fichier admin.html de public_html :
-     la page d'administration reste sur votre ordinateur.
-  6. Dans cPanel, activez le certificat SSL gratuit (Let's Encrypt)
-     pour votre domaine, pour avoir le cadenas https.
+1. PREMIÈRE CONNEXION (le propriétaire du dépôt GitHub, une seule fois)
+-----------------------------------------------------------------------
+  1. Allez sur https://app.pagescms.org et cliquez sur « Sign in with GitHub ».
+  2. Autorisez Pages CMS et installez son application GitHub sur le dépôt
+     Expert-Perigord quand c'est demandé.
+  3. Ouvrez le dépôt Expert-Perigord dans Pages CMS : les rubriques du site
+     apparaissent dans le menu de gauche.
 
 
-2. MODIFIER LE CONTENU (SITE HÉBERGÉ SUR GITHUB)
-------------------------------------------------
-  1. Sur votre ordinateur, double-cliquez sur admin.html.
-  2. Modifiez ce que vous voulez : textes, festivals, jeux testés,
-     membres… Pour chaque festival et chaque jeu testé, vous pouvez
-     écrire un article complet, choisir une image de couverture et
-     ajouter des photos : tout cela s'affiche sur la page de l'article,
-     ouverte quand un visiteur clique sur la carte.
-     Pour chaque jeu testé, la rubrique « L'avis des Experts » permet à
-     chaque membre de donner une note sur 10 et son avis. La moyenne des
-     notes s'affiche sur la carte du jeu et dans sa fiche.
-  3. En bas de l'écran, cliquez sur « Télécharger contenu.js ».
-     Si vous avez ajouté, retiré ou légendé des photos d'articles,
-     cliquez aussi sur « Télécharger photos.js » (le bouton devient jaune
-     pour vous le rappeler).
-  4. Les fichiers doivent s'appeler exactement contenu.js et photos.js
-     (pas contenu (1).js). Renommez-les si besoin.
-  5. Sur GitHub, ouvrez le dépôt du site, cliquez sur « Add file »,
-     puis « Upload files ». Glissez-y le ou les fichiers, puis cliquez
-     sur « Commit changes ».
-  6. Une à deux minutes plus tard, le site en ligne est à jour.
-     Pensez aussi à remplacer contenu.js et photos.js dans votre dossier
-     sur l'ordinateur, pour repartir de la bonne version la prochaine fois.
-
-Bon à savoir
-  - Les fiches marquées « Exemple » montrent la présentation :
-    modifiez-les ou supprimez-les.
-  - La page « Photos » n'apparaît dans le menu, et les « Témoignages »
-    sur la page L'équipe, que lorsqu'il y a au moins un élément.
-  - Toutes les pages lisent le même fichier contenu.js : une seule
-    mise à jour suffit pour tout le site.
-  - Les photos sont réduites automatiquement. Les photos d'articles ne se
-    chargent que sur la page de l'article concerné : le reste du site reste
-    rapide. Comptez une dizaine de photos par article au maximum.
-  - À plusieurs administrateurs : partagez le dossier (Google Drive…)
-    pour que chacun parte toujours de la dernière version de contenu.js.
-
-Changer la bannière : remplacez images/banniere.jpg (grand écran) et
-images/banniere-1200.jpg (tablette et téléphone) par vos nouvelles images,
-en gardant les mêmes noms et le même format (environ 2048 x 768 pixels).
+2. INVITER LES AUTRES MEMBRES
+-----------------------------
+  Dans Pages CMS, ouvrez le dépôt, puis le menu « Collaborators »
+  (Collaborateurs) et invitez chaque membre avec son adresse e-mail.
+  Ils reçoivent un lien de connexion par e-mail : pas besoin de compte GitHub.
 
 
-3. LE DISCORD (ESPACE D'ÉCHANGE)
---------------------------------
-  1. Créez un serveur Discord pour l'association.
-  2. Créez un lien d'invitation « qui n'expire jamais ».
-  3. Collez-le dans admin.html, rubrique « Discord ».
+3. CE QU'ON PEUT FAIRE
+----------------------
+  Jeux testés     un fichier par jeu : article, verdict, poids, photos,
+                  et une note sur 10 + un avis pour chacun des quatre membres.
+  Festivals       un fichier par festival : dates, lieu, article, photos.
+  L'équipe        les fiches des membres.
+  Textes du site  présentation, piliers, histoire, événement, contact, Discord,
+                  galerie et témoignages.
+
+  Pour ajouter un jeu : « Jeux testés » > « Add an entry » (Ajouter), remplissez,
+  puis « Save » (Enregistrer).
+  Pour donner son avis sur un jeu : ouvrez le jeu, dépliez « L'avis des Experts »,
+  remplissez votre note et votre avis, puis « Save ».
+
+  Plusieurs membres peuvent travailler en même temps sur des jeux différents.
+  Évitez seulement de modifier le MÊME jeu au même moment.
 
 
-4. LE FORMULAIRE DE CONTACT (FACULTATIF)
-----------------------------------------
-Sans réglage, le site affiche simplement votre adresse e-mail.
-Pour avoir un formulaire qui vous envoie les messages par e-mail :
-  1. Créez un compte gratuit sur https://formspree.io
-  2. Créez un formulaire : Formspree vous donne une adresse
-     du type https://formspree.io/f/abcdwxyz
-  3. Collez-la dans admin.html, rubrique « Contact ».
-
-Astuce : avec o2switch, créez une adresse à votre nom de domaine
-(ex. contact@votre-domaine.fr) dans cPanel > « Comptes de messagerie »,
-et indiquez-la dans la rubrique « Contact ».
+4. BON À SAVOIR
+---------------
+  - Le site met une à deux minutes à se mettre à jour après un enregistrement.
+  - Les photos sont rangées dans le dossier images/uploads. Privilégiez des photos
+    de moins de 2 Mo (une photo de téléphone réduite suffit largement).
+  - Ajouter un nouveau membre à l'équipe : la fiche se crée dans « L'équipe »,
+    mais pour qu'il ait sa case « Avis » sur les jeux, demandez à Claude
+    d'ajouter son nom dans la configuration (.pages.yml).
+  - Le fichier contenu.js est fabriqué automatiquement par GitHub :
+    ne le modifiez pas à la main.

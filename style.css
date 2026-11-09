@@ -504,3 +504,12 @@ a.card:hover .fest-cover img,a.card:hover .photo-cover img{transform:scale(1.04)
 .moy span{font-size:.82rem;color:var(--muted);line-height:1.35}
 .tag.score{background:rgba(244,180,0,.16);color:var(--meeple-y)}
 @media (max-width:760px){.avis-grid{grid-template-columns:1fr}}
+
+/* Texte des articles (mis en forme dans Pages CMS) */
+.prose{display:grid;gap:16px}
+.prose p,.prose li{font-size:1.1rem;line-height:1.75}
+.prose h2,.prose h3{margin-top:12px}
+.prose ul,.prose ol{margin:0;padding-left:1.3em;display:grid;gap:6px}
+.prose a{color:var(--meeple-y)}
+.prose img{border-radius:14px}
+.prose blockquote{margin:0;padding:6px 0 6px 18px;border-left:3px solid var(--meeple-y);color:var(--muted)}

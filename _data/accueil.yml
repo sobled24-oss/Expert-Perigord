@@ -1,0 +1,19 @@
+piliers:
+- titre: Jouer
+  texte: Des parties longues et riches, à notre rythme, avec des joueurs qui aiment autant que vous les gros jeux.
+- titre: Apprendre
+  texte: On explique les règles, même les plus épaisses. Débutants en jeux experts bienvenus.
+- titre: Partager
+  texte: Nos tables en festival, nos avis sur les jeux et bientôt notre propre événement en Périgord.
+histoire:
+  titre: Quatre amis autour d'une table
+  texte: |-
+    À compléter : racontez comment l'association est née, ce qui vous rassemble autour des gros jeux, et ce que vous aimez transmettre.
+
+    C'est la section que les visiteurs lisent pour savoir à qui ils ont affaire : un ton personnel fonctionne très bien.
+  signature: Les Experts
+  photo: ''
+organisateurs:
+  titre: Vous organisez un festival ?
+  texte: 'Nous venons animer une table de jeux experts : on apporte les jeux, on explique les règles et on accompagne les joueurs pendant toute la partie.'
+  bouton: Inviter les Experts
