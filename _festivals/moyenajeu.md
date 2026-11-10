@@ -1,5 +1,5 @@
 ---
-title: 5e édition du Festival du jeu de Sarlat
+title: Festival du jeu de Sarlat
 date: 2027-02-13
 dates: 13 et 14 février 2027
 lieu: SARLAT
