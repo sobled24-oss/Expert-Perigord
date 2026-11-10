@@ -15,7 +15,7 @@ layout: null
 "echanges": {{ site.data.contact.discord | jsonify }},
 "contact": {{ site.data.contact.contact | jsonify }},
 "festivals": [{% for f in fests %}
-  {"id": {{ f.slug | jsonify }}, "nom": {{ f.title | jsonify }}, "date": {{ f.dates | jsonify }}, "lieu": {{ f.lieu | jsonify }}, "role": {{ f.role | jsonify }}, "texte": {{ f.resume | jsonify }}, "couverture": {{ f.couverture | jsonify }}, "photos": {{ f.photos | jsonify }}, "exemple": {{ f.exemple | jsonify }}, "article_html": {{ f.content | markdownify | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}
+  {"id": {{ f.slug | jsonify }}, "debut": {{ f.date | date: "%Y-%m-%d" | jsonify }}, "nom": {{ f.title | jsonify }}, "date": {{ f.dates | jsonify }}, "lieu": {{ f.lieu | jsonify }}, "role": {{ f.role | jsonify }}, "texte": {{ f.resume | jsonify }}, "couverture": {{ f.couverture | jsonify }}, "photos": {{ f.photos | jsonify }}, "exemple": {{ f.exemple | jsonify }}, "article_html": {{ f.content | markdownify | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}
 ],
 "tests": [{% for t in jeux %}
   {"id": {{ t.slug | jsonify }}, "jeu": {{ t.title | jsonify }}, "auteurs": {{ t.auteurs | jsonify }}, "joueurs": {{ t.joueurs | jsonify }}, "duree": {{ t.duree | jsonify }}, "poids": {{ t.poids | jsonify }}, "verdict": {{ t.verdict | jsonify }}, "texte": {{ t.resume | jsonify }}, "couverture": {{ t.couverture | jsonify }}, "avis": {{ t.avis | jsonify }}, "photos": {{ t.photos | jsonify }}, "exemple": {{ t.exemple | jsonify }}, "article_html": {{ t.content | markdownify | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}

@@ -61,6 +61,9 @@ function mkey(m){ return slug(m.nom); }
 function notes(t){ const a = t.avis||{}; return C.membres.map(m=>a[mkey(m)]).filter(v=>v && v.note!=="" && v.note!=null && !isNaN(Number(v.note))).map(v=>Number(v.note)); }
 function moyenne(t){ const n = notes(t); return n.length ? n.reduce((a,b)=>a+b,0)/n.length : null; }
 const fr = v => (Math.round(v*10)/10).toString().replace(".",",");
+const AUJ = (()=>{ const d = new Date(); d.setDate(d.getDate()-2); return d.toISOString().slice(0,10); })();
+function aVenir(){ return C.festivals.filter(f=>f.debut && f.debut >= AUJ).sort((a,b)=>a.debut<b.debut?-1:1); }
+function passes(){ return C.festivals.filter(f=>!f.debut || f.debut < AUJ).sort((a,b)=>(a.debut||"")<(b.debut||"")?1:-1); }
 function artUrl(type, x){ return `article.html?type=${type}&id=${encodeURIComponent(idOf(x))}`; }
 function gameCover(t){
   return t.couverture
@@ -109,7 +112,7 @@ const empty = t => `<div class="empty">${esc(t)}</div>`;
 /* ---------- Pages ---------- */
 const R = {};
 R.accueil = () => {
-  const H = C.histoire, T = C.tests.slice(0,3), F = C.festivals[0], E = C.evenement, k = Number(E.etape)||0;
+  const H = C.histoire, T = C.tests.slice(0,3), NEXT = aVenir()[0], F = NEXT || passes()[0], E = C.evenement, k = Number(E.etape)||0;
   return `
   <div class="banner"><h1 class="sr">${esc(NOM)}, association de jeux de société experts</h1>
     <picture><source media="(max-width:1300px)" srcset="images/banniere-1200.jpg"><img src="images/banniere.jpg" width="2048" height="768" alt="Le logo des Experts en Périgord au-dessus d'une table de jeu experts. Association de jeux de société experts : jouer, apprendre, partager."></picture></div>
@@ -121,13 +124,16 @@ R.accueil = () => {
         <div class="btnrow"><a class="btn" href="equipe.html">Découvrir l'équipe</a><a class="btn ghost" href="contact.html?objet=seance">Venir jouer avec nous</a></div></div></div>`)}
   ${sec(head("Banc d'essai","Nos derniers jeux testés","",`<a class="btn ghost" href="jeux.html">Tous nos tests →</a>`) + (T.length?`<div class="grid g3">${T.map(gameCard).join("")}</div>`:empty("Aucun test publié pour le moment.")), "dark")}
   ${sec(`<div class="duo">
-      <a class="card link" href="${F?artUrl("festival",F):"festivals.html"}"><span class="hand">Prochaine table</span>${F?`<h3 class="big">${esc(F.nom)}</h3><div class="meta">${F.date?`<span class="tag">${esc(F.date)}</span>`:""}${F.lieu?`<span class="tag">${esc(F.lieu)}</span>`:""}</div>${F.texte?`<p class="note">${esc(F.texte)}</p>`:""}`:`<h3 class="big">Annonce à venir</h3>`}<span class="go">${F?"Lire l'article →":"Tous nos festivals →"}</span></a>
+      <a class="card link" href="${F?artUrl("festival",F):"festivals.html"}"><span class="hand">${NEXT||!F?"Prochaine table":"Dernière table"}</span>${F?`<h3 class="big">${esc(F.nom)}</h3><div class="meta">${F.date?`<span class="tag">${esc(F.date)}</span>`:""}${F.lieu?`<span class="tag">${esc(F.lieu)}</span>`:""}</div>${F.texte?`<p class="note">${esc(F.texte)}</p>`:""}`:`<h3 class="big">Annonce à venir</h3>`}<span class="go">${F?"Lire l'article →":"Tous nos festivals →"}</span></a>
       <a class="card link dark" href="evenement.html"><span class="hand">Notre projet</span><h3 class="big">${esc(E.titre)}</h3><div class="progress"><i style="width:${(k+1)*20}%"></i></div><p>Étape ${k+1} sur 5 : ${esc(ETAPES[k])}</p><span class="go">Suivre le projet →</span></a>
     </div>`)}
   ${orgaBand()}`;
 };
 R.festivals = () => pageHero("Sur le terrain","Nos tables en festival","Explication des règles, parties complètes et conseils pour se lancer dans les jeux experts.","30%")
-  + sec(C.festivals.length?`<div class="grid">${C.festivals.map(festCard).join("")}</div>`:empty("Aucun festival annoncé pour le moment."))
+  + (()=>{ const V = aVenir(), P = passes();
+      if(!V.length && !P.length) return sec(empty("Aucun festival annoncé pour le moment."));
+      return sec(head("","À venir") + (V.length?`<div class="grid">${V.map(festCard).join("")}</div>`:empty("Aucun festival annoncé pour le moment. Suivez-nous sur Discord pour connaître nos prochaines tables.")))
+        + (P.length ? sec(head("","Ils sont passés") + `<div class="grid">${P.map(festCard).join("")}</div>`, "sand") : ""); })()
   + orgaBand();
 R.jeux = () => {
   const used = Object.keys(VERDICTS).filter(v=>C.tests.some(t=>t.verdict===v));
