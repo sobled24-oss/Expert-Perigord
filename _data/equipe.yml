@@ -1,29 +1,23 @@
 membres:
-- nom: Philou
-  role: ''
-  jeux: Anachrony, Voidfall, hybris, Feudum, Nemesis, Ark nova, Cloudspire, Seti, Civolution.
-  texte: |-
-    deteste Skyjo, 7 wonders duel et mysterium
-    Adore les placements d ouvrier et les tableau building/ engine building.
-    Deteste l 'aléatoire dan les jeux trop long.
-    Je râle mais ca dure pas longtemps.
-  couleur: vert
-  photo: images/membres/philou.webp
-- nom: Pat
-  role: ''
-  jeux: ''
-  texte: ''
-  couleur: jaune
-  photo: images/membres/pat.webp
-- nom: Tim
-  role: ''
-  jeux: ''
-  texte: ''
-  couleur: rouge
-  photo: images/membres/tim.webp
-- nom: Thyl
-  role: ''
-  jeux: ''
-  texte: ''
-  couleur: bleu
-  photo: images/membres/thyl.webp
+  - nom: Philou
+    jeux: Anachrony, Voidfall, hybris, Feudum, Nemesis, Ark nova, Cloudspire, Seti,
+      Civolution.
+    texte: |-
+      deteste Skyjo, 7 wonders duel et mysterium
+      Adore les placements d ouvrier et les tableau building/ engine building.
+      Deteste l 'aléatoire dan les jeux trop long.
+      Je râle mais ca dure pas longtemps.
+    couleur: vert
+    photo: images/membres/philou.webp
+  - nom: Pat
+    couleur: jaune
+    photo: images/membres/pat.webp
+  - nom: Tim
+    role: Trésorier
+    jeux: Ark Nova, SETI, Civolution, Underwater cities, Eclipse, Res arcana,
+      Starwars Rebellion
+    couleur: rouge
+    photo: images/membres/tim.webp
+  - nom: Thyl
+    couleur: bleu
+    photo: images/membres/thyl.webp
