@@ -1,5 +1,5 @@
 ---
-title: MOYENÂJEU
+title: MOYENÂJEUX
 date: 2027-02-13
 dates: 13/02/2027 au  14/02/2027
 lieu: SARLAT
