@@ -11,6 +11,15 @@ membres:
     couleur: vert
     photo: images/membres/philou.webp
   - nom: Pat
+    jeux: "Les Ruines Perdues de Narak, Dune : Imperium, Black Rose Wars :
+      Renaissance, Mage Knight, Fall of Lumen, Kanal , Wondrous Creatures… et
+      tous les jeux de deck-building !"
+    texte: "je suis un passionné de jeux de société exigeants, avec une affection
+      particulière pour les gros jeux narratifs, les campagnes au long cours et
+      les systèmes tactiques complexes (Mage Knight, Aeon Trespass: Odyssey,
+      Tainted Grail…). Quand je ne suis pas en train d’éplucher un livret de
+      règles de 60 pages pour en décortiquer chaque mécanique, j’optimise le
+      rangement de mes boîtes ou je peins mes figurines."
     couleur: jaune
     photo: images/membres/pat.webp
   - nom: Tim
