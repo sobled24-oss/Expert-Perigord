@@ -1,13 +1,21 @@
+---
+---
 <!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Festivals · Les Experts en Périgord</title>
-<meta name="description" content="Les festivals où Les Experts en Périgord animent des tables de jeux de société experts.">
-<meta property="og:title" content="Festivals · Les Experts en Périgord">
-<meta property="og:description" content="Les festivals où Les Experts en Périgord animent des tables de jeux de société experts.">
-<meta property="og:image" content="images/banniere-1200.jpg">
+<title>Festivals de jeux en Dordogne : nos tables de jeux experts · Les Experts en Périgord</title>
+<meta name="description" content="Les festivals de jeux en Périgord et en Dordogne où Les Experts en Périgord animent des tables de jeux de société experts : dates, lieux et photos.">
+<link rel="canonical" href="{{ site.url }}/festivals.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Les Experts en Périgord">
+<meta property="og:title" content="Festivals de jeux en Dordogne : nos tables de jeux experts · Les Experts en Périgord">
+<meta property="og:description" content="Les festivals de jeux en Périgord et en Dordogne où Les Experts en Périgord animent des tables de jeux de société experts : dates, lieux et photos.">
+<meta property="og:url" content="{{ site.url }}/festivals.html">
+<meta property="og:image" content="{{ site.url }}/images/banniere-1200.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +24,8 @@
 </head>
 <body data-page="festivals">
 <header class="top" id="top"></header>
-<main id="main"></main>
+<main id="main"><section class="block"><div class="wrap"><h1>Nos tables en festival</h1>{%- assign fests = site.festivals | sort: "date" | reverse -%}
+<ul>{% for f in fests %}<li><a href="{{ f.url | remove_first: "/" }}">{{ f.title | escape }}</a>{% if f.dates %} ({{ f.dates | escape }}{% if f.lieu %}, {{ f.lieu | escape }}{% endif %}){% endif %}</li>{% endfor %}</ul></div></section></main>
 <footer class="bas" id="bas"></footer>
 <script>document.write('<script src="contenu.js?v='+Math.floor(Date.now()/60000)+'"><\/script>')</script>
 <script src="site.js"></script>

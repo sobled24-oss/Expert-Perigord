@@ -1,0 +1,160 @@
+{%- comment -%}
+  Page d'un jeu testé ou d'un festival, fabriquée par GitHub Pages à partir des fichiers de Pages CMS.
+  Le texte est écrit directement dans la page (lisible par Google) ; site.js ajoute le menu, le pied de page,
+  la visionneuse de photos et les autres articles.
+{%- endcomment -%}
+{%- assign S = site.data.site -%}
+{%- assign nom = S.nom | default: site.title -%}
+{%- assign isjeu = false -%}{%- if page.collection == "jeux" -%}{%- assign isjeu = true -%}{%- endif -%}
+{%- assign meeple = "M12 1.6a3.4 3.4 0 0 1 3.4 3.4c0 1.1-.5 2.1-1.3 2.7 3 .4 7.4 1.6 8.1 2.9.6 1.1-1.7 2.2-5.1 2.8l3.8 8.1c.3.7-.2 1.5-1 1.5h-3.6L12 17.6 7.7 23H4.1c-.8 0-1.3-.8-1-1.5l3.8-8.1C3.5 12.8 1.2 11.7 1.8 10.6c.7-1.3 5.1-2.5 8.1-2.9A3.4 3.4 0 0 1 12 1.6z" -%}
+
+{%- comment -%} Description : le résumé, sinon le début de l'article, sinon une phrase par défaut {%- endcomment -%}
+{%- assign desc = page.resume | default: content | strip_html | strip_newlines | strip -%}
+{%- if desc == "" -%}
+  {%- if isjeu -%}{%- capture desc -%}Notre avis sur {{ page.title }}, jeu de société expert testé par {{ nom }}.{%- endcapture -%}
+  {%- else -%}{%- capture desc -%}{{ page.title }}{% if page.dates %}, {{ page.dates }}{% endif %}{% if page.lieu %} à {{ page.lieu }}{% endif %} : table de jeux de société experts animée par {{ nom }}.{%- endcapture -%}{%- endif -%}
+{%- endif -%}
+{%- assign desc = desc | truncate: 158 -%}
+
+{%- if isjeu -%}{%- capture titre_page -%}{{ page.title }} : notre avis de joueurs experts · {{ nom }}{%- endcapture -%}
+{%- else -%}{%- capture titre_page -%}{{ page.title }}{% if page.lieu %} ({{ page.lieu }}){% endif %} : notre table de jeux experts · {{ nom }}{%- endcapture -%}{%- endif -%}
+
+{%- comment -%} Image de partage : la couverture, sinon la première photo, sinon la bannière {%- endcomment -%}
+{%- assign img = page.couverture -%}
+{%- if img == nil or img == "" -%}{%- assign img = page.photos.first.image -%}{%- endif -%}
+{%- if img == nil or img == "" -%}{%- assign img = "images/banniere-1200.jpg" -%}{%- endif -%}
+{%- assign img1 = img | slice: 0 -%}
+{%- if img contains "://" -%}{%- assign img_abs = img -%}
+{%- elsif img1 == "/" -%}{%- assign img_abs = site.url | append: img -%}
+{%- else -%}{%- assign img_abs = site.url | append: "/" | append: img -%}{%- endif -%}
+
+{%- comment -%} Note moyenne des Experts {%- endcomment -%}
+{%- assign total = 0.0 -%}{%- assign nb = 0 -%}
+{%- for m in site.data.equipe.membres -%}
+  {%- assign k = m.nom | slugify -%}{%- assign v = page.avis[k] -%}
+  {%- if v and v.note != nil and v.note != "" -%}{%- assign total = total | plus: v.note -%}{%- assign nb = nb | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- if nb > 0 -%}
+  {%- assign moy = total | divided_by: nb -%}{%- assign moy1 = moy | round: 1 -%}{%- assign moy0 = moy | round -%}
+  {%- if moy1 == moy0 -%}{%- assign moy_txt = moy0 -%}{%- else -%}{%- assign moy_txt = moy1 | append: "" | replace: ".", "," -%}{%- endif -%}
+{%- endif -%}
+
+{%- case page.verdict -%}
+  {%- when "coeur" -%}{%- assign verdict = "Coup de cœur" -%}
+  {%- when "rejouer" -%}{%- assign verdict = "À rejouer" -%}
+  {%- when "mitige" -%}{%- assign verdict = "Mitigé" -%}
+  {%- when "non" -%}{%- assign verdict = "Pas pour nous" -%}
+  {%- else -%}{%- assign verdict = "" -%}
+{%- endcase -%}
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<base href="/">
+<title>{{ titre_page | escape }}</title>
+<meta name="description" content="{{ desc | escape }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="{{ nom | escape }}">
+<meta property="og:title" content="{{ page.title | escape }}">
+<meta property="og:description" content="{{ desc | escape }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ img_abs }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400&family=Caveat+Brush&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{%- if isjeu and nb > 0 %}
+{"@context":"https://schema.org","@type":"Review","name":{{ page.title | append: " : notre avis" | jsonify }},"datePublished":{{ page.date | date: "%Y-%m-%d" | jsonify }},"reviewBody":{{ desc | jsonify }},"image":{{ img_abs | jsonify }},"url":{{ site.url | append: page.url | jsonify }},
+ "itemReviewed":{"@type":"Product","name":{{ page.title | jsonify }}{% if page.auteurs %},"brand":{"@type":"Brand","name":{{ page.auteurs | jsonify }}}{% endif %}},
+ "reviewRating":{"@type":"Rating","ratingValue":{{ moy | round: 1 }},"bestRating":10,"worstRating":0},
+ "author":{"@type":"Organization","name":{{ nom | jsonify }},"url":{{ site.url | jsonify }}}}
+{%- elsif isjeu %}
+{"@context":"https://schema.org","@type":"Article","headline":{{ page.title | jsonify }},"datePublished":{{ page.date | date: "%Y-%m-%d" | jsonify }},"description":{{ desc | jsonify }},"image":{{ img_abs | jsonify }},"url":{{ site.url | append: page.url | jsonify }},"author":{"@type":"Organization","name":{{ nom | jsonify }},"url":{{ site.url | jsonify }}}}
+{%- else %}
+{"@context":"https://schema.org","@type":"Event","name":{{ page.title | jsonify }},"startDate":{{ page.date | date: "%Y-%m-%d" | jsonify }},"description":{{ desc | jsonify }},"image":[{{ img_abs | jsonify }}],"url":{{ site.url | append: page.url | jsonify }},
+ "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled",
+ "location":{"@type":"Place","name":{{ page.lieu | default: "Dordogne" | jsonify }},"address":{"@type":"PostalAddress","addressLocality":{{ page.lieu | default: "Dordogne" | jsonify }},"addressRegion":"Nouvelle-Aquitaine","addressCountry":"FR"}},
+ "organizer":{"@type":"Organization","name":{{ nom | jsonify }},"url":{{ site.url | jsonify }}}}
+{%- endif %}
+</script>
+</head>
+<body data-page="article-page">
+<header class="top" id="top"></header>
+<main id="main" data-ssr>
+<header class="page-hero" style="--pos:40%"><div class="wrap"><span class="hand">{% if isjeu %}Jeu testé{% else %}Festival{% endif %}</span><h1>{{ page.title | escape }}</h1></div></header>
+<section class="block"><div class="wrap">
+  {% if isjeu %}<a class="back" href="jeux.html">← Tous nos jeux testés</a>{% else %}<a class="back" href="festivals.html">← Tous nos festivals</a>{% endif %}
+  <div class="article-layout">
+    <article class="article-body">
+      {% if page.couverture and page.couverture != "" %}<img class="article-cover" src="{{ page.couverture }}" alt="{{ page.title | escape }}">{% endif %}
+      {% assign corps = content | strip_html | strip %}
+      {% if corps != "" %}<div class="prose">{{ content }}</div>
+      {% elsif page.resume and page.resume != "" %}<div class="prose"><p>{{ page.resume | escape }}</p></div>
+      {% else %}<p class="note">L'article arrive bientôt.</p>{% endif %}
+    </article>
+    <aside class="card article-fiche">
+      {% if isjeu %}
+      <h3>Fiche du jeu</h3>
+      {% if nb > 0 %}<div class="moy"><b>{{ moy_txt }}</b><span>/10<br>note moyenne des Experts ({{ nb }} avis)</span></div>{% endif %}
+      {% if verdict != "" %}<span class="verdict v-{{ page.verdict }}">{{ verdict }}</span>{% endif %}
+      {% if page.poids %}{% assign pw = page.poids | times: 1.0 %}
+      <div class="poids"><div class="row"><span>Poids</span><b>{{ pw | round: 1 | append: "" | replace: ".", "," }} / 5</b></div><div class="bar" aria-hidden="true">
+        {%- for i in (0..4) -%}
+          {%- assign f = pw | minus: i -%}
+          {%- if f >= 1 -%}{%- assign pct = 100 -%}{%- elsif f > 0 -%}{%- assign pct = f | times: 100 | round -%}{%- else -%}{%- assign pct = 0 -%}{%- endif -%}
+          {%- assign cut = 100 | minus: pct -%}
+          <span class="m"><svg viewBox="0 0 24 24"><path class="bg" d="{{ meeple }}"/></svg><svg viewBox="0 0 24 24" style="clip-path:inset(0 {{ cut }}% 0 0)"><path class="fg" d="{{ meeple }}"/></svg></span>
+        {%- endfor -%}
+      </div></div>{% endif %}
+      <dl class="kv">{% if page.joueurs %}<dt>Joueurs</dt><dd>{{ page.joueurs | escape }}</dd>{% endif %}{% if page.duree %}<dt>Durée</dt><dd>{{ page.duree | escape }}</dd>{% endif %}{% if page.auteurs %}<dt>Auteurs</dt><dd>{{ page.auteurs | escape }}</dd>{% endif %}</dl>
+      <a class="btn" href="contact.html?objet=seance">Y jouer avec nous</a>
+      {% else %}
+      <h3>En bref</h3>
+      <dl class="kv"><dt>Date</dt><dd>{{ page.dates | default: "À venir" | escape }}</dd>{% if page.lieu %}<dt>Lieu</dt><dd>{{ page.lieu | escape }}</dd>{% endif %}{% if page.role %}<dt>Notre table</dt><dd>{{ page.role | escape }}</dd>{% endif %}</dl>
+      <a class="btn yellow" href="contact.html?objet=festival">Inviter les Experts</a>
+      {% endif %}
+    </aside>
+  </div>
+
+  {% if isjeu and site.data.equipe.membres.size > 0 %}
+  <h2 class="photos-title">L'avis des Experts</h2>
+  <div class="avis-grid">
+    {%- for m in site.data.equipe.membres -%}
+      {%- assign k = m.nom | slugify -%}{%- assign v = page.avis[k] -%}
+      {%- assign has = false -%}{%- if v and v.texte and v.texte != "" -%}{%- assign has = true -%}{%- endif -%}
+      {%- assign hasnote = false -%}{%- if v and v.note != nil and v.note != "" -%}{%- assign has = true -%}{%- assign hasnote = true -%}{%- endif -%}
+    <article class="avis{% unless has %} vide{% endunless %}" data-c="{{ m.couleur }}">
+      <header>{% if m.photo %}<img src="{{ m.photo }}" alt="">{% else %}<span class="ini">{{ m.nom | slice: 0, 2 | upcase }}</span>{% endif %}<div><b>{{ m.nom | escape }}</b>{% if m.role %}<span>{{ m.role | escape }}</span>{% endif %}</div>
+        {%- if hasnote -%}{%- assign n1 = v.note | round: 1 -%}{%- assign n0 = v.note | round -%}<span class="note10">{% if n1 == n0 %}{{ n0 }}{% else %}{{ n1 | append: "" | replace: ".", "," }}{% endif %}<small>/10</small></span>{%- endif -%}</header>
+      {% if v and v.texte and v.texte != "" %}{{ v.texte | markdownify }}{% elsif has == false %}<p class="note">{{ m.nom | escape }} n'a pas encore donné son avis.</p>{% endif %}
+    </article>
+    {%- endfor -%}
+  </div>
+  {% endif %}
+
+  {%- assign nbph = 0 -%}{%- for p in page.photos -%}{%- if p.image and p.image != "" -%}{%- assign nbph = nbph | plus: 1 -%}{%- endif -%}{%- endfor -%}
+  {% if nbph > 0 %}
+  <h2 class="photos-title">Photos <span>{{ nbph }}</span></h2>
+  <div class="art-gallery">
+    {%- assign iph = 0 -%}
+    {%- for p in page.photos -%}{%- if p.image and p.image != "" -%}
+    <button type="button" class="ph-btn" data-ph="{{ iph }}" data-leg="{{ p.legende | escape }}"><img src="{{ p.image }}" alt="{{ p.legende | default: page.title | escape }}" loading="lazy">{% if p.legende and p.legende != "" %}<span>{{ p.legende | escape }}</span>{% endif %}</button>
+    {%- assign iph = iph | plus: 1 -%}{%- endif -%}{%- endfor -%}
+  </div>
+  <dialog class="lightbox" id="lightbox"><figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+    <button type="button" class="lb-close" id="lb-close" aria-label="Fermer">✕</button><button type="button" class="lb-nav prev" id="lb-prev" aria-label="Photo précédente">‹</button><button type="button" class="lb-nav next" id="lb-next" aria-label="Photo suivante">›</button></dialog>
+  {% endif %}
+</div></section>
+<div id="others" data-kind="{% if isjeu %}jeu{% else %}festival{% endif %}" data-slug="{{ page.slug }}"></div>
+</main>
+<footer class="bas" id="bas"></footer>
+<script>document.write('<script src="contenu.js?v='+Math.floor(Date.now()/60000)+'"><\/script>')</script>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,13 +1,26 @@
+---
+---
 <!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Les Experts en Périgord</title>
-<meta name="description" content="Association de jeux de société experts en Périgord : jouer, apprendre, partager. Tables animées en festival, tests de gros jeux et notre propre événement en préparation.">
-<meta property="og:title" content="Les Experts en Périgord">
-<meta property="og:description" content="Association de jeux de société experts en Périgord : jouer, apprendre, partager. Tables animées en festival, tests de gros jeux et notre propre événement en préparation.">
-<meta property="og:image" content="images/banniere-1200.jpg">
+<title>Les Experts en Périgord · Association de jeux de société experts en Dordogne</title>
+<meta name="description" content="Association de jeux de société experts en Périgord (Dordogne) : tables de gros jeux expliquées en festival, avis détaillés sur les jeux testés et notre propre événement en préparation.">
+<link rel="canonical" href="{{ site.url }}/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Les Experts en Périgord">
+<meta property="og:title" content="Les Experts en Périgord · Association de jeux de société experts en Dordogne">
+<meta property="og:description" content="Association de jeux de société experts en Périgord (Dordogne) : tables de gros jeux expliquées en festival, avis détaillés sur les jeux testés et notre propre événement en préparation.">
+<meta property="og:url" content="{{ site.url }}/">
+<meta property="og:image" content="{{ site.url }}/images/banniere-1200.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{%- assign K = site.data.contact.contact -%}
+{%- capture same -%}{% if K.facebook and K.facebook != "" %}{{ K.facebook | jsonify }},{% endif %}{% if K.instagram and K.instagram != "" %}{{ K.instagram | jsonify }},{% endif %}{% if site.data.contact.discord.discord and site.data.contact.discord.discord != "" %}{{ site.data.contact.discord.discord | jsonify }},{% endif %}{%- endcapture %}
+{"@context":"https://schema.org","@type":"Organization","name":{{ site.data.site.nom | default: site.title | jsonify }},"url":{{ site.url | jsonify }},"logo":{{ site.url | append: "/images/logo.jpg" | jsonify }},"description":{{ site.data.site.intro | jsonify }},"areaServed":{"@type":"AdministrativeArea","name":"Dordogne"},"sameAs":[{{ same }}{{ site.url | jsonify }}]}
+</script>
 <link rel="icon" href="images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +29,9 @@
 </head>
 <body data-page="accueil">
 <header class="top" id="top"></header>
-<main id="main"></main>
+<main id="main"><section class="block"><div class="wrap"><h1>{{ site.data.site.nom | default: site.title | escape }}</h1><p>{{ site.data.site.intro | escape }}</p><h2>Nos derniers jeux testés</h2>{%- assign jeux = site.jeux | sort: "date" | reverse -%}
+<ul>{% for t in jeux %}<li><a href="{{ t.url | remove_first: "/" }}">{{ t.title | escape }}</a>{% if t.resume %} : {{ t.resume | escape }}{% endif %}</li>{% endfor %}</ul><h2>Nos festivals</h2>{%- assign fests = site.festivals | sort: "date" | reverse -%}
+<ul>{% for f in fests %}<li><a href="{{ f.url | remove_first: "/" }}">{{ f.title | escape }}</a>{% if f.dates %} ({{ f.dates | escape }}{% if f.lieu %}, {{ f.lieu | escape }}{% endif %}){% endif %}</li>{% endfor %}</ul></div></section></main>
 <footer class="bas" id="bas"></footer>
 <script>document.write('<script src="contenu.js?v='+Math.floor(Date.now()/60000)+'"><\/script>')</script>
 <script src="site.js"></script>

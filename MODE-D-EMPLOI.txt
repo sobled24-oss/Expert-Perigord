@@ -52,3 +52,17 @@ et le site en ligne se met à jour tout seul en une à deux minutes.
     d'ajouter son nom dans la configuration (.pages.yml).
   - Le fichier contenu.js est fabriqué automatiquement par GitHub :
     ne le modifiez pas à la main.
+
+
+5. RÉFÉRENCEMENT (GOOGLE)
+-------------------------
+  - Chaque jeu testé et chaque festival a sa propre page, fabriquée
+    automatiquement : jeu-experts-perigord.fr/jeux/nom-du-jeu/ et
+    jeu-experts-perigord.fr/festivals/nom-du-festival/.
+    L'adresse vient du nom du fichier créé par Pages CMS.
+  - Le plan du site (jeu-experts-perigord.fr/sitemap.xml) se met à jour tout seul.
+    Déclarez-le une fois dans Google Search Console et Bing Webmaster Tools.
+  - Le « Résumé » de chaque jeu ou festival sert de description dans Google :
+    soignez-le (une à deux phrases claires).
+  - Pour Google, un festival est un événement : remplissez bien la date de début
+    et le lieu.

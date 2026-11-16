@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jeu-experts-perigord.fr/sitemap.xml

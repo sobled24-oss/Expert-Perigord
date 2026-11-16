@@ -64,7 +64,7 @@ const fr = v => (Math.round(v*10)/10).toString().replace(".",",");
 const AUJ = (()=>{ const d = new Date(); d.setDate(d.getDate()-2); return d.toISOString().slice(0,10); })();
 function aVenir(){ return C.festivals.filter(f=>f.debut && f.debut >= AUJ).sort((a,b)=>a.debut<b.debut?-1:1); }
 function passes(){ return C.festivals.filter(f=>!f.debut || f.debut < AUJ).sort((a,b)=>(a.debut||"")<(b.debut||"")?1:-1); }
-function artUrl(type, x){ return `article.html?type=${type}&id=${encodeURIComponent(idOf(x))}`; }
+function artUrl(type, x){ return x.url ? String(x.url).replace(/^\//,"") : `${type==="festival"?"festivals":"jeux"}/${encodeURIComponent(idOf(x))}/`; }
 function gameCover(t){
   return t.couverture
     ? `<div class="cover photo-cover"><img src="${esc(t.couverture)}" alt="" loading="lazy"><h3>${esc(t.jeu)}</h3></div>`
@@ -220,9 +220,16 @@ R.article = () => {
 };
 
 const main = document.getElementById("main");
-main.innerHTML = (R[PAGE] || R.accueil)();
-const titles = {accueil:"", festivals:"Festivals", jeux:"Jeux testés", evenement:"Notre événement", equipe:"L'équipe", photos:"Photos", contact:"Contact"};
-if(PAGE!=="article") document.title = titles[PAGE] ? `${titles[PAGE]} · ${NOM}` : NOM;
+if(!main.hasAttribute("data-ssr")) main.innerHTML = (R[PAGE] || R.accueil)();
+
+/* Pages d'article fabriquées par GitHub : on ajoute les autres articles en bas */
+const oth = document.getElementById("others");
+if(oth){
+  const isF = oth.dataset.kind==="festival", list = isF ? C.festivals : C.tests;
+  const others = list.filter(it=>idOf(it)!==oth.dataset.slug).slice(0,3);
+  if(others.length) oth.outerHTML = sec(head("", isF?"Nos autres festivals":"D'autres jeux testés") + `<div class="grid g3">${others.map(isF?festCard:gameCard).join("")}</div>`, isF?"sand":"dark");
+  else oth.remove();
+}
 
 /* Filtres des jeux testés */
 document.addEventListener("click", e=>{
@@ -254,9 +261,7 @@ if(form){
 /* Galerie photo d'un article : agrandissement */
 const lbx = document.getElementById("lightbox");
 if(lbx){
-  const q = new URLSearchParams(location.search), t = q.get("type")==="festival" ? C.festivals : C.tests;
-  const it = t.find(x=>idOf(x)===(q.get("id")||""));
-  const P = ((it&&it.photos)||[]).map(p=>({src:p.image||p.src, legende:p.legende||""})).filter(p=>p.src);
+  const P = [...document.querySelectorAll(".ph-btn")].map(b=>({src:b.querySelector("img").getAttribute("src"), legende:b.dataset.leg||""}));
   let cur = 0;
   const show = i => { cur = (i+P.length)%P.length; document.getElementById("lb-img").src = P[cur].src; document.getElementById("lb-img").alt = P[cur].legende||""; document.getElementById("lb-cap").textContent = (P[cur].legende?P[cur].legende+" · ":"")+(cur+1)+" / "+P.length; };
   document.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{ show(Number(b.dataset.ph)); lbx.showModal(); }));

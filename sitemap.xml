@@ -1,0 +1,20 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- assign pages = "/,/jeux.html,/festivals.html,/evenement.html,/equipe.html,/contact.html" | split: "," %}
+{%- for p in pages %}
+  <url><loc>{{ site.url }}{{ p }}</loc></url>
+{%- endfor %}
+{%- assign nbg = 0 -%}{%- for g in site.data.galerie.photos -%}{%- if g.image and g.image != "" -%}{%- assign nbg = nbg | plus: 1 -%}{%- endif -%}{%- endfor %}
+{%- if nbg > 0 %}
+  <url><loc>{{ site.url }}/photos.html</loc></url>
+{%- endif %}
+{%- for d in site.jeux %}
+  <url><loc>{{ site.url }}{{ d.url }}</loc><lastmod>{{ d.date | date: "%Y-%m-%d" }}</lastmod></url>
+{%- endfor %}
+{%- for d in site.festivals %}
+  <url><loc>{{ site.url }}{{ d.url }}</loc></url>
+{%- endfor %}
+</urlset>
