@@ -4,6 +4,8 @@ title: Les Experts en Périgord
 url: https://jeu-experts-perigord.fr
 lang: fr
 markdown: kramdown
+# Publier aussi les contenus datés dans le futur (les festivals à venir).
+future: true
 collections:
   jeux:
     output: true
