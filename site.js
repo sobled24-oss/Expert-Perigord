@@ -122,11 +122,11 @@ R.accueil = () => {
       <div class="txt"><span class="hand">Qui sommes-nous</span><h2>${esc(H.titre||NOM)}</h2><p class="lead" style="color:var(--ink)">${esc(S.intro)}</p>
         <div class="meta">${lines(S.criteres).map(c=>`<span class="tag">${meeple()} ${esc(c)}</span>`).join("")}</div>
         <div class="btnrow"><a class="btn" href="equipe.html">Découvrir l'équipe</a><a class="btn ghost" href="contact.html?objet=seance">Venir jouer avec nous</a></div></div></div>`)}
-  ${sec(head("Banc d'essai","Nos derniers jeux testés","",`<a class="btn ghost" href="jeux.html">Tous nos tests →</a>`) + (T.length?`<div class="grid g3">${T.map(gameCard).join("")}</div>`:empty("Aucun test publié pour le moment.")), "dark")}
   ${sec(`<div class="duo">
       <a class="card link" href="${F?artUrl("festival",F):"festivals.html"}"><span class="hand">${NEXT||!F?"Prochaine table":"Dernière table"}</span>${F?`<h3 class="big">${esc(F.nom)}</h3><div class="meta">${F.date?`<span class="tag">${esc(F.date)}</span>`:""}${F.lieu?`<span class="tag">${esc(F.lieu)}</span>`:""}</div>${F.texte?`<p class="note">${esc(F.texte)}</p>`:""}`:`<h3 class="big">Annonce à venir</h3>`}<span class="go">${F?"Lire l'article →":"Tous nos festivals →"}</span></a>
       <a class="card link dark" href="evenement.html"><span class="hand">Notre projet</span><h3 class="big">${esc(E.titre)}</h3><div class="progress"><i style="width:${(k+1)*20}%"></i></div><p>Étape ${k+1} sur 5 : ${esc(ETAPES[k])}</p><span class="go">Suivre le projet →</span></a>
-    </div>`)}
+    </div>`, "sand")}
+  ${sec(head("Banc d'essai","Nos derniers jeux testés","",`<a class="btn ghost" href="jeux.html">Tous nos tests →</a>`) + (T.length?`<div class="grid g3">${T.map(gameCard).join("")}</div>`:empty("Aucun test publié pour le moment.")), "dark")}
   ${orgaBand()}`;
 };
 R.festivals = () => pageHero("Sur le terrain","Nos tables en festival","Explication des règles, parties complètes et conseils pour se lancer dans les jeux experts.","30%")
