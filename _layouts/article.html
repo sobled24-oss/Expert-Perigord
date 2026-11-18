@@ -84,7 +84,7 @@
  "organizer":{"@type":"Organization","name":{{ nom | jsonify }},"url":{{ site.url | jsonify }}}}
 {%- endif %}
 </script>
-{%- assign gc = site.data.site.goatcounter | strip | remove: "https://" | remove: "http://" | split: "." | first -%}{%- if gc and gc != "" %}
+{%- assign gc = site.data.site.goatcounter | strip | split: ".goatcounter.com" | first | split: "/" | last | split: '"' | last | strip -%}{%- if gc and gc != "" %}
 <script data-goatcounter="https://{{ gc }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>{% endif %}
 </head>
 <body data-page="article-page">
