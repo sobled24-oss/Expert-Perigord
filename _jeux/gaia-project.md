@@ -1,7 +1,7 @@
 ---
 title: Speakeasy
 date: 2026-11-18
-verdict: rejouer
+verdict: coeur
 couverture: images/uploads/perijeux-9-570906.jpg
 auteurs: VITAL LACERDA
 joueurs: 1 à 4
