@@ -113,7 +113,7 @@ const empty = t => `<div class="empty">${esc(t)}</div>`;
 /* ---------- Pages ---------- */
 const R = {};
 R.accueil = () => {
-  const H = C.histoire, T = C.tests.slice(0,3), NEXT = aVenir()[0], F = NEXT || passes()[0], E = C.evenement, k = Number(E.etape)||0;
+  const H = C.histoire, T = C.tests.slice(0,4), NEXT = aVenir()[0], F = NEXT || passes()[0], E = C.evenement, k = Number(E.etape)||0;
   return `
   <div class="banner"><h1 class="sr">${esc(NOM)}, association de jeux de société experts</h1>
     <picture><source media="(max-width:1300px)" srcset="images/banniere-1200.jpg"><img src="images/banniere.jpg" width="2048" height="768" alt="Le logo des Experts en Périgord au-dessus d'une table de jeu experts. Association de jeux de société experts : jouer, apprendre, partager."></picture></div>

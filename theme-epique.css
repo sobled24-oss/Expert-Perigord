@@ -1,0 +1,120 @@
+/* ===== Maquette « épique » — inspirée de l'univers des grands éditeurs de jeux narratifs =====
+   Fond noir profond, titres en capitales à empattements, or vieilli, coins biseautés,
+   grandes images plein cadre façon affiche de cinéma. Se charge APRÈS style.css. */
+:root{
+  --bg:#09090B; --surface:#121215; --sand:#0E0E11; --line:#2A2620; --ink:#ECE6DA; --muted:#A39A8B;
+  --gold:#C9A24A; --gold-hi:#E7C873; --gold-lo:#7A6128; --blood:#8E1F1A;
+  --meeple-y:var(--gold);
+  --f-head:"Cinzel","Trajan Pro","Times New Roman",serif;
+  --f-label:"Cinzel","Times New Roman",serif;
+  --bevel:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+}
+body{background:var(--bg);color:var(--ink)}
+body::before{background:#000}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(120% 70% at 50% -10%,rgba(201,162,74,.07),transparent 60%)}
+main,header.top,footer.bas{position:relative;z-index:1}
+
+/* Titres : capitales à empattements, espacées */
+h1,h2,h3{font-family:var(--f-head);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+h2{font-size:clamp(1.5rem,2.8vw,2.1rem)}
+h3{font-size:1.05rem;letter-spacing:.08em}
+
+/* Les étiquettes manuscrites deviennent des bandeaux gravés dorés */
+.hand{font-family:var(--f-label);font-size:.78rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);padding:0 0 0 34px;position:relative}
+.hand::after{display:none}
+.hand::before{content:"";position:absolute;left:0;top:50%;width:24px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.page-hero .hand,.orga .hand,.card.link.dark .hand,section.block.dark .hand{color:var(--gold)}
+
+/* En-tête : noir, menu en petites capitales */
+header.top{background:rgba(5,5,6,.88);border-bottom:1px solid rgba(201,162,74,.25)}
+nav.menu a{font-family:var(--f-label);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:#C9C1B2;border-radius:0}
+nav.menu a:hover{background:transparent;color:var(--gold-hi)}
+nav.menu a[aria-current="page"]{background:transparent;color:var(--gold-hi);box-shadow:inset 0 -2px 0 var(--gold)}
+nav.menu a.cta,nav.menu a.cta[aria-current="page"]{background:transparent;color:var(--gold-hi);border:1px solid var(--gold);box-shadow:none;clip-path:var(--bevel)}
+nav.menu a.cta:hover{background:var(--gold);color:#120E05}
+.brand{font-family:var(--f-head);letter-spacing:.06em;text-transform:uppercase;font-size:.95rem}
+
+/* Bannière d'accueil plein cadre, vignettage cinéma */
+.banner{position:relative;background:#000}
+.banner img{max-height:86vh}
+.banner::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.15),transparent 30%,transparent 70%,var(--bg)),radial-gradient(130% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.55))}
+
+/* Piliers : trois colonnes gravées, séparées par des filets dorés */
+.piliers{background:transparent;border:0;margin-top:-40px;position:relative;z-index:2}
+.piliers .wrap{background:linear-gradient(180deg,#141317,#0D0C0F);border:1px solid rgba(201,162,74,.35);clip-path:var(--bevel)}
+.pilier + .pilier{border-color:rgba(201,162,74,.2)}
+.pilier .ico{background:transparent;border:1px solid var(--gold);color:var(--gold);transform:rotate(45deg);width:48px;height:48px;border-radius:0}
+.pilier .ico svg{transform:rotate(-45deg)}
+.pilier h3{color:var(--gold-hi)}
+
+/* Boutons : contours dorés, coins biseautés */
+.btn,.btn.yellow,.btn.white{border-radius:0;clip-path:var(--bevel);background:var(--gold);color:#120E05;font-family:var(--f-label);letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;padding:14px 26px}
+.btn:hover,.btn.yellow:hover,.btn.white:hover{background:var(--gold-hi);color:#120E05}
+.btn.ghost{background:transparent;color:var(--gold-hi);border:1px solid var(--gold)}
+.btn.ghost:hover{background:rgba(201,162,74,.12);color:var(--gold-hi);border-color:var(--gold-hi)}
+
+/* Cartes : biseautées, filet doré au survol */
+.card,.form,.copyline,.cal,.galerie figure,.avis{border-radius:0;clip-path:var(--bevel);background:linear-gradient(180deg,#151418,#0F0E11);border-color:#2A2620}
+a.card:hover{border-color:var(--gold)}
+.tag{border-radius:0;background:rgba(201,162,74,.08);color:#D8CDB6;border:1px solid rgba(201,162,74,.18)}
+.read,.card.link .go{font-family:var(--f-label);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-hi)}
+
+/* Jeux : grandes affiches verticales, titre gravé en bas */
+.card.game{background:#0C0B0D}
+.card.game .cover{aspect-ratio:3/4}
+.card.game .cover h3{font-size:1.25rem;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.cover.photo-cover h3{background:linear-gradient(transparent,rgba(0,0,0,.92) 55%);padding:70px 18px 18px}
+.cover .mono{font-family:var(--f-head)}
+.verdict{font-family:var(--f-label);letter-spacing:.14em;text-transform:uppercase;font-size:.7rem}
+.poids .m .fg{fill:var(--gold)}
+.tag.score{background:rgba(201,162,74,.16);color:var(--gold-hi)}
+
+/* Bandeaux sombres et en-têtes de page : plus dramatiques */
+section.block.sand{background:#0D0C0F}
+section.block.dark{background:linear-gradient(180deg,#0B0A0C,#120F0B 50%,#0B0A0C)}
+.page-hero::before{background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(9,9,11,.95)),linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.2))}
+.page-hero h1{font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:.08em}
+.orga{background:linear-gradient(90deg,#140C0A,#2A1210 60%,#140C0A);border-top:1px solid rgba(201,162,74,.3);border-bottom:1px solid rgba(201,162,74,.3)}
+.card.link.dark{background:linear-gradient(135deg,#1B110C,#0E0B09);border-color:rgba(201,162,74,.35)}
+.progress i{background:linear-gradient(90deg,var(--gold-lo),var(--gold-hi))}
+.moy{border-radius:0;clip-path:var(--bevel);background:rgba(201,162,74,.1);border-color:rgba(201,162,74,.45)}
+.moy b,.note10{font-family:var(--f-head)}
+.note10{border-radius:0}
+
+/* Logo de l'accueil : halo doré */
+.photo.is-logo img.logo{filter:drop-shadow(0 0 40px rgba(201,162,74,.25)) drop-shadow(0 20px 30px rgba(0,0,0,.6))}
+
+/* Séparateur décoratif entre sections */
+section.block + section.block::before{content:"";display:block;width:min(240px,40%);height:12px;margin:-6px auto 0;position:relative;top:-82px;background:
+  linear-gradient(90deg,transparent,var(--gold-lo) 30%,var(--gold) 50%,var(--gold-lo) 70%,transparent) center/100% 1px no-repeat,
+  linear-gradient(45deg,transparent 40%,var(--gold) 40% 60%,transparent 60%) center/12px 12px no-repeat}
+
+footer.bas{background:#050506;border-top:1px solid rgba(201,162,74,.25)}
+footer.bas .hand{font-size:.7rem}
+@media (max-width:980px){
+  header.top .wrap{flex-wrap:nowrap}
+  .brand{min-width:0;flex:1}
+  .brand span{white-space:normal;font-size:.78rem;line-height:1.15}
+  .burger{flex:none;border-radius:0;clip-path:var(--bevel);font-family:var(--f-label);letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;background:transparent;color:var(--gold-hi);border:1px solid var(--gold)}
+  nav.menu{background:#0B0A0C;border-color:rgba(201,162,74,.3)}
+  .piliers{margin-top:0}
+}
+.article-cover,.ph-btn,.fest-cover,.ludo-img{border-radius:0;clip-path:var(--bevel)}
+.back{font-family:var(--f-label);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase}
+/* Piliers : sans icône, titres centrés soulignés d'un filet doré */
+.pilier{grid-template-columns:1fr;text-align:center;padding:30px 22px;align-content:start}
+.pilier .ico{display:none}
+.pilier h3{font-size:1.25rem;margin-bottom:6px}
+.pilier h3::after{content:"";display:block;width:40px;height:1px;margin:10px auto 0;background:var(--gold)}
+@media (max-width:900px){.pilier{padding:24px 8px}}
+/* Mise en page plus large */
+.wrap{max-width:1480px;padding-left:max(20px,3.2vw,env(safe-area-inset-left,0px));padding-right:max(20px,3.2vw,env(safe-area-inset-right,0px))}
+.grid.g3{grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))}
+.grid.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.intro-home{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:80px}
+.intro-home .txt{max-width:780px}
+.article-layout{grid-template-columns:minmax(0,2fr) minmax(300px,1fr);gap:56px}
+.article-body{max-width:none}
+.article-body .prose{max-width:74ch}
+@media (max-width:980px){.grid.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.intro-home{grid-template-columns:1fr;gap:44px}.article-layout{grid-template-columns:1fr}}
+@media (max-width:420px){.grid.g4{grid-template-columns:1fr}}
