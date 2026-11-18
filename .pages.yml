@@ -301,9 +301,6 @@ content:
               - name: texte
                 label: Texte
                 type: text
-              - name: bouton
-                label: Texte du bouton
-                type: string
 
       - name: evenement
         label: Notre événement

@@ -29,9 +29,9 @@ const LUDO = ((C.ludotheque||{}).jeux)||[];
 /* ---------- Menu et pied de page ---------- */
 const PAGES = [
   ["accueil","index.html","Accueil"],["festivals","festivals.html","Festivals"],["jeux","jeux.html","Jeux testés"],["ludotheque","ludotheque.html","Ludothèque"],
-  ["evenement","evenement.html","Notre événement"],["equipe","equipe.html","L'équipe"],["photos","photos.html","Photos"],["contact","contact.html","Contact"]
+  ["evenement","evenement.html","Notre événement"],["equipe","equipe.html","L'équipe"],["photos","photos.html","Photos"],["contact","contact.html","Contact"],["inviter","contact.html?objet=festival","Inviter les Experts"]
 ].filter(p=>(p[0]!=="photos" || hasPhotos) && (p[0]!=="ludotheque" || LUDO.length || PAGE==="ludotheque"));
-const navLinks = PAGES.map(([id,href,label])=>`<a href="${href}"${id===PAGE?' aria-current="page"':""}${id==="contact"?' class="cta"':""}>${label}</a>`).join("");
+const navLinks = PAGES.map(([id,href,label])=>`<a href="${href}"${id===PAGE?' aria-current="page"':""}${id==="inviter"?' class="cta"':""}>${label}</a>`).join("");
 document.getElementById("top").innerHTML = `<div class="wrap">
   <a class="brand" href="index.html"><img src="images/logo.jpg" alt=""><span>${esc(NOM)}</span></a>
   <button class="burger" type="button" aria-expanded="false" aria-controls="menu" id="burger"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><b>Menu</b></button>
@@ -42,8 +42,8 @@ burger.addEventListener("click", ()=>{ const o = burger.getAttribute("aria-expan
 document.getElementById("bas").innerHTML = `<div class="wrap foot">
   <div class="foot-brand"><a class="brand" href="index.html"><img src="images/logo.jpg" alt=""><span>${esc(NOM)}</span></a>
     <span class="hand">Jouer · Apprendre · Partager</span><p>Association de jeux de société experts${S.ville?" · "+esc(S.ville):""}</p></div>
-  <nav class="foot-nav" aria-label="Pages">${PAGES.map(([,h,l])=>`<a href="${h}">${l}</a>`).join("")}</nav>
-  <div class="foot-cta">${C.echanges.discord?`<a class="btn white small" href="${esc(url(C.echanges.discord))}" target="_blank" rel="noopener">Notre Discord</a>`:""}<a class="btn yellow small" href="contact.html?objet=festival">Inviter les Experts</a></div>
+  <nav class="foot-nav" aria-label="Pages">${PAGES.filter(p=>p[0]!=="inviter").map(([,h,l])=>`<a href="${h}">${l}</a>`).join("")}</nav>
+  <div class="foot-cta">${C.echanges.discord?`<a class="btn white small" href="${esc(url(C.echanges.discord))}" target="_blank" rel="noopener">Notre Discord</a>`:""}</div>
 </div>`;
 
 /* ---------- Blocs réutilisables ---------- */
@@ -92,8 +92,7 @@ function festCard(f){
 }
 function orgaBand(){
   const O = C.organisateurs;
-  return `<div class="orga"><div class="wrap"><div><span class="hand">Organisateurs</span><h2>${esc(O.titre||"Vous organisez un festival ?")}</h2><p>${esc(O.texte)}</p></div>
-    <a class="btn yellow" href="contact.html?objet=festival">${esc(O.bouton||"Nous contacter")}</a></div></div>`;
+  return `<div class="orga"><div class="wrap"><div><span class="hand">Organisateurs</span><h2>${esc(O.titre||"Vous organisez un festival ?")}</h2><p>${esc(O.texte)}</p></div></div></div>`;
 }
 function eventBlock(){
   const E = C.evenement, k = Number(E.etape)||0;
@@ -209,7 +208,7 @@ R.article = () => {
           ${x.article_html && x.article_html.trim() ? `<div class="prose">${x.article_html}</div>` : texte.length?texte.map(p=>`<p>${esc(p)}</p>`).join(""):`<p class="note">L'article arrive bientôt.</p>`}
         </article>
         <aside class="card article-fiche"><h3>${type==="festival"?"En bref":"Fiche du jeu"}</h3>${fiche}
-          ${type==="festival"?`<a class="btn yellow" href="contact.html?objet=festival">Inviter les Experts</a>`:`<a class="btn" href="contact.html?objet=seance">Y jouer avec nous</a>`}</aside>
+          ${type==="festival"?"":`<a class="btn" href="contact.html?objet=seance">Y jouer avec nous</a>`}</aside>
       </div>
       ${type==="jeu" && C.membres.length ? `<h2 class="photos-title">L'avis des Experts</h2><div class="avis-grid">${C.membres.map(m=>{ const v = (x.avis||{})[mkey(m)]||{}; const has = v.texte || (v.note!==""&&v.note!=null);
         return `<article class="avis${has?"":" vide"}" data-c="${esc(m.couleur||"")}"><header>${m.photo?`<img src="${esc(m.photo)}" alt="">`:`<span class="ini">${esc(initials(m.nom))}</span>`}<div><b>${esc(m.nom)}</b>${m.role?`<span>${esc(m.role)}</span>`:""}</div>${v.note!==""&&v.note!=null?`<span class="note10">${fr(Number(v.note))}<small>/10</small></span>`:""}</header>

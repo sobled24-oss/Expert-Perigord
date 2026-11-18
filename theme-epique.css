@@ -124,3 +124,12 @@ footer.bas .hand{font-size:.7rem}
 .resa-jeux .btn{display:block;text-align:center}
 .resa-note{font-size:.85rem;color:var(--muted);margin:10px 0 0;line-height:1.45}
 aside .btn.ghost{display:block;text-align:center}
+/* Menu : tout tient sur une ligne jusqu'à la tablette */
+@media (min-width:981px) and (max-width:1400px){
+  header.top .wrap{gap:12px}
+  nav.menu a{padding:8px 9px;letter-spacing:.1em;font-size:.72rem}
+  nav.menu a.cta{margin-left:4px}
+}
+@media (min-width:981px) and (max-width:1220px){
+  .brand span{display:none}
+}
