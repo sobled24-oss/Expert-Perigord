@@ -166,3 +166,5 @@ aside .btn.ghost{display:block;text-align:center}
 .duo-thumb{flex:none;width:118px;aspect-ratio:3/4;object-fit:cover;object-position:top;border:1px solid rgba(201,162,74,.4);box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .3s ease}
 a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 @media (max-width:420px){.duo-thumb{width:84px}}
+.resa-inviter{display:block;text-align:center;margin-top:10px}
+.resa-jeux .btn{width:100%;justify-content:center;box-sizing:border-box}

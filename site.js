@@ -337,7 +337,7 @@ if(oth){
 const HIER = (()=>{ const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
 const av = document.querySelector(".a-venir");
 const passe = av && av.dataset.fin && av.dataset.fin < HIER;
-if(passe){ av.remove(); document.querySelectorAll(".tj-resa,.tj-libre").forEach(e=>e.remove()); const h = document.querySelector("#nos-jeux .photos-title"); if(h) h.textContent = "Les jeux qu'on avait apportés"; document.querySelectorAll(".tj-titre span").forEach(e=>e.remove()); }
+if(passe){ const inv = av.querySelector(".resa-inviter"); if(inv) av.before(inv); av.remove(); document.querySelectorAll(".tj-resa,.tj-libre").forEach(e=>e.remove()); const h = document.querySelector("#nos-jeux .photos-title"); if(h) h.textContent = "Les jeux qu'on avait apportés"; document.querySelectorAll(".tj-titre span").forEach(e=>e.remove()); }
 document.querySelectorAll(".tj[data-nom]").forEach(el=>{
   const nom = el.dataset.nom, l = ludoDe(nom), t = testParNom(nom), box = el.querySelector(".tj-img");
   const img = (l && l.image) || (t && t.couverture);

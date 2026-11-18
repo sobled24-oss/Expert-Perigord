@@ -137,6 +137,7 @@ Merci !{%- endcapture -%}
       <div class="a-venir" data-fin="{{ fin | date: '%Y-%m-%d' }}">
         <div class="resa-jeux">
           <a class="btn" href="mailto:{{ mail_asso }}?subject={{ sujet | url_encode | replace: '+', '%20' }}&amp;body={{ corps | url_encode | replace: '+', '%20' }}">Réservez vos jeux</a>
+          <a class="btn ghost resa-inviter" href="contact.html?objet=festival">Inviter les Experts</a>
           <p class="resa-note">Dites-nous à quoi vous voulez jouer : on apporte la boîte et on vous garde une place à la table.</p>
         </div>
         <div class="agenda" id="agenda" data-titre="{{ page.title | escape }}" data-debut="{{ page.date | date: '%Y-%m-%d' }}" data-fin="{{ fin | date: '%Y-%m-%d' }}" data-lieu="{{ page.lieu | escape }}" data-url="{{ site.url }}{{ page.url }}" data-slug="{{ page.slug }}">
