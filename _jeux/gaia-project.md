@@ -27,7 +27,6 @@ Petit détail qui tue : 4 Capos à la première manche, 3 aux deux suivantes… 
 Ton plateau perso, c’est 5 pistes : ta force, la production de ta distillerie, la distance que fait ton camion, ce que te rapporte chaque tonneau vendu et le nombre de membres de ta famille. La famille, tu vas la placer sur le plateau pour protéger tes bâtiments des flics, parce que la famille, c’est sacré.  
 Et à chaque fois que tu avances sur une piste, tu montes aussi sur la piste d’Infamie, avec des récompenses à certains paliers. Plus t’es célèbre, plus ça rapporte. Logique.
 
-  
 Le plateau central a 8 lieux (le Restaurant, les Docks, l’Hôtel de Ville…), chacun découpé en 2 ou 3 emplacements. Au Garage par exemple, un emplacement te fait jouer une carte Opérations et l’autre te fait livrer tes tonneaux. Et dans les deux cas, tu avances sur une piste de ton choix.  
 En vrac, tu peux :
 
