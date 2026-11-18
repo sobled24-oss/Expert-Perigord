@@ -115,7 +115,7 @@ R.accueil = () => {
   const H = C.histoire, T = C.tests.slice(0,4), NEXT = aVenir()[0], F = NEXT || passes()[0], E = C.evenement, k = Number(E.etape)||0;
   return `
   <div class="banner"><h1 class="sr">${esc(NOM)}, association de jeux de société experts</h1>
-    <picture><source media="(max-width:1300px)" srcset="images/banniere-1200.jpg"><img src="images/banniere.jpg" width="2048" height="768" alt="Le logo des Experts en Périgord au-dessus d'une table de jeu experts. Association de jeux de société experts : jouer, apprendre, partager."></picture></div>
+    <picture><source media="(max-width:1300px)" srcset="images/banniere-1200.jpg?v=2"><img src="images/banniere.jpg?v=2" width="2048" height="768" alt="Le logo des Experts en Périgord au-dessus d'une table de jeu experts. Association de jeux de société experts : jouer, apprendre, partager."></picture></div>
   <div class="piliers"><div class="wrap">${C.piliers.slice(0,3).map((p,i)=>`<div class="pilier"><span class="ico">${ICONS[i]}</span><h3>${esc(p.titre)}</h3><p>${esc(p.texte)}</p></div>`).join("")}</div></div>
   ${sec(`<div class="intro-home">
       <div class="photo${H.photo?"":" is-logo"}">${H.photo?`<img src="${esc(H.photo)}" alt="Les membres de l'association">`:`<img class="logo" src="images/logo-detoure.webp" alt="Logo des Experts en Périgord">`}</div>
