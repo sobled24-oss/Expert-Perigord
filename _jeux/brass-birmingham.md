@@ -1,7 +1,7 @@
 ---
 title: "Brass: Lancashire"
 date: 2026-11-09
-verdict: coeur
+verdict: rejouer
 resume: Brass le jeu emblématique trustant BGG
 couverture: images/uploads/brass-birmingham-couverture-04362a.jpg
 bgg: "224517"
