@@ -68,7 +68,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Fredoka:wght@500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400&family=Caveat+Brush&display=swap">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="theme-epique.css?v=2">
+<link rel="stylesheet" href="theme-epique.css?v=3">
 <script type="application/ld+json">
 {%- if isjeu and nb > 0 %}
 {"@context":"https://schema.org","@type":"Review","name":{{ page.title | append: " : notre avis" | jsonify }},"datePublished":{{ page.date | date: "%Y-%m-%d" | jsonify }},"reviewBody":{{ desc | jsonify }},"image":{{ img_abs | jsonify }},"url":{{ site.url | append: page.url | jsonify }},
@@ -118,7 +118,25 @@
       {% else %}
       <h3>En bref</h3>
       <dl class="kv"><dt>Date</dt><dd>{{ page.dates | default: "À venir" | escape }}</dd>{% if page.lieu %}<dt>Lieu</dt><dd>{{ page.lieu | escape }}</dd>{% endif %}{% if page.role %}<dt>Notre table</dt><dd>{{ page.role | escape }}</dd>{% endif %}</dl>
-      <a class="btn yellow" href="contact.html?objet=festival">Inviter les Experts</a>
+      {%- assign mail_asso = site.data.contact.contact.email | default: "meeple@jeu-experts-perigord.fr" -%}
+      {%- capture sujet -%}Réservation de jeux – {{ page.title }}{% if page.dates %} ({{ page.dates }}){% endif %}{%- endcapture -%}
+      {%- capture corps -%}Bonjour les Experts,
+
+Nous viendrons à votre table pendant {{ page.title }} et nous aimerions jouer à :
+- 
+- 
+
+Jour et heure souhaités : 
+Nombre de joueurs : 
+Prénom : 
+
+Merci !{%- endcapture -%}
+      <div class="resa-jeux" data-date="{{ page.date | date: '%Y-%m-%d' }}">
+        <a class="btn" href="mailto:{{ mail_asso }}?subject={{ sujet | url_encode | replace: '+', '%20' }}&amp;body={{ corps | url_encode | replace: '+', '%20' }}">Réservez vos jeux</a>
+        <p class="resa-note">Dites-nous à quoi vous voulez jouer : on apporte la boîte et on vous garde une place à la table.</p>
+      </div>
+      <a class="btn ghost" href="contact.html?objet=festival">Inviter les Experts</a>
+      <script>(function(){var r=document.querySelector(".resa-jeux"),d=r&&r.dataset.date;if(d&&new Date(d+"T00:00:00")<new Date(Date.now()-4*864e5))r.remove();})();</script>
       {% endif %}
     </aside>
   </div>
