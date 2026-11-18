@@ -160,9 +160,9 @@ aside .btn.ghost{display:block;text-align:center}
 #jeux-filters{display:flex;flex-wrap:wrap}
 #jeux-filters label{flex:1 1 140px;min-width:0}
 #jeux-filters label:first-child{flex:2 1 260px}
-/* Accueil : miniature du prochain festival */
-.duo-cover{margin:-32px -32px 6px;aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid rgba(201,162,74,.3);position:relative;background:#000}
-.duo-cover img{position:relative;width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s ease}
-.duo-cover img.flou{position:absolute;inset:0;object-fit:cover;filter:blur(22px) brightness(.45);transform:scale(1.15)}
-a.duo-fest:hover .duo-cover img:not(.flou){transform:scale(1.03)}
-@media (max-width:980px){.duo-cover{margin:-24px -24px 6px}}
+/* Accueil : petite affiche du prochain festival, à droite du texte */
+.duo-in{display:flex;gap:22px;align-items:flex-start}
+.duo-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px}
+.duo-thumb{flex:none;width:118px;aspect-ratio:3/4;object-fit:cover;object-position:top;border:1px solid rgba(201,162,74,.4);box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .3s ease}
+a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
+@media (max-width:420px){.duo-thumb{width:84px}}
