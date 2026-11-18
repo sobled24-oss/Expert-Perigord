@@ -95,3 +95,29 @@ et le site en ligne se met à jour tout seul en une à deux minutes.
   - Un jeu testé par les Experts est reconnu par son nom et relié à son article.
   - Si un nom d'utilisateur est mal saisi, la synchronisation apparaît en rouge dans
     l'onglet Actions : les jeux de ce membre restent affichés jusqu'à la correction.
+
+FESTIVALS : LES JEUX QUE NOUS APPORTONS
+  - Pages CMS > Festivals > le festival > « Les jeux que nous apportons ».
+  - Pour chaque jeu : son nom, et la table « À la demande » (bouton Réserver, e-mail
+    prérempli vers l'adresse de l'asso) ou « En permanence » (sans réservation).
+  - L'image et les infos sont reprises de la Ludothèque ou de nos jeux testés quand le
+    nom correspond ; sinon vous pouvez ajouter une image vous-même.
+  - « Date de fin » sert au bouton « Ajouter à mon agenda ». Après le festival, les
+    boutons de réservation et d'agenda disparaissent tout seuls.
+  - Page Festivals : « S'abonner à notre agenda » ajoute tous nos festivals dans
+    l'agenda du visiteur, mis à jour automatiquement.
+
+JEUX TESTÉS : NUMÉRO BOARDGAMEGEEK
+  - Champ facultatif « Numéro BoardGameGeek » : le nombre dans l'adresse de la fiche
+    BGG du jeu. Il relie le test au jeu de la Ludothèque même si le nom diffère
+    (la fiche du test affiche alors « Dans notre ludothèque : chez … »).
+
+STATISTIQUES DE VISITE (GOATCOUNTER)
+  - Créez un compte gratuit sur goatcounter.com, puis recopiez le code choisi dans
+    Pages CMS > Textes du site > Informations générales > « Code GoatCounter ».
+  - Pas de cookies, donc pas de bandeau à afficher.
+
+FORMULAIRE DE CONTACT (FORMSPREE)
+  - Créez un compte gratuit sur formspree.io avec l'adresse de l'asso, créez un
+    formulaire et copiez son adresse (https://formspree.io/f/xxxx) dans Pages CMS >
+    Textes du site > Contact et Discord > « Adresse du formulaire Formspree ».

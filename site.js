@@ -132,15 +132,46 @@ R.accueil = () => {
 R.festivals = () => pageHero("Sur le terrain","Nos tables en festival","Explication des règles, parties complètes et conseils pour se lancer dans les jeux experts.","30%")
   + (()=>{ const V = aVenir(), P = passes();
       if(!V.length && !P.length) return sec(empty("Aucun festival annoncé pour le moment."));
-      return sec(head("","À venir") + (V.length?`<div class="grid">${V.map(festCard).join("")}</div>`:empty("Aucun festival annoncé pour le moment. Suivez-nous sur Discord pour connaître nos prochaines tables.")))
+      return sec(head("","À venir","",`<a class="btn ghost" href="webcal://${location.host}/festivals.ics" title="Ajoute tous nos festivals à votre agenda (iPhone, Outlook, Google…), mis à jour automatiquement">S'abonner à notre agenda</a>`) + (V.length?`<div class="grid">${V.map(festCard).join("")}</div>`:empty("Aucun festival annoncé pour le moment. Suivez-nous sur Discord pour connaître nos prochaines tables.")))
         + (P.length ? sec(head("","Ils sont passés") + `<div class="grid">${P.map(festCard).join("")}</div>`, "sand") : ""); })()
   + orgaBand();
+function nums(s){ return (String(s||"").match(/\d+/g)||[]).map(Number); }
+function avisDe(t){ const a = t.avis||{}; return C.membres.filter(m=>{ const v = a[mkey(m)]; return v && (v.texte || (v.note!=="" && v.note!=null)); }).map(m=>m.nom); }
 R.jeux = () => {
+  const hero = pageHero("Banc d'essai","Les jeux qu'on a testés","Notre avis après plusieurs parties, et le poids de chaque jeu sur l'échelle BoardGameGeek : de 1 meeple (léger) à 5 meeples (très lourd).","8%");
+  if(!C.tests.length) return hero + sec(empty("Aucun test publié pour le moment."), "dark");
+  const opt = (v,l)=>`<option value="${esc(v)}">${esc(l)}</option>`;
   const used = Object.keys(VERDICTS).filter(v=>C.tests.some(t=>t.verdict===v));
-  const filters = C.tests.length>1 && used.length>1 ? `<div class="filters" role="group" aria-label="Filtrer par verdict"><button type="button" aria-pressed="true" data-f="">Tous (${C.tests.length})</button>${used.map(v=>`<button type="button" aria-pressed="false" data-f="${v}">${VERDICTS[v]}</button>`).join("")}</div>` : "";
-  return pageHero("Banc d'essai","Les jeux qu'on a testés","Notre avis après plusieurs parties, et le poids de chaque jeu sur l'échelle BoardGameGeek : de 1 meeple (léger) à 5 meeples (très lourd).","8%")
-    + sec(filters + (C.tests.length?`<div class="grid g3" id="games">${C.tests.map(gameCard).join("")}</div>`:empty("Aucun test publié pour le moment.")), "dark");
+  const auteurs = C.membres.map(m=>m.nom).filter(n=>C.tests.some(t=>avisDe(t).includes(n)));
+  return hero + sec(`<form class="ludo-filters" id="jeux-filters" role="search" onsubmit="return false">
+      <label for="jf-q">Rechercher<input id="jf-q" type="search" placeholder="Nom du jeu, auteur…" autocomplete="off"></label>
+      ${used.length>1?`<label for="jf-v">Verdict<select id="jf-v">${opt("","Tous")}${used.map(v=>opt(v,VERDICTS[v])).join("")}</select></label>`:""}
+      <label for="jf-j">Joueurs<select id="jf-j">${opt("","Tous")}${[1,2,3,4,5,6].map(n=>opt(n, n===6?"6 et +":n)).join("")}</select></label>
+      <label for="jf-p">Poids<select id="jf-p">${opt("","Tous")}${opt("0-3","Moins de 3")}${opt("3-4","3 à 4")}${opt("4-6","4 et plus")}</select></label>
+      ${auteurs.length>1?`<label for="jf-a">Avis de<select id="jf-a">${opt("","Tout le monde")}${auteurs.map(n=>opt(n,n)).join("")}</select></label>`:""}
+      <label for="jf-t">Trier par<select id="jf-t">${opt("date","Plus récents d'abord")}${opt("note","Mieux notés d'abord")}${opt("poids","Plus lourds d'abord")}${opt("nom","Nom")}</select></label>
+    </form>
+    <p class="note ludo-count" id="jeux-count" aria-live="polite"></p>
+    <div class="grid g3" id="games"></div>`, "dark");
 };
+function jeuxFiltre(){
+  const g = document.getElementById("games"), f = document.getElementById("jeux-filters"); if(!g || !f) return;
+  const v = id => { const e = document.getElementById(id); return e ? e.value : ""; };
+  const q = norm(v("jf-q")), ver = v("jf-v"), nj = Number(v("jf-j")), p = v("jf-p"), au = v("jf-a"), tri = v("jf-t");
+  let L = C.tests.filter(t=>{
+    if(q && !norm(t.jeu+" "+(t.auteurs||"")).includes(q)) return false;
+    if(ver && t.verdict!==ver) return false;
+    if(nj){ const n = nums(t.joueurs); if(!n.length) return false; const mn = n[0], mx = n[n.length-1]; if(nj===6 ? mx<6 : (nj<mn || nj>mx)) return false; }
+    if(p){ const [a,b] = p.split("-").map(Number), w = Number(t.poids); if(!w || w<a || w>=b) return false; }
+    if(au && !avisDe(t).includes(au)) return false;
+    return true;
+  });
+  if(tri==="note") L = L.slice().sort((a,b)=>(moyenne(b)??-1)-(moyenne(a)??-1));
+  if(tri==="poids") L = L.slice().sort((a,b)=>(Number(b.poids)||0)-(Number(a.poids)||0));
+  if(tri==="nom") L = L.slice().sort((a,b)=>String(a.jeu).localeCompare(String(b.jeu),"fr"));
+  g.innerHTML = L.length ? L.map(gameCard).join("") : `<div class="empty">Aucun jeu ne correspond à ces critères.</div>`;
+  document.getElementById("jeux-count").textContent = L.length===C.tests.length ? `${L.length} jeu${L.length>1?"x":""} testé${L.length>1?"s":""}` : `${L.length} jeu${L.length>1?"x":""} sur ${C.tests.length}`;
+}
 R.evenement = () => pageHero("Projet en cours", C.evenement.titre || "Notre événement", "", "62%") + sec(eventBlock()) + orgaBand();
 R.equipe = () => {
   const H = C.histoire, M = C.membres, TM = C.temoignages.filter(t=>t.texte);
@@ -226,7 +257,16 @@ function chez(j){
   return `<div class="chez"><span>Chez</span>${P.map(n=>{ const m = C.membres.find(x=>x.nom===n); return `<b data-c="${esc(m&&m.couleur||"")}">${esc(n)}</b>`; }).join("")}</div>`;
 }
 function plage(a, b, unite){ if(!a && !b) return ""; if(!b || a===b) return `${a||b}${unite}`; return `${a}–${b}${unite}`; }
-function testDe(j){ const n = String(j.nom||"").toLowerCase(); return C.tests.find(t=>{ const tn = String(t.jeu||"").toLowerCase(); return tn && (n===tn || n.startsWith(tn+":") || tn.startsWith(n+":") || n.startsWith(tn+" ")); }); }
+/* Reconnaître le même jeu sous deux écritures : « Dune: Imperium » = « Dune Imperium », « SETI: Search for… » = « SETI » */
+const norm = s => String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim();
+function memeNom(a, b){
+  const A = norm(a), B = norm(b); if(!A || !B) return false;
+  const ca = norm(String(a).split(/[:–—(]/)[0]), cb = norm(String(b).split(/[:–—(]/)[0]);
+  return A===B || A===cb || ca===B || (ca.length>3 && ca===cb && (ca===A || cb===B));
+}
+function testDe(j){ return C.tests.find(t=>(t.bgg && String(t.bgg).trim()===String(j.id)) ) || C.tests.find(t=>memeNom(t.jeu, j.nom)); }
+function ludoDe(nom, bgg){ return (bgg && LUDO.find(j=>String(j.id)===String(bgg).trim())) || LUDO.find(j=>memeNom(j.nom, nom)); }
+function testParNom(nom){ return C.tests.find(t=>memeNom(t.jeu, nom)); }
 function ludoCard(j){
   const t = testDe(j);
   return `<article class="card ludo-card">
@@ -282,6 +322,7 @@ function ludoFiltre(){
 const main = document.getElementById("main");
 if(!main.hasAttribute("data-ssr")) main.innerHTML = (R[PAGE] || R.accueil)();
 if(document.getElementById("ludo-filters")){ ludoFiltre(); document.getElementById("ludo-filters").addEventListener("input", ludoFiltre); }
+if(document.getElementById("jeux-filters")){ jeuxFiltre(); document.getElementById("jeux-filters").addEventListener("input", jeuxFiltre); }
 
 /* Pages d'article fabriquées par GitHub : on ajoute les autres articles en bas */
 const oth = document.getElementById("others");
@@ -292,13 +333,48 @@ if(oth){
   else oth.remove();
 }
 
-/* Filtres des jeux testés */
-document.addEventListener("click", e=>{
-  const b = e.target.closest("[data-f]"); if(!b) return;
-  document.querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed", x===b));
-  const v = b.dataset.f, cards = document.querySelectorAll("#games .game");
-  C.tests.forEach((t,i)=>{ if(cards[i]) cards[i].hidden = !!v && t.verdict!==v; });
+/* Page d'un festival : jeux apportés, festival passé, ajout à l'agenda */
+const HIER = (()=>{ const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
+const av = document.querySelector(".a-venir");
+const passe = av && av.dataset.fin && av.dataset.fin < HIER;
+if(passe){ av.remove(); document.querySelectorAll(".tj-resa,.tj-libre").forEach(e=>e.remove()); const h = document.querySelector("#nos-jeux .photos-title"); if(h) h.textContent = "Les jeux qu'on avait apportés"; document.querySelectorAll(".tj-titre span").forEach(e=>e.remove()); }
+document.querySelectorAll(".tj[data-nom]").forEach(el=>{
+  const nom = el.dataset.nom, l = ludoDe(nom), t = testParNom(nom), box = el.querySelector(".tj-img");
+  const img = (l && l.image) || (t && t.couverture);
+  if(img && !box.querySelector("img")) box.innerHTML = `<img src="${esc(img)}" alt="Boîte de ${esc(nom)}" loading="lazy">`;
+  const info = [];
+  if(l){ const j = plage(l.joueurs_min,l.joueurs_max,""), d = plage(l.duree_min,l.duree_max," min"); if(j) info.push(`<span class="tag">${meeple()} ${j}</span>`); if(d) info.push(`<span class="tag">${d}</span>`); }
+  else if(t){ if(t.joueurs) info.push(`<span class="tag">${meeple()} ${esc(t.joueurs)}</span>`); if(t.duree) info.push(`<span class="tag">${esc(t.duree)}</span>`); }
+  if(t) info.push(`<a class="tag score" href="${artUrl("jeu",t)}">Notre avis →</a>`);
+  el.querySelector(".tj-info").innerHTML = info.join("");
 });
+const ag = document.getElementById("agenda");
+if(ag){
+  const D = ag.dataset, compact = d => d.replace(/-/g,""), lendemain = d => { const x = new Date(d+"T12:00:00"); x.setDate(x.getDate()+1); return x.toISOString().slice(0,10); };
+  const fin = D.fin || D.debut, details = `Table de jeux experts animée par ${NOM}. ${D.url}`;
+  document.getElementById("ag-google").href = "https://calendar.google.com/calendar/render?" + new URLSearchParams({action:"TEMPLATE", text:D.titre, dates:compact(D.debut)+"/"+compact(lendemain(fin)), location:D.lieu||"", details}).toString();
+  document.getElementById("ag-ics").addEventListener("click", ()=>{
+    const e = s => String(s||"").replace(/\\/g,"\\\\").replace(/([,;])/g,"\\$1").replace(/\n/g,"\\n");
+    const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Les Experts en Perigord//Festivals//FR","CALSCALE:GREGORIAN","BEGIN:VEVENT",
+      `UID:${D.slug}@jeu-experts-perigord.fr`, "DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,""),
+      "DTSTART;VALUE=DATE:"+compact(D.debut), "DTEND;VALUE=DATE:"+compact(lendemain(fin)),
+      "SUMMARY:"+e(D.titre), "LOCATION:"+e(D.lieu), "URL:"+D.url, "DESCRIPTION:"+e(details), "END:VEVENT","END:VCALENDAR"].join("\r\n");
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([ics],{type:"text/calendar;charset=utf-8"})); a.download = (D.slug||"festival")+".ics";
+    document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  });
+}
+
+/* Page d'un jeu testé : où le trouver dans la ludothèque, sur quel festival on l'apporte */
+if(oth && oth.dataset.kind==="jeu"){
+  const t = C.tests.find(x=>idOf(x)===oth.dataset.slug), fiche = document.querySelector(".article-fiche");
+  if(t && fiche){
+    const l = ludoDe(t.jeu, t.bgg), fests = aVenir().filter(f=>(f.jeux||[]).some(j=>memeNom(j.nom, t.jeu)));
+    let h = "";
+    if(l && (l.proprietaires||[]).length) h += `<div class="fiche-plus"><span class="k">Dans notre ludothèque</span>${chez(l)}</div>`;
+    if(fests.length) h += `<div class="fiche-plus"><span class="k">On l'apporte à</span>${fests.map(f=>`<a class="tag" href="${artUrl("festival",f)}#nos-jeux">${esc(f.nom)}${f.date?` · ${esc(f.date)}`:""} →</a>`).join("")}</div>`;
+    if(h) fiche.querySelector(".btn").insertAdjacentHTML("beforebegin", h);
+  }
+}
 
 /* Formulaire de contact (Formspree) */
 const form = document.getElementById("contact-form");

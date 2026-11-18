@@ -133,3 +133,30 @@ aside .btn.ghost{display:block;text-align:center}
 @media (min-width:981px) and (max-width:1220px){
   .brand span{display:none}
 }
+/* Festival : les jeux de notre table */
+.table-jeux{margin-top:56px}
+.tj-groupe + .tj-groupe{margin-top:34px}
+.tj-titre{font-size:1rem;color:var(--gold-hi);margin:0 0 16px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.tj-titre span{font-family:var(--f-body,inherit);text-transform:none;letter-spacing:0;font-weight:400;font-size:.9rem;color:var(--muted)}
+.tj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:18px}
+.tj{display:flex;flex-direction:column;background:linear-gradient(180deg,#151418,#0F0E11);border:1px solid #2A2620;clip-path:var(--bevel)}
+.tj-img{aspect-ratio:4/3;background:#0B0A0C;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid #2A2620}
+.tj-img img{width:100%;height:100%;object-fit:contain;padding:10px}
+.tj-img .mono{font-family:var(--f-head);font-size:1.9rem;color:var(--gold-lo);text-transform:uppercase}
+.tj-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.tj-body h4{margin:0;font-family:var(--f-head);text-transform:uppercase;letter-spacing:.06em;font-size:.95rem;line-height:1.25}
+.tj-info{display:flex;flex-wrap:wrap;gap:6px}
+.tj-info:empty{display:none}
+.tj-resa{margin-top:auto;text-align:center;justify-content:center}
+.tj-libre{margin-top:auto;font-size:.8rem;color:var(--muted);font-style:italic}
+/* Festival : ajout à l'agenda */
+.agenda{margin:4px 0 16px;padding-top:16px;border-top:1px solid #2A2620}
+.agenda .k,.fiche-plus .k{display:block;font-family:var(--f-label);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.agenda-btns{display:flex;flex-wrap:wrap;gap:8px}
+.agenda-btns .btn{padding:10px 14px;font-size:.7rem}
+/* Jeu testé : ludothèque et festivals */
+.fiche-plus{margin:6px 0 18px;padding-top:14px;border-top:1px solid #2A2620}
+.fiche-plus .tag{display:inline-block;margin:0 6px 6px 0;text-decoration:none}
+#jeux-filters{display:flex;flex-wrap:wrap}
+#jeux-filters label{flex:1 1 140px;min-width:0}
+#jeux-filters label:first-child{flex:2 1 260px}

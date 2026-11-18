@@ -23,4 +23,5 @@ avis:
     texte: ''
 photos: []
 exemple: true
+bgg: '220308'
 ---

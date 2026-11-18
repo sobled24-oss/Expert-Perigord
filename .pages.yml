@@ -74,6 +74,10 @@ content:
         label: Image de couverture
         type: image
         description: Facultatif. Sinon, une couverture colorée est générée.
+      - name: bgg
+        label: Numéro BoardGameGeek (facultatif)
+        type: string
+        description: "Le nombre dans l'adresse de la fiche du jeu, ex. 418059 pour boardgamegeek.com/boardgame/418059/seti. Sert à relier ce test au même jeu dans la Ludothèque."
       - name: auteurs
         label: Auteur(s) du jeu
         type: string
@@ -148,6 +152,12 @@ content:
         description: Sert à classer les festivals, du plus récent au plus ancien.
         options:
           format: yyyy-MM-dd
+      - name: fin
+        label: Date de fin (facultatif)
+        type: date
+        description: Dernier jour du festival. Sert au bouton « Ajouter à mon agenda ».
+        options:
+          format: yyyy-MM-dd
       - name: dates
         label: Dates affichées
         type: string
@@ -164,6 +174,31 @@ content:
       - name: body
         label: Article complet
         type: rich-text
+      - name: jeux
+        label: Les jeux que nous apportons
+        type: object
+        description: "Chaque jeu « à la demande » a son bouton Réserver (e-mail prérempli). L'image est prise automatiquement dans la Ludothèque ou dans nos jeux testés quand le nom correspond."
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nom}"
+        fields:
+          - name: nom
+            label: Nom du jeu
+            type: string
+            required: true
+          - name: table
+            label: Table
+            type: select
+            options:
+              values:
+                - name: demande
+                  label: À la demande (réservable)
+                - name: permanence
+                  label: En permanence
+          - name: image
+            label: Image (facultatif)
+            type: image
       - name: couverture
         label: Image de couverture
         type: image
@@ -255,6 +290,10 @@ content:
             label: Séances de jeu
             type: string
             description: "Jour et horaires, ex. : le vendredi à partir de 20 h"
+          - name: goatcounter
+            label: Code GoatCounter (statistiques de visite)
+            type: string
+            description: "Facultatif. Le nom choisi à l'inscription sur goatcounter.com, ex. experts-perigord pour experts-perigord.goatcounter.com. Laissez vide pour ne rien mesurer."
 
       - name: accueil
         label: Accueil et histoire

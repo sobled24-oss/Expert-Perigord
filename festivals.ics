@@ -1,0 +1,29 @@
+---
+layout: null
+---
+{%- assign nom = site.data.site.nom | default: site.title -%}
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Les Experts en Perigord//Festivals//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:{{ nom }} – festivals
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+{%- for f in site.festivals %}
+{%- assign fin = f.fin | default: f.date %}
+{%- assign fin_s = fin | date: '%s' | plus: 86400 %}
+BEGIN:VEVENT
+UID:{{ f.slug }}@jeu-experts-perigord.fr
+DTSTAMP:{{ site.time | date: '%Y%m%dT%H%M%SZ' }}
+DTSTART;VALUE=DATE:{{ f.date | date: '%Y%m%d' }}
+DTEND;VALUE=DATE:{{ fin_s | date: '%Y%m%d' }}
+SUMMARY:{{ f.title | replace: ',', '\,' | replace: ';', '\;' }}
+{%- if f.lieu %}
+LOCATION:{{ f.lieu | replace: ',', '\,' | replace: ';', '\;' }}
+{%- endif %}
+URL:{{ site.url }}{{ f.url }}
+DESCRIPTION:Table de jeux experts animée par {{ nom | replace: ',', '\,' }}. {{ site.url }}{{ f.url }}
+END:VEVENT
+{%- endfor %}
+END:VCALENDAR

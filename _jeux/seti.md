@@ -13,6 +13,7 @@ avis:
     note: 10
     texte: Testé et approuvé. typiquement mon genre de came. Une rejouabilité énorme
       et des combos dans tous les sens.
+bgg: '418059'
 ---
 Jeu de construction de moteur sur un thème d'exploration spatiale avec un magnifique système solaire tournant.
 

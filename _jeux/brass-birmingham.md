@@ -24,4 +24,5 @@ avis:
 photos:
   - image: images/uploads/brass-birmingham-1-d0c9c3.jpg
   - image: images/uploads/brass-birmingham-2-863cf8.jpg
+bgg: '224517'
 ---

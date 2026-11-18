@@ -6,6 +6,28 @@ lieu: Périgueux, Dordogne
 role: Table de jeux experts animée
 resume: |
   Festival de tous les types de jeux : jeux de plateau, jeux de rôles, jeux de figurines, jeux en bois, escape game, jeux enfants, créateurs.
+fin: '2026-11-22'
+jeux:
+- nom: Life of Amazonia
+  table: permanence
+- nom: Sanctuary
+  table: permanence
+- nom: Wondrous Creatures
+  table: permanence
+- nom: Nemesis
+  table: demande
+- nom: Dune Imperium
+  table: demande
+- nom: SETI
+  table: demande
+- nom: Speakeasy
+  table: demande
+- nom: Black Rose Wars
+  table: demande
+- nom: Near
+  table: demande
+- nom: Civolution
+  table: demande
 couverture: images/uploads/perijeux-couverture-81165d.jpg
 photos:
 - image: images/uploads/perijeux-1-fcca73.jpg
