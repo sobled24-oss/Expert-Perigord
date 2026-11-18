@@ -535,3 +535,10 @@ a.card:hover .fest-cover img,a.card:hover .photo-cover img{transform:scale(1.04)
 .tag.score{text-decoration:none}
 .ludo-maj{margin-top:24px}
 @media (max-width:900px){.ludo-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.ludo-filters label:first-child{grid-column:1/-1}}
+.chez{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:.8rem;color:var(--muted)}
+.chez b{--mc:#F4B400;font-weight:700;color:var(--ink);padding:1px 8px;border-radius:999px;border:1px solid color-mix(in srgb,var(--mc) 60%,transparent);background:color-mix(in srgb,var(--mc) 18%,transparent)}
+.chez b[data-c="vert"]{--mc:#3DB51E} .chez b[data-c="jaune"]{--mc:#F4B400} .chez b[data-c="rouge"]{--mc:#E1251B} .chez b[data-c="bleu"]{--mc:#3B6BF0}
+.membre .ludo-bgg{display:inline-block;margin-top:4px}
+.ludo-filters{grid-template-columns:minmax(0,2fr) repeat(5,minmax(0,1fr))}
+.ludo-filters:not(:has(#lf-c)){grid-template-columns:minmax(0,2fr) repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.ludo-filters,.ludo-filters:not(:has(#lf-c)){grid-template-columns:repeat(2,minmax(0,1fr))}}

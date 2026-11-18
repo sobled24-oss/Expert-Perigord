@@ -70,9 +70,10 @@ et le site en ligne se met à jour tout seul en une à deux minutes.
 
 6. LA LUDOTHÈQUE (SYNCHRONISÉE AVEC BOARDGAMEGEEK)
 --------------------------------------------------
-  La page Ludothèque affiche les jeux marqués « Je possède » dans la collection
-  BoardGameGeek de l'association, avec leur miniature, le nombre de joueurs,
-  la durée, l'âge et le poids. Elle se met à jour toute seule chaque nuit.
+  La page Ludothèque regroupe les jeux marqués « Je possède » dans les collections
+  BoardGameGeek des membres, sans doublon, avec leur miniature, le nombre de joueurs,
+  la durée, l'âge, le poids et le nom de leurs propriétaires (« Chez Pat, Thyl »).
+  Elle se met à jour toute seule chaque nuit.
 
   Mise en place (une seule fois) :
   1. Demander une clé d'accès à BoardGameGeek : https://boardgamegeek.com/applications
@@ -80,14 +81,17 @@ et le site en ligne se met à jour tout seul en une à deux minutes.
      Une fois approuvée, créer un « Token » et le copier.
   2. Sur GitHub, dépôt Expert-Perigord > Settings > Secrets and variables > Actions
      > New repository secret. Nom : BGG_TOKEN ; valeur : la clé copiée.
-  3. Dans Pages CMS > Textes du site > Ludothèque (BoardGameGeek), indiquer le nom
-     d'utilisateur BoardGameGeek de l'association, puis enregistrer.
-     La première synchronisation démarre aussitôt.
+  3. Chaque membre ouvre sa fiche dans Pages CMS (L'équipe) et remplit
+     « Nom d'utilisateur BoardGameGeek » (le nom, ou l'adresse de son profil),
+     puis enregistre. La synchronisation démarre aussitôt.
+     Si l'association a aussi son propre compte : Textes du site > Ludothèque.
 
   Au quotidien :
   - Ajouter un jeu : sur BoardGameGeek, cocher « Je possède » sur sa fiche.
-  - Retirer un jeu : décocher « Je possède ».
+  - Retirer un jeu : décocher « Je possède » (sur le compte de chaque propriétaire).
   - Pour ne pas attendre la nuit : GitHub > onglet Actions > « Synchroniser la
     ludothèque » > Run workflow.
   - Les extensions ne sont pas affichées.
   - Un jeu testé par les Experts est reconnu par son nom et relié à son article.
+  - Si un nom d'utilisateur est mal saisi, la synchronisation apparaît en rouge dans
+    l'onglet Actions : les jeux de ce membre restent affichés jusqu'à la correction.

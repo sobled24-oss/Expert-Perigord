@@ -1,8 +1,10 @@
 """Synchronise la ludothèque du site avec la collection BoardGameGeek de l'association.
 
 Lancé chaque nuit (et à la demande) par GitHub Actions : voir .github/workflows/ludotheque.yml.
-- lit le nom d'utilisateur BoardGameGeek dans _data/bgg.yml (modifiable dans Pages CMS) ;
-- récupère les jeux marqués « Je possède » (sans les extensions), avec joueurs, durée, âge et poids ;
+- lit le nom d'utilisateur BoardGameGeek de chaque membre dans _data/equipe.yml (fiche du membre
+  dans Pages CMS), plus celui de l'association s'il est renseigné dans _data/bgg.yml ;
+- récupère les jeux marqués « Je possède » de chaque compte (sans les extensions), les fusionne
+  sans doublon en notant à qui ils appartiennent, avec joueurs, durée, âge et poids ;
 - télécharge une miniature de chaque boîte dans images/ludotheque/ ;
 - écrit _data/ludotheque.json, que le site affiche sur la page Ludothèque.
 
@@ -14,6 +16,7 @@ import xml.etree.ElementTree as ET
 
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FICHIER_REGLAGES = os.path.join(RACINE, "_data", "bgg.yml")
+FICHIER_EQUIPE = os.path.join(RACINE, "_data", "equipe.yml")
 FICHIER_DONNEES = os.path.join(RACINE, "_data", "ludotheque.json")
 DOSSIER_IMAGES = os.path.join(RACINE, "images", "ludotheque")
 API = "https://boardgamegeek.com/xmlapi2"   # sans « www », sinon la clé est ignorée
@@ -21,13 +24,33 @@ AGENT = "LesExpertsEnPerigord-ludotheque/1.0 (+https://jeu-experts-perigord.fr)"
 _dernier_appel = [0.0]
 
 
-def lire_utilisateur():
+def nettoyer(compte):
+    """Accepte un nom d'utilisateur ou l'adresse d'un profil (boardgamegeek.com/user/NOM)."""
+    compte = str(compte or "").strip()
+    m = re.search(r"boardgamegeek\.com/(?:user|collection/user)/([^/?#\s]+)", compte)
+    return urllib.parse.unquote(m.group(1)) if m else compte.strip("@ ")
+
+
+def lire_comptes():
+    """Liste des (propriétaire, nom d'utilisateur BGG) : chaque membre, puis l'association."""
+    import yaml
+    comptes = []
     try:
-        texte = open(FICHIER_REGLAGES, encoding="utf-8").read()
+        equipe = yaml.safe_load(open(FICHIER_EQUIPE, encoding="utf-8")) or {}
     except FileNotFoundError:
-        return ""
-    m = re.search(r"^utilisateur:\s*['\"]?([^'\"\n#]*)", texte, re.M)
-    return (m.group(1) if m else "").strip()
+        equipe = {}
+    for m in equipe.get("membres") or []:
+        u = nettoyer((m or {}).get("bgg"))
+        if u:
+            comptes.append(((m.get("nom") or u).strip(), u))
+    try:
+        reglages = yaml.safe_load(open(FICHIER_REGLAGES, encoding="utf-8")) or {}
+    except FileNotFoundError:
+        reglages = {}
+    u = nettoyer(reglages.get("utilisateur"))
+    if u and u.lower() not in {c[1].lower() for c in comptes}:
+        comptes.append(("L'association", u))
+    return comptes
 
 
 def appel(url, token, binaire=False):
@@ -78,8 +101,7 @@ def lire_collection(utilisateur, token):
     racine = ET.fromstring(appel(f"{API}/collection?{params}", token))
     erreur = racine.find(".//error/message")
     if erreur is not None or racine.tag == "errors":
-        sys.exit(f"Erreur BoardGameGeek : {erreur.text if erreur is not None else 'réponse inattendue'} "
-                 f"(nom d'utilisateur « {utilisateur} »).")
+        raise ValueError(f"{erreur.text if erreur is not None else 'réponse inattendue'}")
     jeux = {}
     for it in racine.findall("item"):
         id_ = it.get("objectid")
@@ -145,18 +167,37 @@ def miniature(jeu):
 
 
 def main():
-    utilisateur = lire_utilisateur()
-    if not utilisateur:
-        print("Aucun nom d'utilisateur BoardGameGeek dans _data/bgg.yml : rien à synchroniser.")
+    comptes = lire_comptes()
+    if not comptes:
+        print("Aucun compte BoardGameGeek renseigné (fiches de l'équipe ou réglage de l'association) : rien à synchroniser.")
         return
     token = os.environ.get("BGG_TOKEN", "").strip()
     if not token:
         sys.exit("Erreur : le secret BGG_TOKEN est vide. Ajoutez la clé BoardGameGeek dans les secrets du dépôt.")
-    print(f"Collection BoardGameGeek de « {utilisateur} »…")
-    jeux = lire_collection(utilisateur, token)
-    print(f"  {len(jeux)} jeux possédés (extensions exclues).")
+
+    jeux, lus, erreurs = {}, [], []
+    for proprietaire, utilisateur in comptes:
+        print(f"Collection BoardGameGeek de {proprietaire} (« {utilisateur} »)…")
+        try:
+            coll = lire_collection(utilisateur, token)
+        except ValueError as e:
+            print(f"  Compte ignoré : {e}")
+            erreurs.append(f"{proprietaire} (« {utilisateur} ») : {e}")
+            continue
+        print(f"  {len(coll)} jeux possédés (extensions exclues).")
+        lus.append(utilisateur)
+        for id_, j in coll.items():
+            if id_ not in jeux:
+                j["proprietaires"] = []
+                jeux[id_] = j
+            if proprietaire not in jeux[id_]["proprietaires"]:
+                jeux[id_]["proprietaires"].append(proprietaire)
+    if not lus:
+        sys.exit("Erreur : aucun compte BoardGameGeek n'a pu être lu.\n" + "\n".join(erreurs))
+    print(f"Ludothèque fusionnée : {len(jeux)} jeux différents.")
     if jeux:
         completer(jeux, token)
+
     os.makedirs(DOSSIER_IMAGES, exist_ok=True)
     liste = []
     for j in sorted(jeux.values(), key=lambda x: x["nom"].lower()):
@@ -165,11 +206,13 @@ def main():
         j.pop("image_bgg", None)
         liste.append(j)
 
-    # Supprimer les miniatures des jeux qui ne sont plus dans la collection
-    gardees = {os.path.basename(j["image"]) for j in liste if j["image"]}
-    for f in os.listdir(DOSSIER_IMAGES):
-        if f.endswith(".jpg") and f not in gardees:
-            os.remove(os.path.join(DOSSIER_IMAGES, f))
+    # Un compte en erreur (nom mal saisi, BGG indisponible) ne doit pas vider sa part de la ludothèque :
+    # dans ce cas on garde les miniatures existantes et on ne supprime rien.
+    if not erreurs:
+        gardees = {os.path.basename(j["image"]) for j in liste if j["image"]}
+        for f in os.listdir(DOSSIER_IMAGES):
+            if f.endswith(".jpg") and f not in gardees:
+                os.remove(os.path.join(DOSSIER_IMAGES, f))
 
     ancien = {}
     if os.path.exists(FICHIER_DONNEES):
@@ -177,14 +220,33 @@ def main():
             ancien = json.load(open(FICHIER_DONNEES, encoding="utf-8"))
         except ValueError:
             ancien = {}
-    if ancien.get("jeux") == liste and ancien.get("utilisateur") == utilisateur:
+    if erreurs and ancien.get("jeux"):
+        # Garder les jeux des comptes illisibles tels qu'ils étaient
+        illisibles = {e.split(" (")[0] for e in erreurs}
+        presents = {j["id"] for j in liste}
+        for j in ancien["jeux"]:
+            garde = [p for p in j.get("proprietaires", []) if p in illisibles]
+            if not garde:
+                continue
+            if j["id"] in presents:
+                cible = next(x for x in liste if x["id"] == j["id"])
+                cible["proprietaires"] += [p for p in garde if p not in cible["proprietaires"]]
+            else:
+                j = dict(j, proprietaires=garde)
+                liste.append(j)
+        liste.sort(key=lambda x: x["nom"].lower())
+
+    comptes_lus = [u for _, u in comptes]
+    if ancien.get("jeux") == liste and ancien.get("comptes") == comptes_lus:
         print("Aucun changement.")
-        return
-    donnees = {"utilisateur": utilisateur, "maj": time.strftime("%Y-%m-%d"), "jeux": liste}
-    with open(FICHIER_DONNEES, "w", encoding="utf-8") as f:
-        json.dump(donnees, f, ensure_ascii=False, indent=1)
-        f.write("\n")
-    print(f"Ludothèque mise à jour : {len(liste)} jeux.")
+    else:
+        donnees = {"comptes": comptes_lus, "maj": time.strftime("%Y-%m-%d"), "jeux": liste}
+        with open(FICHIER_DONNEES, "w", encoding="utf-8") as f:
+            json.dump(donnees, f, ensure_ascii=False, indent=1)
+            f.write("\n")
+        print(f"Ludothèque mise à jour : {len(liste)} jeux.")
+    if erreurs:
+        sys.exit("Attention, certains comptes n'ont pas pu être lus :\n" + "\n".join(erreurs))
 
 
 if __name__ == "__main__":

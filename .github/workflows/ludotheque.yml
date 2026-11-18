@@ -1,6 +1,7 @@
-# Synchronise la page Ludothèque avec la collection BoardGameGeek de l'association
-# (jeux marqués « Je possède »). Tourne chaque nuit, à la demande (onglet Actions >
-# « Synchroniser la ludothèque » > Run workflow), et quand le nom d'utilisateur change.
+# Synchronise la page Ludothèque avec les collections BoardGameGeek des membres
+# (jeux marqués « Je possède », comptes renseignés dans les fiches de l'équipe).
+# Tourne chaque nuit, à la demande (onglet Actions > « Synchroniser la ludothèque »
+# > Run workflow), et quand une fiche de l'équipe ou le réglage change.
 name: Synchroniser la ludothèque
 
 on:
@@ -11,6 +12,7 @@ on:
     branches: [main]
     paths:
       - "_data/bgg.yml"
+      - "_data/equipe.yml"
       - "scripts/sync_ludotheque.py"
 
 permissions:
@@ -32,10 +34,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Installer Pillow (réduction des miniatures)
-        run: pip install --quiet pillow
+      - name: Installer Pillow et PyYAML
+        run: pip install --quiet pillow pyyaml
 
-      - name: Récupérer la collection BoardGameGeek
+      - name: Récupérer les collections BoardGameGeek
+        id: sync
+        continue-on-error: true   # un compte en erreur n'empêche pas d'enregistrer les autres
         env:
           BGG_TOKEN: ${{ secrets.BGG_TOKEN }}
         run: python scripts/sync_ludotheque.py
@@ -61,3 +65,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Le site se reconstruira au prochain enregistrement."
+
+      - name: Signaler un compte en erreur
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo "Au moins un compte BoardGameGeek n'a pas pu être lu : voir le détail de l'étape « Récupérer les collections BoardGameGeek »."
+          exit 1

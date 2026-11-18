@@ -208,6 +208,10 @@ content:
           - name: texte
             label: Quelques mots
             type: text
+          - name: bgg
+            label: Nom d'utilisateur BoardGameGeek
+            type: string
+            description: "Facultatif. Les jeux marqués « Je possède » dans sa collection apparaissent dans la Ludothèque (mise à jour chaque nuit). Le nom ou l'adresse du profil, ex. : boardgamegeek.com/user/NOM"
           - name: couleur
             label: Couleur (celle de son meeple)
             type: select
@@ -388,9 +392,9 @@ content:
         format: yaml
         fields:
           - name: utilisateur
-            label: Nom d'utilisateur BoardGameGeek de l'association
+            label: Compte BoardGameGeek de l'association (facultatif)
             type: string
-            description: Les jeux marqués « Je possède » dans sa collection apparaissent sur la page Ludothèque. La liste se met à jour chaque nuit.
+            description: Les comptes des membres se renseignent dans leur fiche, rubrique L'équipe. Ce champ sert seulement si l'association a aussi son propre compte.
           - name: intro
             label: Texte d'introduction de la page
             type: text

@@ -153,7 +153,7 @@ R.equipe = () => {
         ${H.signature?`<span class="signature">${esc(H.signature)}</span>`:""}</div></div>`)
   + sec(head("","Les membres") + (M.length?`<div class="grid g4">${M.map(m=>`
       <article class="card membre" data-c="${esc(m.couleur||"")}"><div class="ph${/^images\/membres\//.test(m.photo||"")?" avatar-ill":""}">${m.photo?`<img src="${esc(m.photo)}" alt="Portrait de ${esc(m.nom)}" loading="lazy">`:`<span class="ini" aria-hidden="true">${esc(initials(m.nom))}</span>`}</div>
-        <div class="txt">${m.role?`<span class="role">${esc(m.role)}</span>`:""}<h3${/^images\/membres\//.test(m.photo||"")?' class="sr"':""}>${esc(m.nom)}</h3>${m.jeux?`<p>Jeux préférés : ${esc(m.jeux)}</p>`:""}${m.texte?`<p>${esc(m.texte)}</p>`:""}</div></article>`).join("")}</div>`:empty("La présentation des membres arrive bientôt.")), "sand")
+        <div class="txt">${m.role?`<span class="role">${esc(m.role)}</span>`:""}<h3${/^images\/membres\//.test(m.photo||"")?' class="sr"':""}>${esc(m.nom)}</h3>${m.jeux?`<p>Jeux préférés : ${esc(m.jeux)}</p>`:""}${m.texte?`<p>${esc(m.texte)}</p>`:""}${bggUser(m.bgg)?`<a class="ludo-bgg" href="https://boardgamegeek.com/collection/user/${encodeURIComponent(bggUser(m.bgg))}?own=1" target="_blank" rel="noopener">Sa collection BoardGameGeek ↗</a>`:""}</div></article>`).join("")}</div>`:empty("La présentation des membres arrive bientôt.")), "sand")
   + (TM.length ? sec(head("Ils ont joué avec nous","Ce qu'on dit de nos tables") + `<div class="grid">${TM.map(t=>`<blockquote class="card temoin"><p>${esc(t.texte)}</p><footer>${esc(t.auteur||"")}${t.contexte?`<span>${esc(t.contexte)}</span>`:""}</footer></blockquote>`).join("")}</div>`) : "");
 };
 R.photos = () => {
@@ -221,6 +221,11 @@ R.article = () => {
 };
 
 /* ---------- Ludothèque (synchronisée avec BoardGameGeek) ---------- */
+function bggUser(v){ v = String(v||"").trim(); const m = v.match(/boardgamegeek\.com\/(?:user|collection\/user)\/([^/?#\s]+)/); return m ? decodeURIComponent(m[1]) : v.replace(/^@/,""); }
+function chez(j){
+  const P = j.proprietaires||[]; if(!P.length) return "";
+  return `<div class="chez"><span>Chez</span>${P.map(n=>{ const m = C.membres.find(x=>x.nom===n); return `<b data-c="${esc(m&&m.couleur||"")}">${esc(n)}</b>`; }).join("")}</div>`;
+}
 function plage(a, b, unite){ if(!a && !b) return ""; if(!b || a===b) return `${a||b}${unite}`; return `${a}–${b}${unite}`; }
 function testDe(j){ const n = String(j.nom||"").toLowerCase(); return C.tests.find(t=>{ const tn = String(t.jeu||"").toLowerCase(); return tn && (n===tn || n.startsWith(tn+":") || tn.startsWith(n+":") || n.startsWith(tn+" ")); }); }
 function ludoCard(j){
@@ -231,9 +236,11 @@ function ludoCard(j){
       <h3>${esc(j.nom)}</h3>${j.annee?`<span class="note">${j.annee}</span>`:""}
       <div class="meta">${j.joueurs_min||j.joueurs_max?`<span class="tag">${meeple()} ${plage(j.joueurs_min,j.joueurs_max,"")}</span>`:""}${j.duree_min||j.duree_max?`<span class="tag">${plage(j.duree_min,j.duree_max," min")}</span>`:""}${j.age?`<span class="tag">${j.age}+</span>`:""}</div>
       ${j.poids?poids(j.poids):""}
+      ${chez(j)}
       <div class="ludo-links">${t?`<a class="tag score" href="${artUrl("jeu",t)}">Testé par les Experts →</a>`:""}<a class="ludo-bgg" href="${esc(j.url_bgg)}" target="_blank" rel="noopener">BoardGameGeek ↗</a></div>
     </div></article>`;
 }
+const OWNERS = (()=>{ const seen = []; C.membres.forEach(m=>{ if(LUDO.some(j=>(j.proprietaires||[]).includes(m.nom))) seen.push(m.nom); }); LUDO.forEach(j=>(j.proprietaires||[]).forEach(n=>{ if(!seen.includes(n)) seen.push(n); })); return seen; })();
 R.ludotheque = () => {
   const B = C.bgg||{}, maj = (C.ludotheque||{}).maj;
   const hero = pageHero("Notre ludothèque","Les jeux de la ludothèque", B.intro||"", "60%");
@@ -244,6 +251,7 @@ R.ludotheque = () => {
       <label for="lf-j">Joueurs<select id="lf-j">${opt("","Tous")}${[1,2,3,4,5,6].map(n=>opt(n, n===6?"6 et +":n)).join("")}</select></label>
       <label for="lf-d">Durée<select id="lf-d">${opt("","Toutes")}${opt("60","1 h ou moins")}${opt("120","2 h ou moins")}${opt("180","3 h ou moins")}${opt("999","Plus de 3 h")}</select></label>
       <label for="lf-p">Poids<select id="lf-p">${opt("","Tous")}${opt("0-3","Moins de 3")}${opt("3-4","3 à 4")}${opt("4-6","4 et plus")}</select></label>
+      ${OWNERS.length>1?`<label for="lf-c">Chez<select id="lf-c">${opt("","Tout le monde")}${OWNERS.map(n=>opt(esc(n),esc(n))).join("")}</select></label>`:""}
       <label for="lf-t">Trier par<select id="lf-t">${opt("nom","Nom")}${opt("poids","Plus lourds d'abord")}${opt("duree","Plus courts d'abord")}${opt("annee","Plus récents d'abord")}</select></label>
     </form>
     <p class="note ludo-count" id="ludo-count" aria-live="polite"></p>
@@ -253,8 +261,10 @@ R.ludotheque = () => {
 function ludoFiltre(){
   const g = document.getElementById("ludo-grid"); if(!g) return;
   const v = id => document.getElementById(id).value;
+  const ch = document.getElementById("lf-c") ? v("lf-c") : "";
   const q = v("lf-q").trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""), nj = Number(v("lf-j")), d = v("lf-d"), p = v("lf-p"), tri = v("lf-t");
   let L = LUDO.filter(j=>{
+    if(ch && !(j.proprietaires||[]).includes(ch)) return false;
     if(q && !String(j.nom).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)) return false;
     if(nj){ const mn = j.joueurs_min||1, mx = j.joueurs_max||mn; if(nj===6 ? mx<6 : (nj<mn || nj>mx)) return false; }
     if(d){ const dm = j.duree_max||j.duree_min||0; if(d==="999" ? dm<=180 : (!dm || dm>Number(d))) return false; }
