@@ -381,6 +381,20 @@ content:
                 label: Ce qu'on y trouve (une ligne par point)
                 type: text
 
+      - name: bgg
+        label: Ludothèque (BoardGameGeek)
+        type: file
+        path: _data/bgg.yml
+        format: yaml
+        fields:
+          - name: utilisateur
+            label: Nom d'utilisateur BoardGameGeek de l'association
+            type: string
+            description: Les jeux marqués « Je possède » dans sa collection apparaissent sur la page Ludothèque. La liste se met à jour chaque nuit.
+          - name: intro
+            label: Texte d'introduction de la page
+            type: text
+
       - name: galerie
         label: Galerie photos
         type: file

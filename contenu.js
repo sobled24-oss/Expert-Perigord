@@ -14,6 +14,8 @@ layout: null
 "temoignages": {{ site.data.temoignages.liste | jsonify }},
 "echanges": {{ site.data.contact.discord | jsonify }},
 "contact": {{ site.data.contact.contact | jsonify }},
+"bgg": {{ site.data.bgg | jsonify }},
+"ludotheque": {{ site.data.ludotheque | jsonify }},
 "festivals": [{% for f in fests %}
   {"id": {{ f.slug | jsonify }}, "url": {{ f.url | jsonify }}, "debut": {{ f.date | date: "%Y-%m-%d" | jsonify }}, "nom": {{ f.title | jsonify }}, "date": {{ f.dates | jsonify }}, "lieu": {{ f.lieu | jsonify }}, "role": {{ f.role | jsonify }}, "texte": {{ f.resume | jsonify }}, "couverture": {{ f.couverture | jsonify }}, "photos": {{ f.photos | jsonify }}, "exemple": {{ f.exemple | jsonify }}, "article_html": {{ f.content | markdownify | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}
 ],

@@ -25,3 +25,4 @@ defaults:
 exclude:
   - MODE-D-EMPLOI.txt
   - README.md
+  - scripts

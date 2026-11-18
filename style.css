@@ -513,3 +513,25 @@ a.card:hover .fest-cover img,a.card:hover .photo-cover img{transform:scale(1.04)
 .prose a{color:var(--meeple-y)}
 .prose img{border-radius:14px}
 .prose blockquote{margin:0;padding:6px 0 6px 18px;border-left:3px solid var(--meeple-y);color:var(--muted)}
+
+/* ===== Ludothèque ===== */
+.ludo-filters{display:grid;grid-template-columns:minmax(0,2fr) repeat(4,minmax(0,1fr));gap:12px;align-items:end;margin-bottom:12px}
+.ludo-filters label{font-size:.82rem}
+.ludo-filters input,.ludo-filters select{padding:10px 12px}
+.ludo-count{margin:0 0 18px}
+.ludo-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.card.ludo-card{padding:0;overflow:hidden;gap:0}
+.ludo-img{display:grid;place-items:center;aspect-ratio:1;background:radial-gradient(70% 70% at 50% 40%,#2C2E33,#1B1C1F);padding:14px;text-decoration:none}
+.ludo-img img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 14px rgba(0,0,0,.5));transition:transform .25s ease}
+.ludo-card:hover .ludo-img img{transform:scale(1.04) rotate(-1deg)}
+.ludo-img .mono{font-family:var(--f-head);font-size:4rem;color:var(--muted)}
+.ludo-body{padding:14px 16px 16px;display:grid;gap:8px;align-content:start}
+.ludo-body h3{font-size:1.1rem;line-height:1.2}
+.ludo-body .note{margin-top:-4px}
+.ludo-body .poids{font-size:.95em}
+.ludo-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;margin-top:2px}
+.ludo-bgg{font-size:.82rem;color:var(--muted);text-decoration:none}
+.ludo-bgg:hover{color:var(--meeple-y)}
+.tag.score{text-decoration:none}
+.ludo-maj{margin-top:24px}
+@media (max-width:900px){.ludo-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.ludo-filters label:first-child{grid-column:1/-1}}

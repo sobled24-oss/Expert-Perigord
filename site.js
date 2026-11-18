@@ -24,12 +24,13 @@ function initials(n){ return String(n||"?").split(/\s+/).map(w=>w[0]||"").join("
 const ex = x => x.exemple ? `<span class="chip">Exemple à remplacer</span>` : "";
 const S = C.site, NOM = S.nom || "Les Experts en Périgord";
 const hasPhotos = C.galerie.some(g=>g && (g.image||g.photo));
+const LUDO = ((C.ludotheque||{}).jeux)||[];
 
 /* ---------- Menu et pied de page ---------- */
 const PAGES = [
-  ["accueil","index.html","Accueil"],["festivals","festivals.html","Festivals"],["jeux","jeux.html","Jeux testés"],
+  ["accueil","index.html","Accueil"],["festivals","festivals.html","Festivals"],["jeux","jeux.html","Jeux testés"],["ludotheque","ludotheque.html","Ludothèque"],
   ["evenement","evenement.html","Notre événement"],["equipe","equipe.html","L'équipe"],["photos","photos.html","Photos"],["contact","contact.html","Contact"]
-].filter(p=>p[0]!=="photos" || hasPhotos);
+].filter(p=>(p[0]!=="photos" || hasPhotos) && (p[0]!=="ludotheque" || LUDO.length || PAGE==="ludotheque"));
 const navLinks = PAGES.map(([id,href,label])=>`<a href="${href}"${id===PAGE?' aria-current="page"':""}${id==="contact"?' class="cta"':""}>${label}</a>`).join("");
 document.getElementById("top").innerHTML = `<div class="wrap">
   <a class="brand" href="index.html"><img src="images/logo.jpg" alt=""><span>${esc(NOM)}</span></a>
@@ -219,8 +220,56 @@ R.article = () => {
     + (others.length ? sec(head("", type==="festival"?"Nos autres festivals":"D'autres jeux testés") + `<div class="grid g3">${others.map(type==="festival"?festCard:gameCard).join("")}</div>`, type==="jeu"?"dark":"sand") : "");
 };
 
+/* ---------- Ludothèque (synchronisée avec BoardGameGeek) ---------- */
+function plage(a, b, unite){ if(!a && !b) return ""; if(!b || a===b) return `${a||b}${unite}`; return `${a}–${b}${unite}`; }
+function testDe(j){ const n = String(j.nom||"").toLowerCase(); return C.tests.find(t=>{ const tn = String(t.jeu||"").toLowerCase(); return tn && (n===tn || n.startsWith(tn+":") || tn.startsWith(n+":") || n.startsWith(tn+" ")); }); }
+function ludoCard(j){
+  const t = testDe(j);
+  return `<article class="card ludo-card">
+    <a class="ludo-img" href="${esc(j.url_bgg)}" target="_blank" rel="noopener" aria-label="Fiche BoardGameGeek de ${esc(j.nom)}">${j.image?`<img src="${esc(j.image)}" alt="Boîte de ${esc(j.nom)}" loading="lazy">`:`<span class="mono">${esc(String(j.nom||"?").slice(0,2))}</span>`}</a>
+    <div class="ludo-body">
+      <h3>${esc(j.nom)}</h3>${j.annee?`<span class="note">${j.annee}</span>`:""}
+      <div class="meta">${j.joueurs_min||j.joueurs_max?`<span class="tag">${meeple()} ${plage(j.joueurs_min,j.joueurs_max,"")}</span>`:""}${j.duree_min||j.duree_max?`<span class="tag">${plage(j.duree_min,j.duree_max," min")}</span>`:""}${j.age?`<span class="tag">${j.age}+</span>`:""}</div>
+      ${j.poids?poids(j.poids):""}
+      <div class="ludo-links">${t?`<a class="tag score" href="${artUrl("jeu",t)}">Testé par les Experts →</a>`:""}<a class="ludo-bgg" href="${esc(j.url_bgg)}" target="_blank" rel="noopener">BoardGameGeek ↗</a></div>
+    </div></article>`;
+}
+R.ludotheque = () => {
+  const B = C.bgg||{}, maj = (C.ludotheque||{}).maj;
+  const hero = pageHero("Notre ludothèque","Les jeux de la ludothèque", B.intro||"", "60%");
+  if(!LUDO.length) return hero + sec(empty("La ludothèque arrive bientôt : elle sera mise à jour automatiquement à partir de notre collection BoardGameGeek."));
+  const opt = (v,l)=>`<option value="${v}">${l}</option>`;
+  return hero + sec(`<form class="ludo-filters" id="ludo-filters" role="search" onsubmit="return false">
+      <label for="lf-q">Rechercher<input id="lf-q" type="search" placeholder="Nom du jeu" autocomplete="off"></label>
+      <label for="lf-j">Joueurs<select id="lf-j">${opt("","Tous")}${[1,2,3,4,5,6].map(n=>opt(n, n===6?"6 et +":n)).join("")}</select></label>
+      <label for="lf-d">Durée<select id="lf-d">${opt("","Toutes")}${opt("60","1 h ou moins")}${opt("120","2 h ou moins")}${opt("180","3 h ou moins")}${opt("999","Plus de 3 h")}</select></label>
+      <label for="lf-p">Poids<select id="lf-p">${opt("","Tous")}${opt("0-3","Moins de 3")}${opt("3-4","3 à 4")}${opt("4-6","4 et plus")}</select></label>
+      <label for="lf-t">Trier par<select id="lf-t">${opt("nom","Nom")}${opt("poids","Plus lourds d'abord")}${opt("duree","Plus courts d'abord")}${opt("annee","Plus récents d'abord")}</select></label>
+    </form>
+    <p class="note ludo-count" id="ludo-count" aria-live="polite"></p>
+    <div class="grid ludo-grid" id="ludo-grid"></div>
+    ${maj?`<p class="note ludo-maj">Liste mise à jour automatiquement depuis BoardGameGeek, dernière modification le ${esc(new Date(maj+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"}))}.</p>`:""}`);
+};
+function ludoFiltre(){
+  const g = document.getElementById("ludo-grid"); if(!g) return;
+  const v = id => document.getElementById(id).value;
+  const q = v("lf-q").trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""), nj = Number(v("lf-j")), d = v("lf-d"), p = v("lf-p"), tri = v("lf-t");
+  let L = LUDO.filter(j=>{
+    if(q && !String(j.nom).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)) return false;
+    if(nj){ const mn = j.joueurs_min||1, mx = j.joueurs_max||mn; if(nj===6 ? mx<6 : (nj<mn || nj>mx)) return false; }
+    if(d){ const dm = j.duree_max||j.duree_min||0; if(d==="999" ? dm<=180 : (!dm || dm>Number(d))) return false; }
+    if(p){ const [a,b] = p.split("-").map(Number); if(!j.poids || j.poids<a || j.poids>=b) return false; }
+    return true;
+  });
+  const cmp = {nom:(a,b)=>String(a.nom).localeCompare(String(b.nom),"fr"), poids:(a,b)=>(b.poids||0)-(a.poids||0), duree:(a,b)=>(a.duree_max||999)-(b.duree_max||999), annee:(a,b)=>(b.annee||0)-(a.annee||0)}[tri];
+  L = L.slice().sort(cmp);
+  g.innerHTML = L.length ? L.map(ludoCard).join("") : `<div class="empty">Aucun jeu ne correspond à ces critères.</div>`;
+  document.getElementById("ludo-count").textContent = L.length===LUDO.length ? `${LUDO.length} jeux` : `${L.length} jeu${L.length>1?"x":""} sur ${LUDO.length}`;
+}
+
 const main = document.getElementById("main");
 if(!main.hasAttribute("data-ssr")) main.innerHTML = (R[PAGE] || R.accueil)();
+if(document.getElementById("ludo-filters")){ ludoFiltre(); document.getElementById("ludo-filters").addEventListener("input", ludoFiltre); }
 
 /* Pages d'article fabriquées par GitHub : on ajoute les autres articles en bas */
 const oth = document.getElementById("others");

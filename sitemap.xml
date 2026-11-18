@@ -11,6 +11,9 @@ layout: null
 {%- if nbg > 0 %}
   <url><loc>{{ site.url }}/photos.html</loc></url>
 {%- endif %}
+{%- if site.data.ludotheque.jeux.size > 0 %}
+  <url><loc>{{ site.url }}/ludotheque.html</loc></url>
+{%- endif %}
 {%- for d in site.jeux %}
   <url><loc>{{ site.url }}{{ d.url }}</loc><lastmod>{{ d.date | date: "%Y-%m-%d" }}</lastmod></url>
 {%- endfor %}

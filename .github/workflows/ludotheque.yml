@@ -1,0 +1,63 @@
+# Synchronise la page Ludothèque avec la collection BoardGameGeek de l'association
+# (jeux marqués « Je possède »). Tourne chaque nuit, à la demande (onglet Actions >
+# « Synchroniser la ludothèque » > Run workflow), et quand le nom d'utilisateur change.
+name: Synchroniser la ludothèque
+
+on:
+  schedule:
+    - cron: "17 3 * * *"   # chaque nuit vers 4 h 17 (heure de Paris en hiver)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "_data/bgg.yml"
+      - "scripts/sync_ludotheque.py"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: ludotheque
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer Pillow (réduction des miniatures)
+        run: pip install --quiet pillow
+
+      - name: Récupérer la collection BoardGameGeek
+        env:
+          BGG_TOKEN: ${{ secrets.BGG_TOKEN }}
+        run: python scripts/sync_ludotheque.py
+
+      - name: Enregistrer les changements
+        id: commit
+        run: |
+          git add _data/ludotheque.json images/ludotheque
+          if git diff --cached --quiet; then
+            echo "Aucun changement dans la ludothèque."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "Ludothèque (automatique)"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Ludothèque : synchronisation avec BoardGameGeek"
+            git pull --rebase origin main
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Reconstruire le site
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Le site se reconstruira au prochain enregistrement."

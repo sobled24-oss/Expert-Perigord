@@ -1,0 +1,33 @@
+---
+---
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Notre ludothèque de jeux de société experts · Les Experts en Périgord</title>
+<meta name="description" content="Les jeux de société experts de la ludothèque des Experts en Périgord, en Dordogne : nombre de joueurs, durée, poids, à découvrir pendant nos séances et en festival.">
+<link rel="canonical" href="{{ site.url }}/ludotheque.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Les Experts en Périgord">
+<meta property="og:title" content="Notre ludothèque de jeux de société experts · Les Experts en Périgord">
+<meta property="og:description" content="Les jeux de société experts de la ludothèque des Experts en Périgord, en Dordogne : nombre de joueurs, durée, poids, à découvrir pendant nos séances et en festival.">
+<meta property="og:url" content="{{ site.url }}/ludotheque.html">
+<meta property="og:image" content="{{ site.url }}/images/banniere-1200.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400&family=Caveat+Brush&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="ludotheque">
+<header class="top" id="top"></header>
+<main id="main"><section class="block"><div class="wrap"><h1>Notre ludothèque</h1><p>{{ site.data.bgg.intro | escape }}</p>
+<ul>{% for j in site.data.ludotheque.jeux %}<li><a href="{{ j.url_bgg }}">{{ j.nom | escape }}</a>{% if j.annee %} ({{ j.annee }}){% endif %}{% if j.joueurs_min %}, {{ j.joueurs_min }} à {{ j.joueurs_max }} joueurs{% endif %}{% if j.duree_max %}, {{ j.duree_max }} min{% endif %}</li>{% endfor %}</ul></div></section></main>
+<footer class="bas" id="bas"></footer>
+<script>document.write('<script src="contenu.js?v='+Math.floor(Date.now()/60000)+'"><\/script>')</script>
+<script src="site.js"></script>
+</body>
+</html>

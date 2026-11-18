@@ -66,3 +66,28 @@ et le site en ligne se met à jour tout seul en une à deux minutes.
     soignez-le (une à deux phrases claires).
   - Pour Google, un festival est un événement : remplissez bien la date de début
     et le lieu.
+
+
+6. LA LUDOTHÈQUE (SYNCHRONISÉE AVEC BOARDGAMEGEEK)
+--------------------------------------------------
+  La page Ludothèque affiche les jeux marqués « Je possède » dans la collection
+  BoardGameGeek de l'association, avec leur miniature, le nombre de joueurs,
+  la durée, l'âge et le poids. Elle se met à jour toute seule chaque nuit.
+
+  Mise en place (une seule fois) :
+  1. Demander une clé d'accès à BoardGameGeek : https://boardgamegeek.com/applications
+     (licence non commerciale gratuite ; l'approbation peut prendre une semaine ou plus).
+     Une fois approuvée, créer un « Token » et le copier.
+  2. Sur GitHub, dépôt Expert-Perigord > Settings > Secrets and variables > Actions
+     > New repository secret. Nom : BGG_TOKEN ; valeur : la clé copiée.
+  3. Dans Pages CMS > Textes du site > Ludothèque (BoardGameGeek), indiquer le nom
+     d'utilisateur BoardGameGeek de l'association, puis enregistrer.
+     La première synchronisation démarre aussitôt.
+
+  Au quotidien :
+  - Ajouter un jeu : sur BoardGameGeek, cocher « Je possède » sur sa fiche.
+  - Retirer un jeu : décocher « Je possède ».
+  - Pour ne pas attendre la nuit : GitHub > onglet Actions > « Synchroniser la
+    ludothèque » > Run workflow.
+  - Les extensions ne sont pas affichées.
+  - Un jeu testé par les Experts est reconnu par son nom et relié à son article.
