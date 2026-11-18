@@ -17,7 +17,7 @@ jeux:
     image: images/uploads/perijeux-6-a8f794.jpg
   - nom: Wondrous Creatures
     table: permanence
-    image: images/uploads/perijeux-6-a8f794.jpg
+    image: images/uploads/perijeux-7-34b4ff.jpg
   - nom: Nemesis
     table: demande
     image: images/uploads/perijeux-4-c2c4c0.jpg
