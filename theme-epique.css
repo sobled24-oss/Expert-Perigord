@@ -160,3 +160,9 @@ aside .btn.ghost{display:block;text-align:center}
 #jeux-filters{display:flex;flex-wrap:wrap}
 #jeux-filters label{flex:1 1 140px;min-width:0}
 #jeux-filters label:first-child{flex:2 1 260px}
+/* Accueil : miniature du prochain festival */
+.duo-cover{margin:-32px -32px 6px;aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid rgba(201,162,74,.3);position:relative;background:#000}
+.duo-cover img{position:relative;width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s ease}
+.duo-cover img.flou{position:absolute;inset:0;object-fit:cover;filter:blur(22px) brightness(.45);transform:scale(1.15)}
+a.duo-fest:hover .duo-cover img:not(.flou){transform:scale(1.03)}
+@media (max-width:980px){.duo-cover{margin:-24px -24px 6px}}
