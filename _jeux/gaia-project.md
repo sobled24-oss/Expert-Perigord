@@ -1,6 +1,6 @@
 ---
 title: Speakeasy
-date: 2026-11-09
+date: 2026-11-18
 verdict: rejouer
 couverture: images/uploads/perijeux-9-570906.jpg
 auteurs: VITAL LACERDA
