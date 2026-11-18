@@ -173,7 +173,8 @@ def main():
         return
     token = os.environ.get("BGG_TOKEN", "").strip()
     if not token:
-        sys.exit("Erreur : le secret BGG_TOKEN est vide. Ajoutez la clé BoardGameGeek dans les secrets du dépôt.")
+        print("La clé BoardGameGeek (secret BGG_TOKEN) n'est pas encore enregistrée : synchronisation reportée.")
+        return
 
     jeux, lus, erreurs = {}, [], []
     for proprietaire, utilisateur in comptes:
