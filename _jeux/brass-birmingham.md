@@ -11,17 +11,8 @@ duree: 60 à 120 min
 poids: 3.9
 avis:
   philou:
-    note: 8
+    note: 9
     texte: moi j ai adoré
-  pat:
-    note: 6
-    texte: Pat bof
-  tim:
-    note: 2
-    texte: Tim trouve après une partie que le jeu n'est pas rejouable.
-  thyl:
-    note: 6
-    texte: Thyl , mi figue mi raisin ;)
 photos:
   - image: images/uploads/brass-birmingham-1-d0c9c3.jpg
   - image: images/uploads/brass-birmingham-2-863cf8.jpg
@@ -68,7 +59,6 @@ Ce qu’il faut comprendre, c’est que le jeu t’empêche de tout faire seul. 
 Stratégie ou chance ?  
 Stratégie, et de loin. Il y a bien un peu de hasard : quand tu vends ton coton à l’étranger, tu ne sais jamais quand le marché va s’effondrer et te laisser repartir les mains vides. Et la pioche, forcément.  
 Mais une bonne partie de tes cartes va servir à des actions où ce qui est écrit dessus ne compte pas. Il y a plusieurs cartes par ville, des cartes industrie valables partout et plein de liaisons possibles, donc tu t’adaptes. Ça n’empêche pas de pester quand tu ne pioches jamais la ville qu’il te faut.  
-
 
 Et la rejouabilité, avec 5 bâtiments ?  
 “5 bâtiments ? Il va vite tourner en rond.” Non. Ici, l’intérêt ne vient pas de pouvoirs différents ou de combos, il vient de la tension entre l’offre et la demande et de ta trésorerie qu’il faut tenir à bout de bras.  
