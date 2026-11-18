@@ -542,3 +542,10 @@ a.card:hover .fest-cover img,a.card:hover .photo-cover img{transform:scale(1.04)
 .ludo-filters{grid-template-columns:minmax(0,2fr) repeat(5,minmax(0,1fr))}
 .ludo-filters:not(:has(#lf-c)){grid-template-columns:minmax(0,2fr) repeat(4,minmax(0,1fr))}
 @media (max-width:900px){.ludo-filters,.ludo-filters:not(:has(#lf-c)){grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Crédit BoardGameGeek (logo obligatoire, sur fond clair pour rester lisible) */
+.bgg-credit{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:28px;padding-top:20px;border-top:1px solid #34363B}
+.bgg-credit .note{margin:0;max-width:62ch}
+.bgg-credit .note a{color:var(--meeple-y)}
+.bgg-logo{display:inline-flex;background:#fff;border-radius:12px;padding:8px 14px;flex:none}
+.bgg-logo img{display:block;width:200px;height:auto}
+.bgg-logo:hover{box-shadow:0 0 0 3px rgba(244,180,0,.5)}

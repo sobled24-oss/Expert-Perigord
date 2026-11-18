@@ -25,7 +25,7 @@
 <body data-page="ludotheque">
 <header class="top" id="top"></header>
 <main id="main"><section class="block"><div class="wrap"><h1>Notre ludothèque</h1><p>{{ site.data.bgg.intro | escape }}</p>
-<ul>{% for j in site.data.ludotheque.jeux %}<li><a href="{{ j.url_bgg }}">{{ j.nom | escape }}</a>{% if j.annee %} ({{ j.annee }}){% endif %}{% if j.joueurs_min %}, {{ j.joueurs_min }} à {{ j.joueurs_max }} joueurs{% endif %}{% if j.duree_max %}, {{ j.duree_max }} min{% endif %}</li>{% endfor %}</ul></div></section></main>
+<ul>{% for j in site.data.ludotheque.jeux %}<li><a href="{{ j.url_bgg }}">{{ j.nom | escape }}</a>{% if j.annee %} ({{ j.annee }}){% endif %}{% if j.joueurs_min %}, {{ j.joueurs_min }} à {{ j.joueurs_max }} joueurs{% endif %}{% if j.duree_max %}, {{ j.duree_max }} min{% endif %}</li>{% endfor %}</ul><p>Données et images : <a href="https://boardgamegeek.com">BoardGameGeek</a>.</p><a href="https://boardgamegeek.com"><img src="images/powered-by-bgg.png" alt="Powered by BGG" width="220" height="64"></a></div></section></main>
 <footer class="bas" id="bas"></footer>
 <script>document.write('<script src="contenu.js?v='+Math.floor(Date.now()/60000)+'"><\/script>')</script>
 <script src="site.js"></script>

@@ -256,7 +256,10 @@ R.ludotheque = () => {
     </form>
     <p class="note ludo-count" id="ludo-count" aria-live="polite"></p>
     <div class="grid ludo-grid" id="ludo-grid"></div>
-    ${maj?`<p class="note ludo-maj">Liste mise à jour automatiquement depuis BoardGameGeek, dernière modification le ${esc(new Date(maj+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"}))}.</p>`:""}`);
+    <div class="bgg-credit">
+      <p class="note">Données et images : <a href="https://boardgamegeek.com" target="_blank" rel="noopener">BoardGameGeek</a>, d'après les collections de nos membres.${maj?` Liste mise à jour automatiquement, dernière modification le ${esc(new Date(maj+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"}))}.`:""}</p>
+      <a class="bgg-logo" href="https://boardgamegeek.com" target="_blank" rel="noopener"><img src="images/powered-by-bgg.png" alt="Powered by BGG" width="220" height="64"></a>
+    </div>`);
 };
 function ludoFiltre(){
   const g = document.getElementById("ludo-grid"); if(!g) return;
