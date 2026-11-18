@@ -12,7 +12,8 @@
 body{background:var(--bg);color:var(--ink)}
 body::before{background:#000}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(120% 70% at 50% -10%,rgba(201,162,74,.07),transparent 60%)}
-main,header.top,footer.bas{position:relative;z-index:1}
+main,footer.bas{position:relative;z-index:1}
+header.top{position:sticky;top:0;z-index:30}
 
 /* Titres : capitales à empattements, espacées */
 h1,h2,h3{font-family:var(--f-head);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
