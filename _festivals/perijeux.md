@@ -40,13 +40,6 @@ jeux:
     table: demande
     image: images/uploads/perijeux-11-37de21.jpg
 couverture: images/uploads/perijeux-couverture-81165d.jpg
-photos:
-  - image: images/uploads/perijeux-6-a8f794.jpg
-  - image: images/uploads/perijeux-7-34b4ff.jpg
-  - image: images/uploads/perijeux-8-cae805.jpg
-  - image: images/uploads/perijeux-9-570906.jpg
-  - image: images/uploads/perijeux-10-1cb112.jpg
-  - image: images/uploads/perijeux-11-37de21.jpg
 ---
 Nous serons présents au festival des jeux de société de perigueux pour animer 6 tables de jeux.
 3 tables avec en permanence :
