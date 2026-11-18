@@ -1,13 +1,13 @@
 ---
-title: 'Brass: Birmingham'
-date: '2026-11-09'
+title: "Brass: Birmingham"
+date: 2026-11-09
+verdict: coeur
+resume: Brass le jeu emblématique trustant BGG
+couverture: images/uploads/brass-birmingham-couverture-04362a.jpg
 auteurs: Gavan Brown, Matt Tolman, Martin Wallace
 joueurs: 2 à 4
 duree: 60 à 120 min
 poids: 3.9
-verdict: coeur
-resume: Brass le jeu emblématique trustant BGG
-couverture: images/uploads/brass-birmingham-couverture-04362a.jpg
 avis:
   philou:
     note: 8
@@ -22,23 +22,6 @@ avis:
     note: 6
     texte: Thyl , mi figue mi raisin ;)
 photos:
-- image: images/uploads/brass-birmingham-1-d0c9c3.jpg
-  legende: ''
-- image: images/uploads/brass-birmingham-2-863cf8.jpg
-  legende: ''
+  - image: images/uploads/brass-birmingham-1-d0c9c3.jpg
+  - image: images/uploads/brass-birmingham-2-863cf8.jpg
 ---
-brass c top etc etc
-dsfsdff
-sfdsfdsfdsfds
-sfddsfsfdsf
-sfsfsfdsf
-sfdsfsdfdsfjhgjhg
-
-
-fdgfdgfdgfdg
-
-gdg
-fdg
-fdgfd
-gfd
-gfd
