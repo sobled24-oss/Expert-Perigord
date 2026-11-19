@@ -179,23 +179,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/155987"
   },
   {
-   "id": "191189",
-   "nom": "Aeon's End",
-   "annee": 2016,
-   "joueurs_min": 1,
-   "joueurs_max": 4,
-   "duree_min": 60,
-   "duree_max": 60,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.81,
-   "age": 14,
-   "note_bgg": 7.86,
-   "image": "images/ludotheque/191189.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/191189"
-  },
-  {
    "id": "264647",
    "nom": "Age of Civilization",
    "annee": 2019,
@@ -228,23 +211,6 @@
    "note_bgg": 7.64,
    "image": "images/ludotheque/161970.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/161970"
-  },
-  {
-   "id": "181293",
-   "nom": "Alien Artifacts",
-   "annee": 2017,
-   "joueurs_min": 2,
-   "joueurs_max": 5,
-   "duree_min": 60,
-   "duree_max": 60,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.89,
-   "age": 10,
-   "note_bgg": 6.52,
-   "image": "images/ludotheque/181293.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/181293"
   },
   {
    "id": "48726",
@@ -541,23 +507,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/317985"
   },
   {
-   "id": "157403",
-   "nom": "Black Fleet",
-   "annee": 2014,
-   "joueurs_min": 3,
-   "joueurs_max": 4,
-   "duree_min": 60,
-   "duree_max": 60,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.94,
-   "age": 14,
-   "note_bgg": 7.0,
-   "image": "images/ludotheque/157403.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/157403"
-  },
-  {
    "id": "239942",
    "nom": "Black Rose Wars",
    "annee": 2019,
@@ -581,6 +530,14 @@
      "url_bgg": "https://boardgamegeek.com/boardgame/269414"
     },
     {
+     "id": "438707",
+     "nom": "Black Rose Wars: Magister Box",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/438707"
+    },
+    {
      "id": "413560",
      "nom": "Black Rose Wars: Rebirth – Seal of Fire",
      "proprietaires": [
@@ -595,6 +552,38 @@
       "Pat"
      ],
      "url_bgg": "https://boardgamegeek.com/boardgame/312230"
+    },
+    {
+     "id": "346147",
+     "nom": "Nova Aetas Renaissance: Draco",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/346147"
+    },
+    {
+     "id": "324538",
+     "nom": "Nova Aetas Renaissance: Hyperion",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/324538"
+    },
+    {
+     "id": "324537",
+     "nom": "Nova Aetas Renaissance: Mediceo",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/324537"
+    },
+    {
+     "id": "324545",
+     "nom": "Nova Aetas Renaissance: Minotaur",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/324545"
     }
    ],
    "image": "images/ludotheque/239942.jpg",
@@ -948,23 +937,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/33088"
   },
   {
-   "id": "359970",
-   "nom": "Challengers!",
-   "annee": 2022,
-   "joueurs_min": 1,
-   "joueurs_max": 8,
-   "duree_min": 45,
-   "duree_max": 45,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.79,
-   "age": 8,
-   "note_bgg": 7.04,
-   "image": "images/ludotheque/359970.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/359970"
-  },
-  {
    "id": "478",
    "nom": "Citadels",
    "annee": 2000,
@@ -997,23 +969,6 @@
    "note_bgg": 6.13,
    "image": "images/ludotheque/80934.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/80934"
-  },
-  {
-   "id": "233247",
-   "nom": "Civilization: A New Dawn",
-   "annee": 2017,
-   "joueurs_min": 2,
-   "joueurs_max": 4,
-   "duree_min": 60,
-   "duree_max": 120,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 3.22,
-   "age": 14,
-   "note_bgg": 7.23,
-   "image": "images/ludotheque/233247.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/233247"
   },
   {
    "id": "266507",
@@ -1401,23 +1356,6 @@
    "note_bgg": 7.88,
    "image": "images/ludotheque/322708.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/322708"
-  },
-  {
-   "id": "285192",
-   "nom": "Destinies",
-   "annee": 2021,
-   "joueurs_min": 1,
-   "joueurs_max": 3,
-   "duree_min": 90,
-   "duree_max": 150,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.92,
-   "age": 14,
-   "note_bgg": 7.63,
-   "image": "images/ludotheque/285192.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/285192"
   },
   {
    "id": "162082",
@@ -1926,23 +1864,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/155703"
   },
   {
-   "id": "272682",
-   "nom": "Expedition to Newdale",
-   "annee": 2019,
-   "joueurs_min": 1,
-   "joueurs_max": 4,
-   "duree_min": 90,
-   "duree_max": 90,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 3.01,
-   "age": 12,
-   "note_bgg": 7.3,
-   "image": "images/ludotheque/272682.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/272682"
-  },
-  {
    "id": "68227",
    "nom": "Fabula",
    "annee": 2010,
@@ -2093,23 +2014,6 @@
    "note_bgg": 7.76,
    "image": "images/ludotheque/157354.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/157354"
-  },
-  {
-   "id": "336986",
-   "nom": "Flamecraft",
-   "annee": 2022,
-   "joueurs_min": 1,
-   "joueurs_max": 5,
-   "duree_min": 60,
-   "duree_max": 60,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.19,
-   "age": 10,
-   "note_bgg": 7.36,
-   "image": "images/ludotheque/336986.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/336986"
   },
   {
    "id": "175155",
@@ -2374,23 +2278,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/140068"
   },
   {
-   "id": "163920",
-   "nom": "Gaïa",
-   "annee": 2014,
-   "joueurs_min": 2,
-   "joueurs_max": 5,
-   "duree_min": 30,
-   "duree_max": 30,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.93,
-   "age": 8,
-   "note_bgg": 6.17,
-   "image": "images/ludotheque/163920.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/163920"
-  },
-  {
    "id": "38862",
    "nom": "Giants",
    "annee": 2008,
@@ -2424,23 +2311,6 @@
    "note_bgg": 8.53,
    "image": "images/ludotheque/174430.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/174430"
-  },
-  {
-   "id": "202819",
-   "nom": "Gnomopolis",
-   "annee": 2018,
-   "joueurs_min": 1,
-   "joueurs_max": 4,
-   "duree_min": 45,
-   "duree_max": 45,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.56,
-   "age": 10,
-   "note_bgg": 7.19,
-   "image": "images/ludotheque/202819.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/202819"
   },
   {
    "id": "193738",
@@ -2543,23 +2413,6 @@
    "note_bgg": 7.17,
    "image": "images/ludotheque/26566.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/26566"
-  },
-  {
-   "id": "282341",
-   "nom": "House Flippers",
-   "annee": 2019,
-   "joueurs_min": 2,
-   "joueurs_max": 4,
-   "duree_min": 10,
-   "duree_max": 15,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.0,
-   "age": 7,
-   "note_bgg": 5.62,
-   "image": "images/ludotheque/282341.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/282341"
   },
   {
    "id": "287871",
@@ -2973,23 +2826,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/52461"
   },
   {
-   "id": "127398",
-   "nom": "Legends of Andor",
-   "annee": 2012,
-   "joueurs_min": 1,
-   "joueurs_max": 4,
-   "duree_min": 60,
-   "duree_max": 90,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.77,
-   "age": 10,
-   "note_bgg": 7.08,
-   "image": "images/ludotheque/127398.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/127398"
-  },
-  {
    "id": "24480",
    "nom": "Les Piliers de la Terre",
    "annee": 2007,
@@ -3143,23 +2979,6 @@
    ],
    "image": "images/ludotheque/236301.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/236301"
-  },
-  {
-   "id": "156566",
-   "nom": "Lords of Xidit",
-   "annee": 2014,
-   "joueurs_min": 3,
-   "joueurs_max": 5,
-   "duree_min": 90,
-   "duree_max": 90,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.63,
-   "age": 14,
-   "note_bgg": 7.07,
-   "image": "images/ludotheque/156566.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/156566"
   },
   {
    "id": "129622",
@@ -3392,23 +3211,6 @@
    ],
    "image": "images/ludotheque/342810.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/342810"
-  },
-  {
-   "id": "298047",
-   "nom": "Marvel United",
-   "annee": 2020,
-   "joueurs_min": 1,
-   "joueurs_max": 4,
-   "duree_min": 40,
-   "duree_max": 40,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.85,
-   "age": 14,
-   "note_bgg": 7.53,
-   "image": "images/ludotheque/298047.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/298047"
   },
   {
    "id": "144344",
@@ -4156,41 +3958,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/181960"
   },
   {
-   "id": "244521",
-   "nom": "Quacks",
-   "annee": 2018,
-   "joueurs_min": 2,
-   "joueurs_max": 4,
-   "duree_min": 45,
-   "duree_max": 45,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.94,
-   "age": 10,
-   "note_bgg": 7.8,
-   "extensions": [
-    {
-     "id": "316597",
-     "nom": "The Quacks of Quedlinburg: The Alchemists",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/316597"
-    },
-    {
-     "id": "269259",
-     "nom": "The Quacks of Quedlinburg: The Herb Witches",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/269259"
-    }
-   ],
-   "image": "images/ludotheque/244521.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/244521"
-  },
-  {
    "id": "354886",
    "nom": "Quacks & Co.: Quedlinburg Dash",
    "annee": 2022,
@@ -4300,23 +4067,6 @@
    "note_bgg": 6.78,
    "image": "images/ludotheque/42452.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/42452"
-  },
-  {
-   "id": "231197",
-   "nom": "Raxxon",
-   "annee": 2017,
-   "joueurs_min": 1,
-   "joueurs_max": 4,
-   "duree_min": 45,
-   "duree_max": 60,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.0,
-   "age": 14,
-   "note_bgg": 6.7,
-   "image": "images/ludotheque/231197.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/231197"
   },
   {
    "id": "262712",
@@ -4705,23 +4455,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/77130"
   },
   {
-   "id": "257066",
-   "nom": "Sierra West",
-   "annee": 2019,
-   "joueurs_min": 1,
-   "joueurs_max": 4,
-   "duree_min": 40,
-   "duree_max": 60,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.96,
-   "age": 14,
-   "note_bgg": 6.77,
-   "image": "images/ludotheque/257066.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/257066"
-  },
-  {
    "id": "204135",
    "nom": "Skyjo",
    "annee": 2015,
@@ -4815,23 +4548,6 @@
    "note_bgg": 7.22,
    "image": "images/ludotheque/97786.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/97786"
-  },
-  {
-   "id": "162559",
-   "nom": "Smash Up: Munchkin",
-   "annee": 2015,
-   "joueurs_min": 2,
-   "joueurs_max": 4,
-   "duree_min": 45,
-   "duree_max": 45,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.2,
-   "age": 12,
-   "note_bgg": 6.55,
-   "image": "images/ludotheque/162559.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/162559"
   },
   {
    "id": "38054",
@@ -5506,6 +5222,40 @@
    "poids": 3.31,
    "age": 14,
    "note_bgg": 8.6,
+   "extensions": [
+    {
+     "id": "371622",
+     "nom": "Tainted Grail: Kings of Ruin – Black Goat of the Moors",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/371622"
+    },
+    {
+     "id": "420045",
+     "nom": "Tainted Grail: Kings of Ruin – Into the Mists",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/420045"
+    },
+    {
+     "id": "420043",
+     "nom": "Tainted Grail: Kings of Ruin – Lost Chapters",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/420043"
+    },
+    {
+     "id": "386803",
+     "nom": "Tainted Grail: Story Dice Expansion",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/386803"
+    }
+   ],
    "image": "images/ludotheque/360366.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/360366"
   },
@@ -5693,40 +5443,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/283317"
   },
   {
-   "id": "359124",
-   "nom": "The Animals of Baker Street",
-   "annee": 2022,
-   "joueurs_min": 1,
-   "joueurs_max": 4,
-   "duree_min": 45,
-   "duree_max": 45,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.81,
-   "age": 10,
-   "note_bgg": 7.49,
-   "image": "images/ludotheque/359124.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/359124"
-  },
-  {
-   "id": "171233",
-   "nom": "The Big Book of Madness",
-   "annee": 2015,
-   "joueurs_min": 2,
-   "joueurs_max": 5,
-   "duree_min": 60,
-   "duree_max": 90,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.7,
-   "age": 12,
-   "note_bgg": 6.86,
-   "image": "images/ludotheque/171233.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/171233"
-  },
-  {
    "id": "85005",
    "nom": "The Boss",
    "annee": 2010,
@@ -5795,23 +5511,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/356080"
   },
   {
-   "id": "238164",
-   "nom": "The Faceless",
-   "annee": 2018,
-   "joueurs_min": 2,
-   "joueurs_max": 4,
-   "duree_min": 30,
-   "duree_max": 45,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.29,
-   "age": 14,
-   "note_bgg": 6.63,
-   "image": "images/ludotheque/238164.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/238164"
-  },
-  {
    "id": "253807",
    "nom": "The Few and Cursed",
    "annee": 2020,
@@ -5854,23 +5553,6 @@
    "note_bgg": 7.52,
    "image": "images/ludotheque/70499.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/70499"
-  },
-  {
-   "id": "287474",
-   "nom": "The Isle of Pan",
-   "annee": 2019,
-   "joueurs_min": 2,
-   "joueurs_max": 4,
-   "duree_min": 30,
-   "duree_max": 45,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 2.25,
-   "age": 8,
-   "note_bgg": 5.64,
-   "image": "images/ludotheque/287474.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/287474"
   },
   {
    "id": "96007",
@@ -6533,23 +6215,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/181521"
   },
   {
-   "id": "272260",
-   "nom": "Welkin",
-   "annee": 2019,
-   "joueurs_min": 2,
-   "joueurs_max": 4,
-   "duree_min": 45,
-   "duree_max": 45,
-   "proprietaires": [
-    "Pat"
-   ],
-   "poids": 1.88,
-   "age": 10,
-   "note_bgg": 6.37,
-   "image": "images/ludotheque/272260.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/272260"
-  },
-  {
    "id": "232405",
    "nom": "Western Legends",
    "annee": 2018,
@@ -6595,6 +6260,22 @@
   }
  ],
  "extensions_seules": [
+  {
+   "id": "419393",
+   "nom": "Bardwood Grove: Kickstarter Exclusive Pack",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/419393"
+  },
+  {
+   "id": "418853",
+   "nom": "Bardwood Grove: Spirits of the Grove",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/418853"
+  },
   {
    "id": "412687",
    "nom": "Black Rose Wars: Rebirth – Apocalypse",
@@ -6652,6 +6333,38 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/412735"
   },
   {
+   "id": "291130",
+   "nom": "Etherfields: 5th Player Expansion",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/291130"
+  },
+  {
+   "id": "291131",
+   "nom": "Etherfields: Funeral Witch Campaign",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/291131"
+  },
+  {
+   "id": "290840",
+   "nom": "Etherfields: Sphinx Campaign",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/290840"
+  },
+  {
+   "id": "351544",
+   "nom": "Etherfields: Stretch Goals – Harpy & She-Wolf Campaigns",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/351544"
+  },
+  {
    "id": "340217",
    "nom": "Euthia: Torment of Resurrection – Elemental Pack",
    "proprietaires": [
@@ -6668,12 +6381,172 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/340218"
   },
   {
+   "id": "340233",
+   "nom": "ISS Vanguard: The Lost Fleet",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/340233"
+  },
+  {
    "id": "341254",
    "nom": "Lost Ruins of Arnak: Expedition Leaders",
    "proprietaires": [
     "Pat"
    ],
    "url_bgg": "https://boardgamegeek.com/boardgame/341254"
+  },
+  {
+   "id": "430008",
+   "nom": "Lost Ruins of Arnak: Rat Promo Card",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/430008"
+  },
+  {
+   "id": "382350",
+   "nom": "Lost Ruins of Arnak: The Missing Expedition",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/382350"
+  },
+  {
+   "id": "439816",
+   "nom": "Lost Ruins of Arnak: Twisted Paths",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/439816"
+  },
+  {
+   "id": "324550",
+   "nom": "Nova Aetas Renaissance: Catacombs",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/324550"
+  },
+  {
+   "id": "324548",
+   "nom": "Nova Aetas Renaissance: Under Siege",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/324548"
+  },
+  {
+   "id": "324549",
+   "nom": "Nova Aetas Renaissance: Vesuvio",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/324549"
+  },
+  {
+   "id": "402017",
+   "nom": "Stonesaga: Meals & Myths",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/402017"
+  },
+  {
+   "id": "421387",
+   "nom": "The Hunters A. D. 1492: Wasserburg Dockers",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/421387"
+  },
+  {
+   "id": "421388",
+   "nom": "The Hunters A.D. 1492: Heroes Set 1",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/421388"
+  },
+  {
+   "id": "421390",
+   "nom": "The Hunters A.D. 1492: Heroes Set 2",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/421390"
+  },
+  {
+   "id": "316597",
+   "nom": "The Quacks of Quedlinburg: The Alchemists",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/316597"
+  },
+  {
+   "id": "269259",
+   "nom": "The Quacks of Quedlinburg: The Herb Witches",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/269259"
+  },
+  {
+   "id": "340968",
+   "nom": "The Witcher: Old World – Adventure Pack",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/340968"
+  },
+  {
+   "id": "369048",
+   "nom": "The Witcher: Old World – Kickstarter Expansion",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/369048"
+  },
+  {
+   "id": "340526",
+   "nom": "The Witcher: Old World – Legendary Hunt",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/340526"
+  },
+  {
+   "id": "342212",
+   "nom": "The Witcher: Old World – Lost Mount",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/342212"
+  },
+  {
+   "id": "340523",
+   "nom": "The Witcher: Old World – Mages",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/340523"
+  },
+  {
+   "id": "341023",
+   "nom": "The Witcher: Old World – Monster Trail",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/341023"
+  },
+  {
+   "id": "340983",
+   "nom": "The Witcher: Old World – Wild Hunt",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/340983"
   }
  ]
 }
