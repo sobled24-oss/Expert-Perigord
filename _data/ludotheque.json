@@ -282,7 +282,6 @@
    "duree_min": 30,
    "duree_max": 120,
    "proprietaires": [
-    "Philou",
     "Tim"
    ],
    "poids": 4.0,
@@ -290,6 +289,23 @@
    "note_bgg": 8.03,
    "image": "images/ludotheque/185343.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/185343"
+  },
+  {
+   "id": "278292",
+   "nom": "Anachrony: Infinity Box",
+   "annee": 2020,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 30,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.0,
+   "age": 15,
+   "note_bgg": 8.92,
+   "image": "images/ludotheque/278292.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/278292"
   },
   {
    "id": "39339",
@@ -1599,6 +1615,23 @@
    ],
    "image": "images/ludotheque/40834.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/40834"
+  },
+  {
+   "id": "381247",
+   "nom": "Dragon Eclipse",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 2,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.7,
+   "age": 12,
+   "note_bgg": 8.32,
+   "image": "images/ludotheque/381247.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/381247"
   },
   {
    "id": "316554",
@@ -4483,6 +4516,23 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/144733"
   },
   {
+   "id": "381246",
+   "nom": "S.T.A.L.K.E.R. The Board Game",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 120,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.77,
+   "age": 14,
+   "note_bgg": 8.54,
+   "image": "images/ludotheque/381246.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/381246"
+  },
+  {
    "id": "441696",
    "nom": "Sanctuary",
    "annee": 2025,
@@ -5441,6 +5491,23 @@
    ],
    "image": "images/ludotheque/146508.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/146508"
+  },
+  {
+   "id": "360366",
+   "nom": "Tainted Grail: Kings of Ruin",
+   "annee": 2024,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.31,
+   "age": 14,
+   "note_bgg": 8.6,
+   "image": "images/ludotheque/360366.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/360366"
   },
   {
    "id": "264220",
