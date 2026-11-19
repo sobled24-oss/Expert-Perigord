@@ -176,3 +176,17 @@ a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 @media (min-width:981px) and (max-width:1120px){
   nav.menu a{padding:8px 6px;letter-spacing:.06em;font-size:.68rem}
 }
+/* Ludothèque : total et index alphabétique */
+.ludo-total{display:flex;flex-wrap:wrap;align-items:center;gap:18px 40px;margin:0 0 28px;padding:22px 26px;background:linear-gradient(180deg,#151418,#0F0E11);border:1px solid rgba(201,162,74,.35);clip-path:var(--bevel)}
+.lt-main{display:flex;align-items:baseline;gap:12px}
+.lt-main b{font-family:var(--f-head);font-size:clamp(2.4rem,5vw,3.4rem);line-height:1;color:var(--gold-hi)}
+.lt-main span{font-family:var(--f-label);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#D8CDB6}
+.lt-detail{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline;color:#CFC6B6;font-size:.95rem}
+.lt-detail b{color:var(--gold-hi);font-family:var(--f-head)}
+.lt-detail em{flex-basis:100%;font-size:.8rem;color:var(--muted)}
+.ludo-az{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 22px;position:sticky;top:70px;z-index:5;background:rgba(9,9,11,.92);padding:8px 0;backdrop-filter:blur(6px)}
+.ludo-az a{min-width:32px;text-align:center;padding:6px 4px;font-family:var(--f-head);font-size:.85rem;color:#D8CDB6;border:1px solid #2A2620;text-decoration:none}
+.ludo-az a:hover{border-color:var(--gold);color:var(--gold-hi)}
+.ludo-lettre{grid-column:1/-1;margin:18px 0 0;padding-bottom:8px;border-bottom:1px solid rgba(201,162,74,.35);font-size:1.6rem;color:var(--gold-hi);scroll-margin-top:140px}
+.ludo-lettre:first-child{margin-top:0}
+@media (max-width:980px){.ludo-az{top:60px}.ludo-az a{min-width:28px;font-size:.78rem}}

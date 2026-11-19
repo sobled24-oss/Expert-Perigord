@@ -285,7 +285,9 @@ R.ludotheque = () => {
   const hero = pageHero("Notre ludothèque","Les jeux de la ludothèque", B.intro||"", "60%");
   if(!LUDO.length) return hero + sec(empty("La ludothèque arrive bientôt : elle sera mise à jour automatiquement à partir de notre collection BoardGameGeek."));
   const opt = (v,l)=>`<option value="${v}">${l}</option>`;
-  return hero + sec(`<form class="ludo-filters" id="ludo-filters" role="search" onsubmit="return false">
+  const parMembre = OWNERS.map(n=>`<span><b>${LUDO.filter(j=>(j.proprietaires||[]).includes(n)).length}</b> chez ${esc(n)}</span>`).join("");
+  return hero + sec(`<div class="ludo-total"><div class="lt-main"><b>${LUDO.length}</b><span>jeux différents</span></div>${OWNERS.length>1?`<div class="lt-detail">${parMembre}<em>Un jeu possédé par plusieurs membres n'est compté qu'une fois.</em></div>`:""}</div>
+    <form class="ludo-filters" id="ludo-filters" role="search" onsubmit="return false">
       <label for="lf-q">Rechercher<input id="lf-q" type="search" placeholder="Nom du jeu" autocomplete="off"></label>
       <label for="lf-j">Joueurs<select id="lf-j">${opt("","Tous")}${[1,2,3,4,5,6].map(n=>opt(n, n===6?"6 et +":n)).join("")}</select></label>
       <label for="lf-d">Durée<select id="lf-d">${opt("","Toutes")}${opt("60","1 h ou moins")}${opt("120","2 h ou moins")}${opt("180","3 h ou moins")}${opt("999","Plus de 3 h")}</select></label>
@@ -294,6 +296,7 @@ R.ludotheque = () => {
       <label for="lf-t">Trier par<select id="lf-t">${opt("nom","Nom")}${opt("poids","Plus lourds d'abord")}${opt("duree","Plus courts d'abord")}${opt("annee","Plus récents d'abord")}</select></label>
     </form>
     <p class="note ludo-count" id="ludo-count" aria-live="polite"></p>
+    <nav class="ludo-az" id="ludo-az" aria-label="Aller à la lettre"></nav>
     <div class="grid ludo-grid" id="ludo-grid"></div>
     <div class="bgg-credit">
       <p class="note">Données et images : <a href="https://boardgamegeek.com" target="_blank" rel="noopener">BoardGameGeek</a>, d'après les collections de nos membres.${maj?` Liste mise à jour automatiquement, dernière modification le ${esc(new Date(maj+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"}))}.`:""}</p>
@@ -315,7 +318,18 @@ function ludoFiltre(){
   });
   const cmp = {nom:(a,b)=>String(a.nom).localeCompare(String(b.nom),"fr"), poids:(a,b)=>(b.poids||0)-(a.poids||0), duree:(a,b)=>(a.duree_max||999)-(b.duree_max||999), annee:(a,b)=>(b.annee||0)-(a.annee||0)}[tri];
   L = L.slice().sort(cmp);
-  g.innerHTML = L.length ? L.map(ludoCard).join("") : `<div class="empty">Aucun jeu ne correspond à ces critères.</div>`;
+  const az = document.getElementById("ludo-az");
+  if(tri==="nom" && L.length>12){
+    const lettre = j => { const c = norm(j.nom).charAt(0).toUpperCase(); return /[A-Z]/.test(c) ? c : "#"; };
+    let html = "", cur = null; const vues = [];
+    L.forEach(j=>{ const l = lettre(j); if(l!==cur){ cur = l; vues.push(l); html += `<h3 class="ludo-lettre" id="lettre-${l==="#"?"0":l}">${l}</h3>`; } html += ludoCard(j); });
+    g.innerHTML = html;
+    az.innerHTML = vues.map(l=>`<a href="#lettre-${l==="#"?"0":l}">${l}</a>`).join("");
+    az.hidden = false;
+  } else {
+    g.innerHTML = L.length ? L.map(ludoCard).join("") : `<div class="empty">Aucun jeu ne correspond à ces critères.</div>`;
+    az.hidden = true;
+  }
   document.getElementById("ludo-count").textContent = L.length===LUDO.length ? `${LUDO.length} jeux` : `${L.length} jeu${L.length>1?"x":""} sur ${LUDO.length}`;
 }
 
