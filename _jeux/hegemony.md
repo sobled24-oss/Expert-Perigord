@@ -1,7 +1,7 @@
 ---
 title: Hegemony
 date: 2026-11-19
-verdict: coeur
+verdict: rejouer
 redacteur: Philou
 resume: Une petite claque ludique ! Interaction et asymétrie à un niveau rarement vu, une simulation économique où les rires, les revendications et les noms d'oiseaux fusent. À jouer à 4.
 couverture: https://www.ludum.fr/17712-large_default/hegemony.jpg

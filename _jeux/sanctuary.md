@@ -1,7 +1,7 @@
 ---
 title: Sanctuary
 date: 2026-11-19
-verdict: coeur
+verdict: rejouer
 redacteur: Philou
 resume: Agréable surprise que cet « Ark Nova light » ! Les sensations de son grand frère, en bien plus instantané, et jouable à 3 ou 4.
 couverture: https://cf.geekdo-images.com/C6V2VCtf1_7cavenn7Is3A__original/img/mdgxo4BZpLgvG20XfNHfMg8j8Go=/0x0/filters:format(jpeg)/pic8932906.jpg
