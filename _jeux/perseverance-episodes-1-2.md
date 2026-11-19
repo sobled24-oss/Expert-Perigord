@@ -4,6 +4,7 @@ date: 2026-11-19
 verdict: rejouer
 redacteur: Philou
 resume: Échoués sur une île… et ce bruit, c'est un dinosaure ! Du placement de dés façon tower defense, un aléatoire maîtrisé et du semi-coopératif. Encore un Mindclash réussi.
+couverture: images/uploads/perseverance-1-2.jpg
 bgg: "256997"
 auteurs: Dávid Turczi, Richard Ámann, Thomas Vande Ginste, Viktor Péter, Wolf Plancke
 joueurs: 1 à 4

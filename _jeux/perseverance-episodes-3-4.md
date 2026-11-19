@@ -4,6 +4,7 @@ date: 2026-11-19
 verdict: rejouer
 redacteur: Philou
 resume: On dresse nos dinos et on part à l'aventure ! Un très bon Mindclash en tableau building, déroutant par sa quantité de choix. Si vous ne prenez qu'une boîte de la saga, prenez celle-ci.
+couverture: images/uploads/perseverance-3-4.jpg
 bgg: "387849"
 auteurs: Dávid Turczi, Richard Ámann, Thomas Vande Ginste, Viktor Péter
 joueurs: 1 à 4
