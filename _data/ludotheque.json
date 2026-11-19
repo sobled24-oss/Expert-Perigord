@@ -39,6 +39,16 @@
    "poids": 2.31,
    "age": 10,
    "note_bgg": 7.66,
+   "extensions": [
+    {
+     "id": "92539",
+     "nom": "7 Wonders: Leaders",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/92539"
+    }
+   ],
    "image": "images/ludotheque/68448.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/68448"
   },
@@ -58,6 +68,16 @@
    "poids": 2.23,
    "age": 10,
    "note_bgg": 8.07,
+   "extensions": [
+    {
+     "id": "202976",
+     "nom": "7 Wonders Duel: Pantheon",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/202976"
+    }
+   ],
    "image": "images/ludotheque/173346.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/173346"
   },
@@ -110,6 +130,16 @@
    "poids": 3.74,
    "age": 14,
    "note_bgg": 7.53,
+   "extensions": [
+    {
+     "id": "257496",
+     "nom": "A Game of Thrones: The Board Game (Second Edition) – Mother of Dragons",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/257496"
+    }
+   ],
    "image": "images/ludotheque/103343.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/103343"
   },
@@ -145,6 +175,16 @@
    "poids": 2.32,
    "age": 14,
    "note_bgg": 7.32,
+   "extensions": [
+    {
+     "id": "180341",
+     "nom": "Abyss: Kraken",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180341"
+    }
+   ],
    "image": "images/ludotheque/155987.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/155987"
   },
@@ -352,6 +392,16 @@
    "poids": 3.8,
    "age": 14,
    "note_bgg": 8.54,
+   "extensions": [
+    {
+     "id": "368966",
+     "nom": "Ark Nova: Marine Worlds",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/368966"
+    }
+   ],
    "image": "images/ludotheque/342942.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/342942"
   },
@@ -505,6 +555,32 @@
    "poids": 3.44,
    "age": 14,
    "note_bgg": 7.88,
+   "extensions": [
+    {
+     "id": "269414",
+     "nom": "Black Rose Wars: Hidden Thorns",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/269414"
+    },
+    {
+     "id": "413560",
+     "nom": "Black Rose Wars: Rebirth – Seal of Fire",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/413560"
+    },
+    {
+     "id": "312230",
+     "nom": "Black Rose Wars: Sator Box",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/312230"
+    }
+   ],
    "image": "images/ludotheque/239942.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/239942"
   },
@@ -573,6 +649,88 @@
    "poids": 1.45,
    "age": 13,
    "note_bgg": 6.54,
+   "extensions": [
+    {
+     "id": "298373",
+     "nom": "Board Royale: The Island – Disasters Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/298373"
+    },
+    {
+     "id": "298612",
+     "nom": "Board Royale: The Island – Founder's Expansion",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/298612"
+    },
+    {
+     "id": "298372",
+     "nom": "Board Royale: The Island – Military Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/298372"
+    },
+    {
+     "id": "345589",
+     "nom": "Board Royale: The Island – Missions Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/345589"
+    },
+    {
+     "id": "298380",
+     "nom": "Board Royale: The Island – NSFW Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/298380"
+    },
+    {
+     "id": "345591",
+     "nom": "Board Royale: The Island – Secret Weapons Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/345591"
+    },
+    {
+     "id": "298377",
+     "nom": "Board Royale: The Island – Skills Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/298377"
+    },
+    {
+     "id": "345590",
+     "nom": "Board Royale: The Island – Skills II Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/345590"
+    },
+    {
+     "id": "344971",
+     "nom": "Board Royale: The Island – Wild Hunt Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/344971"
+    },
+    {
+     "id": "345588",
+     "nom": "Board Royale: The Island – Zombies Expansion Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/345588"
+    }
+   ],
    "image": "images/ludotheque/284665.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/284665"
   },
@@ -743,6 +901,16 @@
    "poids": 4.32,
    "age": 14,
    "note_bgg": 7.69,
+   "extensions": [
+    {
+     "id": "259988",
+     "nom": "Cerebria: The Inside World – Forces of Balance",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/259988"
+    }
+   ],
    "image": "images/ludotheque/218479.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/218479"
   },
@@ -930,6 +1098,56 @@
    "poids": 4.4,
    "age": 13,
    "note_bgg": 8.18,
+   "extensions": [
+    {
+     "id": "307731",
+     "nom": "Cloudspire: Ankar's Plunder – Bonus Scenarios & Skirmishes",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/307731"
+    },
+    {
+     "id": "269415",
+     "nom": "Cloudspire: Griege – Faction Expansion",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/269415"
+    },
+    {
+     "id": "307729",
+     "nom": "Cloudspire: Hero's Bounty Pack",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/307729"
+    },
+    {
+     "id": "306621",
+     "nom": "Cloudspire: Horizon's Wrath – Faction Expansion",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/306621"
+    },
+    {
+     "id": "269416",
+     "nom": "Cloudspire: Portal Seekers – Content Expansion",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/269416"
+    },
+    {
+     "id": "306623",
+     "nom": "Cloudspire: The Uprising – Faction/Content Expansion",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/306623"
+    }
+   ],
    "image": "images/ludotheque/262211.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/262211"
   },
@@ -947,6 +1165,16 @@
    "poids": 1.83,
    "age": 10,
    "note_bgg": 7.1,
+   "extensions": [
+    {
+     "id": "181158",
+     "nom": "Colt Express: Horses & Stagecoach",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/181158"
+    }
+   ],
    "image": "images/ludotheque/158899.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/158899"
   },
@@ -1032,6 +1260,16 @@
    "poids": 3.26,
    "age": 12,
    "note_bgg": 7.12,
+   "extensions": [
+    {
+     "id": "40794",
+     "nom": "Cuba: El Presidente",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/40794"
+    }
+   ],
    "image": "images/ludotheque/30380.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/30380"
   },
@@ -1050,6 +1288,16 @@
    "poids": 2.82,
    "age": 13,
    "note_bgg": 7.49,
+   "extensions": [
+    {
+     "id": "96778",
+     "nom": "Cyclades: Hades",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/96778"
+    }
+   ],
    "image": "images/ludotheque/54998.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/54998"
   },
@@ -1339,6 +1587,16 @@
    "poids": 2.41,
    "age": 13,
    "note_bgg": 7.68,
+   "extensions": [
+    {
+     "id": "51811",
+     "nom": "Dominion: Seaside",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/51811"
+    }
+   ],
    "image": "images/ludotheque/40834.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/40834"
   },
@@ -1356,6 +1614,16 @@
    "poids": 3.08,
    "age": 14,
    "note_bgg": 8.41,
+   "extensions": [
+    {
+     "id": "342031",
+     "nom": "Dune: Imperium – Rise of Ix",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/342031"
+    }
+   ],
    "image": "images/ludotheque/316554.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/316554"
   },
@@ -1373,6 +1641,32 @@
    "poids": 3.63,
    "age": 13,
    "note_bgg": 7.38,
+   "extensions": [
+    {
+     "id": "151254",
+     "nom": "Dungeon Petz: Bob the Blob Promo Pet",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/151254"
+    },
+    {
+     "id": "126247",
+     "nom": "Dungeon Petz: Bonus Pets",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/126247"
+    },
+    {
+     "id": "143061",
+     "nom": "Dungeon Petz: Dark Alleys",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/143061"
+    }
+   ],
    "image": "images/ludotheque/97207.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/97207"
   },
@@ -1424,6 +1718,48 @@
    "poids": 3.71,
    "age": 14,
    "note_bgg": 7.81,
+   "extensions": [
+    {
+     "id": "184256",
+     "nom": "Eclipse: Black Hole",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/184256"
+    },
+    {
+     "id": "154785",
+     "nom": "Eclipse: Nebula",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/154785"
+    },
+    {
+     "id": "131415",
+     "nom": "Eclipse: Pulsar",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/131415"
+    },
+    {
+     "id": "125898",
+     "nom": "Eclipse: Rise of the Ancients",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/125898"
+    },
+    {
+     "id": "104746",
+     "nom": "Eclipse: Supernova",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/104746"
+    }
+   ],
    "image": "images/ludotheque/72125.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/72125"
   },
@@ -1441,6 +1777,16 @@
    "poids": 3.32,
    "age": 14,
    "note_bgg": 7.74,
+   "extensions": [
+    {
+     "id": "177182",
+     "nom": "Eldritch Horror: Strange Remnants",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/177182"
+    }
+   ],
    "image": "images/ludotheque/146021.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/146021"
   },
@@ -1645,6 +1991,56 @@
    "poids": 3.81,
    "age": 13,
    "note_bgg": 7.42,
+   "extensions": [
+    {
+     "id": "153805",
+     "nom": "Fief: France 1429 – Crusades",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/153805"
+    },
+    {
+     "id": "172154",
+     "nom": "Fief: France 1429 – Expansions Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/172154"
+    },
+    {
+     "id": "169149",
+     "nom": "Fief: France 1429 – Politics",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/169149"
+    },
+    {
+     "id": "169148",
+     "nom": "Fief: France 1429 – Tactics",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/169148"
+    },
+    {
+     "id": "153242",
+     "nom": "Fief: France 1429 – Templars Expansion",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/153242"
+    },
+    {
+     "id": "153648",
+     "nom": "Fief: France 1429 – Teutonic Knights Expansion",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/153648"
+    }
+   ],
    "image": "images/ludotheque/152470.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/152470"
   },
@@ -1747,6 +2143,16 @@
    "poids": 4.41,
    "age": 16,
    "note_bgg": 8.11,
+   "extensions": [
+    {
+     "id": "323382",
+     "nom": "Frostpunk: The Board Game – Frostlander",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/323382"
+    }
+   ],
    "image": "images/ludotheque/311988.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/311988"
   },
@@ -1781,6 +2187,24 @@
    "poids": 3.98,
    "age": 14,
    "note_bgg": 8.28,
+   "extensions": [
+    {
+     "id": "414976",
+     "nom": "Galactic Cruise: Accommodations",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/414976"
+    },
+    {
+     "id": "414974",
+     "nom": "Galactic Cruise: Advancements",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/414974"
+    }
+   ],
    "image": "images/ludotheque/391137.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/391137"
   },
@@ -1798,6 +2222,104 @@
    "poids": 3.23,
    "age": 12,
    "note_bgg": 7.4,
+   "extensions": [
+    {
+     "id": "180972",
+     "nom": "Galaxy Defenders Agent: Niobium",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180972"
+    },
+    {
+     "id": "180973",
+     "nom": "Galaxy Defenders Agent: Tritium",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180973"
+    },
+    {
+     "id": "180987",
+     "nom": "Galaxy Defenders Master Alien: Kingator",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180987"
+    },
+    {
+     "id": "180980",
+     "nom": "Galaxy Defenders Master Alien: The Experiment",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180980"
+    },
+    {
+     "id": "180979",
+     "nom": "Galaxy Defenders Master Alien: Xeno-Lord",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180979"
+    },
+    {
+     "id": "180984",
+     "nom": "Galaxy Defenders: 5th Column",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180984"
+    },
+    {
+     "id": "156674",
+     "nom": "Galaxy Defenders: Close Encounter Danger Variant Cards",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/156674"
+    },
+    {
+     "id": "149414",
+     "nom": "Galaxy Defenders: Elite Alien Army",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/149414"
+    },
+    {
+     "id": "180982",
+     "nom": "Galaxy Defenders: Elite Alien Legion",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180982"
+    },
+    {
+     "id": "159079",
+     "nom": "Galaxy Defenders: Extinction Protocol",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/159079"
+    },
+    {
+     "id": "159078",
+     "nom": "Galaxy Defenders: Operation Strikeback",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/159078"
+    },
+    {
+     "id": "180983",
+     "nom": "Galaxy Defenders: Vintage Weapon Set 1",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/180983"
+    }
+   ],
    "image": "images/ludotheque/138431.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/138431"
   },
@@ -2020,6 +2542,40 @@
    "poids": 4.22,
    "age": 14,
    "note_bgg": 8.35,
+   "extensions": [
+    {
+     "id": "337971",
+     "nom": "Hybris: Cataclysm",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/337971"
+    },
+    {
+     "id": "337970",
+     "nom": "Hybris: Divine Betrayal",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/337970"
+    },
+    {
+     "id": "337972",
+     "nom": "Hybris: Love & Hate",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/337972"
+    },
+    {
+     "id": "400813",
+     "nom": "Hybris: Rivalry",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/400813"
+    }
+   ],
    "image": "images/ludotheque/287871.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/287871"
   },
@@ -2054,6 +2610,16 @@
    "poids": 2.9,
    "age": 14,
    "note_bgg": 7.11,
+   "extensions": [
+    {
+     "id": "314501",
+     "nom": "Imaginarium: Chimera",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/314501"
+    }
+   ],
    "image": "images/ludotheque/218804.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/218804"
   },
@@ -2327,6 +2893,32 @@
    "poids": 2.72,
    "age": 14,
    "note_bgg": 7.16,
+   "extensions": [
+    {
+     "id": "143063",
+     "nom": "Last Will: Getting Sacked",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/143063"
+    },
+    {
+     "id": "132436",
+     "nom": "Last Will: Messenger Promo Card",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/132436"
+    },
+    {
+     "id": "111171",
+     "nom": "Last Will: Plan Order Board",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/111171"
+    }
+   ],
    "image": "images/ludotheque/97842.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/97842"
   },
@@ -2446,6 +3038,16 @@
    "poids": 2.22,
    "age": 10,
    "note_bgg": 7.21,
+   "extensions": [
+    {
+     "id": "371429",
+     "nom": "Living Forest: Kodama",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/371429"
+    }
+   ],
    "image": "images/ludotheque/328479.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/328479"
   },
@@ -2480,6 +3082,32 @@
    "poids": 3.65,
    "age": 14,
    "note_bgg": 6.9,
+   "extensions": [
+    {
+     "id": "242230",
+     "nom": "Living Planet: Aquarius",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/242230"
+    },
+    {
+     "id": "242231",
+     "nom": "Living Planet: Arboria",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/242231"
+    },
+    {
+     "id": "242228",
+     "nom": "Living Planet: Industria",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/242228"
+    }
+   ],
    "image": "images/ludotheque/236301.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/236301"
   },
@@ -2719,6 +3347,16 @@
    "poids": 3.45,
    "age": 14,
    "note_bgg": 8.06,
+   "extensions": [
+    {
+     "id": "396446",
+     "nom": "Marrakesh: Camels & Nomads",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/396446"
+    }
+   ],
    "image": "images/ludotheque/342810.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/342810"
   },
@@ -2992,6 +3630,40 @@
    "poids": 3.49,
    "age": 12,
    "note_bgg": 8.24,
+   "extensions": [
+    {
+     "id": "318351",
+     "nom": "Nemesis: Aftermath",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/318351"
+    },
+    {
+     "id": "245845",
+     "nom": "Nemesis: Carnomorphs",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/245845"
+    },
+    {
+     "id": "245846",
+     "nom": "Nemesis: Medic Character Expansion",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/245846"
+    },
+    {
+     "id": "313790",
+     "nom": "Nemesis: Void Seeders",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/313790"
+    }
+   ],
    "image": "images/ludotheque/167355.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/167355"
   },
@@ -3009,6 +3681,16 @@
    "poids": 3.91,
    "age": 12,
    "note_bgg": 8.23,
+   "extensions": [
+    {
+     "id": "321742",
+     "nom": "Nemesis: Lockdown – Stretch Goals",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/321742"
+    }
+   ],
    "image": "images/ludotheque/310100.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/310100"
   },
@@ -3332,6 +4014,16 @@
    "poids": 3.05,
    "age": 12,
    "note_bgg": 7.83,
+   "extensions": [
+    {
+     "id": "349606",
+     "nom": "Pagan: Beyond the Palisades",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/349606"
+    }
+   ],
    "image": "images/ludotheque/319910.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/319910"
   },
@@ -3383,6 +4075,16 @@
    "poids": 4.23,
    "age": 14,
    "note_bgg": 7.66,
+   "extensions": [
+    {
+     "id": "454444",
+     "nom": "Perseverance: Castaway Chronicles – Chronicle Expansion",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/454444"
+    }
+   ],
    "image": "images/ludotheque/256997.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/256997"
   },
@@ -3434,6 +4136,24 @@
    "poids": 1.94,
    "age": 10,
    "note_bgg": 7.8,
+   "extensions": [
+    {
+     "id": "316597",
+     "nom": "The Quacks of Quedlinburg: The Alchemists",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/316597"
+    },
+    {
+     "id": "269259",
+     "nom": "The Quacks of Quedlinburg: The Herb Witches",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/269259"
+    }
+   ],
    "image": "images/ludotheque/244521.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/244521"
   },
@@ -3485,6 +4205,32 @@
    "poids": 2.99,
    "age": 12,
    "note_bgg": 7.74,
+   "extensions": [
+    {
+     "id": "66121",
+     "nom": "Race for the Galaxy: Au bord de l'Abîme",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/66121"
+    },
+    {
+     "id": "40210",
+     "nom": "Race for the Galaxy: Rebelles contre Imperium",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/40210"
+    },
+    {
+     "id": "34499",
+     "nom": "Race for the Galaxy: Tempête en formation",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/34499"
+    }
+   ],
    "image": "images/ludotheque/28143.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/28143"
   },
@@ -3657,6 +4403,48 @@
    "poids": 2.72,
    "age": 14,
    "note_bgg": 7.47,
+   "extensions": [
+    {
+     "id": "198942",
+     "nom": "Runebound (Third Edition): Caught in a Web – Scenario Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/198942"
+    },
+    {
+     "id": "201629",
+     "nom": "Runebound (Third Edition): Fall of the Dark Star – Scenario Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201629"
+    },
+    {
+     "id": "198943",
+     "nom": "Runebound (Third Edition): The Gilded Blade – Adventure Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/198943"
+    },
+    {
+     "id": "201630",
+     "nom": "Runebound (Third Edition): The Mountains Rise – Adventure Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201630"
+    },
+    {
+     "id": "225275",
+     "nom": "Runebound (Third Edition): Unbreakable Bonds",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/225275"
+    }
+   ],
    "image": "images/ludotheque/181530.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/181530"
   },
@@ -3743,6 +4531,32 @@
    "poids": 3.45,
    "age": 14,
    "note_bgg": 8.09,
+   "extensions": [
+    {
+     "id": "279304",
+     "nom": "Scythe: Modular Board",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/279304"
+    },
+    {
+     "id": "242277",
+     "nom": "Scythe: The Rise of Fenris",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/242277"
+    },
+    {
+     "id": "223555",
+     "nom": "Scythe: The Wind Gambit",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/223555"
+    }
+   ],
    "image": "images/ludotheque/169786.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/169786"
   },
@@ -3794,6 +4608,32 @@
    "poids": 2.09,
    "age": 10,
    "note_bgg": 7.41,
+   "extensions": [
+    {
+     "id": "313056",
+     "nom": "Shards of Infinity: Into the Horizon",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/313056"
+    },
+    {
+     "id": "257379",
+     "nom": "Shards of Infinity: Relics of the Future",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/257379"
+    },
+    {
+     "id": "283173",
+     "nom": "Shards of Infinity: Shadow of Salvation",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/283173"
+    }
+   ],
    "image": "images/ludotheque/244115.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/244115"
   },
@@ -3862,6 +4702,16 @@
    "poids": 3.25,
    "age": 13,
    "note_bgg": 8.07,
+   "extensions": [
+    {
+     "id": "283766",
+     "nom": "Sleeping Gods: Tides of Ruin",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/283766"
+    }
+   ],
    "image": "images/ludotheque/255984.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/255984"
   },
@@ -4203,6 +5053,280 @@
    "poids": 2.33,
    "age": 9,
    "note_bgg": 7.21,
+   "extensions": [
+    {
+     "id": "126942",
+     "nom": "Summoner Wars: Bellor's Retribution Reinforcement Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/126942"
+    },
+    {
+     "id": "201820",
+     "nom": "Summoner Wars: Benders – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201820"
+    },
+    {
+     "id": "129544",
+     "nom": "Summoner Wars: Bodgan",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/129544"
+    },
+    {
+     "id": "136448",
+     "nom": "Summoner Wars: Cave Goblins – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/136448"
+    },
+    {
+     "id": "90316",
+     "nom": "Summoner Wars: Cloaks Faction Deck",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/90316"
+    },
+    {
+     "id": "152858",
+     "nom": "Summoner Wars: Cloaks – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/152858"
+    },
+    {
+     "id": "201819",
+     "nom": "Summoner Wars: Deep Dwarves – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201819"
+    },
+    {
+     "id": "82423",
+     "nom": "Summoner Wars: Fallen Kingdom Faction Deck",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/82423"
+    },
+    {
+     "id": "145687",
+     "nom": "Summoner Wars: Fallen Kingdom – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/145687"
+    },
+    {
+     "id": "92869",
+     "nom": "Summoner Wars: Goodwin's Blade Reinforcement Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/92869"
+    },
+    {
+     "id": "82429",
+     "nom": "Summoner Wars: Grungor's Charge Reinforcement Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/82429"
+    },
+    {
+     "id": "136447",
+     "nom": "Summoner Wars: Guild Dwarves – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/136447"
+    },
+    {
+     "id": "92870",
+     "nom": "Summoner Wars: Hawk's Strike Reinforcement Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/92870"
+    },
+    {
+     "id": "90317",
+     "nom": "Summoner Wars: Jungle Elves Faction Deck",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/90317"
+    },
+    {
+     "id": "152859",
+     "nom": "Summoner Wars: Jungle Elves – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/152859"
+    },
+    {
+     "id": "88328",
+     "nom": "Summoner Wars: Khan Queso",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/88328"
+    },
+    {
+     "id": "92934",
+     "nom": "Summoner Wars: Khexhu",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/92934"
+    },
+    {
+     "id": "113227",
+     "nom": "Summoner Wars: Mercenaries Faction Deck",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/113227"
+    },
+    {
+     "id": "201817",
+     "nom": "Summoner Wars: Mercenaries – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201817"
+    },
+    {
+     "id": "201816",
+     "nom": "Summoner Wars: Mountain Vargath – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201816"
+    },
+    {
+     "id": "136445",
+     "nom": "Summoner Wars: Phoenix Elves – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/136445"
+    },
+    {
+     "id": "113224",
+     "nom": "Summoner Wars: Piclo's Magic Reinforcement Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/113224"
+    },
+    {
+     "id": "82428",
+     "nom": "Summoner Wars: Rukar's Power Reinforcement Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/82428"
+    },
+    {
+     "id": "126943",
+     "nom": "Summoner Wars: Saella's Precision Reinforcement Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/126943"
+    },
+    {
+     "id": "88329",
+     "nom": "Summoner Wars: Sairook",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/88329"
+    },
+    {
+     "id": "201815",
+     "nom": "Summoner Wars: Sand Goblins – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201815"
+    },
+    {
+     "id": "201814",
+     "nom": "Summoner Wars: Shadow Elves – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201814"
+    },
+    {
+     "id": "201813",
+     "nom": "Summoner Wars: Swamp Orcs – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201813"
+    },
+    {
+     "id": "113228",
+     "nom": "Summoner Wars: Taliya's Spirit Reinforcement Pack",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/113228"
+    },
+    {
+     "id": "113225",
+     "nom": "Summoner Wars: The Filth Faction Deck",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/113225"
+    },
+    {
+     "id": "201818",
+     "nom": "Summoner Wars: The Filth – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/201818"
+    },
+    {
+     "id": "136446",
+     "nom": "Summoner Wars: Tundra Orcs – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/136446"
+    },
+    {
+     "id": "82422",
+     "nom": "Summoner Wars: Vanguards Faction Deck",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/82422"
+    },
+    {
+     "id": "145536",
+     "nom": "Summoner Wars: Vanguards – Second Summoner",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/145536"
+    }
+   ],
    "image": "images/ludotheque/58281.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/58281"
   },
@@ -4305,6 +5429,16 @@
    "poids": 2.58,
    "age": 12,
    "note_bgg": 7.33,
+   "extensions": [
+    {
+     "id": "213099",
+     "nom": "T.I.M.E Stories: Lumen Fidei",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/213099"
+    }
+   ],
    "image": "images/ludotheque/146508.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/146508"
   },
@@ -4323,6 +5457,68 @@
    "poids": 3.38,
    "age": 14,
    "note_bgg": 8.02,
+   "extensions": [
+    {
+     "id": "274795",
+     "nom": "Tainted Grail: Age of Legends & Last Knight Campaigns",
+     "proprietaires": [
+      "Philou",
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/274795"
+    },
+    {
+     "id": "355872",
+     "nom": "Tainted Grail: Item Sets Promo Cards",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/355872"
+    },
+    {
+     "id": "302483",
+     "nom": "Tainted Grail: Monsters of Avalon – Past and Future Miniature Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/302483"
+    },
+    {
+     "id": "308105",
+     "nom": "Tainted Grail: Past And Future Alternative Encounters Card Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/308105"
+    },
+    {
+     "id": "267325",
+     "nom": "Tainted Grail: The Fall of Avalon – Echoes of the Past",
+     "proprietaires": [
+      "Philou",
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/267325"
+    },
+    {
+     "id": "266659",
+     "nom": "Tainted Grail: The Fall of Avalon – Niamh",
+     "proprietaires": [
+      "Philou",
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/266659"
+    },
+    {
+     "id": "267408",
+     "nom": "Tainted Grail: The Fall of Avalon – Red Death Expansion",
+     "proprietaires": [
+      "Philou",
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/267408"
+    }
+   ],
    "image": "images/ludotheque/264220.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/264220"
   },
@@ -4392,6 +5588,16 @@
    "poids": 3.97,
    "age": 12,
    "note_bgg": 8.03,
+   "extensions": [
+    {
+     "id": "149890",
+     "nom": "Terra Mystica: 4 Town Tiles",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/149890"
+    }
+   ],
    "image": "images/ludotheque/120677.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/120677"
   },
@@ -4580,6 +5786,16 @@
    "poids": 2.62,
    "age": 13,
    "note_bgg": 7.11,
+   "extensions": [
+    {
+     "id": "320464",
+     "nom": "The Few and Cursed: Deluxe Expansion",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/320464"
+    }
+   ],
    "image": "images/ludotheque/253807.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/253807"
   },
@@ -4717,6 +5933,24 @@
    "poids": 3.34,
    "age": 18,
    "note_bgg": 7.75,
+   "extensions": [
+    {
+     "id": "288901",
+     "nom": "This War of Mine: Days of the Siege",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/288901"
+    },
+    {
+     "id": "247665",
+     "nom": "This War of Mine: Tales from the Ruined City",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/247665"
+    }
+   ],
    "image": "images/ludotheque/188920.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/188920"
   },
@@ -4990,6 +6224,24 @@
    "poids": 2.94,
    "age": 14,
    "note_bgg": 7.69,
+   "extensions": [
+    {
+     "id": "320461",
+     "nom": "Twisted Fables: Dark Machinations",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/320461"
+    },
+    {
+     "id": "320460",
+     "nom": "Twisted Fables: Flood and Flame",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/320460"
+    }
+   ],
    "image": "images/ludotheque/308621.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/308621"
   },
@@ -5007,6 +6259,40 @@
    "poids": 3.66,
    "age": 13,
    "note_bgg": 7.84,
+   "extensions": [
+    {
+     "id": "134380",
+     "nom": "Tzolk'in: The Mayan Calendar – Mini Expansion 1",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/134380"
+    },
+    {
+     "id": "142580",
+     "nom": "Tzolk'in: The Mayan Calendar – Mini Expansion 2",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/142580"
+    },
+    {
+     "id": "143065",
+     "nom": "Tzolk'in: The Mayan Calendar – Tribes & Prophecies",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/143065"
+    },
+    {
+     "id": "149801",
+     "nom": "Tzolk'in: The Mayan Calendar – Tribes & Prophecies: Ek Chuah",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/149801"
+    }
+   ],
    "image": "images/ludotheque/126163.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/126163"
   },
@@ -5059,6 +6345,16 @@
    "poids": 3.59,
    "age": 12,
    "note_bgg": 8.04,
+   "extensions": [
+    {
+     "id": "276104",
+     "nom": "Underwater Cities: New Discoveries",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/276104"
+    }
+   ],
    "image": "images/ludotheque/247763.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/247763"
   },
@@ -5263,8 +6559,100 @@
    "poids": 3.49,
    "age": 14,
    "note_bgg": 7.0,
+   "extensions": [
+    {
+     "id": "132439",
+     "nom": "Western Town: Expansion",
+     "proprietaires": [
+      "Tim"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/132439"
+    }
+   ],
    "image": "images/ludotheque/19358.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/19358"
+  }
+ ],
+ "extensions_seules": [
+  {
+   "id": "412687",
+   "nom": "Black Rose Wars: Rebirth – Apocalypse",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/412687"
+  },
+  {
+   "id": "414161",
+   "nom": "Black Rose Wars: Rebirth – Deadly Mask",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/414161"
+  },
+  {
+   "id": "414160",
+   "nom": "Black Rose Wars: Rebirth – Dread Forge",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/414160"
+  },
+  {
+   "id": "412689",
+   "nom": "Black Rose Wars: Rebirth – Gaea Reborn",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/412689"
+  },
+  {
+   "id": "413565",
+   "nom": "Black Rose Wars: Rebirth – Irene",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/413565"
+  },
+  {
+   "id": "413564",
+   "nom": "Black Rose Wars: Rebirth – Jukas",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/413564"
+  },
+  {
+   "id": "412735",
+   "nom": "Black Rose Wars: Rebirth – Rotas Box",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/412735"
+  },
+  {
+   "id": "340217",
+   "nom": "Euthia: Torment of Resurrection – Elemental Pack",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/340217"
+  },
+  {
+   "id": "340218",
+   "nom": "Euthia: Torment of Resurrection – Griffin",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/340218"
+  },
+  {
+   "id": "341254",
+   "nom": "Lost Ruins of Arnak: Expedition Leaders",
+   "proprietaires": [
+    "Pat"
+   ],
+   "url_bgg": "https://boardgamegeek.com/boardgame/341254"
   }
  ]
 }
