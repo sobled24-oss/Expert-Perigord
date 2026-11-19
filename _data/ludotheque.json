@@ -1,5 +1,1215 @@
 {
- "utilisateur": "",
- "maj": "",
- "jeux": []
+ "comptes": [
+  "Philouphil"
+ ],
+ "maj": "2026-11-19",
+ "jeux": [
+  {
+   "id": "68448",
+   "nom": "7 Wonders",
+   "annee": 2010,
+   "joueurs_min": 2,
+   "joueurs_max": 7,
+   "duree_min": 30,
+   "duree_max": 30,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.31,
+   "age": 10,
+   "note_bgg": 7.66,
+   "image": "images/ludotheque/68448.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/68448"
+  },
+  {
+   "id": "173346",
+   "nom": "7 Wonders Duel",
+   "annee": 2015,
+   "joueurs_min": 2,
+   "joueurs_max": 2,
+   "duree_min": 30,
+   "duree_max": 30,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.23,
+   "age": 10,
+   "note_bgg": 8.07,
+   "image": "images/ludotheque/173346.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/173346"
+  },
+  {
+   "id": "103343",
+   "nom": "A Game of Thrones: The Board Game (Second Edition)",
+   "annee": 2011,
+   "joueurs_min": 3,
+   "joueurs_max": 6,
+   "duree_min": 120,
+   "duree_max": 240,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.74,
+   "age": 14,
+   "note_bgg": 7.53,
+   "image": "images/ludotheque/103343.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/103343"
+  },
+  {
+   "id": "185343",
+   "nom": "Anachrony",
+   "annee": 2017,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 30,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.0,
+   "age": 15,
+   "note_bgg": 8.03,
+   "image": "images/ludotheque/185343.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/185343"
+  },
+  {
+   "id": "359871",
+   "nom": "Arcs",
+   "annee": 2024,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.46,
+   "age": 14,
+   "note_bgg": 7.97,
+   "image": "images/ludotheque/359871.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/359871"
+  },
+  {
+   "id": "342942",
+   "nom": "Ark Nova",
+   "annee": 2021,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 150,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.8,
+   "age": 14,
+   "note_bgg": 8.54,
+   "image": "images/ludotheque/342942.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/342942"
+  },
+  {
+   "id": "257499",
+   "nom": "Arkham Horror (Third Edition)",
+   "annee": 2018,
+   "joueurs_min": 1,
+   "joueurs_max": 6,
+   "duree_min": 120,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.37,
+   "age": 14,
+   "note_bgg": 7.68,
+   "image": "images/ludotheque/257499.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/257499"
+  },
+  {
+   "id": "205637",
+   "nom": "Arkham Horror: The Card Game",
+   "annee": 2016,
+   "joueurs_min": 1,
+   "joueurs_max": 2,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.57,
+   "age": 14,
+   "note_bgg": 8.12,
+   "image": "images/ludotheque/205637.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/205637"
+  },
+  {
+   "id": "28720",
+   "nom": "Brass: Lancashire",
+   "annee": 2007,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.84,
+   "age": 14,
+   "note_bgg": 8.2,
+   "image": "images/ludotheque/28720.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/28720"
+  },
+  {
+   "id": "218479",
+   "nom": "Cerebria: The Inside World",
+   "annee": 2018,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.32,
+   "age": 14,
+   "note_bgg": 7.69,
+   "image": "images/ludotheque/218479.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/218479"
+  },
+  {
+   "id": "478",
+   "nom": "Citadels",
+   "annee": 2000,
+   "joueurs_min": 2,
+   "joueurs_max": 8,
+   "duree_min": 20,
+   "duree_max": 60,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.05,
+   "age": 10,
+   "note_bgg": 7.05,
+   "image": "images/ludotheque/478.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/478"
+  },
+  {
+   "id": "262211",
+   "nom": "Cloudspire",
+   "annee": 2019,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.4,
+   "age": 13,
+   "note_bgg": 8.18,
+   "image": "images/ludotheque/262211.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/262211"
+  },
+  {
+   "id": "276042",
+   "nom": "Conspiracy: Abyss Universe",
+   "annee": 2019,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 30,
+   "duree_max": 30,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 1.8,
+   "age": 8,
+   "note_bgg": 7.17,
+   "image": "images/ludotheque/276042.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/276042"
+  },
+  {
+   "id": "54998",
+   "nom": "Cyclades",
+   "annee": 2009,
+   "joueurs_min": 2,
+   "joueurs_max": 5,
+   "duree_min": 60,
+   "duree_max": 90,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.82,
+   "age": 13,
+   "note_bgg": 7.49,
+   "image": "images/ludotheque/54998.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/54998"
+  },
+  {
+   "id": "322289",
+   "nom": "Darwin's Journey",
+   "annee": 2023,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.91,
+   "age": 14,
+   "note_bgg": 8.08,
+   "image": "images/ludotheque/322289.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/322289"
+  },
+  {
+   "id": "322708",
+   "nom": "Descent: Legends of the Dark",
+   "annee": 2021,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 120,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.69,
+   "age": 14,
+   "note_bgg": 7.88,
+   "image": "images/ludotheque/322708.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/322708"
+  },
+  {
+   "id": "320819",
+   "nom": "Dinner in Paris",
+   "annee": 2020,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 40,
+   "duree_max": 60,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.15,
+   "age": 10,
+   "note_bgg": 6.72,
+   "image": "images/ludotheque/320819.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/320819"
+  },
+  {
+   "id": "40834",
+   "nom": "Dominion: Intrigue",
+   "annee": 2009,
+   "joueurs_min": 2,
+   "joueurs_max": 6,
+   "duree_min": 30,
+   "duree_max": 30,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.41,
+   "age": 13,
+   "note_bgg": 7.68,
+   "image": "images/ludotheque/40834.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/40834"
+  },
+  {
+   "id": "146021",
+   "nom": "Eldritch Horror",
+   "annee": 2013,
+   "joueurs_min": 1,
+   "joueurs_max": 8,
+   "duree_min": 120,
+   "duree_max": 240,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.32,
+   "age": 14,
+   "note_bgg": 7.74,
+   "image": "images/ludotheque/146021.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/146021"
+  },
+  {
+   "id": "163839",
+   "nom": "Feudum",
+   "annee": 2018,
+   "joueurs_min": 2,
+   "joueurs_max": 5,
+   "duree_min": 80,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.59,
+   "age": 12,
+   "note_bgg": 7.58,
+   "image": "images/ludotheque/163839.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/163839"
+  },
+  {
+   "id": "311988",
+   "nom": "Frostpunk: The Board Game",
+   "annee": 2022,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 120,
+   "duree_max": 150,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.41,
+   "age": 16,
+   "note_bgg": 8.11,
+   "image": "images/ludotheque/311988.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/311988"
+  },
+  {
+   "id": "391137",
+   "nom": "Galactic Cruise",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 150,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.98,
+   "age": 14,
+   "note_bgg": 8.28,
+   "image": "images/ludotheque/391137.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/391137"
+  },
+  {
+   "id": "417599",
+   "nom": "Harmony",
+   "annee": 2024,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 40,
+   "duree_max": 90,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.67,
+   "age": 10,
+   "note_bgg": 7.52,
+   "image": "images/ludotheque/417599.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/417599"
+  },
+  {
+   "id": "287871",
+   "nom": "Hybris: Disordered Cosmos",
+   "annee": 2023,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.22,
+   "age": 14,
+   "note_bgg": 8.35,
+   "image": "images/ludotheque/287871.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/287871"
+  },
+  {
+   "id": "242",
+   "nom": "Junta",
+   "annee": 1979,
+   "joueurs_min": 2,
+   "joueurs_max": 7,
+   "duree_min": 240,
+   "duree_max": 240,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.86,
+   "age": 16,
+   "note_bgg": 6.69,
+   "image": "images/ludotheque/242.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/242"
+  },
+  {
+   "id": "127023",
+   "nom": "Kemet",
+   "annee": 2012,
+   "joueurs_min": 2,
+   "joueurs_max": 5,
+   "duree_min": 90,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.01,
+   "age": 13,
+   "note_bgg": 7.62,
+   "image": "images/ludotheque/127023.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/127023"
+  },
+  {
+   "id": "368046",
+   "nom": "La Bête",
+   "annee": 2022,
+   "joueurs_min": 2,
+   "joueurs_max": 5,
+   "duree_min": 45,
+   "duree_max": 60,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.31,
+   "age": 12,
+   "note_bgg": 7.44,
+   "image": "images/ludotheque/368046.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/368046"
+  },
+  {
+   "id": "367517",
+   "nom": "La Famiglia: The Great Mafia War",
+   "annee": 2023,
+   "joueurs_min": 4,
+   "joueurs_max": 4,
+   "duree_min": 120,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.0,
+   "age": 16,
+   "note_bgg": 7.96,
+   "image": "images/ludotheque/367517.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/367517"
+  },
+  {
+   "id": "248562",
+   "nom": "Mage Knight: Ultimate Edition",
+   "annee": 2018,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 150,
+   "duree_max": 150,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.65,
+   "age": 14,
+   "note_bgg": 8.84,
+   "image": "images/ludotheque/248562.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/248562"
+  },
+  {
+   "id": "101721",
+   "nom": "Mage Wars Arena",
+   "annee": 2012,
+   "joueurs_min": 2,
+   "joueurs_max": 2,
+   "duree_min": 90,
+   "duree_max": 90,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.68,
+   "age": 13,
+   "note_bgg": 7.56,
+   "image": "images/ludotheque/101721.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/101721"
+  },
+  {
+   "id": "205059",
+   "nom": "Mansions of Madness: Second Edition",
+   "annee": 2016,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 120,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.69,
+   "age": 14,
+   "note_bgg": 7.91,
+   "image": "images/ludotheque/205059.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/205059"
+  },
+  {
+   "id": "342810",
+   "nom": "Marrakesh",
+   "annee": 2022,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 120,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.45,
+   "age": 14,
+   "note_bgg": 8.06,
+   "image": "images/ludotheque/342810.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/342810"
+  },
+  {
+   "id": "248125",
+   "nom": "Monumental",
+   "annee": 2020,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.85,
+   "age": 14,
+   "note_bgg": 7.37,
+   "image": "images/ludotheque/248125.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/248125"
+  },
+  {
+   "id": "21763",
+   "nom": "Mr. Jack",
+   "annee": 2006,
+   "joueurs_min": 2,
+   "joueurs_max": 2,
+   "duree_min": 30,
+   "duree_max": 30,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.17,
+   "age": 9,
+   "note_bgg": 6.96,
+   "image": "images/ludotheque/21763.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/21763"
+  },
+  {
+   "id": "29678",
+   "nom": "Munchkin Quest",
+   "annee": 2008,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 180,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.51,
+   "age": 12,
+   "note_bgg": 5.82,
+   "image": "images/ludotheque/29678.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/29678"
+  },
+  {
+   "id": "181304",
+   "nom": "Mysterium",
+   "annee": 2015,
+   "joueurs_min": 2,
+   "joueurs_max": 7,
+   "duree_min": 42,
+   "duree_max": 42,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 1.89,
+   "age": 10,
+   "note_bgg": 7.19,
+   "image": "images/ludotheque/181304.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/181304"
+  },
+  {
+   "id": "167355",
+   "nom": "Nemesis",
+   "annee": 2018,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 90,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.49,
+   "age": 12,
+   "note_bgg": 8.24,
+   "image": "images/ludotheque/167355.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/167355"
+  },
+  {
+   "id": "310100",
+   "nom": "Nemesis: Lockdown",
+   "annee": 2022,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 90,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.91,
+   "age": 12,
+   "note_bgg": 8.23,
+   "image": "images/ludotheque/310100.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/310100"
+  },
+  {
+   "id": "381248",
+   "nom": "Nemesis: Retaliation",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 120,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.77,
+   "age": 14,
+   "note_bgg": 8.62,
+   "image": "images/ludotheque/381248.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/381248"
+  },
+  {
+   "id": "293014",
+   "nom": "Nidavellir",
+   "annee": 2020,
+   "joueurs_min": 2,
+   "joueurs_max": 5,
+   "duree_min": 45,
+   "duree_max": 45,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.12,
+   "age": 10,
+   "note_bgg": 7.55,
+   "image": "images/ludotheque/293014.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/293014"
+  },
+  {
+   "id": "319910",
+   "nom": "Pagan: Fate of Roanoke",
+   "annee": 2022,
+   "joueurs_min": 2,
+   "joueurs_max": 2,
+   "duree_min": 30,
+   "duree_max": 60,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.05,
+   "age": 12,
+   "note_bgg": 7.83,
+   "image": "images/ludotheque/319910.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/319910"
+  },
+  {
+   "id": "256997",
+   "nom": "Perseverance: Castaway Chronicles – Episodes 1 & 2",
+   "annee": 2022,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 80,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.23,
+   "age": 14,
+   "note_bgg": 7.66,
+   "image": "images/ludotheque/256997.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/256997"
+  },
+  {
+   "id": "387849",
+   "nom": "Perseverance: Castaway Chronicles – Episodes 3 & 4",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.57,
+   "age": 12,
+   "note_bgg": 8.14,
+   "image": "images/ludotheque/387849.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/387849"
+  },
+  {
+   "id": "262712",
+   "nom": "Res Arcana",
+   "annee": 2019,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 30,
+   "duree_max": 60,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.66,
+   "age": 12,
+   "note_bgg": 7.6,
+   "image": "images/ludotheque/262712.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/262712"
+  },
+  {
+   "id": "428099",
+   "nom": "Revenant",
+   "annee": 2026,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.25,
+   "age": 14,
+   "note_bgg": 7.88,
+   "image": "images/ludotheque/428099.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/428099"
+  },
+  {
+   "id": "205896",
+   "nom": "Rising Sun",
+   "annee": 2018,
+   "joueurs_min": 3,
+   "joueurs_max": 5,
+   "duree_min": 90,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.3,
+   "age": 14,
+   "note_bgg": 7.75,
+   "image": "images/ludotheque/205896.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/205896"
+  },
+  {
+   "id": "441696",
+   "nom": "Sanctuary",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 40,
+   "duree_max": 100,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.84,
+   "age": 12,
+   "note_bgg": 7.64,
+   "image": "images/ludotheque/441696.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/441696"
+  },
+  {
+   "id": "169786",
+   "nom": "Scythe",
+   "annee": 2016,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 115,
+   "duree_max": 115,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.45,
+   "age": 14,
+   "note_bgg": 8.09,
+   "image": "images/ludotheque/169786.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/169786"
+  },
+  {
+   "id": "255984",
+   "nom": "Sleeping Gods",
+   "annee": 2021,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.25,
+   "age": 13,
+   "note_bgg": 8.07,
+   "image": "images/ludotheque/255984.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/255984"
+  },
+  {
+   "id": "358320",
+   "nom": "Sleeping Gods: Distant Skies",
+   "annee": 2023,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 600,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.95,
+   "age": 13,
+   "note_bgg": 8.28,
+   "image": "images/ludotheque/358320.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/358320"
+  },
+  {
+   "id": "97786",
+   "nom": "Small World Underground",
+   "annee": 2011,
+   "joueurs_min": 2,
+   "joueurs_max": 5,
+   "duree_min": 30,
+   "duree_max": 90,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.59,
+   "age": 8,
+   "note_bgg": 7.22,
+   "image": "images/ludotheque/97786.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/97786"
+  },
+  {
+   "id": "375459",
+   "nom": "Speakeasy",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 50,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.44,
+   "age": 14,
+   "note_bgg": 8.41,
+   "image": "images/ludotheque/375459.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/375459"
+  },
+  {
+   "id": "187645",
+   "nom": "Star Wars: Rebellion",
+   "annee": 2016,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 180,
+   "duree_max": 240,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.75,
+   "age": 14,
+   "note_bgg": 8.42,
+   "image": "images/ludotheque/187645.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/187645"
+  },
+  {
+   "id": "264220",
+   "nom": "Tainted Grail: The Fall of Avalon",
+   "annee": 2019,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.38,
+   "age": 14,
+   "note_bgg": 8.02,
+   "image": "images/ludotheque/264220.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/264220"
+  },
+  {
+   "id": "229853",
+   "nom": "Teotihuacan: City of Gods",
+   "annee": 2018,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.78,
+   "age": 14,
+   "note_bgg": 7.83,
+   "image": "images/ludotheque/229853.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/229853"
+  },
+  {
+   "id": "180263",
+   "nom": "The 7th Continent",
+   "annee": 2017,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 5,
+   "duree_max": 1000,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.9,
+   "age": 14,
+   "note_bgg": 7.71,
+   "image": "images/ludotheque/180263.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/180263"
+  },
+  {
+   "id": "283317",
+   "nom": "The 7th Continent: Classic Edition",
+   "annee": 2019,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 5,
+   "duree_max": 1000,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.18,
+   "age": 14,
+   "note_bgg": 7.41,
+   "image": "images/ludotheque/283317.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/283317"
+  },
+  {
+   "id": "356080",
+   "nom": "The Elder Scrolls: Betrayal of the Second Era",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 120,
+   "duree_max": 240,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.11,
+   "age": 14,
+   "note_bgg": 8.94,
+   "image": "images/ludotheque/356080.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/356080"
+  },
+  {
+   "id": "70499",
+   "nom": "The Island",
+   "annee": 2010,
+   "joueurs_min": 0,
+   "joueurs_max": 0,
+   "duree_min": 0,
+   "duree_max": 0,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.0,
+   "age": 0,
+   "note_bgg": 7.52,
+   "image": "images/ludotheque/70499.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/70499"
+  },
+  {
+   "id": "357873",
+   "nom": "The Old King's Crown",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.71,
+   "age": 12,
+   "note_bgg": 8.04,
+   "image": "images/ludotheque/357873.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/357873"
+  },
+  {
+   "id": "182028",
+   "nom": "Through the Ages: A New Story of Civilization",
+   "annee": 2015,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 120,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.44,
+   "age": 14,
+   "note_bgg": 8.24,
+   "image": "images/ludotheque/182028.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/182028"
+  },
+  {
+   "id": "329841",
+   "nom": "Ticket to Ride: Europe – 15th Anniversary",
+   "annee": 2021,
+   "joueurs_min": 2,
+   "joueurs_max": 5,
+   "duree_min": 30,
+   "duree_max": 60,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 1.86,
+   "age": 8,
+   "note_bgg": 8.18,
+   "image": "images/ludotheque/329841.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/329841"
+  },
+  {
+   "id": "42",
+   "nom": "Tigris & Euphrates",
+   "annee": 1997,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 3.47,
+   "age": 14,
+   "note_bgg": 7.71,
+   "image": "images/ludotheque/42.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/42"
+  },
+  {
+   "id": "46158",
+   "nom": "Time's Up! Academy",
+   "annee": 2009,
+   "joueurs_min": 4,
+   "joueurs_max": 12,
+   "duree_min": 30,
+   "duree_max": 30,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 1.09,
+   "age": 12,
+   "note_bgg": 7.37,
+   "image": "images/ludotheque/46158.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/46158"
+  },
+  {
+   "id": "173156",
+   "nom": "Timeline Challenge",
+   "annee": 2015,
+   "joueurs_min": 2,
+   "joueurs_max": 10,
+   "duree_min": 30,
+   "duree_max": 30,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 1.33,
+   "age": 10,
+   "note_bgg": 7.01,
+   "image": "images/ludotheque/173156.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/173156"
+  },
+  {
+   "id": "441548",
+   "nom": "Trickerion: Anniversary Edition",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 180,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.65,
+   "age": 14,
+   "note_bgg": 8.83,
+   "image": "images/ludotheque/441548.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/441548"
+  },
+  {
+   "id": "329500",
+   "nom": "Unconscious Mind",
+   "annee": 2024,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.03,
+   "age": 12,
+   "note_bgg": 7.87,
+   "image": "images/ludotheque/329500.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/329500"
+  },
+  {
+   "id": "213460",
+   "nom": "Unlock!: Escape Adventures",
+   "annee": 2017,
+   "joueurs_min": 2,
+   "joueurs_max": 6,
+   "duree_min": 45,
+   "duree_max": 75,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.12,
+   "age": 10,
+   "note_bgg": 7.32,
+   "image": "images/ludotheque/213460.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/213460"
+  },
+  {
+   "id": "302425",
+   "nom": "Unlock!: Mythic Adventures",
+   "annee": 2020,
+   "joueurs_min": 1,
+   "joueurs_max": 6,
+   "duree_min": 60,
+   "duree_max": 60,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.17,
+   "age": 10,
+   "note_bgg": 7.63,
+   "image": "images/ludotheque/302425.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/302425"
+  },
+  {
+   "id": "337627",
+   "nom": "Voidfall",
+   "annee": 2023,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 240,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 4.63,
+   "age": 15,
+   "note_bgg": 8.5,
+   "image": "images/ludotheque/337627.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/337627"
+  },
+  {
+   "id": "362944",
+   "nom": "War of the Ring: The Card Game",
+   "annee": 2022,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 120,
+   "proprietaires": [
+    "Philou"
+   ],
+   "poids": 2.98,
+   "age": 13,
+   "note_bgg": 7.59,
+   "image": "images/ludotheque/362944.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/362944"
+  }
+ ]
 }
