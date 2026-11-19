@@ -1,7 +1,7 @@
 {
  "comptes": [
   "Philouphil",
-  "Darnethil",
+  "Darnethil1",
   "skkrohmagnon"
  ],
  "maj": "2026-11-19",
@@ -33,8 +33,8 @@
    "duree_max": 30,
    "proprietaires": [
     "Philou",
-    "Pat",
-    "Tim"
+    "Tim",
+    "Pat"
    ],
    "poids": 2.31,
    "age": 10,
@@ -62,8 +62,8 @@
    "duree_max": 30,
    "proprietaires": [
     "Philou",
-    "Pat",
-    "Tim"
+    "Tim",
+    "Pat"
    ],
    "poids": 2.23,
    "age": 10,
@@ -169,22 +169,12 @@
    "duree_min": 30,
    "duree_max": 60,
    "proprietaires": [
-    "Pat",
-    "Tim"
+    "Tim",
+    "Pat"
    ],
    "poids": 2.32,
    "age": 14,
    "note_bgg": 7.32,
-   "extensions": [
-    {
-     "id": "180341",
-     "nom": "Abyss: Kraken",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/180341"
-    }
-   ],
    "image": "images/ludotheque/155987.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/155987"
   },
@@ -367,8 +357,8 @@
    "duree_min": 60,
    "duree_max": 80,
    "proprietaires": [
-    "Pat",
-    "Tim"
+    "Tim",
+    "Pat"
    ],
    "poids": 2.76,
    "age": 12,
@@ -390,6 +380,16 @@
    "poids": 3.46,
    "age": 14,
    "note_bgg": 7.97,
+   "extensions": [
+    {
+     "id": "363757",
+     "nom": "Arcs: The Blighted Reach Expansion",
+     "proprietaires": [
+      "Philou"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/363757"
+    }
+   ],
    "image": "images/ludotheque/359871.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/359871"
   },
@@ -2416,8 +2416,8 @@
    "duree_min": 60,
    "duree_max": 120,
    "proprietaires": [
-    "Pat",
-    "Tim"
+    "Tim",
+    "Pat"
    ],
    "poids": 3.92,
    "age": 14,
@@ -3525,7 +3525,7 @@
    ],
    "poids": 1.5,
    "age": 5,
-   "note_bgg": 6.97,
+   "note_bgg": 6.96,
    "image": "images/ludotheque/353401.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/353401"
   },
@@ -3713,7 +3713,7 @@
    ],
    "poids": 3.91,
    "age": 12,
-   "note_bgg": 8.23,
+   "note_bgg": 8.22,
    "extensions": [
     {
      "id": "321742",
@@ -4134,7 +4134,7 @@
    ],
    "poids": 4.57,
    "age": 12,
-   "note_bgg": 8.14,
+   "note_bgg": 8.15,
    "image": "images/ludotheque/387849.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/387849"
   },
@@ -4328,8 +4328,8 @@
    "duree_max": 60,
    "proprietaires": [
     "Philou",
-    "Pat",
-    "Tim"
+    "Tim",
+    "Pat"
    ],
    "poids": 2.66,
    "age": 12,
@@ -5529,41 +5529,15 @@
      "id": "274795",
      "nom": "Tainted Grail: Age of Legends & Last Knight Campaigns",
      "proprietaires": [
-      "Philou",
-      "Pat"
+      "Philou"
      ],
      "url_bgg": "https://boardgamegeek.com/boardgame/274795"
-    },
-    {
-     "id": "355872",
-     "nom": "Tainted Grail: Item Sets Promo Cards",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/355872"
-    },
-    {
-     "id": "302483",
-     "nom": "Tainted Grail: Monsters of Avalon – Past and Future Miniature Pack",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/302483"
-    },
-    {
-     "id": "308105",
-     "nom": "Tainted Grail: Past And Future Alternative Encounters Card Pack",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/308105"
     },
     {
      "id": "267325",
      "nom": "Tainted Grail: The Fall of Avalon – Echoes of the Past",
      "proprietaires": [
-      "Philou",
-      "Pat"
+      "Philou"
      ],
      "url_bgg": "https://boardgamegeek.com/boardgame/267325"
     },
@@ -5571,8 +5545,7 @@
      "id": "266659",
      "nom": "Tainted Grail: The Fall of Avalon – Niamh",
      "proprietaires": [
-      "Philou",
-      "Pat"
+      "Philou"
      ],
      "url_bgg": "https://boardgamegeek.com/boardgame/266659"
     },
@@ -5580,8 +5553,7 @@
      "id": "267408",
      "nom": "Tainted Grail: The Fall of Avalon – Red Death Expansion",
      "proprietaires": [
-      "Philou",
-      "Pat"
+      "Philou"
      ],
      "url_bgg": "https://boardgamegeek.com/boardgame/267408"
     }
@@ -5994,30 +5966,12 @@
    "duree_min": 45,
    "duree_max": 120,
    "proprietaires": [
-    "Pat",
-    "Tim"
+    "Tim",
+    "Pat"
    ],
    "poids": 3.34,
    "age": 18,
    "note_bgg": 7.75,
-   "extensions": [
-    {
-     "id": "288901",
-     "nom": "This War of Mine: Days of the Siege",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/288901"
-    },
-    {
-     "id": "247665",
-     "nom": "This War of Mine: Tales from the Ruined City",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/247665"
-    }
-   ],
    "image": "images/ludotheque/188920.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/188920"
   },
@@ -6406,8 +6360,8 @@
    "duree_min": 80,
    "duree_max": 150,
    "proprietaires": [
-    "Pat",
-    "Tim"
+    "Tim",
+    "Pat"
    ],
    "poids": 3.59,
    "age": 12,
