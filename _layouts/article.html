@@ -46,6 +46,12 @@
   {%- when "non" -%}{%- assign verdict = "Pas pour nous" -%}
   {%- else -%}{%- assign verdict = "" -%}
 {%- endcase -%}
+{%- assign red = nil -%}
+{%- if page.redacteur and page.redacteur != "" -%}
+  {%- for m in site.data.equipe.membres -%}{%- if m.nom == page.redacteur -%}{%- assign red = m -%}{%- endif -%}{%- endfor -%}
+  {%- assign verdict_court = verdict -%}
+  {%- if verdict != "" -%}{%- assign verdict = verdict | append: " de " | append: page.redacteur -%}{%- endif -%}
+{%- endif -%}
 <!doctype html>
 <html lang="fr">
 <head>
@@ -74,7 +80,7 @@
 {"@context":"https://schema.org","@type":"Review","name":{{ page.title | append: " : notre avis" | jsonify }},"datePublished":{{ page.date | date: "%Y-%m-%d" | jsonify }},"reviewBody":{{ desc | jsonify }},"image":{{ img_abs | jsonify }},"url":{{ site.url | append: page.url | jsonify }},
  "itemReviewed":{"@type":"Product","name":{{ page.title | jsonify }}{% if page.auteurs %},"brand":{"@type":"Brand","name":{{ page.auteurs | jsonify }}}{% endif %}},
  "reviewRating":{"@type":"Rating","ratingValue":{{ moy | round: 1 }},"bestRating":10,"worstRating":0},
- "author":{"@type":"Organization","name":{{ nom | jsonify }},"url":{{ site.url | jsonify }}}}
+ "author":{% if page.redacteur and page.redacteur != "" %}{"@type":"Person","name":{{ page.redacteur | jsonify }},"memberOf":{"@type":"Organization","name":{{ nom | jsonify }}}}}{% else %}{"@type":"Organization","name":{{ nom | jsonify }},"url":{{ site.url | jsonify }}}}{% endif %}
 {%- elsif isjeu %}
 {"@context":"https://schema.org","@type":"Article","headline":{{ page.title | jsonify }},"datePublished":{{ page.date | date: "%Y-%m-%d" | jsonify }},"description":{{ desc | jsonify }},"image":{{ img_abs | jsonify }},"url":{{ site.url | append: page.url | jsonify }},"author":{"@type":"Organization","name":{{ nom | jsonify }},"url":{{ site.url | jsonify }}}}
 {%- else %}
@@ -90,7 +96,8 @@
 <body data-page="article-page">
 <header class="top" id="top"></header>
 <main id="main" data-ssr>
-<header class="page-hero" style="--pos:40%"><div class="wrap"><span class="hand">{% if isjeu %}Jeu testé{% else %}Festival{% endif %}</span><h1>{{ page.title | escape }}</h1></div></header>
+<header class="page-hero" style="--pos:40%"><div class="wrap"><span class="hand">{% if isjeu %}Jeu testé{% else %}Festival{% endif %}</span><h1>{{ page.title | escape }}</h1>{% if isjeu and page.redacteur and page.redacteur != "" %}
+<p class="byline">{% if red.photo %}<img src="{{ red.photo }}" alt="" width="40" height="40">{% endif %}<span>Article de <b>{{ page.redacteur | escape }}</b>{% if verdict != "" %} · <span class="verdict v-{{ page.verdict }}">{{ verdict_court }}</span>{% endif %}</span></p>{% endif %}</div></header>
 <section class="block"><div class="wrap">
   {% if isjeu %}<a class="back" href="jeux.html">← Tous nos jeux testés</a>{% else %}<a class="back" href="festivals.html">← Tous nos festivals</a>{% endif %}
   <div class="article-layout">

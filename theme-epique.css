@@ -168,3 +168,8 @@ a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 @media (max-width:420px){.duo-thumb{width:84px}}
 .resa-inviter{display:block;text-align:center;margin-top:10px}
 .resa-jeux .btn{width:100%;justify-content:center;box-sizing:border-box}
+/* Jeu testé : auteur de l'article */
+.byline{display:flex;align-items:center;gap:12px;margin:14px 0 0;color:#D8CDB6;font-size:.95rem}
+.byline img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid var(--gold);background:#111}
+.byline b{color:var(--gold-hi)}
+.byline .verdict{color:var(--gold-hi);vertical-align:middle}

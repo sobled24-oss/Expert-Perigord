@@ -63,6 +63,12 @@ content:
               label: Mitigé
             - name: non
               label: Pas pour nous
+      - name: redacteur
+        label: Article de
+        type: select
+        description: Le membre qui a écrit l'article. Le verdict s'affiche alors à son nom (ex. « Coup de cœur de Philou »).
+        options:
+          values: [Philou, Pat, Tim, Thyl]
       - name: resume
         label: Résumé (affiché sur la carte)
         type: text

@@ -75,7 +75,7 @@ function gameCard(t){
   return `<a class="card game ${VCLASS[t.verdict]||""}" href="${artUrl("jeu",t)}">
     ${gameCover(t)}
     <div class="inner">
-      <div class="game-top">${t.verdict?`<span class="verdict">${esc(VERDICTS[t.verdict]||t.verdict)}</span>`:"<span></span>"}${ex(t)}</div>
+      <div class="game-top">${t.verdict?`<span class="verdict">${esc(VERDICTS[t.verdict]||t.verdict)}${t.redacteur?` de ${esc(t.redacteur)}`:""}</span>`:(t.redacteur?`<span class="verdict">Article de ${esc(t.redacteur)}</span>`:"<span></span>")}${ex(t)}</div>
       ${poids(t.poids)}
       <div class="meta">${moyenne(t)!==null?`<span class="tag score">Experts ${fr(moyenne(t))}/10</span>`:""}${t.joueurs?`<span class="tag">${meeple()} ${esc(t.joueurs)}</span>`:""}${t.duree?`<span class="tag">${esc(t.duree)}</span>`:""}</div>
       ${t.texte?`<p>${esc(t.texte)}</p>`:""}
@@ -136,7 +136,7 @@ R.festivals = () => pageHero("Sur le terrain","Nos tables en festival","Explicat
         + (P.length ? sec(head("","Ils sont passés") + `<div class="grid">${P.map(festCard).join("")}</div>`, "sand") : ""); })()
   + orgaBand();
 function nums(s){ return (String(s||"").match(/\d+/g)||[]).map(Number); }
-function avisDe(t){ const a = t.avis||{}; return C.membres.filter(m=>{ const v = a[mkey(m)]; return v && (v.texte || (v.note!=="" && v.note!=null)); }).map(m=>m.nom); }
+function avisDe(t){ const a = t.avis||{}; return C.membres.filter(m=>{ const v = a[mkey(m)]; return v && (v.texte || (v.note!=="" && v.note!=null)); }).map(m=>m.nom).concat(t.redacteur && !C.membres.some(m=>m.nom===t.redacteur && (t.avis||{})[mkey(m)] && ((t.avis||{})[mkey(m)].texte || ((t.avis||{})[mkey(m)].note!=="" && (t.avis||{})[mkey(m)].note!=null))) ? [t.redacteur] : []); }
 R.jeux = () => {
   const hero = pageHero("Banc d'essai","Les jeux qu'on a testés","Notre avis après plusieurs parties, et le poids de chaque jeu sur l'échelle BoardGameGeek : de 1 meeple (léger) à 5 meeples (très lourd).","8%");
   if(!C.tests.length) return hero + sec(empty("Aucun test publié pour le moment."), "dark");
@@ -227,7 +227,7 @@ R.article = () => {
   const texte = String(x.article||x.texte||"").split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean);
   const fiche = type==="festival"
     ? `<dl class="kv"><dt>Date</dt><dd>${esc(x.date||"À venir")}</dd>${x.lieu?`<dt>Lieu</dt><dd>${esc(x.lieu)}</dd>`:""}${x.role?`<dt>Notre table</dt><dd>${esc(x.role)}</dd>`:""}</dl>`
-    : `${moyenne(x)!==null?`<div class="moy"><b>${fr(moyenne(x))}</b><span>/10<br>note moyenne des Experts (${notes(x).length} avis)</span></div>`:""}${x.verdict?`<span class="verdict ${VCLASS[x.verdict]||""}">${esc(VERDICTS[x.verdict]||"")}</span>`:""}${poids(x.poids)}
+    : `${moyenne(x)!==null?`<div class="moy"><b>${fr(moyenne(x))}</b><span>/10<br>note moyenne des Experts (${notes(x).length} avis)</span></div>`:""}${x.verdict?`<span class="verdict ${VCLASS[x.verdict]||""}">${esc(VERDICTS[x.verdict]||"")}${x.redacteur?` de ${esc(x.redacteur)}`:""}</span>`:""}${poids(x.poids)}
        <dl class="kv">${x.joueurs?`<dt>Joueurs</dt><dd>${esc(x.joueurs)}</dd>`:""}${x.duree?`<dt>Durée</dt><dd>${esc(x.duree)}</dd>`:""}${x.auteurs?`<dt>Auteurs</dt><dd>${esc(x.auteurs)}</dd>`:""}</dl>`;
   const others = list.filter(it=>it!==x).slice(0,3);
   return pageHero(type==="festival"?"Festival":"Jeu testé", titre, "", "40%")
