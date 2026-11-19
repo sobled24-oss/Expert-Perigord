@@ -6,6 +6,7 @@ redacteur: Philou
 resume: On dresse nos dinos et on part à l'aventure ! Un très bon Mindclash en tableau building, déroutant par sa quantité de choix. Si vous ne prenez qu'une boîte de la saga, prenez celle-ci.
 couverture: https://images.boardgamematcher.com/MrGAoctmSwuTmBqAMlgRgCK-V1w=/fit-in/600x700/filters:quality(90)/perseverance-castaway-chronicles-%E2%80%93-episodes-3-4.png
 bgg: "387849"
+auteurs: Dávid Turczi, Richard Ámann, Thomas Vande Ginste, Viktor Péter
 joueurs: 1 à 4
 duree: 90 à 180 min
 avis:
