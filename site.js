@@ -25,6 +25,8 @@ const ex = x => x.exemple ? `<span class="chip">Exemple à remplacer</span>` : "
 const S = C.site, NOM = S.nom || "Les Experts en Périgord";
 const hasPhotos = C.galerie.some(g=>g && (g.image||g.photo));
 const LUDO = ((C.ludotheque||{}).jeux)||[];
+const EXT_SEULES = ((C.ludotheque||{}).extensions_seules)||[];
+const NB_EXT = LUDO.reduce((n,j)=>n+(j.extensions||[]).length,0) + EXT_SEULES.length;
 
 /* ---------- Menu et pied de page ---------- */
 const PAGES = [
@@ -276,6 +278,7 @@ function ludoCard(j){
       <div class="meta">${j.joueurs_min||j.joueurs_max?`<span class="tag">${meeple()} ${plage(j.joueurs_min,j.joueurs_max,"")}</span>`:""}${j.duree_min||j.duree_max?`<span class="tag">${plage(j.duree_min,j.duree_max," min")}</span>`:""}${j.age?`<span class="tag">${j.age}+</span>`:""}</div>
       ${j.poids?poids(j.poids):""}
       ${chez(j)}
+      ${(j.extensions||[]).length?`<details class="ludo-ext"><summary>+ ${j.extensions.length} extension${j.extensions.length>1?"s":""}</summary><ul>${j.extensions.map(e=>`<li><a href="${esc(e.url_bgg)}" target="_blank" rel="noopener">${esc(e.nom)}</a>${OWNERS.length>1?`<span>chez ${esc((e.proprietaires||[]).join(", "))}</span>`:""}</li>`).join("")}</ul></details>`:""}
       <div class="ludo-links">${t?`<a class="tag score" href="${artUrl("jeu",t)}">Testé par les Experts →</a>`:""}<a class="ludo-bgg" href="${esc(j.url_bgg)}" target="_blank" rel="noopener">BoardGameGeek ↗</a></div>
     </div></article>`;
 }
@@ -286,18 +289,20 @@ R.ludotheque = () => {
   if(!LUDO.length) return hero + sec(empty("La ludothèque arrive bientôt : elle sera mise à jour automatiquement à partir de notre collection BoardGameGeek."));
   const opt = (v,l)=>`<option value="${v}">${l}</option>`;
   const parMembre = OWNERS.map(n=>`<span><b>${LUDO.filter(j=>(j.proprietaires||[]).includes(n)).length}</b> chez ${esc(n)}</span>`).join("");
-  return hero + sec(`<div class="ludo-total"><div class="lt-main"><b>${LUDO.length}</b><span>jeux différents</span></div>${OWNERS.length>1?`<div class="lt-detail">${parMembre}<em>Un jeu possédé par plusieurs membres n'est compté qu'une fois.</em></div>`:""}</div>
+  return hero + sec(`<div class="ludo-total"><div class="lt-main"><b>${LUDO.length}</b><span>jeux différents${NB_EXT?`<br><i>et ${NB_EXT} extension${NB_EXT>1?"s":""}</i>`:""}</span></div>${OWNERS.length>1?`<div class="lt-detail">${parMembre}<em>Un jeu possédé par plusieurs membres n'est compté qu'une fois.</em></div>`:""}</div>
     <form class="ludo-filters" id="ludo-filters" role="search" onsubmit="return false">
       <label for="lf-q">Rechercher<input id="lf-q" type="search" placeholder="Nom du jeu" autocomplete="off"></label>
       <label for="lf-j">Joueurs<select id="lf-j">${opt("","Tous")}${[1,2,3,4,5,6].map(n=>opt(n, n===6?"6 et +":n)).join("")}</select></label>
       <label for="lf-d">Durée<select id="lf-d">${opt("","Toutes")}${opt("60","1 h ou moins")}${opt("120","2 h ou moins")}${opt("180","3 h ou moins")}${opt("999","Plus de 3 h")}</select></label>
       <label for="lf-p">Poids<select id="lf-p">${opt("","Tous")}${opt("0-3","Moins de 3")}${opt("3-4","3 à 4")}${opt("4-6","4 et plus")}</select></label>
       ${OWNERS.length>1?`<label for="lf-c">Chez<select id="lf-c">${opt("","Tout le monde")}${OWNERS.map(n=>opt(esc(n),esc(n))).join("")}</select></label>`:""}
+      ${NB_EXT?`<label for="lf-e">Extensions<select id="lf-e">${opt("","Tous les jeux")}${opt("1","Avec extensions")}</select></label>`:""}
       <label for="lf-t">Trier par<select id="lf-t">${opt("nom","Nom")}${opt("poids","Plus lourds d'abord")}${opt("duree","Plus courts d'abord")}${opt("annee","Plus récents d'abord")}</select></label>
     </form>
     <p class="note ludo-count" id="ludo-count" aria-live="polite"></p>
     <nav class="ludo-az" id="ludo-az" aria-label="Aller à la lettre"></nav>
     <div class="grid ludo-grid" id="ludo-grid"></div>
+    ${EXT_SEULES.length?`<details class="ludo-orphelines"><summary>Extensions sans le jeu de base (${EXT_SEULES.length})</summary><ul>${EXT_SEULES.map(e=>`<li><a href="${esc(e.url_bgg)}" target="_blank" rel="noopener">${esc(e.nom)}</a>${OWNERS.length>1?` <span>chez ${esc((e.proprietaires||[]).join(", "))}</span>`:""}</li>`).join("")}</ul></details>`:""}
     <div class="bgg-credit">
       <p class="note">Données et images : <a href="https://boardgamegeek.com" target="_blank" rel="noopener">BoardGameGeek</a>, d'après les collections de nos membres.${maj?` Liste mise à jour automatiquement, dernière modification le ${esc(new Date(maj+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"}))}.`:""}</p>
       <a class="bgg-logo" href="https://boardgamegeek.com" target="_blank" rel="noopener"><img src="images/powered-by-bgg.png" alt="Powered by BGG" width="220" height="64"></a>
@@ -306,11 +311,12 @@ R.ludotheque = () => {
 function ludoFiltre(){
   const g = document.getElementById("ludo-grid"); if(!g) return;
   const v = id => document.getElementById(id).value;
-  const ch = document.getElementById("lf-c") ? v("lf-c") : "";
+  const ch = document.getElementById("lf-c") ? v("lf-c") : "", ex = document.getElementById("lf-e") ? v("lf-e") : "";
   const q = v("lf-q").trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""), nj = Number(v("lf-j")), d = v("lf-d"), p = v("lf-p"), tri = v("lf-t");
   let L = LUDO.filter(j=>{
     if(ch && !(j.proprietaires||[]).includes(ch)) return false;
-    if(q && !String(j.nom).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)) return false;
+    if(q && ![j.nom].concat((j.extensions||[]).map(e=>e.nom)).some(n=>String(n).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q))) return false;
+    if(ex && !(j.extensions||[]).length) return false;
     if(nj){ const mn = j.joueurs_min||1, mx = j.joueurs_max||mn; if(nj===6 ? mx<6 : (nj<mn || nj>mx)) return false; }
     if(d){ const dm = j.duree_max||j.duree_min||0; if(d==="999" ? dm<=180 : (!dm || dm>Number(d))) return false; }
     if(p){ const [a,b] = p.split("-").map(Number); if(!j.poids || j.poids<a || j.poids>=b) return false; }

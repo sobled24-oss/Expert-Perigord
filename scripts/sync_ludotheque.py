@@ -95,9 +95,12 @@ def nombre(v):
         return None
 
 
-def lire_collection(utilisateur, token):
-    params = urllib.parse.urlencode({"username": utilisateur, "own": 1, "stats": 1,
-                                     "excludesubtype": "boardgameexpansion"})
+def lire_collection(utilisateur, token, extensions=False):
+    if extensions:
+        params = urllib.parse.urlencode({"username": utilisateur, "own": 1, "subtype": "boardgameexpansion"})
+    else:
+        params = urllib.parse.urlencode({"username": utilisateur, "own": 1, "stats": 1,
+                                         "excludesubtype": "boardgameexpansion"})
     racine = ET.fromstring(appel(f"{API}/collection?{params}", token))
     erreur = racine.find(".//error/message")
     if erreur is not None or racine.tag == "errors":
@@ -143,6 +146,17 @@ def completer(jeux, token):
                 j["poids"] = None
 
 
+def jeux_de_base(extensions, token):
+    """Pour chaque extension, les numéros BGG des jeux qu'elle complète (par lots de 20)."""
+    ids, bases = list(extensions), {}
+    for i in range(0, len(ids), 20):
+        racine = ET.fromstring(appel(f"{API}/thing?id={','.join(ids[i:i + 20])}", token))
+        for it in racine.findall("item"):
+            bases[it.get("id")] = [l.get("id") for l in it.findall("link")
+                                   if l.get("type") == "boardgameexpansion" and l.get("inbound") == "true"]
+    return bases
+
+
 def miniature(jeu):
     """Télécharge et réduit l'image de la boîte (400 px). Renvoie le chemin utilisé par le site."""
     chemin_rel = f"images/ludotheque/{jeu['id']}.jpg"
@@ -176,7 +190,7 @@ def main():
         print("La clé BoardGameGeek (secret BGG_TOKEN) n'est pas encore enregistrée : synchronisation reportée.")
         return
 
-    jeux, lus, erreurs = {}, [], []
+    jeux, lus, erreurs, extensions = {}, [], [], {}
     for proprietaire, utilisateur in comptes:
         print(f"Collection BoardGameGeek de {proprietaire} (« {utilisateur} »)…")
         try:
@@ -193,11 +207,36 @@ def main():
                 jeux[id_] = j
             if proprietaire not in jeux[id_]["proprietaires"]:
                 jeux[id_]["proprietaires"].append(proprietaire)
+        try:
+            ext = lire_collection(utilisateur, token, extensions=True)
+        except ValueError as e:
+            print(f"  Extensions illisibles : {e}")
+            ext = {}
+        print(f"  {len(ext)} extensions possédées.")
+        for id_, x in ext.items():
+            e = extensions.setdefault(id_, {"id": id_, "nom": x["nom"], "proprietaires": []})
+            if proprietaire not in e["proprietaires"]:
+                e["proprietaires"].append(proprietaire)
     if not lus:
         sys.exit("Erreur : aucun compte BoardGameGeek n'a pu être lu.\n" + "\n".join(erreurs))
     print(f"Ludothèque fusionnée : {len(jeux)} jeux différents.")
     if jeux:
         completer(jeux, token)
+
+    # Rattacher chaque extension à son jeu de base (s'il est dans la ludothèque)
+    for id_ in [i for i in extensions if i in jeux]:   # extension autonome déjà comptée comme jeu
+        extensions.pop(id_)
+    seules = []
+    if extensions:
+        bases = jeux_de_base(extensions, token)
+        for id_, e in sorted(extensions.items(), key=lambda kv: kv[1]["nom"].lower()):
+            e["url_bgg"] = f"https://boardgamegeek.com/boardgame/{id_}"
+            cible = next((b for b in bases.get(id_, []) if b in jeux), None)
+            if cible:
+                jeux[cible].setdefault("extensions", []).append(e)
+            else:
+                seules.append(e)
+        print(f"Extensions : {len(extensions) - len(seules)} rattachées à leur jeu, {len(seules)} sans le jeu de base.")
 
     os.makedirs(DOSSIER_IMAGES, exist_ok=True)
     liste = []
@@ -238,10 +277,14 @@ def main():
         liste.sort(key=lambda x: x["nom"].lower())
 
     comptes_lus = [u for _, u in comptes]
-    if ancien.get("jeux") == liste and ancien.get("comptes") == comptes_lus:
+    if erreurs and ancien.get("extensions_seules"):
+        seules += [e for e in ancien["extensions_seules"]
+                   if any(p in {x.split(" (")[0] for x in erreurs} for p in e.get("proprietaires", []))
+                   and e["id"] not in {x["id"] for x in seules}]
+    if ancien.get("jeux") == liste and ancien.get("comptes") == comptes_lus and ancien.get("extensions_seules", []) == seules:
         print("Aucun changement.")
     else:
-        donnees = {"comptes": comptes_lus, "maj": time.strftime("%Y-%m-%d"), "jeux": liste}
+        donnees = {"comptes": comptes_lus, "maj": time.strftime("%Y-%m-%d"), "jeux": liste, "extensions_seules": seules}
         with open(FICHIER_DONNEES, "w", encoding="utf-8") as f:
             json.dump(donnees, f, ensure_ascii=False, indent=1)
             f.write("\n")
