@@ -269,6 +269,13 @@ function memeNom(a, b){
 function testDe(j){ return C.tests.find(t=>(t.bgg && String(t.bgg).trim()===String(j.id)) ) || C.tests.find(t=>memeNom(t.jeu, j.nom)); }
 function ludoDe(nom, bgg){ return (bgg && LUDO.find(j=>String(j.id)===String(bgg).trim())) || LUDO.find(j=>memeNom(j.nom, nom)); }
 function testParNom(nom){ return C.tests.find(t=>memeNom(t.jeu, nom)); }
+function extListe(j){
+  const X = j.extensions||[]; if(!X.length) return "";
+  const nomCourt = n => { const base = String(j.nom).split(/[:–—]/)[0].trim(); const m = String(n).match(/^(.+?)\s*[:–—]\s*(.+)$/); return m && norm(m[1]).startsWith(norm(base).slice(0,6)) ? m[2] : n; };
+  const li = e => `<li><a href="${esc(e.url_bgg)}" target="_blank" rel="noopener">${esc(nomCourt(e.nom))}</a>${OWNERS.length>1?`<span>chez ${esc((e.proprietaires||[]).join(", "))}</span>`:""}</li>`;
+  const vis = X.slice(0,3), reste = X.slice(3);
+  return `<div class="ludo-ext"><span class="k">Extension${X.length>1?"s":""} (${X.length})</span><ul>${vis.map(li).join("")}</ul>${reste.length?`<details><summary>et ${reste.length} autre${reste.length>1?"s":""}</summary><ul>${reste.map(li).join("")}</ul></details>`:""}</div>`;
+}
 function ludoCard(j){
   const t = testDe(j);
   return `<article class="card ludo-card">
@@ -278,7 +285,7 @@ function ludoCard(j){
       <div class="meta">${j.joueurs_min||j.joueurs_max?`<span class="tag">${meeple()} ${plage(j.joueurs_min,j.joueurs_max,"")}</span>`:""}${j.duree_min||j.duree_max?`<span class="tag">${plage(j.duree_min,j.duree_max," min")}</span>`:""}${j.age?`<span class="tag">${j.age}+</span>`:""}</div>
       ${j.poids?poids(j.poids):""}
       ${chez(j)}
-      ${(j.extensions||[]).length?`<details class="ludo-ext"><summary>+ ${j.extensions.length} extension${j.extensions.length>1?"s":""}</summary><ul>${j.extensions.map(e=>`<li><a href="${esc(e.url_bgg)}" target="_blank" rel="noopener">${esc(e.nom)}</a>${OWNERS.length>1?`<span>chez ${esc((e.proprietaires||[]).join(", "))}</span>`:""}</li>`).join("")}</ul></details>`:""}
+      ${extListe(j)}
       <div class="ludo-links">${t?`<a class="tag score" href="${artUrl("jeu",t)}">Testé par les Experts →</a>`:""}<a class="ludo-bgg" href="${esc(j.url_bgg)}" target="_blank" rel="noopener">BoardGameGeek ↗</a></div>
     </div></article>`;
 }
