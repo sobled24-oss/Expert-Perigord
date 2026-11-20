@@ -219,3 +219,10 @@ a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 .strat-lien{float:right;font-family:var(--f-label);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-hi);text-decoration:none}
 .tag.strat{background:rgba(142,31,26,.25);border-color:rgba(201,90,74,.5);color:#F2C9B8}
 @media (max-width:600px){.strat-lien{float:none;display:block;margin-top:10px}}
+.strategie .prose h2{font-size:1.15rem;color:#F0E6D2;margin:40px 0 4px;padding-bottom:8px;border-bottom:1px solid rgba(201,162,74,.3)}
+.strategie .prose > p:first-child em{color:var(--muted)}
+.strategie .prose table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+.strategie .prose th,.strategie .prose td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid #2A2620}
+.strategie .prose th{font-family:var(--f-label);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.strategie .prose td:first-child{width:34%}
+@media (max-width:600px){.strategie .prose table,.strategie .prose tbody,.strategie .prose tr,.strategie .prose td{display:block;width:auto}.strategie .prose thead{display:none}.strategie .prose td:first-child{border-bottom:0;padding-bottom:2px}}
