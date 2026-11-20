@@ -3,6 +3,65 @@ title: SETI
 date: 2026-11-10
 verdict: coeur
 resume: SETi a le droit d'être cité !
+strategie: |-
+  *Guide pour **le jeu de base, sans extension**. Il s'appuie sur l'analyse « SETI Basics: Model Calculations » d'Ender (Ender_Wiggin), joueur reconnu de Through the Ages, Terraforming Mars et Ark Nova, publiée sur BoardGameGeek.*
+
+  ## L'idée : tout ramener aux crédits
+
+  Pour savoir si une action est rentable, on peut tout convertir en **crédits**, la ressource la plus rare du jeu : on en regagne très peu en dehors du revenu. Voici les équivalences proposées. Ce sont des repères, pas des règles : le bon moment compte autant que le calcul.
+
+  | Ressource ou action | Valeur en crédits |
+  |---|---|
+  | **Crédit** | 1 (l'unité de base) |
+  | **Énergie** | 1, mais elle tombe à 0,5 si on la dépense en déplacements |
+  | **Publicité** | 0,5 |
+  | **Donnée** | un peu moins de 0,5 au début, elle se rapproche de 1 avec les technologies bleues |
+  | **Déplacement** | 0,5 |
+  | **Piocher une carte au hasard** | 0,75 |
+  | **Prendre une carte dans la rangée** | 1 |
+  | **Jouer une carte** | coûte 0,5 en plus de son prix (l'action qu'on n'a pas faite ailleurs) |
+  | **Signal** | 1 |
+  | **Lancement** | 1,5 en réalité (2 en action standard) |
+  | **Scan** | 2 en réalité (3 en action standard : 1 crédit + 2 énergies) |
+  | **Technologie** | 3 |
+  | **Trace** (n'importe quelle couleur) | 2 |
+  | **Carte Alien** | 1,5 (et la jouer coûte 1) |
+  | **Points de victoire** | 1 crédit ≈ 5 PV (6 PV pour un rythme de vainqueur) |
+
+  ## Ce qu'on en tire
+
+  ### Les cartes sont le cœur du jeu
+  Les actions standard (lancer, scanner, se déplacer) sont **moins rentables que les cartes** qui font la même chose. Les cartes les plus fortes sont presque toujours les **cartes Mission** : une mission accomplie vaut environ 0,5 crédit de plus qu'une carte normale. **Accomplir un maximum de missions** est l'un des grands leviers du jeu.
+
+  ### Prudence avec les lancements
+  Lancer une sonde semble bon marché, mais un lancement mal placé en milieu de partie casse votre rythme. Comptez **4 à 6 actions Orbite ou Atterrissage** sur une partie. Avant de lancer « parce qu'il vous reste 2 crédits », demandez-vous si une carte de lancement plus rentable ne va pas arriver au tour suivant.
+
+  ### Ne pas ouvrir par un scan
+  En action standard, un scan coûte 3 pour une valeur réelle de 2 : **ouvrir la partie par un scan, c'est perdre 1 crédit**. Scanner seul un même secteur coûte de plus en plus cher. Scannez de façon opportuniste, quand le secteur ou une carte vous aident. Il faut la quatrième technologie de scan pour que le scan standard devienne vraiment rentable.
+
+  ### L'énergie : c'est le stock qui compte
+  Le revenu en énergie importe moins que **la réserve disponible**. Une réserve trop basse est un signal d'alarme, surtout si les Centauriens sont en jeu, car ils en consomment beaucoup. Évitez de dépenser de l'énergie en déplacements (chaque pas vous fait perdre 0,5) : défaussez plutôt une carte pour son déplacement gratuit.
+
+  ### Se déplacer au bon moment
+  Le déplacement est peu efficace en soi. Mieux vaut **attendre la rotation du système solaire** pour atteindre une planète en moins de pas. Passer par une comète ou une planète rapporte de la publicité qui compense le coût. La deuxième technologie orange (ignorer les astéroïdes et gagner de la publicité) est donc très forte.
+
+  ### Les technologies
+  Une technologie vaut 3 crédits : elle doit rapporter **plus de 3** pour être rentable. Beaucoup de cartes Technologie sont légèrement au-dessus de ce prix, surtout celles qui ont une mission ou un bonus de fin de partie.
+
+  ### Glisser une carte sous son revenu
+  C'est **rarement rentable** : on récupère moins de 1 en moyenne. Sauf si vous manquez de crédits au point de défausser des cartes ; dans ce cas, mieux vaut l'investir.
+
+  ### Signaux et traces
+  - Poser le dernier signal d'un secteur s'équilibre à peu près. Être deuxième dans un secteur reste rentable : c'est du gagnant-gagnant.
+  - **La première trace est explosive** (environ 5 PV, de la publicité et une carte Alien). Les traces de milieu et fin de partie sont plutôt des bonus. Par exemple, une trace bleue posée pour 1 énergie sert surtout à vider vos données.
+
+  ### Orbite ou atterrissage pour démarrer ?
+  Les deux se valent. **L'orbite** rapporte plus en ressources. **L'atterrissage** est cher au début, mais il vous place souvent premier sur l'objectif de fin de partie. La technologie orange qui économise 1 énergie par atterrissage se rembourse en deux utilisations.
+
+  ### Le repère de score
+  Avec les ressources de départ et un rythme « standard », on atteint environ **200 à 240 PV**. Dans les parties de l'auteur, le vainqueur tourne autour de **250 à 290 PV**.
+
+  <p class="sources">Source : « SETI Basics: Model Calculations », par Ender (Ender_Wiggin), sur BoardGameGeek. Traduction et adaptation par les Experts. Valeurs indicatives, pour le jeu de base sans extension.</p>
 couverture: images/uploads/perijeux-5-6450e2.jpg
 bgg: "418059"
 auteurs: Thomas Holek
