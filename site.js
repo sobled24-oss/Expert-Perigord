@@ -30,9 +30,9 @@ const NB_EXT = LUDO.reduce((n,j)=>n+(j.extensions||[]).length,0) + EXT_SEULES.le
 
 /* ---------- Menu et pied de page ---------- */
 const PAGES = [
-  ["accueil","index.html","Accueil"],["festivals","festivals.html","Festivals"],["jeux","jeux.html","Jeux testés"],["ludotheque","ludotheque.html","Ludothèque"],
+  ["accueil","index.html","Accueil"],["festivals","festivals.html","Festivals"],["jeux","jeux.html","Jeux testés"],["strategie","strategie.html","Stratégie"],["ludotheque","ludotheque.html","Ludothèque"],
   ["evenement","evenement.html","Notre événement"],["equipe","equipe.html","L'équipe"],["photos","photos.html","Photos"],["contact","contact.html","Contact"],["inviter","contact.html?objet=festival","Inviter les Experts"]
-].filter(p=>(p[0]!=="photos" || hasPhotos) && (p[0]!=="ludotheque" || LUDO.length || PAGE==="ludotheque"));
+].filter(p=>(p[0]!=="photos" || hasPhotos) && (p[0]!=="ludotheque" || LUDO.length || PAGE==="ludotheque") && (p[0]!=="strategie" || (C.strategies||[]).length || PAGE==="strategie"));
 const navLinks = PAGES.map(([id,href,label])=>`<a href="${href}"${id===PAGE?' aria-current="page"':""}${id==="inviter"?' class="cta"':""}>${label}</a>`).join("");
 document.getElementById("top").innerHTML = `<div class="wrap">
   <a class="brand" href="index.html"><img src="images/logo.jpg" alt=""><span>${esc(NOM)}</span></a>
@@ -292,6 +292,18 @@ function ludoCard(j){
     </div></article>`;
 }
 const OWNERS = (()=>{ const seen = []; C.membres.forEach(m=>{ if(LUDO.some(j=>(j.proprietaires||[]).includes(m.nom))) seen.push(m.nom); }); LUDO.forEach(j=>(j.proprietaires||[]).forEach(n=>{ if(!seen.includes(n)) seen.push(n); })); return seen; })();
+R.strategie = () => {
+  const G = C.strategies||[];
+  const hero = pageHero("Guides stratégiques","Nos guides de stratégie","Ouvertures, valeur des ressources, pièges à éviter : nos conseils et les meilleures analyses de joueurs confirmés, traduites et adaptées, pour progresser sur les jeux qu'on aime.","30%");
+  if(!G.length) return hero + sec(empty("Les premiers guides arrivent bientôt."), "dark");
+  return hero + sec(`<div class="grid g3 guides-grid">${G.map(g=>`<a class="card guide-card" href="${esc(g.url)}">
+      <div class="guide-img">${g.couverture?`<img src="${esc(g.couverture)}" alt="" loading="lazy">`:`<span class="mono">${esc(String(g.nom).slice(0,2))}</span>`}</div>
+      <div class="inner"><span class="verdict">Guide stratégique</span><h3>${esc(g.nom)}</h3>
+        ${g.poids?poids(g.poids):""}
+        ${g.resume?`<p>${esc(g.resume)}</p>`:""}
+        ${(g.onglets||[]).length?`<ul class="guide-onglets">${g.onglets.map(o=>`<li>${esc(o)}</li>`).join("")}</ul>`:""}
+        <span class="read">Lire le guide →</span></div></a>`).join("")}</div>`, "dark");
+};
 R.ludotheque = () => {
   const B = C.bgg||{}, maj = (C.ludotheque||{}).maj;
   const hero = pageHero("Notre ludothèque","Les jeux de la ludothèque", B.intro||"", "60%");

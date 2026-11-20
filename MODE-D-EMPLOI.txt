@@ -121,3 +121,10 @@ FORMULAIRE DE CONTACT (FORMSPREE)
   - Créez un compte gratuit sur formspree.io avec l'adresse de l'asso, créez un
     formulaire et copiez son adresse (https://formspree.io/f/xxxx) dans Pages CMS >
     Textes du site > Contact et Discord > « Adresse du formulaire Formspree ».
+
+GUIDES STRATÉGIQUES
+  - Pages CMS > Guides stratégiques : une fiche par jeu, avec un ou plusieurs guides
+    (chacun devient un onglet). Ils apparaissent dans le menu « Stratégie ».
+  - Le « Nom du jeu » doit être écrit exactement comme dans Jeux testés : le guide et
+    le test se relient alors tout seuls (bouton « Guide stratégique » sur le test,
+    badge sur la carte, lien « Notre avis » sur le guide).

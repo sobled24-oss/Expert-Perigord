@@ -13,6 +13,9 @@ collections:
   festivals:
     output: true
     permalink: /festivals/:name/
+  strategies:
+    output: true
+    permalink: /strategie/:name/
 defaults:
   - scope:
       type: jeux
@@ -22,6 +25,10 @@ defaults:
       type: festivals
     values:
       layout: article
+  - scope:
+      type: strategies
+    values:
+      layout: guide
 exclude:
   - MODE-D-EMPLOI.txt
   - README.md

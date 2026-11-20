@@ -235,3 +235,22 @@ a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 .strategie.tabs-on .strat-panel-titre{display:none}
 .strategie:not(.tabs-on) .strat-panel + .strat-panel{margin-top:40px;padding-top:20px;border-top:1px solid #2A2620}
 .strategie .legende{font-size:.88rem;line-height:1.9;color:#D8CDB6;background:rgba(201,162,74,.07);border:1px solid rgba(201,162,74,.2);padding:10px 14px}
+/* Page des guides stratégiques */
+.guide-card{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.guide-img{aspect-ratio:16/10;background:#0B0A0C;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid rgba(201,162,74,.3)}
+.guide-img img{width:100%;height:100%;object-fit:cover}
+.guide-img .mono{font-family:var(--f-head);font-size:2.6rem;color:var(--gold-lo);text-transform:uppercase}
+.guide-card .inner{display:flex;flex-direction:column;gap:10px;flex:1}
+.guide-card h3{margin:0}
+.guide-card p{margin:0;color:#CFC6B6}
+.guide-onglets{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.guide-onglets li{font-size:.78rem;padding:4px 10px;border:1px solid rgba(201,162,74,.3);color:#E7DCC4}
+.guide-card .read{margin-top:auto}
+.guide-test{display:flex;align-items:center;gap:16px;margin:18px 0 28px;padding:14px 18px;max-width:520px;text-decoration:none;color:inherit;background:linear-gradient(180deg,#151418,#0F0E11);border:1px solid rgba(201,162,74,.35);clip-path:var(--bevel)}
+.guide-test:hover{border-color:var(--gold)}
+.guide-test img{width:64px;height:64px;object-fit:cover;flex:none}
+.guide-test > span{display:flex;flex-direction:column;gap:2px}
+.guide-test .k{font-family:var(--f-label);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.guide-test b{font-family:var(--f-head);text-transform:uppercase;letter-spacing:.05em}
+.guide-btn{display:block;text-align:center;margin:14px 0}
+.strategie .strat-panel-titre{margin-top:0}

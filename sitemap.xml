@@ -17,6 +17,12 @@ layout: null
 {%- for d in site.jeux %}
   <url><loc>{{ site.url }}{{ d.url }}</loc><lastmod>{{ d.date | date: "%Y-%m-%d" }}</lastmod></url>
 {%- endfor %}
+{%- if site.strategies.size > 0 %}
+  <url><loc>{{ site.url }}/strategie.html</loc></url>
+{%- endif %}
+{%- for d in site.strategies %}
+  <url><loc>{{ site.url }}{{ d.url }}</loc><lastmod>{{ d.date | date: "%Y-%m-%d" }}</lastmod></url>
+{%- endfor %}
 {%- for d in site.festivals %}
   <url><loc>{{ site.url }}{{ d.url }}</loc></url>
 {%- endfor %}

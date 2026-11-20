@@ -1,0 +1,36 @@
+---
+---
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Guides stratégiques de jeux de société experts · Les Experts en Périgord</title>
+<meta name="description" content="Nos guides stratégiques pour les jeux de société experts : conseils, ouvertures et analyses pour mieux jouer à SETI, Brass et aux autres jeux testés par les Experts.">
+<link rel="canonical" href="{{ site.url }}/strategie.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Les Experts en Périgord">
+<meta property="og:title" content="Guides stratégiques de jeux de société experts · Les Experts en Périgord">
+<meta property="og:description" content="Nos guides stratégiques pour les jeux de société experts : conseils, ouvertures et analyses pour mieux jouer à SETI, Brass et aux autres jeux testés par les Experts.">
+<meta property="og:url" content="{{ site.url }}/strategie.html">
+<meta property="og:image" content="{{ site.url }}/images/banniere-1200.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Fredoka:wght@500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400&family=Caveat+Brush&display=swap">
+<link rel="stylesheet" href="style.css?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="theme-epique.css?v={{ site.time | date: '%s' }}">
+{%- assign gc = site.data.site.goatcounter | strip | split: ".goatcounter.com" | first | split: "/" | last | split: '"' | last | strip -%}{%- if gc and gc != "" %}
+<script data-goatcounter="https://{{ gc }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>{% endif %}
+</head>
+<body data-page="strategie">
+<header class="top" id="top"></header>
+<main id="main"><section class="block"><div class="wrap"><h1>Nos guides stratégiques</h1>{%- assign gs = site.strategies | sort: "title" -%}
+<ul>{% for g in gs %}<li><a href="{{ g.url }}">{{ g.title | escape }}</a> : {{ g.resume | escape }}</li>{% endfor %}</ul></div></section></main>
+<footer class="bas" id="bas"></footer>
+<script>document.write('<script src="contenu.js?v='+Math.floor(Date.now()/60000)+'"><\/script>')</script>
+<script src="site.js?v={{ site.time | date: '%s' }}"></script>
+</body>
+</html>
