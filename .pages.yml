@@ -251,9 +251,13 @@ content:
                 - name: permanence
                   label: En permanence
           - name: accroche
-            label: En deux mots (pour la fiche imprimable)
+            label: Résumé du jeu (fiche imprimable)
             type: text
-            description: "Une ou deux phrases pour donner envie : le thème et ce qu'on y fait."
+            description: "Deux ou trois phrases : le thème et ce qu'on y fait."
+          - name: points
+            label: Comment on joue (fiche imprimable)
+            type: text
+            description: "Les mécaniques principales en quelques points : une ligne par point (3 ou 4 lignes)."
           - name: bgg
             label: Numéro BoardGameGeek (facultatif)
             type: string

@@ -128,3 +128,13 @@ GUIDES STRATÉGIQUES
   - Le « Nom du jeu » doit être écrit exactement comme dans Jeux testés : le guide et
     le test se relient alors tout seuls (bouton « Guide stratégique » sur le test,
     badge sur la carte, lien « Notre avis » sur le guide).
+
+FICHES DES JEUX À IMPRIMER (FESTIVALS)
+  - Sur la page d'un festival, lien « Fiches des jeux à imprimer » (ou fiches.html).
+  - Une fiche par feuille A4 : boîte, joueurs, durée, âge, difficulté, résumé,
+    « Comment on joue », avis des Experts et QR code vers notre test (ou BGG).
+  - Les infos viennent de BoardGameGeek (mises à jour chaque nuit et dès qu'un festival
+    est modifié). Le résumé et « Comment on joue » se remplissent dans Pages CMS >
+    Festivals > le festival > Les jeux que nous apportons.
+  - Si la fiche affiche le mauvais jeu, renseignez son numéro BoardGameGeek.
+  - Imprimer : bouton « Imprimer », format A4, marges « aucune », graphiques d'arrière-plan cochés.

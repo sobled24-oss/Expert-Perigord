@@ -304,6 +304,90 @@ R.strategie = () => {
         ${(g.onglets||[]).length?`<ul class="guide-onglets">${g.onglets.map(o=>`<li>${esc(o)}</li>`).join("")}</ul>`:""}
         <span class="read">Lire le guide →</span></div></a>`).join("")}</div>`, "dark");
 };
+/* ---------- Fiches imprimables des jeux d'un festival ---------- */
+function niveau(p){ p = Number(p); if(!p) return ""; return p < 2 ? "Familial" : p < 2.8 ? "Initié" : p < 4 ? "Expert" : "Très expert"; }
+function fichesDe(f){
+  const F = C.fiches || {}, ids = ((F.festivals||{})[f.id]) || {};
+  return (f.jeux||[]).map(g=>{
+    const id = g.bgg || ids[g.nom], info = (F.jeux||{})[id] || {}, l = ludoDe(g.nom, id), t = testDe({id, nom:g.nom});
+    const val = (k) => info[k] ?? (l && l[k]) ?? null;
+    return {
+      nom: g.nom, table: g.table === "permanence" ? "permanence" : "demande",
+      image: g.image || info.image || (l && l.image) || (t && t.couverture) || "",
+      jmin: val("joueurs_min"), jmax: val("joueurs_max"), dmin: val("duree_min"), dmax: val("duree_max"),
+      age: val("age"), poids: val("poids") || (t && t.poids) || null,
+      auteurs: (info.auteurs||[]).join(", ") || (t && t.auteurs) || "", annee: val("annee"),
+      mecaniques: info.mecaniques || [],
+      accroche: g.accroche || (t && t.texte) || "",
+      points: String(g.points||"").split("\n").map(x=>x.replace(/^[-•*]\s*/,"").trim()).filter(Boolean),
+      test: t || null, note: t ? moyenne(t) : null, guide: t ? t.strategie : null,
+      chez: l ? (l.proprietaires||[]) : [],
+      qr: t ? new URL(artUrl("jeu", t), location.origin + "/").href : (info.url_bgg || (l && l.url_bgg) || ""),
+      qrLabel: t ? "Notre avis complet" : "Fiche BoardGameGeek"
+    };
+  });
+}
+function qrSvg(url){
+  if(!url || typeof qrcode !== "function") return "";
+  try { const q = qrcode(0, "M"); q.addData(url); q.make(); return q.createSvgTag({cellSize:3, margin:0, scalable:true}); } catch(e){ return ""; }
+}
+function ficheHtml(x, f){
+  const meeples = x.poids ? Array.from({length:5}, (_,i)=>`<span class="fm${i < Math.round(x.poids) ? " on" : ""}"></span>`).join("") : "";
+  const infos = [
+    x.jmin||x.jmax ? `<div class="fi"><span class="fi-ico">👥</span><span class="fi-k">Joueurs</span><b>${plage(x.jmin,x.jmax,"")}</b></div>` : "",
+    x.dmin||x.dmax ? `<div class="fi"><span class="fi-ico">⏱</span><span class="fi-k">Durée</span><b>${plage(x.dmin,x.dmax," min")}</b></div>` : "",
+    x.age ? `<div class="fi"><span class="fi-ico">🎂</span><span class="fi-k">Âge</span><b>${x.age} ans et +</b></div>` : "",
+    x.poids ? `<div class="fi fi-poids"><span class="fi-ico">⚖️</span><span class="fi-k">Difficulté</span><b>${niveau(x.poids)}</b><span class="fm-row">${meeples}<em>${fr(Math.round(x.poids*10)/10)}/5</em></span></div>` : ""
+  ].join("");
+  return `<article class="fiche">
+    <header class="f-top"><span class="f-asso"><img src="images/logo-detoure.webp" alt="">${esc(NOM)}</span><span class="f-table ${x.table}">${x.table==="permanence" ? "Table en permanence" : "Jeu à la demande"}</span></header>
+    <div class="f-body">
+      <div class="f-boite">${x.image ? `<img src="${esc(x.image)}" alt="Boîte de ${esc(x.nom)}">` : `<span class="f-mono">${esc(String(x.nom).slice(0,2))}</span>`}</div>
+      <div class="f-main">
+        <h2>${esc(x.nom)}</h2>
+        ${x.auteurs || x.annee ? `<p class="f-auteurs">${esc(x.auteurs)}${x.auteurs && x.annee ? " · " : ""}${x.annee || ""}</p>` : ""}
+        <div class="f-infos">${infos}</div>
+      </div>
+    </div>
+    ${x.accroche ? `<section class="f-bloc"><h3>En résumé</h3><p class="f-accroche">${esc(x.accroche)}</p></section>` : ""}
+    ${x.points.length ? `<section class="f-bloc"><h3>Comment on joue</h3><ul class="f-points">${x.points.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></section>` : ""}
+    ${x.mecaniques.length ? `<p class="f-meca">${x.mecaniques.map(m=>`<span>${esc(m)}</span>`).join("")}</p>` : ""}
+    <footer class="f-bas">
+      ${x.test ? `<div class="f-avis"><span class="fi-k">L'avis des Experts</span><b>${esc(VERDICTS[x.test.verdict]||"")}${x.note!=null ? ` · ${fr(Math.round(x.note*10)/10)}/10` : ""}</b>${x.guide ? `<span class="f-guide">+ guide stratégique sur notre site</span>` : ""}</div>` : `<div class="f-avis"><span class="fi-k">Envie d'y jouer ?</span><b>Demandez aux Experts !</b></div>`}
+      ${x.qr ? `<div class="f-qr">${qrSvg(x.qr)}<span>${esc(x.qrLabel)}</span></div>` : ""}
+    </footer>
+  </article>`;
+}
+R.fiches = () => {
+  const fs = (C.festivals||[]).filter(f=>(f.jeux||[]).length);
+  const q = new URLSearchParams(location.search).get("f");
+  const f = fs.find(x=>x.id===q) || aVenir().find(x=>(x.jeux||[]).length) || fs[0];
+  if(!f) return pageHero("Festivals","Fiches des jeux à imprimer","Ajoutez d'abord les jeux que vous apportez dans la fiche du festival (Pages CMS).","30%");
+  const X = fichesDe(f);
+  window.__FICHES = {f, X};
+  return `<div class="fiches-outils"><div class="wrap">
+      <div class="fo-titre"><span class="hand">Fiches à imprimer</span><h1>${esc(f.nom)}</h1><p>${X.length} jeux, une fiche par feuille A4. Décochez ceux que vous ne voulez pas imprimer.</p></div>
+      <div class="fo-actions">
+        ${fs.length>1 ? `<label>Festival <select id="fo-fest">${fs.map(x=>`<option value="${esc(x.id)}"${x.id===f.id?" selected":""}>${esc(x.nom)}</option>`).join("")}</select></label>` : ""}
+        <button type="button" class="btn" id="fo-print">🖨 Imprimer</button>
+        <a class="back" href="${artUrl("festival", f)}">← Retour au festival</a>
+      </div>
+      <ul class="fo-liste">${X.map((x,i)=>`<li><label><input type="checkbox" data-i="${i}" checked> ${esc(x.nom)}</label></li>`).join("")}</ul>
+    </div></div>
+    <div class="fiches-feuilles" id="fiches-feuilles"></div>`;
+};
+function fichesInit(){
+  const D = window.__FICHES; if(!D) return;
+  const zone = document.getElementById("fiches-feuilles");
+  const rendre = () => {
+    const sel = [...document.querySelectorAll(".fo-liste input")].filter(c=>c.checked).map(c=>D.X[c.dataset.i]);
+    zone.innerHTML = sel.length ? sel.map(x=>`<section class="feuille">${ficheHtml(x, D.f)}</section>`).join("") : `<p class="empty">Aucun jeu sélectionné.</p>`;
+  };
+  document.querySelectorAll(".fo-liste input").forEach(c=>c.addEventListener("change", rendre));
+  const fe = document.getElementById("fo-fest"); if(fe) fe.addEventListener("change", ()=>{ location.search = "?f=" + encodeURIComponent(fe.value); });
+  document.getElementById("fo-print").addEventListener("click", ()=>window.print());
+  rendre();
+}
 R.ludotheque = () => {
   const B = C.bgg||{}, maj = (C.ludotheque||{}).maj;
   const hero = pageHero("Notre ludothèque","Les jeux de la ludothèque", B.intro||"", "60%");
@@ -363,6 +447,7 @@ function ludoFiltre(){
 const main = document.getElementById("main");
 if(!main.hasAttribute("data-ssr")) main.innerHTML = (R[PAGE] || R.accueil)();
 if(document.getElementById("ludo-filters")){ ludoFiltre(); document.getElementById("ludo-filters").addEventListener("input", ludoFiltre); }
+if(document.getElementById("fiches-feuilles")) fichesInit();
 if(document.getElementById("jeux-filters")){ jeuxFiltre(); document.getElementById("jeux-filters").addEventListener("input", jeuxFiltre); }
 
 /* Pages d'article fabriquées par GitHub : on ajoute les autres articles en bas */

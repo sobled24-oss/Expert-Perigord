@@ -1,0 +1,75 @@
+/* ===== Fiches imprimables des jeux de festival =====
+   À l'écran : outils + aperçu des feuilles. À l'impression : une fiche par feuille A4 portrait. */
+
+body[data-page="fiches"]{background:#1A191D}
+.fiches-outils{padding:110px 0 30px;border-bottom:1px solid rgba(201,162,74,.25);background:var(--bg,#09090B)}
+.fiches-outils h1{margin:6px 0 8px}
+.fiches-outils p{color:#CFC6B6;max-width:70ch}
+.fo-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:20px 0 16px}
+.fo-actions label{display:flex;align-items:center;gap:8px;color:#E6DECF}
+.fo-actions select{font:inherit;background:#121215;color:#E6DECF;border:1px solid #3A342A;padding:8px 10px}
+.fo-liste{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px}
+.fo-liste label{display:flex;gap:6px;align-items:center;color:#D8CDB6;font-size:.92rem;cursor:pointer}
+.fiches-feuilles{display:flex;flex-direction:column;align-items:center;gap:28px;padding:34px 12px 60px}
+
+/* La feuille A4 portrait = une fiche */
+.feuille{width:210mm;height:297mm;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.5);overflow:hidden;flex:none}
+@media screen and (max-width:900px){
+  .fiches-feuilles{align-items:flex-start;overflow-x:auto}
+  .feuille{zoom:.45}
+}
+
+.fiche{--or:#9A7A2E;--encre:#1B1A17;--gris:#5E5A52;width:210mm;height:297mm;box-sizing:border-box;padding:14mm 15mm 12mm;display:flex;flex-direction:column;gap:7mm;font-family:"Nunito Sans",system-ui,sans-serif;font-size:4.5mm;line-height:1.4;color:var(--encre);position:relative}
+.fiche::before{content:"";position:absolute;inset:6mm;border:.4mm solid var(--or);pointer-events:none}
+.fiche::after{content:"";position:absolute;inset:7.2mm;border:.15mm solid var(--or);pointer-events:none;opacity:.6}
+.f-top{display:flex;justify-content:space-between;align-items:center;gap:4mm}
+.f-asso{display:flex;align-items:center;gap:2.5mm;font-family:"Cinzel",serif;font-weight:700;font-size:.8em;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.f-asso img{width:11mm;height:11mm;object-fit:contain}
+.f-table{font-family:"Cinzel",serif;font-weight:700;font-size:.78em;letter-spacing:.1em;text-transform:uppercase;padding:1.6mm 3.5mm;border:.4mm solid var(--or);color:var(--or)}
+.f-table.demande{background:var(--or);color:#fff}
+
+.f-body{display:grid;grid-template-columns:78mm 1fr;gap:9mm;align-items:center;margin-top:2mm}
+.f-boite{height:100mm;display:flex;align-items:center;justify-content:center}
+.f-boite img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 2mm 3mm rgba(0,0,0,.28))}
+.f-mono{font-family:"Cinzel",serif;font-size:5em;color:var(--or);text-transform:uppercase}
+.f-main{display:flex;flex-direction:column;gap:3mm;min-width:0}
+.fiche h2{font-family:"Cinzel",serif;font-weight:700;font-size:2.2em;line-height:1.05;letter-spacing:.03em;text-transform:uppercase;margin:0;color:var(--encre)}
+.f-auteurs{margin:-1.5mm 0 0;font-size:.85em;color:var(--gris)}
+.f-infos{display:grid;grid-template-columns:1fr;gap:2.5mm}
+.fi{display:grid;grid-template-columns:auto 1fr;column-gap:2.2mm;align-items:center;padding:2mm 2.6mm;background:#F5F0E4;border-left:.9mm solid var(--or)}
+.fi-ico{grid-row:1/4;font-size:1.5em;line-height:1}
+.fi-k{font-family:"Cinzel",serif;font-weight:700;font-size:.62em;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
+.fi b{font-size:1.02em;line-height:1.2}
+.fm-row{grid-column:2;display:flex;align-items:center;gap:1mm;margin-top:.6mm}
+.fm{width:2.6mm;height:2.6mm;border-radius:50%;border:.3mm solid var(--or)}
+.fm.on{background:var(--or)}
+.fm-row em{font-style:normal;font-size:.78em;color:var(--gris);margin-left:1mm}
+
+.f-bloc h3{margin:0 0 2mm;font-family:"Cinzel",serif;font-weight:700;font-size:.92em;letter-spacing:.16em;text-transform:uppercase;color:var(--or);display:flex;align-items:center;gap:3mm}
+.f-bloc h3::after{content:"";flex:1;height:.3mm;background:linear-gradient(90deg,var(--or),transparent)}
+.f-accroche{margin:0;font-size:1.08em;line-height:1.5}
+.f-points{list-style:none;margin:0;padding:0;display:grid;gap:3mm}
+.f-points li{position:relative;padding-left:7mm;line-height:1.45}
+.f-points li::before{content:"";position:absolute;left:.6mm;top:1.5mm;width:2.6mm;height:2.6mm;background:var(--or);transform:rotate(45deg)}
+.f-meca{margin:0;display:flex;flex-wrap:wrap;gap:1.6mm}
+.f-meca span{font-size:.76em;padding:.8mm 2.4mm;border:.3mm solid #CDBF9F;color:var(--gris)}
+
+.f-bas{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:6mm;border-top:.3mm solid #E2D8C2;padding-top:4mm}
+.f-avis{display:flex;flex-direction:column;gap:1mm}
+.f-avis b{font-family:"Cinzel",serif;font-size:1.25em}
+.f-guide{font-size:.82em;color:var(--or);font-weight:700}
+.f-qr{display:flex;align-items:center;gap:3mm;font-size:.76em;color:var(--gris);text-align:right}
+.f-qr svg{width:24mm;height:24mm;display:block}
+.f-qr span{max-width:26mm}
+
+/* Impression */
+@page{size:A4 portrait;margin:0}
+@media print{
+  html,body[data-page="fiches"]{background:#fff !important}
+  body[data-page="fiches"]::before,body[data-page="fiches"]::after{display:none !important}
+  body[data-page="fiches"] header.top,body[data-page="fiches"] footer.bas,.fiches-outils{display:none !important}
+  .fiches-feuilles{padding:0;gap:0;display:block}
+  .feuille{box-shadow:none;break-after:page;page-break-after:always;zoom:1}
+  .feuille:last-child{break-after:auto;page-break-after:auto}
+  .fiche,.fiche *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

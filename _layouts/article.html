@@ -162,6 +162,7 @@ Merci !{%- endcapture -%}
   {%- for j in page.jeux -%}{%- if j.table == "permanence" -%}{%- assign n_perm = n_perm | plus: 1 -%}{%- else -%}{%- assign n_dem = n_dem | plus: 1 -%}{%- endif -%}{%- endfor -%}
   <section class="table-jeux" id="nos-jeux">
     <h2 class="photos-title">Les jeux de notre table</h2>
+    <a class="fiches-lien" href="fiches.html?f={{ page.slug }}">🖨 Fiches des jeux à imprimer</a>
     {%- for groupe in (1..2) -%}
       {%- if groupe == 1 -%}{%- assign voulu = "permanence" -%}{%- assign n = n_perm -%}{%- else -%}{%- assign voulu = "demande" -%}{%- assign n = n_dem -%}{%- endif -%}
       {%- if n > 0 %}
