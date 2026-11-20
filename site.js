@@ -238,7 +238,7 @@ R.article = () => {
     + sec(`<a class="back" href="${back[0]}">← ${back[1]}</a>
       <div class="article-layout">
         <article class="article-body">
-          ${x.couverture?`<img class="article-cover" src="${esc(x.couverture)}" alt="">`:""}
+          ${x.couverture?`<div class="article-cover-wrap"><img class="flou" src="${esc(x.couverture)}" alt="" aria-hidden="true"><img class="article-cover" src="${esc(x.couverture)}" alt=""></div>`:""}
           ${ex(x)}
           ${x.article_html && x.article_html.trim() ? `<div class="prose">${x.article_html}</div>` : texte.length?texte.map(p=>`<p>${esc(p)}</p>`).join(""):`<p class="note">L'article arrive bientôt.</p>`}
         </article>
@@ -465,7 +465,8 @@ const av = document.querySelector(".a-venir");
 const passe = av && av.dataset.fin && av.dataset.fin < HIER;
 if(passe){ const inv = av.querySelector(".resa-inviter"); if(inv) av.before(inv); av.remove(); document.querySelectorAll(".tj-resa,.tj-libre").forEach(e=>e.remove()); const h = document.querySelector("#nos-jeux .photos-title"); if(h) h.textContent = "Les jeux qu'on avait apportés"; document.querySelectorAll(".tj-titre span").forEach(e=>e.remove()); }
 document.querySelectorAll(".tj[data-nom]").forEach(el=>{
-  const nom = el.dataset.nom, l = ludoDe(nom), t = testParNom(nom), box = el.querySelector(".tj-img");
+  const nom = el.dataset.nom, F = C.fiches || {}, fid = Object.values(F.festivals||{}).map(x=>x[nom]).find(Boolean), fi = fid && (F.jeux||{})[fid];
+  const l = ludoDe(nom, fid) || (fi ? {joueurs_min:fi.joueurs_min, joueurs_max:fi.joueurs_max, duree_min:fi.duree_min, duree_max:fi.duree_max, image:fi.image} : null), t = testParNom(nom), box = el.querySelector(".tj-img");
   const img = (l && l.image) || (t && t.couverture);
   if(img && !box.querySelector("img")) box.innerHTML = `<img src="${esc(img)}" alt="Boîte de ${esc(nom)}" loading="lazy">`;
   const info = [];

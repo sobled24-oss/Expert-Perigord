@@ -102,7 +102,7 @@
   {% if isjeu %}<a class="back" href="jeux.html">← Tous nos jeux testés</a>{% assign guide = site.strategies | where: "title", page.title | first %}{% if isjeu and guide %}<a class="strat-lien" href="{{ guide.url }}">Notre guide stratégique →</a>{% endif %}{% else %}<a class="back" href="festivals.html">← Tous nos festivals</a>{% endif %}
   <div class="article-layout">
     <article class="article-body">
-      {% if page.couverture and page.couverture != "" %}<img class="article-cover" src="{{ page.couverture }}" alt="{{ page.title | escape }}">{% endif %}
+      {% if page.couverture and page.couverture != "" %}<div class="article-cover-wrap"><img class="flou" src="{{ page.couverture }}" alt="" aria-hidden="true"><img class="article-cover" src="{{ page.couverture }}" alt="{{ page.title | escape }}"></div>{% endif %}
       {% assign corps = content | strip_html | strip %}
       {% if corps != "" %}<div class="prose">{{ content }}</div>
       {% elsif page.resume and page.resume != "" %}<div class="prose"><p>{{ page.resume | escape }}</p></div>
@@ -162,7 +162,6 @@ Merci !{%- endcapture -%}
   {%- for j in page.jeux -%}{%- if j.table == "permanence" -%}{%- assign n_perm = n_perm | plus: 1 -%}{%- else -%}{%- assign n_dem = n_dem | plus: 1 -%}{%- endif -%}{%- endfor -%}
   <section class="table-jeux" id="nos-jeux">
     <h2 class="photos-title">Les jeux de notre table</h2>
-    <a class="fiches-lien" href="fiches.html?f={{ page.slug }}">🖨 Fiches des jeux à imprimer</a>
     {%- for groupe in (1..2) -%}
       {%- if groupe == 1 -%}{%- assign voulu = "permanence" -%}{%- assign n = n_perm -%}{%- else -%}{%- assign voulu = "demande" -%}{%- assign n = n_dem -%}{%- endif -%}
       {%- if n > 0 %}
@@ -195,6 +194,7 @@ Merci !{%- endcapture -%}
     </div>
       {%- endif -%}
     {%- endfor %}
+    <div class="fiches-cta"><a class="btn" href="fiches.html?f={{ page.slug }}">🖨 Imprimer les fiches des jeux</a><span>Une fiche A4 par jeu : boîte, infos clés, résumé et façon de jouer.</span></div>
   </section>
   {% endif %}
 
