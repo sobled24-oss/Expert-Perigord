@@ -3,8 +3,40 @@ title: "Brass: Lancashire"
 date: 2026-11-09
 verdict: rejouer
 resume: Brass le jeu emblématique trustant BGG
+strategie: |-
+  ### 1. Une course de fond
+  Être derrière à la fin de l'ère des canaux n'est pas grave : l'ère du rail rapporte bien plus, et le leader de la première moitié se fait souvent rattraper. Les vrais points viennent des **rails**, des **filatures de coton** et des **fonderies de fer** ; ports et chantiers navals rapportent moins.
+
+  ### 2. Choisir son camp dès les canaux : coton ou fer
+  - **Coton** : la voie la plus rentable. Filatures près de Manchester, reliées à **vos propres ports**, puis une grosse vente qui retourne 2 ou 3 filatures d'un coup. Ne traînez pas : le marché étranger peut se fermer. Peu de mines suffisent.
+  - **Fer** : construisez une fonderie quand quelques cubes ont déjà quitté la piste de demande, pour récupérer une partie du coût tout de suite. Profitez ensuite de votre trésorerie pour économiser des actions.
+
+  ### 3. Les ports : utiles, pas centraux
+  Peu chers, sans charbon ni fer. Une filature ou un port à **Liverpool** ou **Preston** fait une bonne première action.
+
+  ### 4. Développer tôt
+  Pendant les canaux, éliminez un maximum de tuiles de niveau 0 et 1 : elles ne marquent rien en fin de partie et encombrent vos plateaux. Terminez l'ère avec quelques industries de **niveau 2** sur le plateau : elles restent et serviront de point de départ à votre réseau ferroviaire.
+
+  ### 5. Préparer le rail dès les canaux
+  Le charbon compte peu aux canaux mais devient crucial au rail. Finissez les canaux avec **au moins une mine encore pleine** qui ne disparaîtra pas. Au changement d'ère, surveillez l'ordre du tour et foncez sur les liaisons stratégiques.
+
+  ### 6. N'ayez pas peur des prêts
+  - Un prêt en début de partie coûte peu : on remonte vite les paliers de revenu.
+  - Prenez toujours **le prêt complet (30 £)** : il coûte une action, quel que soit le montant.
+  - Au rail, **plus de prêt une fois la pioche épuisée** : un dernier prêt vers le 4ᵉ tour du rail est souvent bien calculé.
+
+  ### 7. Les chantiers navals, à double tranchant
+  Beaucoup de points, mais 3 au maximum, chers, gourmands en charbon, en fer et en actions (liaison, construction, développement, souvent un prêt). On peut gagner sans eux ; ils deviennent intéressants quand **personne d'autre ne s'y intéresse**. Pour contrer un joueur « tout navires », bloquez **Liverpool** et **Birkenhead**.
+
+  ### 8. Lire sa main de départ
+  Si plusieurs lieux de vos cartes sont proches, bâtissez votre plan autour. Gardez les cartes « inutiles » pour les actions qui n'en dépendent pas : prêt, développement, liaison.
+
+  ### 9. L'esprit Brass
+  Gagner, c'est souvent construire **là où les autres auront besoin de vous** tout en bloquant leurs emplacements clés, sans leur offrir trop de charbon ou de fer.
+
+  <p class="sources">Conseils réunis à partir de guides de stratégie et de discussions de joueurs : <a href="https://ultraboardgames.com/brass/tips.php" target="_blank" rel="noopener">UltraBoardGames</a>, <a href="https://boardgaming.com/gametips/brass" target="_blank" rel="noopener">BoardGaming.com</a>, <a href="https://redlib.astrial.org/r/boardgames/comments/1jd8c38/is_focusing_only_on_shipyards_in_brass_lancashire" target="_blank" rel="noopener">Reddit r/boardgames</a>.</p>
 couverture: images/uploads/brass-birmingham-couverture-04362a.jpg
-bgg: "224517"
+bgg: "28720"
 auteurs: Gavan Brown, Matt Tolman, Martin Wallace
 joueurs: 2 à 4
 duree: 60 à 120 min

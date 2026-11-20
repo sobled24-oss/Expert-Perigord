@@ -207,3 +207,15 @@ a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 .ludo-orphelines summary{cursor:pointer;font-family:var(--f-label);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-hi)}
 .ludo-orphelines ul{grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));margin-top:14px}
 .ludo-orphelines li span{font-size:.8rem;color:var(--muted)}
+/* Jeux testés : conseils de stratégie */
+.strategie{margin:48px 0 8px;padding:30px clamp(20px,3vw,40px);background:linear-gradient(180deg,#141317,#0D0C0F);border:1px solid rgba(201,162,74,.35);clip-path:var(--bevel)}
+.strategie .photos-title{margin-top:0}
+.strategie .prose{max-width:80ch}
+.strategie .prose h3{font-size:1rem;color:var(--gold-hi);margin:26px 0 8px}
+.strategie .prose strong{color:#F0E6D2}
+.strategie .prose ul{padding-left:1.2em}
+.strategie .sources{font-size:.82rem;color:var(--muted);border-top:1px solid #2A2620;padding-top:14px;margin-top:26px}
+.strategie .sources a{color:#CFC6B6}
+.strat-lien{float:right;font-family:var(--f-label);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-hi);text-decoration:none}
+.tag.strat{background:rgba(142,31,26,.25);border-color:rgba(201,90,74,.5);color:#F2C9B8}
+@media (max-width:600px){.strat-lien{float:none;display:block;margin-top:10px}}

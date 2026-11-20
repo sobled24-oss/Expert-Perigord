@@ -99,7 +99,7 @@
 <header class="page-hero" style="--pos:40%"><div class="wrap"><span class="hand">{% if isjeu %}Jeu testé{% else %}Festival{% endif %}</span><h1>{{ page.title | escape }}</h1>{% if isjeu and page.redacteur and page.redacteur != "" %}
 <p class="byline">{% if red.photo %}<img src="{{ red.photo }}" alt="" width="40" height="40">{% endif %}<span>Article de <b>{{ page.redacteur | escape }}</b>{% if verdict != "" %} · <span class="verdict v-{{ page.verdict }}">{{ verdict_court }}</span>{% endif %}</span></p>{% endif %}</div></header>
 <section class="block"><div class="wrap">
-  {% if isjeu %}<a class="back" href="jeux.html">← Tous nos jeux testés</a>{% else %}<a class="back" href="festivals.html">← Tous nos festivals</a>{% endif %}
+  {% if isjeu %}<a class="back" href="jeux.html">← Tous nos jeux testés</a>{% if page.strategie and page.strategie != "" %}<a class="strat-lien" href="#strategie">Nos conseils de stratégie ↓</a>{% endif %}{% else %}<a class="back" href="festivals.html">← Tous nos festivals</a>{% endif %}
   <div class="article-layout">
     <article class="article-body">
       {% if page.couverture and page.couverture != "" %}<img class="article-cover" src="{{ page.couverture }}" alt="{{ page.title | escape }}">{% endif %}
@@ -196,6 +196,12 @@ Merci !{%- endcapture -%}
   </section>
   {% endif %}
 
+  {% if isjeu and page.strategie and page.strategie != "" %}
+  <section class="strategie" id="strategie">
+    <h2 class="photos-title">Nos conseils de stratégie</h2>
+    <div class="prose">{{ page.strategie | markdownify }}</div>
+  </section>
+  {% endif %}
   {% if isjeu and site.data.equipe.membres.size > 0 %}
   <h2 class="photos-title">L'avis des Experts</h2>
   <div class="avis-grid">

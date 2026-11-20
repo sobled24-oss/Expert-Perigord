@@ -76,6 +76,10 @@ content:
       - name: body
         label: Article complet
         type: rich-text
+      - name: strategie
+        label: Conseils de stratégie (facultatif)
+        type: rich-text
+        description: "S'affiche sous l'avis des Experts, dans un bloc « Nos conseils de stratégie ». Le jeu reçoit alors le badge « Guide stratégie »."
       - name: couverture
         label: Image de couverture
         type: image

@@ -79,7 +79,7 @@ function gameCard(t){
     <div class="inner">
       <div class="game-top">${t.verdict?`<span class="verdict">${esc(VERDICTS[t.verdict]||t.verdict)}${t.redacteur?` de ${esc(t.redacteur)}`:""}</span>`:(t.redacteur?`<span class="verdict">Article de ${esc(t.redacteur)}</span>`:"<span></span>")}${ex(t)}</div>
       ${poids(t.poids)}
-      <div class="meta">${moyenne(t)!==null?`<span class="tag score">Experts ${fr(moyenne(t))}/10</span>`:""}${t.joueurs?`<span class="tag">${meeple()} ${esc(t.joueurs)}</span>`:""}${t.duree?`<span class="tag">${esc(t.duree)}</span>`:""}</div>
+      <div class="meta">${moyenne(t)!==null?`<span class="tag score">Experts ${fr(moyenne(t))}/10</span>`:""}${t.strategie?`<span class="tag strat">Guide stratégie</span>`:""}${t.joueurs?`<span class="tag">${meeple()} ${esc(t.joueurs)}</span>`:""}${t.duree?`<span class="tag">${esc(t.duree)}</span>`:""}</div>
       ${t.texte?`<p>${esc(t.texte)}</p>`:""}
       <span class="read">Lire l'article →</span>
     </div></a>`;
@@ -151,6 +151,7 @@ R.jeux = () => {
       <label for="jf-j">Joueurs<select id="jf-j">${opt("","Tous")}${[1,2,3,4,5,6].map(n=>opt(n, n===6?"6 et +":n)).join("")}</select></label>
       <label for="jf-p">Poids<select id="jf-p">${opt("","Tous")}${opt("0-3","Moins de 3")}${opt("3-4","3 à 4")}${opt("4-6","4 et plus")}</select></label>
       ${auteurs.length>1?`<label for="jf-a">Avis de<select id="jf-a">${opt("","Tout le monde")}${auteurs.map(n=>opt(n,n)).join("")}</select></label>`:""}
+      ${C.tests.some(t=>t.strategie)?`<label for="jf-s">Stratégie<select id="jf-s">${opt("","Tous les jeux")}${opt("1","Avec guide stratégie")}</select></label>`:""}
       <label for="jf-t">Trier par<select id="jf-t">${opt("date","Plus récents d'abord")}${opt("note","Mieux notés d'abord")}${opt("poids","Plus lourds d'abord")}${opt("nom","Nom")}</select></label>
     </form>
     <p class="note ludo-count" id="jeux-count" aria-live="polite"></p>
@@ -159,10 +160,11 @@ R.jeux = () => {
 function jeuxFiltre(){
   const g = document.getElementById("games"), f = document.getElementById("jeux-filters"); if(!g || !f) return;
   const v = id => { const e = document.getElementById(id); return e ? e.value : ""; };
-  const q = norm(v("jf-q")), ver = v("jf-v"), nj = Number(v("jf-j")), p = v("jf-p"), au = v("jf-a"), tri = v("jf-t");
+  const strat = v("jf-s"), q = norm(v("jf-q")), ver = v("jf-v"), nj = Number(v("jf-j")), p = v("jf-p"), au = v("jf-a"), tri = v("jf-t");
   let L = C.tests.filter(t=>{
     if(q && !norm(t.jeu+" "+(t.auteurs||"")).includes(q)) return false;
     if(ver && t.verdict!==ver) return false;
+    if(strat && !t.strategie) return false;
     if(nj){ const n = nums(t.joueurs); if(!n.length) return false; const mn = n[0], mx = n[n.length-1]; if(nj===6 ? mx<6 : (nj<mn || nj>mx)) return false; }
     if(p){ const [a,b] = p.split("-").map(Number), w = Number(t.poids); if(!w || w<a || w>=b) return false; }
     if(au && !avisDe(t).includes(au)) return false;
