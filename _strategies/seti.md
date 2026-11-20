@@ -539,37 +539,13 @@ guides:
       cartes Mission), il est difficile d'obtenir un fort rendement.
 
   - titre: "Avancé : les technologies"
-    texte: >-
-      *Traduction intégrale de « SETI Advanced Strategy 1: Tech » d'Ender
-      (Ender_Wiggin), publié sur BoardGameGeek. Pour **le jeu de base, sans
-      extension**. Les icônes du jeu, absentes du texte d'origine que nous avons
-      pu récupérer, sont remplacées par des emoji.*
-
+    texte: >+
+      
 
       🪙 crédit · ⚡ énergie · 📣 publicité · 💾 donnée · 🃏 carte · 🚀
       déplacement · 📡 signal · 🛰️ sonde · 🧬 trace · ⭐ point de victoire
 
 
-      ## I. Introduction
-
-
-      J'ai récemment joué davantage à SETI, avec quelques parties à plus de 300
-      points à 4 joueurs (et quelques-unes à plus de 400 en solo contre l'IA la
-      plus facile). Cela m'a donné un nouveau regard sur les mécaniques du jeu.
-      Cet article analyse les aspects des technologies qui préoccupent les
-      joueurs de SETI : la stratégie générale des technologies et l'analyse de
-      chaque tuile. Ma réflexion évolue encore : cet article est plutôt un point
-      de départ pour la discussion. Vos idées sont les bienvenues.
-
-
-      Points clés à préciser :
-
-
-      - **Les routes technologiques de SETI ne sont pas complexes**, et peuvent
-      même être assez « formulées ».
-
-      - L'aspect « non formulé » du choix des technologies dépend surtout **du
-      bonus au dos de la tuile**, qui influence fortement les décisions.
 
 
       ## II. La route technologique
@@ -1054,9 +1030,4 @@ guides:
       est à peu près le même pour tous, mais les choix du début varient, guidés
       surtout par les bonus des tuiles. **Les bons bonus sont disputés, les
       mauvais sont laissés aux autres.**
-
-
-      Source : « SETI Advanced Strategy 1: Tech », par Ender (Ender_Wiggin), sur
-      BoardGameGeek. Traduction intégrale par les Experts. Pour le jeu de base
-      sans extension.
 ---
