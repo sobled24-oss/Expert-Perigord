@@ -1,6 +1,7 @@
 {
  "festivals": {
   "perijeux": {
+   "Life of Amazonia": "368305",
    "Sanctuary": "441696",
    "Wondrous Creatures": "400366",
    "Nemesis": "167355",
@@ -13,6 +14,31 @@
   }
  },
  "jeux": {
+  "368305": {
+   "id": "368305",
+   "nom_bgg": "Life of the Amazonia",
+   "annee": 2023,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 150,
+   "age": 14,
+   "poids": 2.87,
+   "note_bgg": 8.07,
+   "mecaniques": [
+    "Construction de deck",
+    "Bonus de fin de partie",
+    "Plateau hexagonal",
+    "Motifs à construire",
+    "Collection"
+   ],
+   "auteurs": [
+    "Jamie Bloom"
+   ],
+   "editeur": "Bad Comet",
+   "url_bgg": "https://boardgamegeek.com/boardgame/368305",
+   "image": "images/fiches/368305.jpg"
+  },
   "441696": {
    "id": "441696",
    "nom_bgg": "Sanctuary",
