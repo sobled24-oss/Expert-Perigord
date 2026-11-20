@@ -76,10 +76,22 @@ content:
       - name: body
         label: Article complet
         type: rich-text
-      - name: strategie
-        label: Conseils de stratégie (facultatif)
-        type: rich-text
-        description: "S'affiche sous l'avis des Experts, dans un bloc « Nos conseils de stratégie ». Le jeu reçoit alors le badge « Guide stratégie »."
+      - name: guides
+        label: Guides de stratégie (facultatif)
+        description: "Un ou plusieurs guides, affichés en onglets sous l'article (ex. « Les bases », « Avancé : les technologies »). Le jeu reçoit le badge « Guide stratégie »."
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titre}"
+        fields:
+          - name: titre
+            label: Titre de l'onglet
+            type: string
+            required: true
+          - name: texte
+            label: Contenu du guide
+            type: rich-text
       - name: couverture
         label: Image de couverture
         type: image

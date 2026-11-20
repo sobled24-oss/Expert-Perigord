@@ -393,6 +393,15 @@ if(ag){
   });
 }
 
+/* Guides de stratégie en onglets */
+document.querySelectorAll(".strat-tabs").forEach(tl=>{
+  const tabs = [...tl.querySelectorAll("[role=tab]")], sec = tl.closest(".strategie");
+  sec.classList.add("tabs-on");
+  const show = (t, focus) => { tabs.forEach(x=>{ const on = x===t; x.setAttribute("aria-selected", on); x.tabIndex = on?0:-1; document.getElementById(x.getAttribute("aria-controls")).hidden = !on; }); if(focus) t.focus(); };
+  tabs.forEach((t,i)=>{ t.addEventListener("click", ()=>show(t)); t.addEventListener("keydown", e=>{ const d = e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0; if(d){ e.preventDefault(); show(tabs[(i+d+tabs.length)%tabs.length], true); } }); });
+  const h = location.hash.match(/^#guide-(\d+)$/); show(h && tabs[h[1]-1] ? tabs[h[1]-1] : tabs[0]);
+});
+
 /* Page d'un jeu testé : où le trouver dans la ludothèque, sur quel festival on l'apporte */
 if(oth && oth.dataset.kind==="jeu"){
   const t = C.tests.find(x=>idOf(x)===oth.dataset.slug), fiche = document.querySelector(".article-fiche");
