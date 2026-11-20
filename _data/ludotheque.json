@@ -4,7 +4,7 @@
   "Darnethil",
   "skkrohmagnon"
  ],
- "maj": "2026-11-19",
+ "maj": "2026-11-20",
  "jeux": [
   {
    "id": "73369",
@@ -864,7 +864,7 @@
    ],
    "poids": 1.74,
    "age": 10,
-   "note_bgg": 7.68,
+   "note_bgg": 7.67,
    "image": "images/ludotheque/416851.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/416851"
   },
@@ -1715,7 +1715,7 @@
    ],
    "poids": 3.71,
    "age": 14,
-   "note_bgg": 7.81,
+   "note_bgg": 7.82,
    "extensions": [
     {
      "id": "184256",
@@ -3140,7 +3140,7 @@
    ],
    "poids": 3.64,
    "age": 14,
-   "note_bgg": 8.46,
+   "note_bgg": 8.47,
    "image": "images/ludotheque/274471.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/274471"
   },
@@ -3301,7 +3301,7 @@
    "proprietaires": [
     "Tim"
    ],
-   "poids": 1.17,
+   "poids": 1.19,
    "age": 8,
    "note_bgg": 6.67,
    "image": "images/ludotheque/377515.jpg",
@@ -3654,7 +3654,7 @@
    ],
    "poids": 2.6,
    "age": 14,
-   "note_bgg": 6.97,
+   "note_bgg": 6.96,
    "image": "images/ludotheque/280897.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/280897"
   },
@@ -4826,7 +4826,7 @@
    "proprietaires": [
     "Pat"
    ],
-   "poids": 2.13,
+   "poids": 2.14,
    "age": 10,
    "note_bgg": 7.36,
    "image": "images/ludotheque/204472.jpg",
@@ -5261,7 +5261,8 @@
    "duree_min": 90,
    "duree_max": 120,
    "proprietaires": [
-    "Philou"
+    "Philou",
+    "Pat"
    ],
    "poids": 3.31,
    "age": 14,
@@ -5290,14 +5291,6 @@
       "Pat"
      ],
      "url_bgg": "https://boardgamegeek.com/boardgame/420043"
-    },
-    {
-     "id": "386803",
-     "nom": "Tainted Grail: Story Dice Expansion",
-     "proprietaires": [
-      "Pat"
-     ],
-     "url_bgg": "https://boardgamegeek.com/boardgame/386803"
     }
    ],
    "image": "images/ludotheque/360366.jpg",

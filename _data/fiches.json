@@ -1,0 +1,241 @@
+{
+ "festivals": {
+  "perijeux": {
+   "Sanctuary": "441696",
+   "Wondrous Creatures": "400366",
+   "Nemesis": "167355",
+   "Dune Imperium": "316554",
+   "SETI": "418059",
+   "Speakeasy": "375459",
+   "Black Rose Wars": "239942",
+   "Near": "471157",
+   "Civolution": "400602"
+  }
+ },
+ "jeux": {
+  "441696": {
+   "id": "441696",
+   "nom_bgg": "Sanctuary",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 40,
+   "duree_max": 100,
+   "age": 12,
+   "poids": 2.84,
+   "note_bgg": 7.64,
+   "mecaniques": [
+    "File d'actions",
+    "Gestion de main",
+    "Plateau hexagonal",
+    "Draft ouvert",
+    "Collection"
+   ],
+   "auteurs": [
+    "Mathias Wigge"
+   ],
+   "editeur": "Feuerland Spiele",
+   "url_bgg": "https://boardgamegeek.com/boardgame/441696",
+   "image": "images/ludotheque/441696.jpg"
+  },
+  "400366": {
+   "id": "400366",
+   "nom_bgg": "Wondrous Creatures",
+   "annee": 2024,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 40,
+   "duree_max": 80,
+   "age": 14,
+   "poids": 3.02,
+   "note_bgg": 8.02,
+   "mecaniques": [
+    "Bonus de fin de partie",
+    "Gestion de main",
+    "Plateau hexagonal",
+    "Draft ouvert",
+    "Collection"
+   ],
+   "auteurs": [
+    "Yeom.C.W"
+   ],
+   "editeur": "Bad Comet",
+   "url_bgg": "https://boardgamegeek.com/boardgame/400366",
+   "image": "images/fiches/400366.jpg"
+  },
+  "167355": {
+   "id": "167355",
+   "nom_bgg": "Nemesis",
+   "annee": 2018,
+   "joueurs_min": 1,
+   "joueurs_max": 5,
+   "duree_min": 90,
+   "duree_max": 180,
+   "age": 12,
+   "poids": 3.49,
+   "note_bgg": 8.24,
+   "mecaniques": [
+    "Points d'action",
+    "Coopératif",
+    "Lancer de dés",
+    "Gestion de main",
+    "Rôles cachés"
+   ],
+   "auteurs": [
+    "Adam Kwapiński"
+   ],
+   "editeur": "Awaken Realms",
+   "url_bgg": "https://boardgamegeek.com/boardgame/167355",
+   "image": "images/ludotheque/167355.jpg"
+  },
+  "316554": {
+   "id": "316554",
+   "nom_bgg": "Dune: Imperium",
+   "annee": 2020,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "age": 14,
+   "poids": 3.08,
+   "note_bgg": 8.41,
+   "mecaniques": [
+    "Combats aux cartes",
+    "Construction de deck",
+    "Cartes à usages multiples",
+    "Draft ouvert",
+    "Course"
+   ],
+   "auteurs": [
+    "Paul Dennen"
+   ],
+   "editeur": "Dire Wolf",
+   "url_bgg": "https://boardgamegeek.com/boardgame/316554",
+   "image": "images/ludotheque/316554.jpg"
+  },
+  "418059": {
+   "id": "418059",
+   "nom_bgg": "SETI: Search for Extraterrestrial Intelligence",
+   "annee": 2024,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 40,
+   "duree_max": 160,
+   "age": 14,
+   "poids": 3.84,
+   "note_bgg": 8.41,
+   "mecaniques": [
+    "Majorité",
+    "Bonus de fin de partie",
+    "Revenus",
+    "Cartes à usages multiples",
+    "Ressources pour se déplacer"
+   ],
+   "auteurs": [
+    "Tomáš Holek"
+   ],
+   "editeur": "Czech Games Edition (CGE)",
+   "url_bgg": "https://boardgamegeek.com/boardgame/418059",
+   "image": "images/ludotheque/418059.jpg"
+  },
+  "375459": {
+   "id": "375459",
+   "nom_bgg": "Speakeasy",
+   "annee": 2025,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 50,
+   "duree_max": 180,
+   "age": 14,
+   "poids": 4.44,
+   "note_bgg": 8.41,
+   "mecaniques": [
+    "Majorité",
+    "Gestion de main",
+    "Livraisons",
+    "Placement d'ouvriers"
+   ],
+   "auteurs": [
+    "Vital Lacerda"
+   ],
+   "editeur": "Eagle-Gryphon Games",
+   "url_bgg": "https://boardgamegeek.com/boardgame/375459",
+   "image": "images/ludotheque/375459.jpg"
+  },
+  "239942": {
+   "id": "239942",
+   "nom_bgg": "Black Rose Wars",
+   "annee": 2019,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 90,
+   "age": 14,
+   "poids": 3.44,
+   "note_bgg": 7.88,
+   "mecaniques": [
+    "File d'actions",
+    "Majorité",
+    "Déplacement sur zones",
+    "Construction de deck",
+    "Gestion de main"
+   ],
+   "auteurs": [
+    "Marco Montanaro"
+   ],
+   "editeur": "Ludus Magnus Studio",
+   "url_bgg": "https://boardgamegeek.com/boardgame/239942",
+   "image": "images/ludotheque/239942.jpg"
+  },
+  "471157": {
+   "id": "471157",
+   "nom_bgg": "Near: Echoes of Civilizations",
+   "annee": 2026,
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 120,
+   "age": 14,
+   "poids": 3.44,
+   "note_bgg": 7.33,
+   "mecaniques": [
+    "Événements",
+    "Déplacement sur grille",
+    "Gestion de main",
+    "Plateau hexagonal",
+    "Cartes à usages multiples"
+   ],
+   "auteurs": [
+    "Matthieu Podevin"
+   ],
+   "editeur": "La Boîte de Jeu",
+   "url_bgg": "https://boardgamegeek.com/boardgame/471157",
+   "image": "images/fiches/471157.jpg"
+  },
+  "400602": {
+   "id": "400602",
+   "nom_bgg": "Civolution",
+   "annee": 2024,
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 180,
+   "age": 14,
+   "poids": 4.27,
+   "note_bgg": 8.17,
+   "mecaniques": [
+    "Déplacement sur zones",
+    "Lancer de dés",
+    "Événements",
+    "Revenus",
+    "Plateau modulable"
+   ],
+   "auteurs": [
+    "Stefan Feld"
+   ],
+   "editeur": "Deep Print Games",
+   "url_bgg": "https://boardgamegeek.com/boardgame/400602",
+   "image": "images/fiches/400602.jpg"
+  }
+ }
+}
