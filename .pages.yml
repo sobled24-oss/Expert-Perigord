@@ -250,6 +250,14 @@ content:
                   label: À la demande (réservable)
                 - name: permanence
                   label: En permanence
+          - name: accroche
+            label: En deux mots (pour la fiche imprimable)
+            type: text
+            description: "Une ou deux phrases pour donner envie : le thème et ce qu'on y fait."
+          - name: bgg
+            label: Numéro BoardGameGeek (facultatif)
+            type: string
+            description: "Seulement si la fiche affiche le mauvais jeu : le nombre dans l'adresse BGG du jeu."
           - name: image
             label: Image (facultatif)
             type: image

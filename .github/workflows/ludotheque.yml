@@ -14,6 +14,7 @@ on:
       - "_data/bgg.yml"
       - "_data/equipe.yml"
       - "scripts/sync_ludotheque.py"
+      - "_festivals/**"
 
 permissions:
   contents: write
@@ -47,7 +48,7 @@ jobs:
       - name: Enregistrer les changements
         id: commit
         run: |
-          git add _data/ludotheque.json images/ludotheque
+          git add -A _data images
           if git diff --cached --quiet; then
             echo "Aucun changement dans la ludothèque."
             echo "changed=false" >> "$GITHUB_OUTPUT"

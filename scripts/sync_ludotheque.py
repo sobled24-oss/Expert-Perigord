@@ -19,6 +19,36 @@ FICHIER_REGLAGES = os.path.join(RACINE, "_data", "bgg.yml")
 FICHIER_EQUIPE = os.path.join(RACINE, "_data", "equipe.yml")
 FICHIER_DONNEES = os.path.join(RACINE, "_data", "ludotheque.json")
 DOSSIER_IMAGES = os.path.join(RACINE, "images", "ludotheque")
+DOSSIER_FESTIVALS = os.path.join(RACINE, "_festivals")
+FICHIER_FICHES = os.path.join(RACINE, "_data", "fiches.json")
+DOSSIER_FICHES = os.path.join(RACINE, "images", "fiches")
+
+# Traduction des mécaniques BoardGameGeek les plus courantes (les autres restent en anglais)
+MECANIQUES = {
+    "Worker Placement": "Placement d'ouvriers", "Deck, Bag, and Pool Building": "Construction de deck",
+    "Hand Management": "Gestion de main", "Tile Placement": "Pose de tuiles", "Area Majority / Influence": "Majorité",
+    "Dice Rolling": "Lancer de dés", "Cooperative Game": "Coopératif", "Variable Player Powers": "Pouvoirs asymétriques",
+    "Set Collection": "Collection", "Drafting": "Draft", "Card Drafting": "Draft de cartes", "Open Drafting": "Draft ouvert",
+    "Engine Building": "Moteur de combos", "Network and Route Building": "Construction de réseau",
+    "Action Points": "Points d'action", "Action Drafting": "Choix d'actions", "Auction/Bidding": "Enchères",
+    "Area Movement": "Déplacement sur zones", "Grid Movement": "Déplacement sur grille", "Hexagon Grid": "Plateau hexagonal",
+    "Modular Board": "Plateau modulable", "End Game Bonuses": "Bonus de fin de partie", "Income": "Revenus",
+    "Loans": "Emprunts", "Market": "Marché", "Negotiation": "Négociation", "Trading": "Échanges",
+    "Take That": "Interaction directe", "Player Elimination": "Élimination", "Push Your Luck": "Stop ou encore",
+    "Simultaneous Action Selection": "Actions simultanées", "Programmed Movement": "Programmation",
+    "Action Queue": "File d'actions", "Variable Set-up": "Mise en place variable", "Scenario / Mission / Campaign Game": "Campagne",
+    "Narrative Choice / Paragraph": "Narratif", "Storytelling": "Narratif", "Semi-Cooperative Game": "Semi-coopératif",
+    "Team-Based Game": "En équipes", "Solo / Solitaire Game": "Jouable en solo", "Hidden Roles": "Rôles cachés",
+    "Traitor Game": "Traître", "Deduction": "Déduction", "Memory": "Mémoire", "Pattern Building": "Motifs à construire",
+    "Contracts": "Contrats", "Track Movement": "Pistes de progression", "Race": "Course", "Turn Order: Progressive": "Ordre du tour variable",
+    "Turn Order: Stat-Based": "Ordre du tour variable", "Card Play Conflict Resolution": "Combats aux cartes",
+    "Dice Placement": "Placement de dés", "Worker Placement, Different Worker Types": "Placement d'ouvriers",
+    "Rondel": "Rondelle", "Mancala": "Mancala", "Tech Trees / Tech Tracks": "Arbre technologique",
+    "Resource to Move": "Ressources pour se déplacer", "Pick-up and Deliver": "Livraisons", "Measurement Movement": "Mesure",
+    "Line of Sight": "Ligne de vue", "Command Cards": "Cartes d'ordres", "Events": "Événements",
+    "Victory Points as a Resource": "Points de victoire comme ressource", "Multi-Use Cards": "Cartes à usages multiples",
+    "Square Grid": "Grille", "Enclosure": "Enclos", "Map Addition": "Carte qui s'agrandit", "Bias": "Majorités",
+}
 API = "https://boardgamegeek.com/xmlapi2"   # sans « www », sinon la clé est ignorée
 AGENT = "LesExpertsEnPerigord-ludotheque/1.0 (+https://jeu-experts-perigord.fr)"
 _dernier_appel = [0.0]
@@ -157,9 +187,121 @@ def jeux_de_base(extensions, token):
     return bases
 
 
-def miniature(jeu):
+def lire_festivals():
+    """Liste des (festival, nom du jeu, numéro BGG facultatif) des jeux apportés en festival."""
+    import yaml
+    res = []
+    if not os.path.isdir(DOSSIER_FESTIVALS):
+        return res
+    for f in sorted(os.listdir(DOSSIER_FESTIVALS)):
+        if not f.endswith(".md"):
+            continue
+        texte = open(os.path.join(DOSSIER_FESTIVALS, f), encoding="utf-8").read()
+        m = re.match(r"^---\s*\n(.*?)\n---", texte, re.S)
+        fm = yaml.safe_load(m.group(1)) if m else {}
+        for j in (fm or {}).get("jeux") or []:
+            if (j or {}).get("nom"):
+                res.append((f[:-3], str(j["nom"]).strip(), str(j.get("bgg") or "").strip()))
+    return res
+
+
+def norm_nom(n):
+    import unicodedata
+    n = unicodedata.normalize("NFD", str(n)).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", " ", n).strip()
+
+
+def meme_nom(a, b):
+    A, B = norm_nom(a), norm_nom(b)
+    ca, cb = norm_nom(re.split(r"[:–—(]", str(a))[0]), norm_nom(re.split(r"[:–—(]", str(b))[0])
+    return bool(A) and (A == B or A == cb or ca == B)
+
+
+def chercher_bgg(nom, token):
+    """Numéro BGG d'un jeu à partir de son nom (recherche exacte, puis approchée)."""
+    for exact in (1, 0):
+        q = urllib.parse.urlencode({"query": nom, "type": "boardgame", "exact": exact})
+        racine = ET.fromstring(appel(f"{API}/search?{q}", token))
+        items = racine.findall("item")
+        bons = [it for it in items if any(meme_nom(nom, n.get("value")) for n in it.findall("name"))]
+        choix = bons or (items if exact else [])
+        if choix:
+            # le plus récent en cas d'homonymes (rééditions)
+            annee = lambda it: entier(it.find("yearpublished").get("value")) if it.find("yearpublished") is not None else 0
+            choix.sort(key=lambda it: -(annee(it) or 0))
+            return choix[0].get("id")
+    return None
+
+
+def fiches_festivals(jeux_ludo, token):
+    """Infos de chaque jeu apporté en festival, pour les fiches imprimables (_data/fiches.json)."""
+    entrees = lire_festivals()
+    if not entrees:
+        return
+    try:
+        ancien = json.load(open(FICHIER_FICHES, encoding="utf-8"))
+    except (FileNotFoundError, ValueError):
+        ancien = {"jeux": {}, "festivals": {}}
+    ids, festivals = {}, {}
+    for fest, nom, bgg in entrees:
+        id_ = bgg or next((j["id"] for j in jeux_ludo if meme_nom(j["nom"], nom)), None)
+        if not id_:   # déjà trouvé lors d'une synchronisation précédente
+            id_ = (ancien.get("festivals") or {}).get(fest, {}).get(nom)
+        if not id_:
+            try:
+                id_ = chercher_bgg(nom, token)
+            except Exception as e:
+                print(f"  Recherche BGG impossible pour {nom} : {e}")
+            print(f"  {nom} : trouvé sur BGG sous le n° {id_}" if id_ else f"  {nom} : introuvable sur BGG (ajoutez son numéro BGG dans Pages CMS)")
+        if id_:
+            festivals.setdefault(fest, {})[nom] = id_
+            ids[id_] = nom
+    infos = {}
+    liste = list(ids)
+    for i in range(0, len(liste), 20):
+        racine = ET.fromstring(appel(f"{API}/thing?id={','.join(liste[i:i + 20])}&stats=1", token))
+        for it in racine.findall("item"):
+            v = lambda chemin: (it.find(chemin).get("value") if it.find(chemin) is not None else None)
+            nom_bgg = next((n.get("value") for n in it.findall("name") if n.get("type") == "primary"), "")
+            meca = [l.get("value") for l in it.findall("link") if l.get("type") == "boardgamemechanic"]
+            meca_fr = []
+            for m in meca:
+                t = MECANIQUES.get(m)
+                if t and t not in meca_fr:
+                    meca_fr.append(t)
+            infos[it.get("id")] = {
+                "id": it.get("id"), "nom_bgg": nom_bgg, "annee": entier(v("yearpublished")),
+                "joueurs_min": entier(v("minplayers")), "joueurs_max": entier(v("maxplayers")),
+                "duree_min": entier(v("minplaytime")), "duree_max": entier(v("maxplaytime")),
+                "age": entier(v("minage")), "poids": nombre(v("statistics/ratings/averageweight")) or None,
+                "note_bgg": nombre(v("statistics/ratings/average")),
+                "mecaniques": meca_fr[:5],
+                "auteurs": [l.get("value") for l in it.findall("link") if l.get("type") == "boardgamedesigner"][:3],
+                "editeur": next((l.get("value") for l in it.findall("link") if l.get("type") == "boardgamepublisher"), None),
+                "image_bgg": (it.findtext("image") or it.findtext("thumbnail") or "").strip(),
+                "url_bgg": f"https://boardgamegeek.com/boardgame/{it.get('id')}",
+            }
+    os.makedirs(DOSSIER_FICHES, exist_ok=True)
+    for id_, f in infos.items():
+        local = next((j.get("image") for j in jeux_ludo if j["id"] == id_ and j.get("image")), "")
+        if not local:
+            chemin_rel = f"images/fiches/{id_}.jpg"
+            if not os.path.exists(os.path.join(RACINE, chemin_rel)) and f["image_bgg"]:
+                miniature({"id": id_, "nom": f["nom_bgg"], "image_bgg": f["image_bgg"]}, chemin_rel)
+            local = chemin_rel if os.path.exists(os.path.join(RACINE, chemin_rel)) else ""
+        f["image"] = local
+        f.pop("image_bgg", None)
+    donnees = {"festivals": festivals, "jeux": infos}
+    if donnees != ancien:
+        with open(FICHIER_FICHES, "w", encoding="utf-8") as fh:
+            json.dump(donnees, fh, ensure_ascii=False, indent=1)
+            fh.write("\n")
+        print(f"Fiches de festival : {len(infos)} jeux.")
+
+
+def miniature(jeu, chemin_rel=None):
     """Télécharge et réduit l'image de la boîte (400 px). Renvoie le chemin utilisé par le site."""
-    chemin_rel = f"images/ludotheque/{jeu['id']}.jpg"
+    chemin_rel = chemin_rel or f"images/ludotheque/{jeu['id']}.jpg"
     chemin = os.path.join(RACINE, chemin_rel)
     if os.path.exists(chemin):
         return chemin_rel
@@ -289,6 +431,10 @@ def main():
             json.dump(donnees, f, ensure_ascii=False, indent=1)
             f.write("\n")
         print(f"Ludothèque mise à jour : {len(liste)} jeux.")
+    try:
+        fiches_festivals(liste, token)
+    except Exception as e:  # les fiches ne doivent jamais bloquer la ludothèque
+        print(f"Fiches de festival non mises à jour : {e}")
     if erreurs:
         sys.exit("Attention, certains comptes n'ont pas pu être lus :\n" + "\n".join(erreurs))
 
