@@ -73,7 +73,7 @@
    "duree_min": 40,
    "duree_max": 80,
    "age": 14,
-   "poids": 3.02,
+   "poids": 3.03,
    "note_bgg": 8.02,
    "mecaniques": [
     "Bonus de fin de partie",
@@ -148,7 +148,7 @@
    "duree_min": 40,
    "duree_max": 160,
    "age": 14,
-   "poids": 3.84,
+   "poids": 3.85,
    "note_bgg": 8.41,
    "mecaniques": [
     "Majorité",

@@ -4,7 +4,7 @@
   "Darnethil",
   "skkrohmagnon"
  ],
- "maj": "2026-11-20",
+ "maj": "2026-11-22",
  "jeux": [
   {
    "id": "73369",
@@ -1715,7 +1715,7 @@
    ],
    "poids": 3.71,
    "age": 14,
-   "note_bgg": 7.82,
+   "note_bgg": 7.81,
    "extensions": [
     {
      "id": "184256",
@@ -4305,7 +4305,7 @@
    ],
    "poids": 3.77,
    "age": 14,
-   "note_bgg": 8.54,
+   "note_bgg": 8.55,
    "image": "images/ludotheque/381246.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/381246"
   },
@@ -4415,7 +4415,7 @@
    "proprietaires": [
     "Tim"
    ],
-   "poids": 3.84,
+   "poids": 3.85,
    "age": 14,
    "note_bgg": 8.41,
    "image": "images/ludotheque/418059.jpg",
@@ -5630,7 +5630,7 @@
    "proprietaires": [
     "Philou"
    ],
-   "poids": 3.71,
+   "poids": 3.72,
    "age": 12,
    "note_bgg": 8.04,
    "image": "images/ludotheque/357873.jpg",
