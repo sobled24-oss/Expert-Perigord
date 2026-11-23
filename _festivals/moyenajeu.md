@@ -1,5 +1,5 @@
 ---
-title: Festival du jeu de Sarlat
+title: "Festival du jeu de Sarlat "
 date: 2027-02-13
 fin: 2027-02-14
 dates: 13 et 14 février 2027
@@ -17,5 +17,5 @@ Life of the amazonia
 
 Sanctuary
 
-Si vous souhaitez découvrir un jeu, n'hésitez pas à jeter un oeil à notre ludothèque et à nous demander ce qui vous ferez plaisir.
+Si vous souhaitez découvrir un jeu, n'hésitez pas à jeter un oeil à notre [ludothèque](/ludotheque.html) et à nous demander ce qui vous ferez plaisir.
 
