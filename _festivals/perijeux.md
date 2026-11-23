@@ -7,7 +7,7 @@ lieu: Périgueux, Dordogne
 role: Table de jeux experts animée
 resume: >
   Festival de tous les types de jeux : jeux de plateau, jeux de rôles, jeux de
-  figurines, jeux en bois, escape game, jeux enfants, créateurs.
+  figurines, jeux en bois, escape game, jeux enfants, créateurs. 
 apres:
   recit: >-
     Deux jours, 2 400 visiteurs et des tables qui n'ont presque jamais désempli
@@ -328,8 +328,8 @@ jeux:
     image: images/uploads/perijeux-11-37de21.jpg
 couverture: images/uploads/perijeux-couverture-81165d.jpg
 ---
-Nous serons présents au festival des jeux de société de perigueux pour animer 6 tables de jeux.
-3 tables avec en permanence :
+Nous serons présents au festival des jeux de société de perigueux pour animer 6 tables de jeux.  
+3 tables avec en permanence :  
 
 - Life of the amazonia
 - Sanctuary
