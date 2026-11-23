@@ -123,7 +123,7 @@ apres:
   joueurs: 80
   parties: 27
   tables: 6
-  visiteurs: 2300
+  visiteurs: 2400
   stars:
     - Life of Amazonia
     - Near
