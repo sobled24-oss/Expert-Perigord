@@ -2,7 +2,7 @@
  "festivals": {
   "perijeux": {
    "Life of Amazonia": "368305",
-   "Wondrous Créatures": "459138",
+   "Wondrous Créatures": "400366",
    "Sanctuary": "441696",
    "Nemesis": "167355",
    "Dune Imperium": "316554",
@@ -39,32 +39,30 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/368305",
    "image": "images/fiches/368305.jpg"
   },
-  "459138": {
-   "id": "459138",
-   "nom_bgg": "Wondrous Creatures: Winterfall",
-   "annee": 2026,
+  "400366": {
+   "id": "400366",
+   "nom_bgg": "Wondrous Creatures",
+   "annee": 2024,
    "joueurs_min": 1,
    "joueurs_max": 4,
-   "duree_min": 50,
-   "duree_max": 90,
-   "age": 10,
-   "poids": 3.0,
-   "note_bgg": 8.58,
+   "duree_min": 40,
+   "duree_max": 80,
+   "age": 14,
+   "poids": 3.02,
+   "note_bgg": 8.02,
    "mecaniques": [
     "Bonus de fin de partie",
-    "Événements",
+    "Gestion de main",
     "Plateau hexagonal",
     "Draft ouvert",
     "Collection"
    ],
    "auteurs": [
-    "Jaewoo Bang",
-    "Gunho Kim",
     "Yeom.C.W"
    ],
    "editeur": "Bad Comet",
-   "url_bgg": "https://boardgamegeek.com/boardgame/459138",
-   "image": "images/fiches/459138.jpg"
+   "url_bgg": "https://boardgamegeek.com/boardgame/400366",
+   "image": "images/fiches/400366.jpg"
   },
   "441696": {
    "id": "441696",
