@@ -16,6 +16,8 @@ apres:
     - Life of Amazonia
     - Near
     - Wondrous Créature
+  mentions:
+    - Trickerion
 jeux:
   - nom: Life of Amazonia
     table: permanence
