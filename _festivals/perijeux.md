@@ -9,6 +9,7 @@ resume: >
   Festival de tous les types de jeux : jeux de plateau, jeux de rôles, jeux de
   figurines, jeux en bois, escape game, jeux enfants, créateurs.
 apres:
+  recit: Work in progress
   joueurs: 80
   parties: 26
   tables: 6
