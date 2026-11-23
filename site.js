@@ -602,7 +602,7 @@ if(lbx){
   const P = [...document.querySelectorAll(".ph-btn")].map(b=>({src:b.querySelector("img").getAttribute("src"), legende:b.dataset.leg||""}));
   let cur = 0;
   const show = i => { cur = (i+P.length)%P.length; document.getElementById("lb-img").src = P[cur].src; document.getElementById("lb-img").alt = P[cur].legende||""; document.getElementById("lb-cap").textContent = (P[cur].legende?P[cur].legende+" · ":"")+(cur+1)+" / "+P.length; };
-  document.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{ show(Number(b.dataset.ph)); lbx.showModal(); }));
+  document.querySelectorAll(".ph-btn").forEach((b,i)=>b.addEventListener("click",()=>{ show(i); lbx.showModal(); }));
   document.getElementById("lb-close").addEventListener("click",()=>lbx.close());
   document.getElementById("lb-prev").addEventListener("click",()=>show(cur-1));
   document.getElementById("lb-next").addEventListener("click",()=>show(cur+1));

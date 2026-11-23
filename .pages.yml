@@ -256,6 +256,21 @@ content:
             type: string
             list: true
             description: "1 ou 2 jeux qui méritent un petit coup de projecteur (belle surprise, découverte du week-end…)."
+          - name: photos
+            label: Photos du festival
+            description: "Les photos prises pendant le festival : elles s'affichent dans le compte rendu, sous le récit. Cliquez sur « + Add an entry » pour chaque photo."
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "Photo {index}"
+            fields:
+              - name: image
+                label: Photo
+                type: image
+              - name: legende
+                label: Légende (facultatif)
+                type: string
       - name: jeux
         label: Les jeux que nous apportons
         type: object
