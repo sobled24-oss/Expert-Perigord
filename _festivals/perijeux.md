@@ -18,6 +18,7 @@ apres:
     - Wondrous Créature
   mentions:
     - Trickerion
+    - Speakeasy
 jeux:
   - nom: Life of Amazonia
     table: permanence
