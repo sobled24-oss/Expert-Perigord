@@ -20,6 +20,8 @@ apres:
   mentions:
     - Trickerion
     - Speakeasy
+  photos:
+    - {}
 jeux:
   - nom: Life of Amazonia
     table: permanence
