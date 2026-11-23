@@ -11,11 +11,9 @@ Pour la deuxième année, nous animerons un espace dédié aux jeux experts pend
 
 Nous aurons entre autres
 
-Wondrous creatures
-
-Life of the amazonia 
-
-Sanctuary
+- Wondrous creatures
+- Life of the amazonia 
+- Sanctuary
 
 Si vous souhaitez découvrir un jeu, n'hésitez pas à jeter un oeil à notre [ludothèque](/ludotheque.html) et à nous demander ce qui vous ferez plaisir.
 
