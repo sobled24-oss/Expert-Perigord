@@ -2,7 +2,7 @@
 title: Perijeux
 date: 2026-11-21
 fin: 2026-11-22
-dates: 21 et 22        novembre 2026
+dates: 21 et 22      novembre 2026
 lieu: Périgueux, Dordogne
 role: Table de jeux experts animée
 resume: >
