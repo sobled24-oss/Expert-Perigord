@@ -384,6 +384,10 @@ content:
             label: Séances de jeu
             type: string
             description: "Jour et horaires, ex. : le vendredi à partir de 20 h"
+          - name: comptes_rendus
+            label: Afficher les comptes rendus de festival
+            type: boolean
+            description: "Décoché : la rubrique « Après le festival » peut être remplie, mais rien n'apparaît encore sur le site."
           - name: goatcounter
             label: Code GoatCounter (statistiques de visite)
             type: string
