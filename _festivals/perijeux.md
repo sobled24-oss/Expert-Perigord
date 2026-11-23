@@ -29,7 +29,7 @@ apres:
 
     Merci aussi à **Super Meeple** pour sa générosité. C'est grâce à eux que
     nous avons pu vous faire jouer à **Sanctuary**, **Wondrous Creatures** et
-    **Life of Amazonia**, trois jeux offerts à notre association. À elles
+    **Life of the Amazonia**, trois jeux offerts à notre association. À elles
     seules, ces trois boîtes ont fait tourner 16 des 28 parties du week-end, et
     elles vont continuer à vivre sur nos tables pour les festivals à venir.
 
@@ -70,7 +70,7 @@ apres:
     Voici ce qui a tourné sur nos tables :
 
 
-    - **Life of Amazonia** : 7 parties
+    - **Life of the Amazonia** : 7 parties
 
     - **Near** : 7 parties
 
@@ -89,7 +89,7 @@ apres:
     - Civolution : 1 partie
 
 
-    Life of Amazonia et Near se partagent la première marche du podium, avec
+    Life of the Amazonia et Near se partagent la première marche du podium, avec
     Wondrous Creatures juste derrière. Trois jeux beaux sur table, fluides une
     fois lancés et assez profonds pour donner envie d'y revenir : la porte
     d'entrée idéale pour découvrir le jeu expert sans se sentir noyé.
@@ -133,7 +133,7 @@ apres:
   visiteurs: 2400
   jeux_apportes: 13
   stars:
-    - Life of Amazonia
+    - Life of the Amazonia
     - Near
     - Wondrous Créatures
   mentions:
@@ -331,7 +331,7 @@ couverture: images/uploads/perijeux-couverture-81165d.jpg
 Nous serons présents au festival des jeux de société de perigueux pour animer 6 tables de jeux.
 3 tables avec en permanence :
 
-- Life of amazonia
+- Life of the amazonia
 - Sanctuary
 - Wondrous créatures
 
