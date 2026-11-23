@@ -344,3 +344,17 @@ a.card:hover .fest-cta{filter:brightness(1.12)}
 .cr-kpi b{font-family:var(--f-head);font-size:clamp(1.3rem,2.4vw,1.8rem);color:var(--gold-hi);line-height:1.1}
 .cr-kpi span{font-family:var(--f-label);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#CFC6B6}
 @media (max-width:860px){.cr-home{grid-template-columns:1fr}}
+
+/* Page Festivals : à venir et passés côte à côte */
+.fest-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.fest-cols.seule{grid-template-columns:1fr}
+.fest-cols .grid{grid-template-columns:1fr}
+.fest-cols.seule .grid{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.fest-col{min-width:0;display:flex;flex-direction:column}
+.fest-col .sec-head{margin-bottom:12px}
+.fest-ics{align-self:flex-start;margin:0 0 22px}
+.fest-col-lead{margin:-4px 0 22px;color:#CFC6B6}
+.fest-col-passes{padding-left:clamp(24px,4vw,56px);border-left:1px solid rgba(201,162,74,.25)}
+.fest-col-passes h3.annee{margin-top:0}
+@media (max-width:900px){.fest-cols{grid-template-columns:1fr}.fest-col-passes{padding-left:0;border-left:0;border-top:1px solid rgba(201,162,74,.25);padding-top:34px}}
+.card.fest > .fest-cover,.card.fest > .fest-thumbs,.card.fest > .fest-row{align-self:stretch}
