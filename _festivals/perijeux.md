@@ -38,23 +38,7 @@ jeux:
       les points.
     bgg: "368305"
     image: images/uploads/perijeux-8-cae805.jpg
-  - nom: Sanctuary
-    table: permanence
-    accroche: "Le petit frère d'Ark Nova : bâtissez votre sanctuaire, accueillez des
-      animaux et menez des projets de conservation. Les mêmes sensations que son
-      grand frère, en bien plus rapide, et très bon à 3 ou 4 joueurs."
-    points: >-
-      Comme dans Ark Nova, vos cartes d'action gagnent en puissance quand vous
-      attendez pour les jouer.
-
-      Posez des tuiles hexagonales pour agrandir votre parc et déclencher leurs
-      effets.
-
-      Accueillez des animaux et accomplissez des projets de conservation.
-
-      Enchaînez les combos entre tuiles, bâtiments et projets.
-    image: images/uploads/perijeux-6-a8f794.jpg
-  - nom: Wondrous Creatures
+  - nom: Wondrous Créatures
     table: permanence
     accroche: Explorateur sur une île inconnue, vous partez à la découverte de
       créatures fabuleuses pour les photographier et devenir célèbre. Placement
@@ -72,6 +56,22 @@ jeux:
       Rappelez votre équipage au bon moment : le temps avance et la partie
       s'arrête quand les trophées sont épuisés.
     image: images/uploads/perijeux-7-34b4ff.jpg
+  - nom: Sanctuary
+    table: permanence
+    accroche: "Le petit frère d'Ark Nova : bâtissez votre sanctuaire, accueillez des
+      animaux et menez des projets de conservation. Les mêmes sensations que son
+      grand frère, en bien plus rapide, et très bon à 3 ou 4 joueurs."
+    points: >-
+      Comme dans Ark Nova, vos cartes d'action gagnent en puissance quand vous
+      attendez pour les jouer.
+
+      Posez des tuiles hexagonales pour agrandir votre parc et déclencher leurs
+      effets.
+
+      Accueillez des animaux et accomplissez des projets de conservation.
+
+      Enchaînez les combos entre tuiles, bâtiments et projets.
+    image: images/uploads/perijeux-6-a8f794.jpg
   - nom: Nemesis
     table: demande
     accroche: Vous vous réveillez d'hibernation à bord d'un vaisseau infesté
