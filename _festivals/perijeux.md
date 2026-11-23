@@ -10,7 +10,7 @@ resume: >
   figurines, jeux en bois, escape game, jeux enfants, créateurs.
 apres:
   recit: >-
-    Deux jours, 2 300 visiteurs et des tables qui n'ont presque jamais désempli
+    Deux jours, 2 400 visiteurs et des tables qui n'ont presque jamais désempli
     : Perijeux 2026 restera comme une très belle édition pour les Experts en
     Périgord. Et surtout comme le week-end où notre pari a montré qu'il tenait
     la route.
@@ -145,6 +145,7 @@ apres:
     - images/uploads/perijeux2026/img-20261123-wa0011.jpg
     - images/uploads/perijeux2026/img-20261123-wa0012.jpg
     - images/uploads/perijeux2026/img-20261123-wa0013.jpg
+    - images/uploads/perijeux2026/img-20261123-wa0000.jpg
 jeux:
   - nom: Life of Amazonia
     table: permanence
