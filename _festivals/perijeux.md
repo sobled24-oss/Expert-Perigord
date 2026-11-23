@@ -56,6 +56,7 @@ jeux:
 
       Rappelez votre équipage au bon moment : le temps avance et la partie
       s'arrête quand les trophées sont épuisés.
+    bgg: "400366"
     image: images/uploads/perijeux-7-34b4ff.jpg
   - nom: Sanctuary
     table: permanence

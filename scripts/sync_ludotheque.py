@@ -219,11 +219,16 @@ def meme_nom(a, b):
 
 def chercher_bgg(nom, token):
     """Numéro BGG d'un jeu à partir de son nom (recherche exacte, puis approchée)."""
+    import unicodedata
+    requete = unicodedata.normalize("NFD", str(nom)).encode("ascii", "ignore").decode()   # « Créatures » → « Creatures »
     for exact in (1, 0):
-        q = urllib.parse.urlencode({"query": nom, "type": "boardgame", "exact": exact})
+        q = urllib.parse.urlencode({"query": requete, "type": "boardgame", "exact": exact})
         racine = ET.fromstring(appel(f"{API}/search?{q}", token))
-        items = racine.findall("item")
-        bons = [it for it in items if any(meme_nom(nom, n.get("value")) for n in it.findall("name"))]
+        # jamais une extension : « Wondrous Creatures » ne doit pas devenir « Wondrous Creatures: Winterfall »
+        items = [it for it in racine.findall("item") if it.get("type", "boardgame") == "boardgame"]
+        noms = lambda it: [n.get("value") for n in it.findall("name")]
+        pile = [it for it in items if any(norm_nom(nom) == norm_nom(n) for n in noms(it))]
+        bons = pile or [it for it in items if any(meme_nom(nom, n) for n in noms(it))]
         choix = bons or (items if exact else [])
         if choix:
             # le plus récent en cas d'homonymes (rééditions)

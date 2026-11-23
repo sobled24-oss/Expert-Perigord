@@ -494,9 +494,11 @@ const av = document.querySelector(".a-venir");
 const passe = av && av.dataset.fin && av.dataset.fin < AUJ;
 if(passe){ const inv = av.querySelector(".resa-inviter"); if(inv) av.before(inv); av.remove(); document.querySelectorAll(".fiches-cta").forEach(e=>e.remove()); document.querySelectorAll(".tj-resa,.tj-libre").forEach(e=>e.remove()); const h = document.querySelector("#nos-jeux .photos-title"); if(h) h.textContent = "Les jeux qu'on avait apportés"; document.querySelectorAll(".tj-titre span").forEach(e=>e.remove()); }
 document.querySelectorAll(".tj[data-nom]").forEach(el=>{
-  const nom = el.dataset.nom, F = C.fiches || {}, fid = Object.values(F.festivals||{}).map(x=>x[nom]).find(Boolean), fi = fid && (F.jeux||{})[fid];
+  const nom = el.dataset.nom, F = C.fiches || {};
+  const g = (C.festivals||[]).flatMap(f=>f.jeux||[]).find(x=>memeNom(x.nom, nom)) || {};
+  const fid = (g.bgg && String(g.bgg).trim()) || Object.values(F.festivals||{}).map(x=>{ const k = Object.keys(x).find(k=>memeNom(k, nom)); return k && x[k]; }).find(Boolean), fi = fid && (F.jeux||{})[fid];
   const l = ludoDe(nom, fid) || (fi ? {joueurs_min:fi.joueurs_min, joueurs_max:fi.joueurs_max, duree_min:fi.duree_min, duree_max:fi.duree_max, image:fi.image} : null), t = testParNom(nom), box = el.querySelector(".tj-img");
-  const img = (l && l.image) || (t && t.couverture);
+  const img = g.image || (l && l.image) || (fi && fi.image) || (t && t.couverture);
   if(img && !box.querySelector("img")) box.innerHTML = `<img src="${esc(img)}" alt="Boîte de ${esc(nom)}" loading="lazy">`;
   const info = [];
   if(l){ const j = plage(l.joueurs_min,l.joueurs_max,""), d = plage(l.duree_min,l.duree_max," min"); if(j) info.push(`<span class="tag">${meeple()} ${j}</span>`); if(d) info.push(`<span class="tag">${d}</span>`); }
