@@ -127,7 +127,7 @@ aside .btn.ghost{display:block;text-align:center}
 /* Menu : tout tient sur une ligne jusqu'à la tablette */
 @media (min-width:981px){
   header.top .wrap{gap:12px}
-  nav.menu a{padding:8px 9px;letter-spacing:.1em;font-size:.72rem}
+  nav.menu a{padding:8px 7px;letter-spacing:.08em;font-size:.7rem}
   nav.menu a.cta{margin-left:4px}
 }
 @media (min-width:981px) and (max-width:1360px){
@@ -174,7 +174,7 @@ a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 .byline b{color:var(--gold-hi)}
 .byline .verdict{color:var(--gold-hi);vertical-align:middle}
 @media (min-width:981px) and (max-width:1120px){
-  nav.menu a{padding:8px 6px;letter-spacing:.06em;font-size:.68rem}
+  nav.menu a{padding:8px 5px;letter-spacing:.04em;font-size:.64rem}
 }
 /* Ludothèque : total et index alphabétique */
 .ludo-total{display:flex;flex-wrap:wrap;align-items:center;gap:18px 40px;margin:0 0 28px;padding:22px 26px;background:linear-gradient(180deg,#151418,#0F0E11);border:1px solid rgba(201,162,74,.35);clip-path:var(--bevel)}
