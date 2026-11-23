@@ -151,7 +151,7 @@ APRÈS UN FESTIVAL : LE COMPTE RENDU
   - Le lendemain du dernier jour, le festival passe tout seul dans « Ils sont passés »
     (page Festivals, classés par année : rien n'est jamais effacé).
   - Pages CMS > Festivals > le festival > « Après le festival » : récit, joueurs
-    accueillis, parties, tables, et « Les stars de notre table » (noms des jeux).
+    accueillis, parties, tables, « Les stars de notre table » et « Mentions honorables » (noms des jeux).
     Ajoutez vos photos dans « Photos de l'article ».
   - La page devient « Retour sur … » : chiffres, récit, jeux stars, messages du livre
     d'or laissés par des joueurs du festival (choisissez le festival dans « Où »).

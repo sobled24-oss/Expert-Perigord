@@ -97,7 +97,7 @@
 <header class="top" id="top"></header>
 <main id="main" data-ssr>
 {%- assign A = page.apres -%}{%- assign retour = false -%}
-{%- if isjeu == false and A -%}{%- if A.recit and A.recit != "" -%}{%- assign retour = true -%}{%- elsif A.joueurs or A.parties or A.tables or A.stars.size > 0 -%}{%- assign retour = true -%}{%- endif -%}{%- endif -%}
+{%- if isjeu == false and A -%}{%- if A.recit and A.recit != "" -%}{%- assign retour = true -%}{%- elsif A.joueurs or A.parties or A.tables or A.stars.size > 0 or A.mentions.size > 0 -%}{%- assign retour = true -%}{%- endif -%}{%- endif -%}
 <header class="page-hero" style="--pos:40%"><div class="wrap"><span class="hand">{% if isjeu %}Jeu testé{% elsif retour %}Retour sur le festival{% else %}Festival{% endif %}</span><h1>{{ page.title | escape }}</h1>{% if isjeu and page.redacteur and page.redacteur != "" %}
 <p class="byline">{% if red.photo %}<img src="{{ red.photo }}" alt="" width="40" height="40">{% endif %}<span>Article de <b>{{ page.redacteur | escape }}</b>{% if verdict != "" %} · <span class="verdict v-{{ page.verdict }}">{{ verdict_court }}</span>{% endif %}</span></p>{% endif %}</div></header>
 <section class="block"><div class="wrap">
@@ -118,6 +118,12 @@
     {% if A.stars.size > 0 %}
     <h3 class="retour-sous">Les stars de notre table</h3>
     <div class="tj-grid retour-stars">{% for s in A.stars %}<article class="tj" data-nom="{{ s | escape }}"><div class="tj-img"><span class="mono">{{ s | slice: 0, 2 }}</span></div><div class="tj-body"><h4>{{ s | escape }}</h4><div class="tj-info"></div></div></article>{% endfor %}</div>
+    {% endif %}
+    {% if A.mentions.size > 0 %}
+    <div class="mentions">
+      <h3 class="retour-sous"><span aria-hidden="true">🎖️</span> Mention{% if A.mentions.size > 1 %}s{% endif %} honorable{% if A.mentions.size > 1 %}s{% endif %}</h3>
+      <div class="mentions-grid">{% for s in A.mentions %}<article class="tj tj-mini" data-nom="{{ s | escape }}"><div class="tj-img"><span class="mono">{{ s | slice: 0, 2 }}</span></div><div class="tj-body"><h4>{{ s | escape }}</h4><div class="tj-info"></div></div></article>{% endfor %}</div>
+    </div>
     {% endif %}
     <div id="retour-livre"></div>
   </section>

@@ -251,6 +251,11 @@ content:
             type: string
             list: true
             description: "2 ou 3 jeux qui ont cartonné, écrits comme dans la liste des jeux apportés."
+          - name: mentions
+            label: Mentions honorables
+            type: string
+            list: true
+            description: "1 ou 2 jeux qui méritent un petit coup de projecteur (belle surprise, découverte du week-end…)."
       - name: jeux
         label: Les jeux que nous apportons
         type: object
