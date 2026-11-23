@@ -156,7 +156,7 @@ apres:
     - images/uploads/perijeux2026/img-20261123-wa0013.jpg
     - images/uploads/perijeux2026/img-20261123-wa0000.jpg
 jeux:
-  - nom: Life of Amazonia
+  - nom: Life of the Amazonia
     table: permanence
     accroche: "Vous protégez un coin de forêt amazonienne : chaque tuile posée,
       chaque arbre, fleur ou animal installé doit trouver sa place pour que
