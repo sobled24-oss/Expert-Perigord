@@ -40,7 +40,7 @@ apres:
     Venir en festival avec des jeux experts, c'est un pari. Sur le papier, tout
     joue contre nous : des règles longues, des parties qui durent, et un public
     venu flâner d'un stand à l'autre, souvent en famille, pas forcément prêt à
-    s'asseoir une heure et demie devant un plateau couvert de pions.
+    s'asseoir une heure et demie ou plus devant un plateau couvert de pions.
 
 
     C'est pourtant exactement là qu'on voulait être. Notre conviction depuis le
