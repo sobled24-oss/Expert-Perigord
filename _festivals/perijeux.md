@@ -129,6 +129,7 @@ apres:
   parties: 27
   tables: 6
   visiteurs: 2400
+  jeux_apportes: 13
   stars:
     - Life of Amazonia
     - Near
