@@ -256,9 +256,16 @@ content:
             type: string
             list: true
             description: "1 ou 2 jeux qui méritent un petit coup de projecteur (belle surprise, découverte du week-end…)."
+          - name: galerie
+            label: Photos du festival (plusieurs d'un coup)
+            description: "Sélectionnez ou envoyez plusieurs photos à la fois. Elles s'affichent dans le compte rendu, sous le récit."
+            type: image
+            options:
+              multiple:
+                max: 200
           - name: photos
-            label: Photos du festival
-            description: "Les photos prises pendant le festival : elles s'affichent dans le compte rendu, sous le récit. Cliquez sur « + Add an entry » pour chaque photo."
+            label: Photos avec légende (facultatif)
+            description: "Pour une photo à légender : « + Add an entry », la photo, puis sa légende. Elles s'affichent après les autres."
             type: object
             list:
               collapsible:

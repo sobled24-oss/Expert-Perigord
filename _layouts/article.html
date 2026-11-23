@@ -97,8 +97,8 @@
 <header class="top" id="top"></header>
 <main id="main" data-ssr>
 {%- assign A = page.apres -%}{%- assign retour = false -%}
-{%- if isjeu == false and A and site.data.site.comptes_rendus -%}{%- if A.recit and A.recit != "" -%}{%- assign retour = true -%}{%- elsif A.joueurs or A.parties or A.tables or A.stars.size > 0 or A.mentions.size > 0 or A.photos.size > 0 -%}{%- assign retour = true -%}{%- endif -%}{%- endif -%}
-{%- assign nbr = 0 -%}{%- if retour -%}{%- for p in A.photos -%}{%- if p.image and p.image != "" -%}{%- assign nbr = nbr | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+{%- if isjeu == false and A and site.data.site.comptes_rendus -%}{%- if A.recit and A.recit != "" -%}{%- assign retour = true -%}{%- elsif A.joueurs or A.parties or A.tables or A.stars.size > 0 or A.mentions.size > 0 or A.photos.size > 0 or A.galerie.size > 0 -%}{%- assign retour = true -%}{%- endif -%}{%- endif -%}
+{%- assign nbr = 0 -%}{%- if retour -%}{%- for p in A.galerie -%}{%- if p and p != "" -%}{%- assign nbr = nbr | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- for p in A.photos -%}{%- if p.image and p.image != "" -%}{%- assign nbr = nbr | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- endif -%}
 <header class="page-hero" style="--pos:40%"><div class="wrap"><span class="hand">{% if isjeu %}Jeu testé{% elsif retour %}Retour sur le festival{% else %}Festival{% endif %}</span><h1>{{ page.title | escape }}</h1>{% if isjeu and page.redacteur and page.redacteur != "" %}
 <p class="byline">{% if red.photo %}<img src="{{ red.photo }}" alt="" width="40" height="40">{% endif %}<span>Article de <b>{{ page.redacteur | escape }}</b>{% if verdict != "" %} · <span class="verdict v-{{ page.verdict }}">{{ verdict_court }}</span>{% endif %}</span></p>{% endif %}</div></header>
 <section class="block"><div class="wrap">
@@ -118,7 +118,7 @@
     {% if A.recit and A.recit != "" %}<div class="prose retour-recit">{{ A.recit | markdownify }}</div>{% endif %}
     {% if nbr > 0 %}
     <h3 class="retour-sous" id="retour-photos">Le festival en images</h3>
-    <div class="art-gallery retour-galerie">{%- for p in A.photos -%}{%- if p.image and p.image != "" -%}<button type="button" class="ph-btn" data-leg="{{ p.legende | escape }}"><img src="{{ p.image }}" alt="{{ p.legende | default: page.title | escape }}" loading="lazy">{% if p.legende and p.legende != "" %}<span>{{ p.legende | escape }}</span>{% endif %}</button>{%- endif -%}{%- endfor -%}</div>
+    <div class="art-gallery retour-galerie">{%- for p in A.galerie -%}{%- if p and p != "" -%}<button type="button" class="ph-btn" data-leg=""><img src="{{ p }}" alt="{{ page.title | escape }} : photo {{ forloop.index }}" loading="lazy"></button>{%- endif -%}{%- endfor -%}{%- for p in A.photos -%}{%- if p.image and p.image != "" -%}<button type="button" class="ph-btn" data-leg="{{ p.legende | escape }}"><img src="{{ p.image }}" alt="{{ p.legende | default: page.title | escape }}" loading="lazy">{% if p.legende and p.legende != "" %}<span>{{ p.legende | escape }}</span>{% endif %}</button>{%- endif -%}{%- endfor -%}</div>
     {% endif %}
     {% if A.stars.size > 0 %}
     <h3 class="retour-sous">Les stars de notre table</h3>
