@@ -558,6 +558,36 @@ content:
             label: Texte d'introduction de la page
             type: text
 
+      - name: partenaires
+        label: Partenaires (jeux offerts)
+        type: file
+        path: _data/partenaires.yml
+        format: yaml
+        fields:
+          - name: liste
+            label: Partenaires
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{nom}"
+            fields:
+              - name: nom
+                label: Nom du partenaire
+                type: string
+              - name: logo
+                label: Logo (de préférence sur fond transparent)
+                type: image
+              - name: mention
+                label: Texte du badge
+                type: string
+                description: "Par exemple « Offert par ». Le nom du partenaire s'affiche juste après."
+              - name: jeux
+                label: Jeux offerts
+                type: string
+                list: true
+                description: "Le nom du jeu, comme dans vos festivals ou la ludothèque (majuscules et accents sans importance). Le badge apparaît sur ces jeux dans les pages des festivals et sur les fiches imprimables."
+
       - name: galerie
         label: Galerie photos
         type: file

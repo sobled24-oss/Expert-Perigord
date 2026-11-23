@@ -1,0 +1,11 @@
+# Partenaires qui offrent des jeux à l'association.
+# Un badge « Offert par … » avec leur logo s'affiche sur les jeux listés
+# (pages des festivals et fiches imprimables).
+liste:
+  - nom: Super Meeple
+    logo: images/uploads/super-meeple.png
+    mention: Offert par
+    jeux:
+      - Sanctuary
+      - Wondrous Creatures
+      - Life of Amazonia

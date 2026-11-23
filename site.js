@@ -299,6 +299,8 @@ function memeNom(a, b){
 }
 function testDe(j){ return C.tests.find(t=>(t.bgg && String(t.bgg).trim()===String(j.id)) ) || C.tests.find(t=>memeNom(t.jeu, j.nom)); }
 function ludoDe(nom, bgg){ return (bgg && LUDO.find(j=>String(j.id)===String(bgg).trim())) || LUDO.find(j=>memeNom(j.nom, nom)); }
+function donDe(nom){ return (Array.isArray(C.partenaires) ? C.partenaires : []).find(p=>p && p.nom && (p.jeux||[]).some(j=>memeNom(j, nom))); }
+function donBadge(nom){ const p = donDe(nom); return p ? `<span class="don-badge" title="${esc((p.mention||"Offert par")+" "+p.nom)}">${p.logo?`<img src="${esc(p.logo)}" alt="">`:""}<span>${esc(p.mention||"Offert par")}<b>${esc(p.nom)}</b></span></span>` : ""; }
 function testParNom(nom){ return C.tests.find(t=>memeNom(t.jeu, nom)); }
 function extListe(j){
   const X = j.extensions||[]; if(!X.length) return "";
@@ -371,7 +373,7 @@ function ficheHtml(x, f){
   return `<article class="fiche">
     <header class="f-top"><span class="f-asso"><img src="images/logo-detoure.webp" alt="">${esc(NOM)}</span><span class="f-table ${x.table}">${x.table==="permanence" ? "Table en permanence" : "Jeu à la demande"}</span></header>
     <div class="f-body">
-      <div class="f-boite">${x.image ? `<img src="${esc(x.image)}" alt="Boîte de ${esc(x.nom)}">` : `<span class="f-mono">${esc(String(x.nom).slice(0,2))}</span>`}</div>
+      <div class="f-boite">${x.image ? `<img src="${esc(x.image)}" alt="Boîte de ${esc(x.nom)}">` : `<span class="f-mono">${esc(String(x.nom).slice(0,2))}</span>`}${(p=>p?`<span class="f-don">${p.logo?`<img src="${esc(p.logo)}" alt="">`:""}<span>${esc(p.mention||"Offert par")}<b>${esc(p.nom)}</b></span></span>`:"")(donDe(x.nom))}</div>
       <div class="f-main">
         <h2>${esc(x.nom)}</h2>
         ${x.auteurs || x.annee ? `<p class="f-auteurs">${esc(x.auteurs)}${x.auteurs && x.annee ? " · " : ""}${x.annee || ""}</p>` : ""}
@@ -500,6 +502,7 @@ document.querySelectorAll(".tj[data-nom]").forEach(el=>{
   const l = ludoDe(nom, fid) || (fi ? {joueurs_min:fi.joueurs_min, joueurs_max:fi.joueurs_max, duree_min:fi.duree_min, duree_max:fi.duree_max, image:fi.image} : null), t = testParNom(nom), box = el.querySelector(".tj-img");
   const img = g.image || (l && l.image) || (fi && fi.image) || (t && t.couverture);
   if(img && !box.querySelector("img")) box.innerHTML = `<img src="${esc(img)}" alt="Boîte de ${esc(nom)}" loading="lazy">`;
+  if(!box.querySelector(".don-badge")) box.insertAdjacentHTML("beforeend", donBadge(nom));
   const info = [];
   if(l){ const j = plage(l.joueurs_min,l.joueurs_max,""), d = plage(l.duree_min,l.duree_max," min"); if(j) info.push(`<span class="tag">${meeple()} ${j}</span>`); if(d) info.push(`<span class="tag">${d}</span>`); }
   else if(t){ if(t.joueurs) info.push(`<span class="tag">${meeple()} ${esc(t.joueurs)}</span>`); if(t.duree) info.push(`<span class="tag">${esc(t.duree)}</span>`); }

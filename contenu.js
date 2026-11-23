@@ -17,6 +17,7 @@ layout: null
 "bgg": {{ site.data.bgg | jsonify }},
 "ludotheque": {{ site.data.ludotheque | jsonify }},
 "fiches": {{ site.data.fiches | jsonify }},
+"partenaires": {{ site.data.partenaires.liste | default: "" | jsonify }},
 "strategies": [{% assign gsl = site.strategies | sort: "title" %}{% for g in gsl %}{% assign tt = site.jeux | where: "title", g.title | first %}
   {"id": {{ g.slug | jsonify }}, "url": {{ g.url | jsonify }}, "nom": {{ g.title | jsonify }}, "resume": {{ g.resume | jsonify }}, "onglets": [{% for o in g.guides %}{{ o.titre | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}], "couverture": {% if g.couverture and g.couverture != "" %}{{ g.couverture | jsonify }}{% elsif tt %}{{ tt.couverture | jsonify }}{% else %}null{% endif %}, "test": {% if tt %}{{ tt.url | jsonify }}{% else %}null{% endif %}, "poids": {% if tt %}{{ tt.poids | jsonify }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}
 ],

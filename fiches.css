@@ -31,6 +31,11 @@ body[data-page="fiches"]{background:#1A191D}
 .f-body{display:grid;grid-template-columns:78mm 1fr;gap:9mm;align-items:center;margin-top:2mm}
 .f-boite{height:100mm;display:flex;align-items:center;justify-content:center}
 .f-boite img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 2mm 3mm rgba(0,0,0,.28))}
+.f-boite{position:relative}
+.f-don{position:absolute;right:-2mm;bottom:-3mm;display:flex;align-items:center;gap:2.2mm;padding:1.4mm 3mm 1.4mm 1.6mm;background:#fff;border:.35mm solid var(--or);font-family:"Cinzel",serif;font-size:.62em;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);line-height:1.2;box-shadow:0 1mm 2.5mm rgba(0,0,0,.18)}
+.f-don span{display:flex;flex-direction:column}
+.f-don b{color:#B3121B;font-size:1.25em;letter-spacing:.05em}
+.f-boite .f-don img{height:15mm;width:auto;max-width:none;max-height:none;filter:none}
 .f-mono{font-family:"Cinzel",serif;font-size:5em;color:var(--or);text-transform:uppercase}
 .f-main{display:flex;flex-direction:column;gap:3mm;min-width:0}
 .fiche h2{font-family:"Cinzel",serif;font-weight:700;font-size:2.2em;line-height:1.05;letter-spacing:.03em;text-transform:uppercase;margin:0;color:var(--encre)}

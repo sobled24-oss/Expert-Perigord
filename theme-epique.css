@@ -298,3 +298,11 @@ h3.annee:first-of-type{margin-top:0}
 .tj.tj-mini .tj-img{width:110px;flex:none;aspect-ratio:1/1;border-bottom:0;border-right:1px solid #2A2620}
 .tj.tj-mini .tj-body{padding:12px 16px}
 .livre-cta .btn{white-space:normal;max-width:100%;text-align:center}
+
+/* Badge « Offert par » (partenaires) */
+.tj-img,.ludo-img{position:relative}
+.don-badge{position:absolute;right:8px;bottom:8px;display:flex;align-items:center;gap:7px;padding:4px 9px 4px 5px;background:rgba(10,9,11,.88);border:1px solid rgba(201,162,74,.5);font-family:var(--f-label);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#CFC6B6;line-height:1.2;pointer-events:none;z-index:2}
+.don-badge span{display:flex;flex-direction:column}
+.don-badge b{color:var(--gold-hi);font-weight:700;letter-spacing:.06em;font-size:1.12em}
+.tj-img .don-badge img,.ludo-img .don-badge img{width:auto;height:36px;max-width:none;padding:0;filter:none;transform:none !important;object-fit:contain}
+.tj-mini .don-badge{right:3px;bottom:3px;padding:2px}.tj-mini .don-badge span{display:none}.tj-mini .tj-img .don-badge img{height:24px}
