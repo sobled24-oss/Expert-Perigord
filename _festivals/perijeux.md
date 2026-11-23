@@ -132,7 +132,7 @@ apres:
     - Trickerion
     - Speakeasy
   galerie:
-    - images/uploads/perijeux2026/img-20261123-wa0007.jpg
+    - images/uploads/perijeux2026/img-20261123-wa0007-1.jpg
     - images/uploads/perijeux2026/img-20261123-wa0001.jpg
     - images/uploads/perijeux2026/img-20261123-wa0002.jpg
     - images/uploads/perijeux2026/img-20261123-wa0003.jpg
