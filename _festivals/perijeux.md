@@ -30,7 +30,7 @@ apres:
     Merci aussi à **Super Meeple** pour sa générosité. C'est grâce à eux que
     nous avons pu vous faire jouer à **Sanctuary**, **Wondrous Creatures** et
     **Life of Amazonia**, trois jeux offerts à notre association. À elles
-    seules, ces trois boîtes ont fait tourner 16 des 27 parties du week-end, et
+    seules, ces trois boîtes ont fait tourner 16 des 28 parties du week-end, et
     elles vont continuer à vivre sur nos tables pour les festivals à venir.
 
 
@@ -86,6 +86,8 @@ apres:
 
     - **Trickerion** : 1 partie
 
+    - Civolution : 1 partie
+
 
     Life of Amazonia et Near se partagent la première marche du podium, avec
     Wondrous Creatures juste derrière. Trois jeux beaux sur table, fluides une
@@ -93,9 +95,9 @@ apres:
     d'entrée idéale pour découvrir le jeu expert sans se sentir noyé.
 
 
-    Et chapeau à celles et ceux qui ont osé s'attaquer à Trickerion, Speakeasy
-    ou Sankoré, des morceaux nettement plus costauds. C'est aussi pour ces
-    parties-là qu'on vient en festival.
+    Et chapeau à celles et ceux qui ont osé s'attaquer à Trickerion, Speakeasy,
+    Sankoré, ou Civolution des morceaux nettement plus costauds. C'est aussi
+    pour ces parties-là qu'on vient en festival.
 
 
     ## Un festival qui grandit… et nous avec
@@ -126,7 +128,7 @@ apres:
     On se retrouve l'an prochain, avec deux tables de plus et encore plus de
     jeux à vous faire découvrir !
   joueurs: 80
-  parties: 27
+  parties: 28
   tables: 6
   visiteurs: 2400
   jeux_apportes: 13
@@ -137,6 +139,7 @@ apres:
   mentions:
     - Trickerion
     - Speakeasy
+    - civolution
   galerie:
     - images/uploads/perijeux2026/img-20261123-wa0007-1.jpg
     - images/uploads/perijeux2026/img-20261123-wa0001.jpg
