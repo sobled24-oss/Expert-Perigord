@@ -249,6 +249,10 @@ content:
           - name: visiteurs
             label: Visiteurs sur tout le festival (facultatif)
             type: number
+          - name: jeux_apportes
+            label: Jeux apportés (facultatif)
+            type: number
+            description: "Laissez vide pour compter automatiquement les jeux de la liste « Jeux » du festival."
           - name: stars
             label: Les stars de notre table
             type: string
