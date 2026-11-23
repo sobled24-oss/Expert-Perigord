@@ -31,9 +31,9 @@ const NB_EXT = LUDO.reduce((n,j)=>n+(j.extensions||[]).length,0) + EXT_SEULES.le
 /* ---------- Menu et pied de page ---------- */
 const PAGES = [
   ["accueil","index.html","Accueil"],["festivals","festivals.html","Festivals"],["jeux","jeux.html","Jeux testés"],["strategie","strategie.html","Stratégie"],["ludotheque","ludotheque.html","Ludothèque"],
-  ["evenement","evenement.html","Notre événement"],["equipe","equipe.html","L'équipe"],["photos","photos.html","Photos"],["contact","contact.html","Contact"],["inviter","contact.html?objet=festival","Inviter les Experts"]
+  ["evenement","evenement.html","Notre événement"],["equipe","equipe.html","L'équipe"],["photos","photos.html","Photos"],["contact","contact.html","Contact"],["livre-dor","livre-dor.html","Livre d'or","pied"],["inviter","contact.html?objet=festival","Inviter les Experts"]
 ].filter(p=>(p[0]!=="photos" || hasPhotos) && (p[0]!=="ludotheque" || LUDO.length || PAGE==="ludotheque") && (p[0]!=="strategie" || (C.strategies||[]).length || PAGE==="strategie"));
-const navLinks = PAGES.map(([id,href,label])=>`<a href="${href}"${id===PAGE?' aria-current="page"':""}${id==="inviter"?' class="cta"':""}>${label}</a>`).join("");
+const navLinks = PAGES.filter(p=>p[3]!=="pied").map(([id,href,label])=>`<a href="${href}"${id===PAGE?' aria-current="page"':""}${id==="inviter"?' class="cta"':""}>${label}</a>`).join("");
 document.getElementById("top").innerHTML = `<div class="wrap">
   <a class="brand" href="index.html"><img src="images/logo.jpg" alt=""><span>${esc(NOM)}</span></a>
   <button class="burger" type="button" aria-expanded="false" aria-controls="menu" id="burger"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><b>Menu</b></button>
@@ -188,12 +188,36 @@ R.equipe = () => {
   + sec(head("","Les membres") + (M.length?`<div class="grid g4">${M.map(m=>`
       <article class="card membre" data-c="${esc(m.couleur||"")}"><div class="ph${/^images\/membres\//.test(m.photo||"")?" avatar-ill":""}">${m.photo?`<img src="${esc(m.photo)}" alt="Portrait de ${esc(m.nom)}" loading="lazy">`:`<span class="ini" aria-hidden="true">${esc(initials(m.nom))}</span>`}</div>
         <div class="txt">${m.role?`<span class="role">${esc(m.role)}</span>`:""}<h3${/^images\/membres\//.test(m.photo||"")?' class="sr"':""}>${esc(m.nom)}</h3>${m.jeux?`<p>Jeux préférés : ${esc(m.jeux)}</p>`:""}${m.texte?`<p>${esc(m.texte)}</p>`:""}${bggUser(m.bgg)?`<a class="ludo-bgg" href="https://boardgamegeek.com/collection/user/${encodeURIComponent(bggUser(m.bgg))}?own=1" target="_blank" rel="noopener">Sa collection BoardGameGeek ↗</a>`:""}</div></article>`).join("")}</div>`:empty("La présentation des membres arrive bientôt.")), "sand")
-  + (TM.length ? sec(head("Ils ont joué avec nous","Ce qu'on dit de nos tables") + `<div class="grid">${TM.map(t=>`<blockquote class="card temoin"><p>${esc(t.texte)}</p><footer>${esc(t.auteur||"")}${t.contexte?`<span>${esc(t.contexte)}</span>`:""}</footer></blockquote>`).join("")}</div>`) : "");
+  + sec(head("Ils ont joué avec nous","Notre livre d'or") + (TM.length ? `<div class="grid">${TM.slice(0,3).map(temoinCarte).join("")}</div>` : "") + `<p class="livre-cta"><a class="btn ghost" href="livre-dor.html">${TM.length?"Lire le livre d'or et laisser un mot":"Laissez-nous un mot dans le livre d'or"} →</a></p>`);
 };
 R.photos = () => {
   const G = C.galerie.filter(g=>g && (g.image||g.photo)).map(g=>({photo:g.image||g.photo, legende:g.legende}));
   return pageHero("En images","Autour de nos tables","","70%")
     + sec(G.length?`<div class="galerie">${G.map(g=>`<figure><img src="${esc(g.photo)}" alt="${esc(g.legende||"Photo de l'association")}" loading="lazy">${g.legende?`<figcaption>${esc(g.legende)}</figcaption>`:""}</figure>`).join("")}</div>`:empty("Les photos arrivent bientôt."));
+};
+/* ---------- Livre d'or ---------- */
+function temoinCarte(t){
+  const d = t.date ? new Date(String(t.date).slice(0,10)+"T12:00:00").toLocaleDateString("fr-FR",{month:"long",year:"numeric"}) : "";
+  return `<blockquote class="card temoin"><p>${esc(t.texte)}</p><footer>${esc(t.auteur||"")}${t.contexte||d?`<span>${esc([t.contexte,d].filter(Boolean).join(" · "))}</span>`:""}</footer></blockquote>`;
+}
+R["livre-dor"] = () => {
+  const TM = C.temoignages.filter(t=>t.texte).slice().sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")));
+  const lieux = (C.festivals||[]).filter(f=>f.debut && f.debut <= new Date().toISOString().slice(0,10)).map(f=>f.nom);
+  const opt = v => `<option>${esc(v)}</option>`;
+  return pageHero("Livre d'or","Ils ont joué avec nous","Une partie mémorable, une découverte, un fou rire autour d'une table ? Laissez-nous un mot : chaque message est lu par les Experts avant d'être publié ici.","40%")
+  + sec(`<div class="livre">
+      <div class="livre-mots">${TM.length ? `<div class="grid livre-grid">${TM.map(temoinCarte).join("")}</div>` : `<div class="livre-vide"><p class="hand">Le livre est encore vierge</p><p>Soyez le premier à y écrire !</p></div>`}</div>
+      <form class="form livre-form" id="livre-form">
+        <h2>Laisser un mot</h2>
+        <label for="l-nom">Votre prénom<input id="l-nom" name="prenom" required maxlength="40" autocomplete="given-name"></label>
+        <label for="l-ou">Où nous avez-vous rencontrés ?<select id="l-ou" name="contexte"><option value="">Choisir (facultatif)</option>${lieux.map(opt).join("")}${opt("À une séance de jeu")}${opt("Sur Discord")}${opt("Ailleurs")}</select></label>
+        <label for="l-msg">Votre message<textarea id="l-msg" name="message" required maxlength="600" rows="6" placeholder="Votre partie, votre coup de cœur, un merci…"></textarea></label>
+        <label class="check"><input type="checkbox" name="accord" required> J'accepte que mon prénom et mon message soient publiés sur ce site.</label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr" aria-hidden="true">
+        <button class="btn" type="submit" id="l-btn">Envoyer mon message</button>
+        <p class="status" id="l-status" role="status"></p>
+      </form>
+    </div>`, "dark");
 };
 R.contact = () => {
   const K = C.contact, X = C.echanges, b = [];
@@ -510,6 +534,31 @@ if(oth && oth.dataset.kind==="jeu"){
     if(fests.length) h += `<div class="fiche-plus"><span class="k">On l'apporte à</span>${fests.map(f=>`<a class="tag" href="${artUrl("festival",f)}#nos-jeux">${esc(f.nom)}${f.date?` · ${esc(f.date)}`:""} →</a>`).join("")}</div>`;
     if(h) fiche.querySelector(".btn").insertAdjacentHTML("beforebegin", h);
   }
+}
+
+/* Livre d'or : envoi par Formspree, ou par e-mail tant que Formspree n'est pas configuré */
+const lf = document.getElementById("livre-form");
+if(lf){
+  lf.addEventListener("submit", async e=>{
+    e.preventDefault();
+    const st = document.getElementById("l-status"), btn = document.getElementById("l-btn");
+    const nom = lf.elements.prenom.value.trim(), ou = lf.elements.contexte.value, msg = lf.elements.message.value.trim();
+    const sujet = "Livre d'or : un message de " + nom;
+    if(!C.contact.formspree){
+      const corps = `${msg}\n\n— ${nom}${ou?" ("+ou+")":""}\n\nJ'accepte que mon prénom et mon message soient publiés sur le site.`;
+      location.href = `mailto:${C.contact.email||"meeple@jeu-experts-perigord.fr"}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+      st.className = "status ok"; st.textContent = "Votre messagerie s'ouvre : il ne reste qu'à envoyer. Merci !";
+      return;
+    }
+    btn.disabled = true; st.className = "status"; st.textContent = "Envoi…";
+    const data = new FormData(lf); data.set("_subject", sujet); data.set("objet", "Livre d'or");
+    try{
+      const r = await fetch(C.contact.formspree, {method:"POST", headers:{"Accept":"application/json"}, body:data});
+      if(!r.ok) throw new Error(r.status);
+      lf.reset(); st.className = "status ok"; st.textContent = "Merci ! Votre message apparaîtra ici dès que les Experts l'auront relu.";
+    }catch(_){ st.className = "status err"; st.textContent = "L'envoi a échoué. Réessayez dans un moment."; }
+    btn.disabled = false;
+  });
 }
 
 /* Formulaire de contact (Formspree) */

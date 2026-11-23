@@ -138,3 +138,11 @@ FICHES DES JEUX À IMPRIMER (FESTIVALS)
     Festivals > le festival > Les jeux que nous apportons.
   - Si la fiche affiche le mauvais jeu, renseignez son numéro BoardGameGeek.
   - Imprimer : bouton « Imprimer », format A4, marges « aucune », graphiques d'arrière-plan cochés.
+
+LIVRE D'OR
+  - Page livre-dor.html (lien en bas de chaque page et sur la page L'équipe).
+  - Les visiteurs écrivent leur message dans le formulaire. Tant que Formspree n'est pas
+    configuré, le formulaire ouvre leur messagerie vers l'adresse de l'asso ; ensuite,
+    il envoie directement le message par e-mail.
+  - Rien n'est publié automatiquement : pour publier un message, copiez-le dans
+    Pages CMS > Textes du site > Livre d'or (texte, prénom, où, date).

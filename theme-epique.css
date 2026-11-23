@@ -261,3 +261,16 @@ a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 .article-cover-wrap{position:relative;aspect-ratio:16/9;max-height:620px;width:100%;overflow:hidden;background:#000;clip-path:var(--bevel)}
 .article-cover-wrap .flou{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(26px) brightness(.45);transform:scale(1.15)}
 .article-cover-wrap .article-cover{position:relative;width:100%;height:100%;aspect-ratio:auto;object-fit:contain;clip-path:none;border-radius:0}
+/* Livre d'or */
+.livre{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:40px;align-items:start}
+.livre-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.livre-form{position:sticky;top:96px;display:flex;flex-direction:column;gap:14px}
+.livre-form h2{margin:0 0 4px;font-size:1.3rem}
+.livre-form label{display:flex;flex-direction:column;gap:6px}
+.livre-form label.check{flex-direction:row;align-items:flex-start;gap:10px;font-size:.88rem;color:#CFC6B6}
+.livre-form label.check input{margin-top:4px;width:18px;height:18px;flex:none;padding:0}
+.livre-form label.check span,.livre-form label.check{font-weight:400}
+.livre-vide{padding:50px 30px;text-align:center;border:1px dashed rgba(201,162,74,.35)}
+.livre-vide .hand{display:inline-block;margin-bottom:10px}
+.livre-cta{text-align:center;margin:26px 0 0}
+@media (max-width:980px){.livre{grid-template-columns:1fr}.livre-form{position:static}}

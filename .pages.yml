@@ -523,7 +523,7 @@ content:
                 type: string
 
       - name: temoignages
-        label: Témoignages
+        label: Livre d'or
         type: file
         path: _data/temoignages.yml
         format: yaml
@@ -545,3 +545,8 @@ content:
               - name: contexte
                 label: Contexte (facultatif)
                 type: string
+              - name: date
+                label: Date du message
+                type: date
+                options:
+                  format: yyyy-MM-dd
