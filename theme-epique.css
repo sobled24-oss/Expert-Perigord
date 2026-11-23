@@ -274,3 +274,19 @@ a.duo-fest:hover .duo-thumb{transform:rotate(-2deg) scale(1.03)}
 .livre-vide .hand{display:inline-block;margin-bottom:10px}
 .livre-cta{text-align:center;margin:26px 0 0}
 @media (max-width:980px){.livre{grid-template-columns:1fr}.livre-form{position:static}}
+/* Retour sur un festival */
+.retour{margin:10px 0 50px;padding:34px clamp(20px,3vw,44px);background:linear-gradient(180deg,#141317,#0D0C0F);border:1px solid rgba(201,162,74,.35);clip-path:var(--bevel)}
+.retour-titre{margin:0 0 22px;font-size:clamp(1.4rem,2.6vw,2rem)}
+.retour-chiffres{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 30px}
+.retour-chiffres > div{flex:1 1 150px;padding:16px 18px;border:1px solid rgba(201,162,74,.3);background:rgba(201,162,74,.06);display:flex;flex-direction:column;gap:4px}
+.retour-chiffres b{font-family:var(--f-head);font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--gold-hi);line-height:1.1}
+.retour-chiffres span{font-family:var(--f-label);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#CFC6B6}
+.retour-chiffres span a{color:inherit}
+.retour-recit{max-width:78ch;font-size:1.05rem}
+.retour-sous{margin:34px 0 16px;color:var(--gold-hi)}
+.retour-stars{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.retour-annonce{opacity:.8}
+.fest-retour{display:inline-block;margin:10px 0 4px;font-family:var(--f-label);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-hi);border:1px solid rgba(201,162,74,.4);padding:4px 10px}
+h3.annee{font-family:var(--f-head);font-size:1.3rem;color:var(--gold-hi);margin:26px 0 14px;padding-bottom:8px;border-bottom:1px solid rgba(201,162,74,.3)}
+h3.annee:first-of-type{margin-top:0}
+.retour-chiffres > div:first-child{flex:1.4 1 220px}.retour-chiffres > div:first-child b{font-size:clamp(1rem,1.6vw,1.25rem)}

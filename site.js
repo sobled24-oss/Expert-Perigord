@@ -92,7 +92,7 @@ function festCard(f){
     <div class="fest-row"><div class="cal"><span>Date</span><b>${esc(f.date||"À venir")}</b></div>
     <div class="body">${ex(f)}<h3>${esc(f.nom)}</h3>
       <div class="meta">${f.lieu?`<span class="tag">${esc(f.lieu)}</span>`:""}${f.role?`<span class="tag">${esc(f.role)}</span>`:""}</div>
-      ${f.texte?`<p>${esc(f.texte)}</p>`:""}<span class="read">Lire l'article →</span></div></div></a>`;
+      ${f.texte?`<p>${esc(f.texte)}</p>`:""}${f.retour||f.nbphotos?`<span class="fest-retour">${f.retour?"Compte rendu":""}${f.retour&&f.nbphotos?" · ":""}${f.nbphotos?`${f.nbphotos} photo${f.nbphotos>1?"s":""}`:""}</span>`:""}<span class="read">${f.retour?"Lire le retour →":"Lire l'article →"}</span></div></div></a>`;
 }
 function orgaBand(){
   const O = C.organisateurs;
@@ -137,7 +137,10 @@ R.festivals = () => pageHero("Sur le terrain","Nos tables en festival","Explicat
   + (()=>{ const V = aVenir(), P = passes();
       if(!V.length && !P.length) return sec(empty("Aucun festival annoncé pour le moment."));
       return sec(head("","À venir","",`<a class="btn ghost" href="webcal://${location.host}/festivals.ics" title="Ajoute tous nos festivals à votre agenda (iPhone, Outlook, Google…), mis à jour automatiquement">S'abonner à notre agenda</a>`) + (V.length?`<div class="grid">${V.map(festCard).join("")}</div>`:empty("Aucun festival annoncé pour le moment. Suivez-nous sur Discord pour connaître nos prochaines tables.")))
-        + (P.length ? sec(head("","Ils sont passés") + `<div class="grid">${P.map(festCard).join("")}</div>`, "sand") : ""); })()
+        + (P.length ? sec(head("Notre historique","Ils sont passés","Tous les festivals où nous avons tenu une table, avec leurs comptes rendus et leurs photos.") + (()=>{
+          const ans = [...new Set(P.map(f=>(f.debut||"").slice(0,4)))];
+          return ans.map(an=>`${ans.length>1||an?`<h3 class="annee">${esc(an||"Autres")}</h3>`:""}<div class="grid">${P.filter(f=>(f.debut||"").slice(0,4)===an).map(festCard).join("")}</div>`).join("");
+        })(), "sand") : ""); })()
   + orgaBand();
 function nums(s){ return (String(s||"").match(/\d+/g)||[]).map(Number); }
 function avisDe(t){ const a = t.avis||{}; return C.membres.filter(m=>{ const v = a[mkey(m)]; return v && (v.texte || (v.note!=="" && v.note!=null)); }).map(m=>m.nom).concat(t.redacteur && !C.membres.some(m=>m.nom===t.redacteur && (t.avis||{})[mkey(m)] && ((t.avis||{})[mkey(m)].texte || ((t.avis||{})[mkey(m)].note!=="" && (t.avis||{})[mkey(m)].note!=null))) ? [t.redacteur] : []); }
@@ -525,6 +528,15 @@ document.querySelectorAll(".strat-tabs").forEach(tl=>{
   tabs.forEach((t,i)=>{ t.addEventListener("click", ()=>show(t)); t.addEventListener("keydown", e=>{ const d = e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0; if(d){ e.preventDefault(); show(tabs[(i+d+tabs.length)%tabs.length], true); } }); });
   const h = location.hash.match(/^#guide-(\d+)$/); show(h && tabs[h[1]-1] ? tabs[h[1]-1] : tabs[0]);
 });
+
+/* Retour sur un festival : messages du livre d'or laissés par des joueurs du festival */
+const rl = document.getElementById("retour-livre");
+if(rl && oth){
+  const f = C.festivals.find(x=>x.id===oth.dataset.slug);
+  const M = f ? C.temoignages.filter(t=>t.texte && t.contexte && (memeNom(t.contexte, f.nom) || norm(t.contexte).includes(norm(f.nom)))) : [];
+  rl.innerHTML = M.length ? `<h3 class="retour-sous">Ils y étaient</h3><div class="grid livre-grid">${M.map(temoinCarte).join("")}</div>` : "";
+  if(f) rl.insertAdjacentHTML("beforeend", `<p class="livre-cta"><a class="btn ghost" href="livre-dor.html">Vous y étiez ? Laissez-nous un mot →</a></p>`);
+}
 
 /* Page d'un jeu testé : où le trouver dans la ludothèque, sur quel festival on l'apporte */
 if(oth && oth.dataset.kind==="jeu"){

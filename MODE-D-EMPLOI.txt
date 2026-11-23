@@ -146,3 +146,12 @@ LIVRE D'OR
     il envoie directement le message par e-mail.
   - Rien n'est publié automatiquement : pour publier un message, copiez-le dans
     Pages CMS > Textes du site > Livre d'or (texte, prénom, où, date).
+
+APRÈS UN FESTIVAL : LE COMPTE RENDU
+  - Le lendemain du dernier jour, le festival passe tout seul dans « Ils sont passés »
+    (page Festivals, classés par année : rien n'est jamais effacé).
+  - Pages CMS > Festivals > le festival > « Après le festival » : récit, joueurs
+    accueillis, parties, tables, et « Les stars de notre table » (noms des jeux).
+    Ajoutez vos photos dans « Photos de l'article ».
+  - La page devient « Retour sur … » : chiffres, récit, jeux stars, messages du livre
+    d'or laissés par des joueurs du festival (choisissez le festival dans « Où »).
