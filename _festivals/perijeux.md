@@ -20,8 +20,8 @@ apres:
   mentions:
     - Trickerion
     - Speakeasy
-  photos:
-    - {}
+  galerie:
+    - images/uploads/perijeux2026/img-20261123-wa0007.jpg
 jeux:
   - nom: Life of Amazonia
     table: permanence
