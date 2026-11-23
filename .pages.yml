@@ -246,6 +246,9 @@ content:
           - name: tables
             label: Tables animées (facultatif)
             type: number
+          - name: visiteurs
+            label: Visiteurs sur tout le festival (facultatif)
+            type: number
           - name: stars
             label: Les stars de notre table
             type: string

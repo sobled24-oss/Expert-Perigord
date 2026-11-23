@@ -109,11 +109,12 @@
     <h2 class="retour-titre">Retour sur {{ page.title | escape }}</h2>
     <div class="retour-chiffres">
       {% if page.dates %}<div><b>{{ page.dates | escape }}</b><span>{{ page.lieu | escape }}</span></div>{% endif %}
-      {% if A.joueurs %}<div><b>{{ A.joueurs }}</b><span>joueurs accueillis</span></div>{% endif %}
+      {% if A.visiteurs %}{% assign v = A.visiteurs | append: "" %}{% assign n = v.size | minus: 3 %}<div><b>{% if n > 0 %}{{ v | slice: 0, n }}&#8239;{{ v | slice: n, 3 }}{% else %}{{ v }}{% endif %}</b><span>visiteurs sur le festival</span></div>{% endif %}
+      {% if A.joueurs %}<div><b>{{ A.joueurs }}</b><span>joueurs à nos tables</span></div>{% endif %}
       {% if A.parties %}<div><b>{{ A.parties }}</b><span>parties jouées</span></div>{% endif %}
       {% if A.tables %}<div><b>{{ A.tables }}</b><span>tables animées</span></div>{% endif %}
       {% if page.jeux.size > 0 %}<div><b>{{ page.jeux.size }}</b><span>jeux apportés</span></div>{% endif %}
-      {% assign nbtot = nbph0 | plus: nbr %}{% if nbtot > 0 %}<div><b>{{ nbtot }}</b><span><a href="{% if nbr > 0 %}#retour-photos{% else %}#photos{% endif %}">photos</a></span></div>{% endif %}
+      {% assign nbtot = nbph0 | plus: nbr %}{% if nbtot > 0 %}<div><b>{{ nbtot }}</b><span><a href="{% if nbr > 0 %}#retour-photos{% else %}#photos{% endif %}">photo{% if nbtot > 1 %}s{% endif %}</a></span></div>{% endif %}
     </div>
     {% if A.recit and A.recit != "" %}<div class="prose retour-recit">{{ A.recit | markdownify }}</div>{% endif %}
     {% if nbr > 0 %}
