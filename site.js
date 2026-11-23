@@ -86,7 +86,21 @@ function gameCard(t){
       <span class="read">Lire l'article →</span>
     </div></a>`;
 }
+function photosRetour(f){ const A = f && f.retour && f.chiffres || {}; return [...(A.galerie||[]), ...(A.photos||[]).map(p=>p&&p.image)].filter(x=>x && typeof x==="string"); }
+function milliers(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u202f"); }
+function chiffresRetour(f, max){ const A = f.chiffres || {}; return [A.parties&&[A.parties,"parties jouées"], A.joueurs&&[A.joueurs,"joueurs à nos tables"], A.visiteurs&&[milliers(A.visiteurs),"visiteurs"], A.tables&&[A.tables,"tables"]].filter(Boolean).slice(0, max||4); }
 function festCard(f){
+  if(f.retour){
+    const P = photosRetour(f), V = P.slice(0,3), plus = P.length - V.length, K = chiffresRetour(f, 2);
+    return `<a class="card fest fest-cr${f.couverture?" has-cover":""}" href="${artUrl("festival",f)}#retour">
+    ${f.couverture?`<div class="fest-cover"><img src="${esc(f.couverture)}" alt="" loading="lazy"><span class="fest-ruban">Compte rendu</span></div>`:`<span class="fest-ruban">Compte rendu</span>`}
+    ${V.length?`<div class="fest-thumbs">${V.map((p,i)=>`<span><img src="${esc(p)}" alt="" loading="lazy">${i===V.length-1&&plus>0?`<b>+${plus}</b>`:""}</span>`).join("")}</div>`:""}
+    <div class="fest-row"><div class="cal"><span>Date</span><b>${esc(f.date||"")}</b></div>
+    <div class="body">${ex(f)}<h3>${esc(f.nom)}</h3>
+      <div class="meta">${f.lieu?`<span class="tag">${esc(f.lieu)}</span>`:""}</div>
+      ${K.length?`<div class="fest-kpi">${K.map(k=>`<span><b>${k[0]}</b> ${k[1]}</span>`).join("")}</div>`:""}
+      </div></div><span class="fest-cta">Lire le compte rendu →</span></a>`;
+  }
   return `<a class="card fest${f.couverture?" has-cover":""}" href="${artUrl("festival",f)}">
     ${f.couverture?`<div class="fest-cover"><img src="${esc(f.couverture)}" alt="" loading="lazy"></div>`:""}
     <div class="fest-row"><div class="cal"><span>Date</span><b>${esc(f.date||"À venir")}</b></div>
@@ -127,9 +141,21 @@ R.accueil = () => {
         <div class="meta">${lines(S.criteres).map(c=>`<span class="tag">${meeple()} ${esc(c)}</span>`).join("")}</div>
         <div class="btnrow"><a class="btn" href="equipe.html">Découvrir l'équipe</a><a class="btn ghost" href="contact.html?objet=seance">Venir jouer avec nous</a></div></div></div>`)}
   ${sec(`<div class="duo">
-      <a class="card link duo-fest${F&&F.couverture?" has-cover":""}" href="${F?artUrl("festival",F):"festivals.html"}"><div class="duo-in"><div class="duo-txt"><span class="hand">${NEXT||!F?"Prochaine table":"Dernière table"}</span>${F?`<h3 class="big">${esc(F.nom)}</h3><div class="meta">${F.date?`<span class="tag">${esc(F.date)}</span>`:""}${F.lieu?`<span class="tag">${esc(F.lieu)}</span>`:""}</div>${F.texte?`<p class="note">${esc(F.texte)}</p>`:""}`:`<h3 class="big">Annonce à venir</h3>`}</div>${F&&F.couverture?`<img class="duo-thumb" src="${esc(F.couverture)}" alt="Affiche de ${esc(F.nom)}" loading="lazy">`:""}</div><span class="go">${F?"Lire l'article →":"Tous nos festivals →"}</span></a>
+      <a class="card link duo-fest${F&&F.couverture?" has-cover":""}" href="${F?artUrl("festival",F):"festivals.html"}"><div class="duo-in"><div class="duo-txt"><span class="hand">${NEXT||!F?"Prochaine table":"Dernière table"}</span>${F?`<h3 class="big">${esc(F.nom)}</h3><div class="meta">${F.date?`<span class="tag">${esc(F.date)}</span>`:""}${F.lieu?`<span class="tag">${esc(F.lieu)}</span>`:""}</div>${F.texte?`<p class="note">${esc(F.texte)}</p>`:""}`:`<h3 class="big">Annonce à venir</h3>`}</div>${F&&F.couverture?`<img class="duo-thumb" src="${esc(F.couverture)}" alt="Affiche de ${esc(F.nom)}" loading="lazy">`:""}</div><span class="go">${F?(F.retour&&!NEXT?"Lire le compte rendu →":"Lire l'article →"):"Tous nos festivals →"}</span></a>
       <a class="card link dark" href="evenement.html"><span class="hand">Notre projet</span><h3 class="big">${esc(E.titre)}</h3><div class="progress"><i style="width:${(k+1)*20}%"></i></div><p>Étape ${k+1} sur 5 : ${esc(ETAPES[k])}</p><span class="go">Suivre le projet →</span></a>
     </div>`, "sand")}
+  ${(()=>{ const D = passes().find(f=>f.retour); if(!D) return "";
+      const P = photosRetour(D), K = chiffresRetour(D, 3), A = D.chiffres||{};
+      const ext = String(A.recit||"").split(/\n\s*\n/).map(x=>x.trim()).find(x=>x && !/^#/.test(x)) || "";
+      const txt = ext.replace(/[*_`#>]/g,"").replace(/\[([^\]]+)\]\([^)]*\)/g,"$1");
+      return sec(`<a class="cr-home" href="${artUrl("festival",D)}#retour">
+        <div class="cr-mosaic n${Math.min(P.length,4)}">${(P.length?P.slice(0,4):[D.couverture].filter(Boolean)).map(p=>`<span><img src="${esc(p)}" alt="" loading="lazy"></span>`).join("")}${P.length>4?`<b class="cr-plus">+${P.length-4} photos</b>`:""}</div>
+        <div class="cr-txt"><span class="hand">Dernier compte rendu</span><h2>Retour sur ${esc(D.nom)}</h2>
+          <div class="meta">${D.date?`<span class="tag">${esc(D.date)}</span>`:""}${D.lieu?`<span class="tag">${esc(D.lieu)}</span>`:""}</div>
+          ${K.length?`<div class="cr-kpi">${K.map(k=>`<div><b>${k[0]}</b><span>${k[1]}</span></div>`).join("")}</div>`:""}
+          ${txt?`<p>${esc(txt.length>260?txt.slice(0,txt.lastIndexOf(" ",250))+"…":txt)}</p>`:""}
+          <span class="btn">Lire le compte rendu →</span></div></a>`, "cr-band");
+    })()}
   ${sec(head("Banc d'essai","Nos derniers jeux testés","",`<a class="btn ghost" href="jeux.html">Tous nos tests →</a>`) + (T.length?`<div class="grid g3">${T.map(gameCard).join("")}</div>`:empty("Aucun test publié pour le moment.")), "dark")}
   ${orgaBand()}`;
 };
