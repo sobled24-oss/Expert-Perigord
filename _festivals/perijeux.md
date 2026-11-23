@@ -16,6 +16,24 @@ apres:
     la route.
 
 
+    ## Merci à ceux qui ont rendu ça possible
+
+
+    Avant de parler chiffres, un immense merci à l'équipe de **Perijeux** pour
+    son accueil chaleureux. Ils nous ont installés dans de très bonnes
+    conditions : un emplacement où le public nous repérait facilement, et un
+    cadre idéal pour des jeux qui demandent de la concentration. Pour faire
+    découvrir le jeu expert en festival, c'est la moitié du travail, et ça a
+    clairement compté dans le succès du week-end.
+
+
+    Merci aussi à **Super Meeple** pour sa générosité. C'est grâce à eux que
+    nous avons pu vous faire jouer à **Sanctuary**, **Wondrous Creatures** et
+    **Life of Amazonia**, trois jeux offerts à notre association. À elles
+    seules, ces trois boîtes ont fait tourner 16 des 27 parties du week-end, et
+    elles vont continuer à vivre sur nos tables pour les festivals à venir.
+
+
     ## Le pari du jeu expert
 
 
@@ -95,19 +113,6 @@ apres:
     bouche-à-oreille fait son œuvre, et ça fait chaud au cœur. Tout ça nous
     conforte dans l'idée que mettre le jeu expert à l'honneur en festival, ça
     marche.
-
-
-    ## Merci Super Meeple !
-
-
-    Un immense merci à **Super Meeple** pour sa générosité. C'est grâce à eux
-    que nous avons pu vous faire jouer à **Sanctuary**, **Wondrous Creatures**
-    et **Life of Amazonia**, trois jeux offerts à notre association.
-
-
-    Ces trois boîtes ont fait tourner à elles seules 16 des 27 parties du
-    week-end. Autant dire qu'elles ont été rentabilisées, et qu'elles vont
-    continuer à vivre sur nos tables pour les festivals à venir.
 
 
     ## À l'année prochaine
