@@ -207,4 +207,8 @@ Nous serons présents au festival des jeux de société de perigueux pour animer
 - Black rose war
 - Near
 - Civolution
+- Trickerion
+- Speakeasy
+- Seti
+- 
 
