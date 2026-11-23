@@ -9,55 +9,7 @@ resume: >
   Festival de tous les types de jeux : jeux de plateau, jeux de rôles, jeux de
   figurines, jeux en bois, escape game, jeux enfants, créateurs.
 apres:
-  recit: |-
-    Deux jours, 2 300 visiteurs et des tables qui n'ont presque jamais désempli : Perijeux 2026 restera comme une très belle édition pour les Experts en Périgord. Et surtout comme le week-end où notre pari a montré qu'il tenait la route.
-
-    ## Le pari du jeu expert
-
-    Venir en festival avec des jeux experts, c'est un pari. Sur le papier, tout joue contre nous : des règles longues, des parties qui durent, et un public venu flâner d'un stand à l'autre, souvent en famille, pas forcément prêt à s'asseoir une heure et demie devant un plateau couvert de pions.
-
-    C'est pourtant exactement là qu'on voulait être. Notre conviction depuis le début : le jeu expert n'est pas réservé à une poignée d'initiés qui jouent entre eux dans leur coin. Bien présenté, à la bonne table, avec quelqu'un qui accompagne la première partie, il se partage avec tout le monde.
-
-    Perijeux nous a donné raison.
-
-    ## Nos tables, en chiffres
-
-    Sur nos 6 tables, nous avons fait jouer **27 parties** à **environ 80 joueurs**.
-
-    Chacune a commencé de la même façon : une explication complète des règles, à la table, par l'un d'entre nous. Pas de livret qu'on vous tend en vous souhaitant bonne chance. On s'assoit avec vous, on explique, on lance la partie et on reste là pour les questions jusqu'au bout. C'est ce qui prend le plus de temps et d'énergie sur un week-end, et c'est aussi ce qui fait toute la différence.
-
-    Voici ce qui a tourné sur nos tables :
-
-    - **Life of Amazonia** : 7 parties
-    - **Near** : 7 parties
-    - **Wondrous Creatures** : 6 parties
-    - **Sanctuary** : 3 parties
-    - **Sankoré** : 1 partie
-    - **Speakeasy** : 1 partie
-    - **Kanal** : 1 partie
-    - **Trickerion** : 1 partie
-
-    Life of Amazonia et Near se partagent la première marche du podium, avec Wondrous Creatures juste derrière. Trois jeux beaux sur table, fluides une fois lancés et assez profonds pour donner envie d'y revenir : la porte d'entrée idéale pour découvrir le jeu expert sans se sentir noyé.
-
-    Et chapeau à celles et ceux qui ont osé s'attaquer à Trickerion, Speakeasy, Kanal ou Sankoré, des morceaux nettement plus costauds. C'est aussi pour ces parties-là qu'on vient en festival.
-
-    ## Un festival qui grandit… et nous avec
-
-    Perijeux, c'est un festival de tous les jeux : plateau, jeux de rôle, figurines, jeux en bois, escape game, jeux pour enfants, créateurs… Au milieu de tout ça, l'espace expert a été un vrai succès, et les organisateurs l'ont remarqué : **l'an prochain, ce sont 8 tables qui nous seront attribuées**, contre 6 cette année.
-
-    Autre motif de fierté : nous constatons avec plaisir que de plus en plus de monde commence à nous connaître et à apprécier notre travail. Le bouche-à-oreille fait son œuvre, et ça fait chaud au cœur. Tout ça nous conforte dans l'idée que mettre le jeu expert à l'honneur en festival, ça marche.
-
-    ## Merci Super Meeple !
-
-    Un immense merci à **Super Meeple** pour sa générosité. C'est grâce à eux que nous avons pu vous faire jouer à **Sanctuary**, **Wondrous Creatures** et **Life of Amazonia**, trois jeux offerts à notre association.
-
-    Ces trois boîtes ont fait tourner à elles seules 16 des 27 parties du week-end. Autant dire qu'elles ont été rentabilisées, et qu'elles vont continuer à vivre sur nos tables pour les festivals à venir.
-
-    ## À l'année prochaine
-
-    Merci aux organisateurs de Perijeux pour leur accueil et leur confiance, et merci à vous toutes et tous qui vous êtes assis à nos tables, avez écouté nos explications (parfois longues, on l'avoue) et joué le jeu jusqu'au bout.
-
-    On se retrouve l'an prochain, avec deux tables de plus et encore plus de jeux à vous faire découvrir !
+  recit: Work in progress
   joueurs: 80
   parties: 27
   tables: 6
