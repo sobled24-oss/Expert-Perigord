@@ -64,9 +64,11 @@ function mkey(m){ return slug(m.nom); }
 function notes(t){ const a = t.avis||{}; return C.membres.map(m=>a[mkey(m)]).filter(v=>v && v.note!=="" && v.note!=null && !isNaN(Number(v.note))).map(v=>Number(v.note)); }
 function moyenne(t){ const n = notes(t); return n.length ? n.reduce((a,b)=>a+b,0)/n.length : null; }
 const fr = v => (Math.round(v*10)/10).toString().replace(".",",");
-const AUJ = (()=>{ const d = new Date(); d.setDate(d.getDate()-2); return d.toISOString().slice(0,10); })();
-function aVenir(){ return C.festivals.filter(f=>f.debut && f.debut >= AUJ).sort((a,b)=>a.debut<b.debut?-1:1); }
-function passes(){ return C.festivals.filter(f=>!f.debut || f.debut < AUJ).sort((a,b)=>(a.debut||"")<(b.debut||"")?1:-1); }
+/* Un festival reste « à venir » jusqu'à son dernier jour inclus (date de fin, sinon date de début). */
+const AUJ = (()=>{ const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; })();
+const finDe = f => f.fin || f.debut || "";
+function aVenir(){ return C.festivals.filter(f=>f.debut && finDe(f) >= AUJ).sort((a,b)=>a.debut<b.debut?-1:1); }
+function passes(){ return C.festivals.filter(f=>!f.debut || finDe(f) < AUJ).sort((a,b)=>(a.debut||"")<(b.debut||"")?1:-1); }
 function artUrl(type, x){ return x.url ? String(x.url).replace(/^\//,"") : `${type==="festival"?"festivals":"jeux"}/${encodeURIComponent(idOf(x))}/`; }
 function gameCover(t){
   return t.couverture
@@ -486,8 +488,8 @@ if(oth){
 /* Page d'un festival : jeux apportés, festival passé, ajout à l'agenda */
 const HIER = (()=>{ const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
 const av = document.querySelector(".a-venir");
-const passe = av && av.dataset.fin && av.dataset.fin < HIER;
-if(passe){ const inv = av.querySelector(".resa-inviter"); if(inv) av.before(inv); av.remove(); document.querySelectorAll(".tj-resa,.tj-libre").forEach(e=>e.remove()); const h = document.querySelector("#nos-jeux .photos-title"); if(h) h.textContent = "Les jeux qu'on avait apportés"; document.querySelectorAll(".tj-titre span").forEach(e=>e.remove()); }
+const passe = av && av.dataset.fin && av.dataset.fin < AUJ;
+if(passe){ const inv = av.querySelector(".resa-inviter"); if(inv) av.before(inv); av.remove(); document.querySelectorAll(".fiches-cta").forEach(e=>e.remove()); document.querySelectorAll(".tj-resa,.tj-libre").forEach(e=>e.remove()); const h = document.querySelector("#nos-jeux .photos-title"); if(h) h.textContent = "Les jeux qu'on avait apportés"; document.querySelectorAll(".tj-titre span").forEach(e=>e.remove()); }
 document.querySelectorAll(".tj[data-nom]").forEach(el=>{
   const nom = el.dataset.nom, F = C.fiches || {}, fid = Object.values(F.festivals||{}).map(x=>x[nom]).find(Boolean), fi = fid && (F.jeux||{})[fid];
   const l = ludoDe(nom, fid) || (fi ? {joueurs_min:fi.joueurs_min, joueurs_max:fi.joueurs_max, duree_min:fi.duree_min, duree_max:fi.duree_max, image:fi.image} : null), t = testParNom(nom), box = el.querySelector(".tj-img");
