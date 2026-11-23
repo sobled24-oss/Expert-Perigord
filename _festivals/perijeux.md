@@ -15,7 +15,7 @@ apres:
   stars:
     - Life of Amazonia
     - Near
-    - Wondrous Créature
+    - Wondrous Créatures
   mentions:
     - Trickerion
     - Speakeasy
