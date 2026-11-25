@@ -21,7 +21,9 @@
 {%- capture same -%}{% if K.facebook and K.facebook != "" %}{{ K.facebook | jsonify }},{% endif %}{% if K.instagram and K.instagram != "" %}{{ K.instagram | jsonify }},{% endif %}{% if site.data.contact.discord.discord and site.data.contact.discord.discord != "" %}{{ site.data.contact.discord.discord | jsonify }},{% endif %}{%- endcapture %}
 {"@context":"https://schema.org","@type":"Organization","name":{{ site.data.site.nom | default: site.title | jsonify }},"url":{{ site.url | jsonify }},"logo":{{ site.url | append: "/images/logo.jpg" | jsonify }},"description":{{ site.data.site.intro | jsonify }},"areaServed":{"@type":"AdministrativeArea","name":"Dordogne"},"sameAs":[{{ same }}{{ site.url | jsonify }}]}
 </script>
-<link rel="icon" href="images/logo.jpg">
+{%- assign gv = site.data.site.google_verification | default: "" | strip | split: 'content="' | last | split: '"' | first | strip -%}{%- if gv != "" %}
+<meta name="google-site-verification" content="{{ gv }}">{% endif %}
+<link rel="icon" href="images/logo-propre.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Fredoka:wght@500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400&family=Caveat+Brush&display=swap">

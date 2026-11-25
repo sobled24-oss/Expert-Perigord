@@ -365,6 +365,10 @@ content:
             label: Séances de jeu
             type: string
             description: "Jour et horaires, ex. : le vendredi à partir de 20 h"
+          - name: google_verification
+            label: Code de validation Google Search Console
+            type: string
+            description: "Collez ici le code (ou la balise <meta …> entière) donné par Google Search Console, méthode « Balise HTML »."
           - name: comptes_rendus
             label: Afficher les comptes rendus de festival
             type: boolean

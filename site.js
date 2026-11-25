@@ -35,14 +35,14 @@ const PAGES = [
 ].filter(p=>(p[0]!=="photos" || hasPhotos) && (p[0]!=="ludotheque" || LUDO.length || PAGE==="ludotheque") && (p[0]!=="strategie" || (C.strategies||[]).length || PAGE==="strategie"));
 const navLinks = PAGES.filter(p=>p[3]!=="pied").map(([id,href,label])=>`<a href="${href}"${id===PAGE?' aria-current="page"':""}${id==="inviter"?' class="cta"':""}>${label}</a>`).join("");
 document.getElementById("top").innerHTML = `<div class="wrap">
-  <a class="brand" href="index.html"><img src="images/logo.jpg" alt=""><span>${esc(NOM)}</span></a>
+  <a class="brand" href="index.html"><img class="brand-logo" src="images/logo-propre.webp" alt=""><span>${esc(NOM)}</span></a>
   <button class="burger" type="button" aria-expanded="false" aria-controls="menu" id="burger"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><b>Menu</b></button>
   <nav class="menu" aria-label="Menu principal" id="menu">${navLinks}</nav>
 </div>`;
 const burger = document.getElementById("burger");
 burger.addEventListener("click", ()=>{ const o = burger.getAttribute("aria-expanded")!=="true"; burger.setAttribute("aria-expanded", o); document.body.classList.toggle("menu-open", o); });
 document.getElementById("bas").innerHTML = `<div class="wrap foot">
-  <div class="foot-brand"><a class="brand" href="index.html"><img src="images/logo.jpg" alt=""><span>${esc(NOM)}</span></a>
+  <div class="foot-brand"><a class="brand" href="index.html"><img class="brand-logo" src="images/logo-propre.webp" alt=""><span>${esc(NOM)}</span></a>
     <span class="hand">Jouer · Apprendre · Partager</span><p>Association de jeux de société experts${S.ville?" · "+esc(S.ville):""}</p></div>
   <nav class="foot-nav" aria-label="Pages">${PAGES.filter(p=>p[0]!=="inviter").map(([,h,l])=>`<a href="${h}">${l}</a>`).join("")}</nav>
   <div class="foot-cta">${C.echanges.discord?`<a class="btn white small" href="${esc(url(C.echanges.discord))}" target="_blank" rel="noopener">Notre Discord</a>`:""}</div>
@@ -411,8 +411,8 @@ function ficheHtml(x, f){
     ${x.points.length ? `<section class="f-bloc"><h3>Comment on joue</h3><ul class="f-points">${x.points.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></section>` : ""}
     ${x.mecaniques.length ? `<p class="f-meca">${x.mecaniques.map(m=>`<span>${esc(m)}</span>`).join("")}</p>` : ""}
     <footer class="f-bas">
-      ${x.test ? `<div class="f-avis"><span class="fi-k">L'avis des Experts</span><b>${esc(VERDICTS[x.test.verdict]||"")}${x.note!=null ? ` · ${fr(Math.round(x.note*10)/10)}/10` : ""}</b>${x.guide ? `<span class="f-guide">+ guide stratégique sur notre site</span>` : ""}</div>` : `<div class="f-avis"><span class="fi-k">Envie d'y jouer ?</span><b>Demandez aux Experts !</b></div>`}
-      ${x.qr ? `<div class="f-qr">${qrSvg(x.qr)}<span>${esc(x.qrLabel)}</span></div>` : ""}
+      ${x.test ? `<div class="f-avis"><span class="fi-k">L'avis des Experts</span><b>${esc(VERDICTS[x.test.verdict]||"")}${x.note!=null ? ` · ${fr(Math.round(x.note*10)/10)}/10` : ""}</b></div>` : `<div class="f-avis"><span class="fi-k">Envie d'y jouer ?</span><b>Demandez aux Experts&nbsp;!</b></div>`}
+      <div class="f-qrs">${x.qr ? `<div class="f-qr">${qrSvg(x.qr)}<span>${esc(x.qrLabel)}</span></div>` : ""}<div class="f-qr f-qr-livre">${qrSvg(location.origin + "/livre-dor.html")}<span><b>Vous avez aimé ?</b> Laissez-nous un mot dans notre livre d'or</span></div></div>
     </footer>
   </article>`;
 }
@@ -640,4 +640,24 @@ if(lbx){
   lbx.addEventListener("keydown",e=>{ if(e.key==="ArrowLeft") show(cur-1); if(e.key==="ArrowRight") show(cur+1); });
   if(P.length<2){ document.getElementById("lb-prev").hidden = true; document.getElementById("lb-next").hidden = true; }
 }
+})();
+
+/* Préchargement des pages : la page suivante est chargée dès que la souris survole un lien (ou au toucher sur mobile). */
+(function(){
+  try {
+    if (HTMLScriptElement.supports && HTMLScriptElement.supports("speculationrules")) {
+      const s = document.createElement("script"); s.type = "speculationrules";
+      s.textContent = JSON.stringify({prefetch:[{where:{and:[{href_matches:"/*"},{not:{href_matches:"/*.ics"}},{not:{selector_matches:"[download],[target=_blank]"}}]},eagerness:"moderate"}]});
+      document.head.appendChild(s); return;
+    }
+  } catch(e){}
+  const vu = new Set();
+  const pre = e => {
+    const a = e.target.closest && e.target.closest("a[href]"); if(!a) return;
+    let u; try { u = new URL(a.href, location.href); } catch(_) { return; }
+    if(u.origin !== location.origin || u.pathname === location.pathname || /\.(ics|pdf|jpe?g|png|webp)$/i.test(u.pathname) || vu.has(u.pathname)) return;
+    vu.add(u.pathname); const l = document.createElement("link"); l.rel = "prefetch"; l.href = u.pathname + u.search; document.head.appendChild(l);
+  };
+  document.addEventListener("mouseover", pre, {passive:true});
+  document.addEventListener("touchstart", pre, {passive:true});
 })();

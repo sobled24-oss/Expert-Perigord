@@ -66,6 +66,14 @@ body[data-page="fiches"]{background:#1A191D}
 .f-qr{display:flex;align-items:center;gap:3mm;font-size:.76em;color:var(--gris);text-align:right}
 .f-qr svg{width:24mm;height:24mm;display:block}
 .f-qr span{max-width:26mm}
+.f-qrs{display:flex;align-items:center;gap:6mm;flex:none}
+.f-qr svg{flex:none}
+.f-qrs .f-qr{text-align:left}
+.f-qrs .f-qr span{max-width:24mm}
+.f-qr-livre{padding-left:6mm;border-left:.3mm solid #E2D8C2}
+.f-avis{min-width:0}
+.f-qr-livre span{max-width:30mm}
+.f-qr-livre b{display:block;color:var(--or);font-family:"Cinzel",serif;font-size:1.1em;margin-bottom:.6mm}
 
 /* Impression */
 @page{size:A4 portrait;margin:0}
