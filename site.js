@@ -616,7 +616,7 @@ if(form){
     e.preventDefault();
     const st = document.getElementById("c-status"), btn = document.getElementById("c-btn");
     btn.disabled = true; st.className="status"; st.textContent="Envoi…";
-    const data = new FormData(form); data.set("objet", form.elements.objet.selectedOptions[0].textContent);
+    const data = new FormData(form); data.set("objet", form.elements.objet.selectedOptions[0].textContent); data.set("_subject", "Site des Experts : " + data.get("objet"));
     try{
       const r = await fetch(C.contact.formspree, {method:"POST", headers:{"Accept":"application/json"}, body:data});
       if(!r.ok) throw new Error(r.status);
