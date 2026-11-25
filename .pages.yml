@@ -134,54 +134,6 @@ content:
             label: Légende (facultatif)
             type: string
 
-  - name: strategies
-    label: Guides stratégiques
-    type: collection
-    path: _strategies
-    format: yaml-frontmatter
-    filename: "{primary}.md"
-    view:
-      fields: [title, date]
-      primary: title
-      sort: [title, date]
-      default:
-        sort: title
-        order: asc
-    fields:
-      - name: title
-        label: Nom du jeu
-        type: string
-        required: true
-        description: "Écrivez-le exactement comme dans « Jeux testés » (ex. « Brass: Lancashire ») : le guide et le test seront reliés automatiquement."
-      - name: date
-        label: Date de mise à jour
-        type: date
-        options:
-          format: yyyy-MM-dd
-      - name: resume
-        label: Résumé (affiché sur la carte)
-        type: text
-      - name: couverture
-        label: Image (facultatif)
-        type: image
-        description: Sinon, l'image du jeu testé est reprise.
-      - name: guides
-        label: Guides
-        description: "Un ou plusieurs guides, affichés en onglets (ex. « Les bases », « Avancé : les technologies »)."
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{titre}"
-        fields:
-          - name: titre
-            label: Titre de l'onglet
-            type: string
-            required: true
-          - name: texte
-            label: Contenu du guide
-            type: rich-text
-
   - name: festivals
     label: Festivals
     type: collection

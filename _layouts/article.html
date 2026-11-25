@@ -102,7 +102,7 @@
 <header class="page-hero" style="--pos:40%"><div class="wrap"><span class="hand">{% if isjeu %}Jeu testé{% elsif retour %}Retour sur le festival{% else %}Festival{% endif %}</span><h1>{{ page.title | escape }}</h1>{% if isjeu and page.redacteur and page.redacteur != "" %}
 <p class="byline">{% if red.photo %}<img src="{{ red.photo }}" alt="" width="40" height="40">{% endif %}<span>Article de <b>{{ page.redacteur | escape }}</b>{% if verdict != "" %} · <span class="verdict v-{{ page.verdict }}">{{ verdict_court }}</span>{% endif %}</span></p>{% endif %}</div></header>
 <section class="block"><div class="wrap">
-  {% if isjeu %}<a class="back" href="jeux.html">← Tous nos jeux testés</a>{% assign guide = site.strategies | where: "title", page.title | first %}{% if isjeu and guide %}<a class="strat-lien" href="{{ guide.url }}">Notre guide stratégique →</a>{% endif %}{% else %}<a class="back" href="festivals.html">← Tous nos festivals</a>{% endif %}
+  {% if isjeu %}<a class="back" href="jeux.html">← Tous nos jeux testés</a>{% else %}<a class="back" href="festivals.html">← Tous nos festivals</a>{% endif %}
   {% if retour %}
   {%- assign nbph0 = 0 -%}{%- for p in page.photos -%}{%- if p.image and p.image != "" -%}{%- assign nbph0 = nbph0 | plus: 1 -%}{%- endif -%}{%- endfor -%}
   <section class="retour" id="retour">

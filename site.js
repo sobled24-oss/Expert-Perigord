@@ -30,7 +30,7 @@ const NB_EXT = LUDO.reduce((n,j)=>n+(j.extensions||[]).length,0) + EXT_SEULES.le
 
 /* ---------- Menu et pied de page ---------- */
 const PAGES = [
-  ["accueil","index.html","Accueil"],["festivals","festivals.html","Festivals"],["jeux","jeux.html","Jeux testés"],["strategie","strategie.html","Stratégie"],["ludotheque","ludotheque.html","Ludothèque"],
+  ["accueil","index.html","Accueil"],["festivals","festivals.html","Festivals"],["jeux","jeux.html","Jeux testés"],["ludotheque","ludotheque.html","Ludothèque"],
   ["evenement","evenement.html","Événement"],["equipe","equipe.html","L'équipe"],["photos","photos.html","Photos"],["contact","contact.html","Contact"],["livre-dor","livre-dor.html","Livre d'or"],["inviter","contact.html?objet=festival","Inviter les Experts"]
 ].filter(p=>(p[0]!=="photos" || hasPhotos) && (p[0]!=="ludotheque" || LUDO.length || PAGE==="ludotheque") && (p[0]!=="strategie" || (C.strategies||[]).length || PAGE==="strategie"));
 const navLinks = PAGES.filter(p=>p[3]!=="pied").map(([id,href,label])=>`<a href="${href}"${id===PAGE?' aria-current="page"':""}${id==="inviter"?' class="cta"':""}>${label}</a>`).join("");
