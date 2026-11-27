@@ -13,7 +13,7 @@
  * - Supprimer une ligne (doublon, annulation) corrige automatiquement les compteurs du site.
  */
 
-var EMAIL_ASSO = "meeple@jeu-experts-perigord.fr";
+var EMAIL_ASSO = "meeple@jeu-experts-perigord.fr,sobled24@gmail.com";
 var COLONNES = ["Date", "Nom", "E-mail", "Personnes", "Jeux", "Autre jeu demandé", "Jeu apporté",
                 "Restauration", "Repas midi", "Repas soir", "Régime / allergies", "Message"];
 
