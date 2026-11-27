@@ -322,6 +322,11 @@ content:
             label: Nom d'utilisateur BoardGameGeek
             type: string
             description: "Facultatif. Les jeux marqués « Je possède » dans sa collection apparaissent dans la Ludothèque (mise à jour chaque nuit). Le nom ou l'adresse du profil, ex. : boardgamegeek.com/user/NOM"
+          - name: jeux_hors_bgg
+            label: Jeux possédés (sans compte BoardGameGeek)
+            type: string
+            list: true
+            description: "Pour un membre qui n'a pas de collection BGG : tapez simplement le nom de chaque jeu (en anglais si possible). Le site retrouve sa boîte, le nombre de joueurs et la durée, et l'ajoute à la Ludothèque à la synchronisation suivante."
           - name: couleur
             label: Couleur (celle de son meeple)
             type: select

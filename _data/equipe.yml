@@ -43,3 +43,12 @@ membres:
       7eme contient...
     couleur: bleu
     photo: images/membres/thyl.webp
+    jeux_hors_bgg:
+      - "Dune: Imperium – Uprising"
+      - Cthulhu Wars
+      - Sidereal Confluence
+      - SpaceCorp
+      - Clash of Cultures
+      - Eutheia
+      - "Mare Nostrum: Empires"
+      - Root

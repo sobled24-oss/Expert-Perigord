@@ -83,6 +83,21 @@ def lire_comptes():
     return comptes
 
 
+def lire_manuels():
+    """Liste des (propriétaire, nom du jeu) saisis à la main pour les membres sans collection BGG."""
+    import yaml
+    try:
+        equipe = yaml.safe_load(open(FICHIER_EQUIPE, encoding="utf-8")) or {}
+    except FileNotFoundError:
+        return []
+    res = []
+    for m in equipe.get("membres") or []:
+        for n in (m or {}).get("jeux_hors_bgg") or []:
+            if str(n or "").strip() and (m.get("nom") or "").strip():
+                res.append((m["nom"].strip(), str(n).strip()))
+    return res
+
+
 def appel(url, token, binaire=False):
     """GET avec au plus un appel toutes les 2 s, et nouvelles tentatives sur 202 / 429 / 5xx."""
     attentes = [2, 5, 10, 30, 60]
@@ -172,6 +187,11 @@ def completer(jeux, token):
                     j[cle] = entier(val(chemin))
             if not j["image_bgg"]:
                 j["image_bgg"] = (it.findtext("image") or it.findtext("thumbnail") or "").strip()
+            if not j.get("nom"):   # jeu saisi à la main : nom et année officiels de BGG
+                prim = it.find("name[@type='primary']")
+                j["nom"] = prim.get("value") if prim is not None else j.get("nom_saisi", "")
+                j["annee"] = entier(val("yearpublished"))
+            j.pop("nom_saisi", None)
             if j.get("poids") == 0:
                 j["poids"] = None
 
@@ -366,9 +386,42 @@ def main():
                 e["proprietaires"].append(proprietaire)
     if not lus:
         sys.exit("Erreur : aucun compte BoardGameGeek n'a pu être lu.\n" + "\n".join(erreurs))
+
+    # Jeux saisis à la main (membres sans collection BGG) : retrouvés par leur nom, une fois pour toutes
+    ancien_cache = {}
+    if os.path.exists(FICHIER_DONNEES):
+        try:
+            ancien_cache = json.load(open(FICHIER_DONNEES, encoding="utf-8")).get("manuels") or {}
+        except ValueError:
+            pass
+    manuels, introuvables = {}, []
+    for proprietaire, nom in lire_manuels():
+        cle = norm_nom(nom)
+        id_ = ancien_cache.get(cle)
+        if not id_:
+            try:
+                id_ = chercher_bgg(nom, token)
+            except Exception as e:
+                print(f"  Recherche impossible pour « {nom} » : {e}")
+                id_ = None
+        if not id_:
+            introuvables.append(f"{nom} ({proprietaire})")
+            continue
+        manuels[cle] = id_
+        if id_ not in jeux:
+            jeux[id_] = {"id": id_, "nom": "", "nom_saisi": nom, "annee": None, "image_bgg": "", "proprietaires": [],
+                         "joueurs_min": None, "joueurs_max": None, "duree_min": None, "duree_max": None}
+        if proprietaire not in jeux[id_]["proprietaires"]:
+            jeux[id_]["proprietaires"].append(proprietaire)
+    if manuels or introuvables:
+        print(f"Jeux saisis à la main : {len(manuels)} retrouvés sur BGG" + (f", introuvables : {', '.join(introuvables)}" if introuvables else "."))
     print(f"Ludothèque fusionnée : {len(jeux)} jeux différents.")
     if jeux:
         completer(jeux, token)
+    for j in jeux.values():   # jeu saisi à la main que BGG n'a pas renvoyé : on garde le nom tapé
+        if not j.get("nom"):
+            j["nom"] = j.get("nom_saisi", "")
+        j.pop("nom_saisi", None)
 
     # Rattacher chaque extension à son jeu de base (s'il est dans la ludothèque)
     for id_ in [i for i in extensions if i in jeux]:   # extension autonome déjà comptée comme jeu
@@ -428,10 +481,10 @@ def main():
         seules += [e for e in ancien["extensions_seules"]
                    if any(p in {x.split(" (")[0] for x in erreurs} for p in e.get("proprietaires", []))
                    and e["id"] not in {x["id"] for x in seules}]
-    if ancien.get("jeux") == liste and ancien.get("comptes") == comptes_lus and ancien.get("extensions_seules", []) == seules:
+    if ancien.get("jeux") == liste and ancien.get("comptes") == comptes_lus and ancien.get("extensions_seules", []) == seules and (ancien.get("manuels") or {}) == manuels:
         print("Aucun changement.")
     else:
-        donnees = {"comptes": comptes_lus, "maj": time.strftime("%Y-%m-%d"), "jeux": liste, "extensions_seules": seules}
+        donnees = {"comptes": comptes_lus, "maj": time.strftime("%Y-%m-%d"), "jeux": liste, "extensions_seules": seules, "manuels": manuels}
         with open(FICHIER_DONNEES, "w", encoding="utf-8") as f:
             json.dump(donnees, f, ensure_ascii=False, indent=1)
             f.write("\n")
