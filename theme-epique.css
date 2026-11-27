@@ -444,3 +444,4 @@ a.card:hover .fest-cta{filter:brightness(1.12)}
 @media (max-width:600px){.jx-grille{gap:10px}.jx-img{width:72px}.jx-chez{display:none}}
 .jx-grille.replie > .jx-jeu:nth-child(n+7){display:none}
 .jx-plus-wrap{display:flex;justify-content:center;margin-top:18px}
+.jx-etapes span a{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px}
