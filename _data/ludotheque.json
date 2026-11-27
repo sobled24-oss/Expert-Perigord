@@ -1040,7 +1040,8 @@
    "duree_min": 180,
    "duree_max": 240,
    "proprietaires": [
-    "Tim"
+    "Tim",
+    "Thyl"
    ],
    "poids": 3.61,
    "age": 14,
@@ -1226,6 +1227,23 @@
    "note_bgg": 5.3,
    "image": "images/ludotheque/1190.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/1190"
+  },
+  {
+   "id": "139976",
+   "nom": "Cthulhu Wars",
+   "annee": 2015,
+   "proprietaires": [
+    "Thyl"
+   ],
+   "joueurs_min": 2,
+   "joueurs_max": 4,
+   "duree_min": 90,
+   "duree_max": 120,
+   "poids": 3.14,
+   "age": 14,
+   "note_bgg": 7.82,
+   "image": "images/ludotheque/139976.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/139976"
   },
   {
    "id": "30380",
@@ -1624,6 +1642,23 @@
    ],
    "image": "images/ludotheque/316554.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/316554"
+  },
+  {
+   "id": "397598",
+   "nom": "Dune: Imperium – Uprising",
+   "annee": 2023,
+   "proprietaires": [
+    "Thyl"
+   ],
+   "joueurs_min": 1,
+   "joueurs_max": 6,
+   "duree_min": 60,
+   "duree_max": 120,
+   "poids": 3.53,
+   "age": 13,
+   "note_bgg": 8.7,
+   "image": "images/ludotheque/397598.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/397598"
   },
   {
    "id": "97207",
@@ -3187,7 +3222,8 @@
    "duree_min": 90,
    "duree_max": 120,
    "proprietaires": [
-    "Tim"
+    "Tim",
+    "Thyl"
    ],
    "poids": 2.99,
    "age": 14,
@@ -4191,7 +4227,8 @@
    "duree_min": 60,
    "duree_max": 90,
    "proprietaires": [
-    "Tim"
+    "Tim",
+    "Thyl"
    ],
    "poids": 3.84,
    "age": 14,
@@ -4499,6 +4536,23 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/77130"
   },
   {
+   "id": "202426",
+   "nom": "Sidereal Confluence",
+   "annee": 2017,
+   "proprietaires": [
+    "Thyl"
+   ],
+   "joueurs_min": 4,
+   "joueurs_max": 9,
+   "duree_min": 120,
+   "duree_max": 180,
+   "poids": 3.55,
+   "age": 14,
+   "note_bgg": 7.75,
+   "image": "images/ludotheque/202426.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/202426"
+  },
+  {
    "id": "204135",
    "nom": "Skyjo",
    "annee": 2015,
@@ -4660,6 +4714,23 @@
    "note_bgg": 6.91,
    "image": "images/ludotheque/411255.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/411255"
+  },
+  {
+   "id": "292670",
+   "nom": "SpaceCorp: Ventures",
+   "annee": 2021,
+   "proprietaires": [
+    "Thyl"
+   ],
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 240,
+   "poids": 3.12,
+   "age": 12,
+   "note_bgg": 8.22,
+   "image": "images/ludotheque/292670.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/292670"
   },
   {
    "id": "375459",
@@ -6614,5 +6685,14 @@
    ],
    "url_bgg": "https://boardgamegeek.com/boardgame/340983"
   }
- ]
+ ],
+ "manuels": {
+  "dune imperium uprising": "397598",
+  "cthulhu wars": "139976",
+  "sidereal confluence": "202426",
+  "spacecorp": "292670",
+  "clash of cultures": "40765",
+  "mare nostrum empires": "174785",
+  "root": "237182"
+ }
 }
