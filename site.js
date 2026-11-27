@@ -248,7 +248,6 @@ function journee(){
       <a class="btn" href="#inscription">Je m'inscris</a></div></div>`
   + sec(`<ol class="jx-etapes">
       <li><b>Choisissez vos jeux</b><span>Inscrivez-vous seul ou en groupe en cochant les jeux qui vous tentent : votre place est réservée.</span></li>
-      <li><b>Pas d'horaire à respecter</b><span>Le jour J, chaque partie démarre dès que sa table est complète.</span></li>
       <li><b>Venez avec vos gros jeux !</b><span>Apportez le vôtre : nous l'annoncerons ici pour que d'autres joueurs s'y inscrivent.</span></li></ol>`)
   + sec(head("La sélection des Experts", "Ces jeux qu'on ne sort jamais… sauf ce jour-là", `${J.length} jeux hors des sentiers battus : trop longs, trop gros ou trop rares pour une soirée ordinaire. ${(m=>m?"Le "+m[1]+", c'est":"Ce jour-là, c'est")(String(E.date||"").match(/(\d{1,2}(?:er)?\s+[a-zéû]+)/i))} le moment d'y jouer, règles expliquées par nous.`) + `<div class="grid jx-grille">${J.map(carte).join("")}</div>
       <div class="jx-autre"><div><h3>Un autre jeu vous tente ?</h3><p>Fouillez notre ludothèque (${LUDO.length} jeux) et demandez-le dans le formulaire : nous vous dirons s'il peut être de la partie.</p></div><a class="btn ghost" href="ludotheque.html">Voir la ludothèque →</a></div>`, "sand")
