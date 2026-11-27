@@ -48,7 +48,7 @@
    "duree_min": 40,
    "duree_max": 80,
    "age": 14,
-   "poids": 3.02,
+   "poids": 3.03,
    "note_bgg": 8.02,
    "mecaniques": [
     "Bonus de fin de partie",
@@ -223,7 +223,7 @@
    "duree_max": 120,
    "age": 14,
    "poids": 3.44,
-   "note_bgg": 7.34,
+   "note_bgg": 7.35,
    "mecaniques": [
     "Événements",
     "Déplacement sur grille",

@@ -4,7 +4,7 @@
   "Darnethil",
   "skkrohmagnon"
  ],
- "maj": "2026-11-26",
+ "maj": "2026-11-27",
  "jeux": [
   {
    "id": "73369",
@@ -3858,7 +3858,7 @@
    ],
    "poids": 2.05,
    "age": 8,
-   "note_bgg": 7.25,
+   "note_bgg": 7.26,
    "image": "images/ludotheque/310192.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/310192"
   },
@@ -3997,7 +3997,7 @@
    ],
    "poids": 1.26,
    "age": 6,
-   "note_bgg": 7.33,
+   "note_bgg": 7.32,
    "image": "images/ludotheque/354886.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/354886"
   },
@@ -5264,7 +5264,7 @@
     "Philou",
     "Pat"
    ],
-   "poids": 3.31,
+   "poids": 3.29,
    "age": 14,
    "note_bgg": 8.59,
    "extensions": [
@@ -6140,7 +6140,7 @@
    ],
    "poids": 2.12,
    "age": 10,
-   "note_bgg": 7.33,
+   "note_bgg": 7.32,
    "image": "images/ludotheque/213460.jpg",
    "url_bgg": "https://boardgamegeek.com/boardgame/213460"
   },
