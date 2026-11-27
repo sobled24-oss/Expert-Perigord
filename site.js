@@ -260,7 +260,10 @@ function journee(){
         <label for="jx-mail">E-mail<input id="jx-mail" name="email" type="email" required autocomplete="email"></label></div>
         <label for="jx-nb">Combien êtes-vous ?<select id="jx-nb" name="personnes" required>${[1,2,3,4,5,6].map(i=>`<option value="${i}">${i} personne${i>1?"s":""}</option>`).join("")}</select></label>
         <fieldset><legend>Les jeux qui vous intéressent</legend><p class="jx-aide">Cochez-en autant que vous voulez : c'est ce qui nous permet d'apporter les bons jeux et de préparer leurs règles.</p><div class="jx-coches">${J.map((g,i)=>`<label class="check"><input type="checkbox" name="jeux" value="${esc(g.nom)}"${g.inscrits>=g.places?" data-plein":""}> ${esc(g.nom)}</label>`).join("")}</div></fieldset>
-        <label for="jx-autre">Un autre jeu de notre ludothèque ? (facultatif)<input id="jx-autre" name="autre_jeu" list="jx-ludo" placeholder="Tapez son nom…"><datalist id="jx-ludo">${LUDO.map(j=>`<option value="${esc(j.nom)}">`).join("")}</datalist></label>
+        <div class="jx-autres"><label for="jx-autre">D'autres jeux de notre ludothèque ? (facultatif, autant que vous voulez)</label>
+          <div class="jx-ajout"><input id="jx-autre" list="jx-ludo" placeholder="Tapez le nom d'un jeu…" autocomplete="off"><button type="button" class="btn ghost small" id="jx-plus">Ajouter</button></div>
+          <ul class="jx-puces" id="jx-puces" aria-live="polite"></ul><input type="hidden" name="autre_jeu" id="jx-autres-val"></div>
+        <datalist id="jx-ludo">${LUDO.map(j=>`<option value="${esc(j.nom)}">`).join("")}</datalist>
         <label for="jx-apporte">Vous apportez un jeu ? Lequel, et pour combien de joueurs (facultatif)<input id="jx-apporte" name="jeu_apporte" placeholder="Ex. : Twilight Imperium, 6 joueurs"></label>
         <fieldset class="jx-resto"><legend>Restauration sur place ? <abbr title="obligatoire">*</abbr></legend>
           <label class="check"><input type="radio" name="restauration" value="Oui" required> Oui</label>
@@ -697,13 +700,22 @@ if(jxf && C.journee.script) fetch(C.journee.script).then(r=>r.json()).then(jxMaj
 if(jxf){
   const pre = new URLSearchParams(location.search).get("jeu");
   const coche = nom => { const c = [...jxf.querySelectorAll('input[name="jeux"]')].find(i=>memeNom(i.value, nom)); if(c){ c.checked = true; return true; } return false; };
-  if(pre && !coche(pre)) jxf.elements.autre_jeu.value = pre;
+  /* plusieurs jeux de la ludothèque, sous forme d'étiquettes */
+  const champ = document.getElementById("jx-autre"), puces = document.getElementById("jx-puces"), cache = document.getElementById("jx-autres-val"), autres = [];
+  const dessine = () => { cache.value = autres.join(", "); puces.innerHTML = autres.map((n,i)=>`<li>${esc(n)}<button type="button" data-i="${i}" aria-label="Retirer ${esc(n)}">×</button></li>`).join(""); };
+  const ajoute = nom => { nom = String(nom||"").trim(); if(!nom) return; if(coche(nom)) return; const l = LUDO.find(j=>memeNom(j.nom, nom)); nom = l ? l.nom : nom; if(!autres.some(a=>memeNom(a, nom))) autres.push(nom); champ.value = ""; dessine(); };
+  document.getElementById("jx-plus").addEventListener("click", ()=>{ ajoute(champ.value); champ.focus(); });
+  champ.addEventListener("keydown", e=>{ if(e.key === "Enter"){ e.preventDefault(); ajoute(champ.value); } });
+  champ.addEventListener("input", e=>{ if(!e.inputType || e.inputType === "insertReplacementText"){ if(LUDO.some(j=>j.nom === champ.value)) ajoute(champ.value); } });
+  puces.addEventListener("click", e=>{ const b = e.target.closest("button[data-i]"); if(b){ autres.splice(Number(b.dataset.i),1); dessine(); } });
+  if(pre && !coche(pre)) ajoute(pre);
   document.querySelectorAll(".jx-go").forEach(a=>a.addEventListener("click", e=>{ e.preventDefault(); coche(a.dataset.jeu); document.getElementById("inscription").scrollIntoView({behavior:"smooth"}); }));
   const repas = jxf.querySelector(".jx-repas");
   jxf.querySelectorAll('input[name="restauration"]').forEach(r=>r.addEventListener("change", ()=>{ repas.hidden = jxf.elements.restauration.value !== "Oui"; }));
   jxf.addEventListener("submit", async e=>{
     e.preventDefault();
     const st = document.getElementById("jx-status"), btn = document.getElementById("jx-btn");
+    if(champ.value.trim()) ajoute(champ.value);
     const jeux = [...jxf.querySelectorAll('input[name="jeux"]:checked')].map(i=>i.value);
     if(!jeux.length && !jxf.elements.autre_jeu.value.trim() && !jxf.elements.jeu_apporte.value.trim()){ st.className="status err"; st.textContent="Choisissez au moins un jeu (ou indiquez celui que vous apportez)."; return; }
     const d = new FormData(jxf), nb = d.get("personnes"), resto = d.get("restauration");
@@ -722,7 +734,7 @@ if(jxf){
         const r = await fetch(C.contact.formspree, {method:"POST", headers:{"Accept":"application/json"}, body:d});
         if(!r.ok) throw new Error(r.status);
       }
-      jxf.reset(); repas.hidden = true; st.className="status ok"; st.textContent="Inscription envoyée, merci ! Nous vous confirmons votre place par e-mail.";
+      jxf.reset(); repas.hidden = true; autres.length = 0; dessine(); st.className="status ok"; st.textContent="Inscription envoyée, merci ! Nous vous confirmons votre place par e-mail.";
     }catch(_){ st.className="status err"; st.textContent = C.contact.email ? "L'envoi a échoué. Écrivez-nous à "+C.contact.email+"." : "L'envoi a échoué. Réessayez dans un moment."; }
     btn.disabled = false;
   });

@@ -415,3 +415,10 @@ a.card:hover .fest-cta{filter:brightness(1.12)}
 .jx-pourquoi b{display:block;font-family:var(--f-head);color:var(--gold-hi);letter-spacing:.03em;margin-bottom:6px}
 .jx-pourquoi p{margin:0;color:#CFC6B6;line-height:1.55}
 .jx-aide{width:100%;margin:0 0 4px;font-size:.86rem;color:#A99F8E}
+.jx-autres{display:flex;flex-direction:column;gap:8px}
+.jx-ajout{display:flex;gap:8px}.jx-ajout input{flex:1;min-width:0}
+.jx-puces{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.jx-puces:empty{display:none}
+.jx-puces li{display:inline-flex;align-items:center;gap:6px;padding:5px 6px 5px 12px;border:1px solid rgba(201,162,74,.55);background:rgba(201,162,74,.1);color:#F1E9D8;font-size:.9rem}
+.jx-puces button{border:0;background:none;color:var(--gold-hi);font-size:1.1rem;line-height:1;cursor:pointer;padding:0 4px}
+.jx-puces button:hover{color:#fff}
