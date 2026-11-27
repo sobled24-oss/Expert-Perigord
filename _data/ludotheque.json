@@ -1909,9 +1909,9 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/254127"
   },
   {
-   "id": "420493",
-   "nom": "Euthia: Cruel Frost",
-   "annee": 2025,
+   "id": "295785",
+   "nom": "Euthia: Torment of Resurrection",
+   "annee": 2021,
    "proprietaires": [
     "Thyl"
    ],
@@ -1919,11 +1919,29 @@
    "joueurs_max": 4,
    "duree_min": 60,
    "duree_max": 480,
-   "poids": 3.5,
+   "poids": 3.51,
    "age": 14,
-   "note_bgg": 8.04,
-   "image": "images/ludotheque/420493.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/420493"
+   "note_bgg": 8.49,
+   "extensions": [
+    {
+     "id": "340217",
+     "nom": "Euthia: Torment of Resurrection – Elemental Pack",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/340217"
+    },
+    {
+     "id": "340218",
+     "nom": "Euthia: Torment of Resurrection – Griffin",
+     "proprietaires": [
+      "Pat"
+     ],
+     "url_bgg": "https://boardgamegeek.com/boardgame/340218"
+    }
+   ],
+   "image": "images/ludotheque/295785.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/295785"
   },
   {
    "id": "155703",
@@ -6519,22 +6537,6 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/351544"
   },
   {
-   "id": "340217",
-   "nom": "Euthia: Torment of Resurrection – Elemental Pack",
-   "proprietaires": [
-    "Pat"
-   ],
-   "url_bgg": "https://boardgamegeek.com/boardgame/340217"
-  },
-  {
-   "id": "340218",
-   "nom": "Euthia: Torment of Resurrection – Griffin",
-   "proprietaires": [
-    "Pat"
-   ],
-   "url_bgg": "https://boardgamegeek.com/boardgame/340218"
-  },
-  {
    "id": "340233",
    "nom": "ISS Vanguard: The Lost Fleet",
    "proprietaires": [
@@ -6709,7 +6711,7 @@
   "sidereal confluence": "202426",
   "spacecorp 2025 2300ad": "214029",
   "clash of cultures": "40765",
-  "euthia": "420493",
+  "euthia torment of resurrection": "295785",
   "mare nostrum empires": "174785",
   "root": "237182"
  }
