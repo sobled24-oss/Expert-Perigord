@@ -21,7 +21,7 @@ membres:
       Tainted Grail…). Quand je ne suis pas en train d’éplucher un livret de
       règles de 60 pages pour en décortiquer chaque mécanique, j’optimise le
       rangement de mes boîtes ou je peins mes figurines."
-    bgg: Darnethil
+    bgg: Darnethilm
     couleur: jaune
     photo: images/membres/pat.webp
   - nom: Tim
@@ -41,8 +41,6 @@ membres:
     role: La sagesse
     jeux: JdR, Magic, A la gloire d'Odin, Tzolk'in, Clank, Suburia, Narak, Seti,
       7eme contient...
-    couleur: bleu
-    photo: images/membres/thyl.webp
     jeux_hors_bgg:
       - "Dune: Imperium – Uprising"
       - Cthulhu Wars
@@ -52,3 +50,5 @@ membres:
       - "Euthia: Torment of Resurrection"
       - "Mare Nostrum: Empires"
       - Root
+    couleur: bleu
+    photo: images/membres/thyl.webp
