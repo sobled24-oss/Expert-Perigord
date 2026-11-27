@@ -1,0 +1,58 @@
+# Page de la Journée des Experts. « publie: false » = page cachée (journee-test.html), la page Événement reste l'ancienne.
+publie: false
+titre: La Journée des Experts
+texte: "Une journée entière dédiée aux gros jeux, de 9 h à 23 h. Venez découvrir nos jeux experts expliqués par les Experts… ou venez avec vos gros jeux ! Inscrivez-vous pour réserver votre place : chaque partie démarre dès que sa table est complète."
+etape: 2
+date: Samedi 22 mai 2027
+horaires: 9 h – 23 h
+lieu: "À confirmer : Sainte-Radegonde ou Faux (Dordogne)"
+inscriptions: true
+inscrits: 0
+restauration: "Repas du midi et du soir, snacks et boissons sur place (sur réservation)."
+jeux:
+  - nom: Le Trône de Fer
+    bgg: "103343"
+    places: 6
+    apporte: Philou
+  - nom: "Dune: Imperium – Uprising"
+    bgg: "397598"
+    places: 6
+    note: À 6 joueurs, en deux équipes de 3
+    apporte: Thyl
+  - nom: Cthulhu Wars
+    bgg: "139976"
+    apporte: Thyl
+  - nom: Hybris
+    bgg: "287871"
+    apporte: Philou
+  - nom: Perseverance – Épisode 3
+    bgg: "387849"
+    apporte: Philou
+  - nom: Voidfall
+    bgg: "337627"
+    apporte: Philou
+  - nom: Sidereal Confluence
+    bgg: "202426"
+    apporte: Thyl
+  - nom: SpaceCorp
+    bgg: "214029"
+    apporte: Thyl
+  - nom: Hegemony
+    bgg: "321608"
+    apporte: Philou
+  - nom: Clash of Cultures
+    bgg: "40765"
+    apporte: Thyl
+  - nom: Euthia
+    bgg: "295785"
+    apporte: Thyl
+  - nom: Mare Nostrum
+    bgg: "174785"
+    apporte: Thyl
+  - nom: Root
+    bgg: "237182"
+    apporte: Thyl
+besoins: |-
+  Des bénévoles pour expliquer les règles
+  Des partenaires : boutiques, éditeurs, mairies
+script: "https://script.google.com/macros/s/AKfycbw2SiOvHwgsbdCzmft-b3q4hc_I3u6l41zgsq0S_uID_XVsEogo9QmBOQHGh4Fxn6HlAA/exec"

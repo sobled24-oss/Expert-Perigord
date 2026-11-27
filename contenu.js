@@ -9,6 +9,7 @@ layout: null
 "histoire": {{ site.data.accueil.histoire | jsonify }},
 "organisateurs": {{ site.data.accueil.organisateurs | jsonify }},
 "evenement": {{ site.data.evenement | jsonify }},
+"journee": {{ site.data.journee | jsonify }},
 "membres": {{ site.data.equipe.membres | jsonify }},
 "galerie": {{ site.data.galerie.photos | jsonify }},
 "temoignages": {{ site.data.temoignages.liste | jsonify }},

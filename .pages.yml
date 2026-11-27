@@ -466,6 +466,96 @@ content:
             label: Ce que nous cherchons (un besoin par ligne)
             type: text
 
+      - name: journee
+        label: La Journée des Experts
+        type: file
+        path: _data/journee.yml
+        format: yaml
+        fields:
+          - name: publie
+            label: Publier la page (remplace la page Événement)
+            type: boolean
+            description: "Décoché : la page n'est visible qu'à l'adresse cachée jeu-experts-perigord.fr/journee-test.html (pour tester)."
+          - name: titre
+            label: Titre du projet
+            type: string
+          - name: texte
+            label: Description
+            type: text
+          - name: etape
+            label: Où en est le projet
+            type: select
+            options:
+              values:
+                - name: 0
+                  label: 1. Idée
+                - name: 1
+                  label: 2. Recherche du lieu
+                - name: 2
+                  label: 3. Date fixée
+                - name: 3
+                  label: 4. Programme
+                - name: 4
+                  label: 5. Ouverture
+          - name: date
+            label: Date prévue
+            type: string
+          - name: horaires
+            label: Horaires
+            type: string
+          - name: lieu
+            label: Lieu prévu
+            type: string
+          - name: restauration
+            label: Restauration (texte affiché)
+            type: string
+          - name: inscriptions
+            label: Ouvrir les inscriptions
+            type: boolean
+            description: "Coché : la page affiche les jeux, le compteur et le formulaire d'inscription."
+          - name: script
+            label: Adresse du script Google (inscriptions automatiques)
+            type: string
+            description: "L'adresse …/exec de votre script Google Sheets. Une fois remplie, les inscriptions arrivent dans votre tableau et les compteurs du site se mettent à jour tout seuls (les champs « inscrits » ci-dessous ne servent plus)."
+          - name: inscrits
+            label: Nombre total de personnes inscrites (si pas de script Google)
+            type: number
+            description: "Seulement sans script Google : à mettre à jour à chaque inscription reçue par mail."
+          - name: jeux
+            label: La sélection des Experts
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{nom} ({inscrits}/{places})"
+            fields:
+              - name: nom
+                label: Nom du jeu
+                type: string
+              - name: places
+                label: Places à la table
+                type: number
+                description: "Laissez vide pour prendre le nombre de joueurs maximum du jeu."
+              - name: inscrits
+                label: Personnes inscrites pour ce jeu (si pas de script Google)
+                type: number
+              - name: apporte
+                label: Apporté par
+                type: string
+              - name: note
+                label: Précision (facultatif)
+                type: string
+                description: "Ex. : « À 6 joueurs, en deux équipes de 3 »."
+              - name: bgg
+                label: Numéro BoardGameGeek (facultatif)
+                type: string
+              - name: image
+                label: Photo de la boîte (facultatif)
+                type: image
+          - name: besoins
+            label: Ce que nous cherchons (un besoin par ligne)
+            type: text
+
       - name: contact
         label: Contact et Discord
         type: file

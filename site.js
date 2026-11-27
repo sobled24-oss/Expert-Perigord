@@ -3,7 +3,7 @@
 (function(){
 "use strict";
 const C = window.CONTENU || {};
-["site","histoire","organisateurs","evenement","echanges","contact"].forEach(k=>C[k]=C[k]||{});
+["site","histoire","organisateurs","evenement","echanges","contact","journee"].forEach(k=>C[k]=C[k]||{});
 ["piliers","festivals","tests","membres","galerie","temoignages"].forEach(k=>C[k]=C[k]||[]);
 const PAGE = document.body.dataset.page || "accueil";
 const ETAPES = ["Idée","Recherche du lieu","Date fixée","Programme","Ouverture"];
@@ -208,7 +208,71 @@ function jeuxFiltre(){
   g.innerHTML = L.length ? L.map(gameCard).join("") : `<div class="empty">Aucun jeu ne correspond à ces critères.</div>`;
   document.getElementById("jeux-count").textContent = L.length===C.tests.length ? `${L.length} jeu${L.length>1?"x":""} testé${L.length>1?"s":""}` : `${L.length} jeu${L.length>1?"x":""} sur ${C.tests.length}`;
 }
-R.evenement = () => pageHero("Projet en cours", C.evenement.titre || "Notre événement", "", "62%") + sec(eventBlock()) + orgaBand();
+R.journee = () => journee();
+R.evenement = () => C.journee.publie ? journee() : pageHero("Projet en cours", C.evenement.titre || "Notre événement", "", "62%") + sec(eventBlock()) + orgaBand();
+/* ---------- La Journée des Experts : sélection, compteur, inscription ---------- */
+function jxJeux(){ return (C.journee.jeux||[]).filter(g=>g && g.nom).map(g=>{ const l = ludoDe(g.nom, g.bgg), t = testParNom(g.nom);
+  return {...g, l, t, places: Number(g.places) || (l && l.joueurs_max) || 4, inscrits: Number(g.inscrits)||0, img: g.image || (l && l.image) || (t && t.couverture) || ""}; }); }
+function jxPlaces(n, places){ return n >= places ? `<b>Table complète</b> · la partie est assurée !` : `<b>${n} / ${places}</b> joueur${n>1?"s":""} inscrit${n>1?"s":""}`; }
+function jxMaj(d){   // compteurs en direct (script Google)
+  if(!d || typeof d.total !== "number") return;
+  const t = document.querySelector(".jx-compteur"); if(t) t.innerHTML = `<b>${d.total}</b><span>${d.total>1?"personnes inscrites":"personne inscrite"}</span>`;
+  document.querySelectorAll(".jx-jeu[data-nom]").forEach(c=>{
+    const nom = c.dataset.nom, places = Number(c.dataset.places)||4;
+    const n = Object.entries(d.jeux||{}).filter(([k])=>memeNom(k, nom)).reduce((s,[,v])=>s+Number(v||0), 0);
+    c.classList.toggle("plein", n >= places);
+    c.querySelector(".jx-jauge i").style.width = Math.min(100, Math.round(n/places*100)) + "%";
+    c.querySelector(".jx-jauge").setAttribute("aria-label", `${n} inscrits sur ${places} places`);
+    c.querySelector(".jx-places").innerHTML = jxPlaces(n, places);
+  });
+}
+function journee(){
+  const E = C.journee, J = jxJeux(), tot = Number(E.inscrits)||0;
+  const duree = l => l && l.duree_max ? (l.duree_min && l.duree_min!==l.duree_max ? `${l.duree_min} à ${l.duree_max} min` : `${l.duree_max} min`) : "";
+  const joueurs = l => l && l.joueurs_max ? (l.joueurs_min && l.joueurs_min!==l.joueurs_max ? `${l.joueurs_min} à ${l.joueurs_max} joueurs` : `${l.joueurs_max} joueurs`) : "";
+  const carte = g => { const pc = Math.min(100, Math.round(g.inscrits/g.places*100)), plein = g.inscrits >= g.places;
+    return `<article class="card jx-jeu${plein?" plein":""}" data-nom="${esc(g.nom)}" data-places="${g.places}">
+      <div class="jx-img">${g.img?`<img src="${esc(g.img)}" alt="Boîte de ${esc(g.nom)}" loading="lazy">`:`<span class="mono">${esc(g.nom.slice(0,2))}</span>`}</div>
+      <div class="jx-body"><h3>${esc(g.nom)}</h3>
+        <p class="jx-meta">${[joueurs(g.l), duree(g.l), g.l && g.l.poids ? "Poids "+String(Math.round(g.l.poids*10)/10).replace(".",",")+"/5" : ""].filter(Boolean).map(esc).join(" · ")}</p>
+        ${g.note?`<p class="jx-note">${esc(g.note)}</p>`:""}
+        ${g.apporte?`<p class="jx-chez">Apporté par <b>${esc(g.apporte)}</b></p>`:""}
+        <div class="jx-jauge" role="img" aria-label="${g.inscrits} inscrits sur ${g.places} places"><i style="width:${pc}%"></i></div>
+        <p class="jx-places">${jxPlaces(g.inscrits, g.places)}</p>
+        <a class="btn small jx-go" href="evenement.html?jeu=${encodeURIComponent(g.nom)}#inscription" data-jeu="${esc(g.nom)}">Je veux y jouer</a></div></article>`; };
+  const n = (id, nm, lab) => `<label for="${id}">${lab}<select id="${id}" name="${nm}">${[0,1,2,3,4,5,6,7,8].map(i=>`<option>${i}</option>`).join("")}</select></label>`;
+  return pageHero(E.date || "Bientôt", E.titre || "La Journée des Experts", E.texte || "", "62%")
+  + `<div class="jx-bandeau"><div class="wrap">
+      <div class="jx-compteur"><b>${tot}</b><span>${tot>1?"personnes inscrites":"personne inscrite"}</span></div>
+      <dl class="jx-infos"><div><dt>Date</dt><dd>${esc(E.date||"À définir")}</dd></div><div><dt>Horaires</dt><dd>${esc(E.horaires||"À définir")}</dd></div><div><dt>Lieu</dt><dd>${esc(E.lieu||"À définir")}</dd></div>${E.restauration?`<div><dt>Restauration</dt><dd>${esc(E.restauration)}</dd></div>`:""}</dl>
+      <a class="btn" href="#inscription">Je m'inscris</a></div></div>`
+  + sec(`<ol class="jx-etapes">
+      <li><b>Choisissez vos jeux</b><span>Inscrivez-vous seul ou en groupe en cochant les jeux qui vous tentent : votre place est réservée.</span></li>
+      <li><b>Pas d'horaire à respecter</b><span>Le jour J, chaque partie démarre dès que sa table est complète.</span></li>
+      <li><b>Venez avec vos gros jeux !</b><span>Apportez le vôtre : nous l'annoncerons ici pour que d'autres joueurs s'y inscrivent.</span></li></ol>`)
+  + sec(head("La sélection des Experts", "Ces jeux qu'on ne sort jamais… sauf ce jour-là", `${J.length} jeux hors des sentiers battus : trop longs, trop gros ou trop rares pour une soirée ordinaire. ${(m=>m?"Le "+m[1]+", c'est":"Ce jour-là, c'est")(String(E.date||"").match(/(\d{1,2}(?:er)?\s+[a-zéû]+)/i))} le moment d'y jouer, règles expliquées par nous.`) + `<div class="grid jx-grille">${J.map(carte).join("")}</div>
+      <div class="jx-autre"><div><h3>Un autre jeu vous tente ?</h3><p>Fouillez notre ludothèque (${LUDO.length} jeux) et demandez-le dans le formulaire : nous vous dirons s'il peut être de la partie.</p></div><a class="btn ghost" href="ludotheque.html">Voir la ludothèque →</a></div>`, "sand")
+  + sec(`<div class="jx-form-wrap" id="inscription"><div><span class="hand">Inscription</span><h2>Réservez votre place</h2><p>Une inscription par groupe suffit. Vous recevrez une confirmation par e-mail.</p>
+        <div class="jx-pourquoi"><b>Pourquoi vous demander vos jeux ?</b><p>Ça nous aide énormément : nous savons ainsi quelles boîtes apporter et quelles règles réviser avant le jour J, pour vous les expliquer dans les meilleures conditions. Même si vous hésitez, cochez tout ce qui vous tente !</p></div>
+        ${lines(E.besoins).length?`<div class="card jx-besoins"><h3>Envie de nous aider ?</h3><ul class="besoins">${lines(E.besoins).map(b=>`<li>${meeple()}<span>${esc(b)}</span></li>`).join("")}</ul><a class="btn ghost small" href="contact.html?objet=evenement">Proposer votre aide</a></div>`:""}</div>
+      <form class="form jx-form" id="jx-form">
+        <div class="duo-ch"><label for="jx-nom">Prénom et nom<input id="jx-nom" name="nom" required maxlength="60" autocomplete="name"></label>
+        <label for="jx-mail">E-mail<input id="jx-mail" name="email" type="email" required autocomplete="email"></label></div>
+        <label for="jx-nb">Combien êtes-vous ?<select id="jx-nb" name="personnes" required>${[1,2,3,4,5,6].map(i=>`<option value="${i}">${i} personne${i>1?"s":""}</option>`).join("")}</select></label>
+        <fieldset><legend>Les jeux qui vous intéressent</legend><p class="jx-aide">Cochez-en autant que vous voulez : c'est ce qui nous permet d'apporter les bons jeux et de préparer leurs règles.</p><div class="jx-coches">${J.map((g,i)=>`<label class="check"><input type="checkbox" name="jeux" value="${esc(g.nom)}"${g.inscrits>=g.places?" data-plein":""}> ${esc(g.nom)}</label>`).join("")}</div></fieldset>
+        <label for="jx-autre">Un autre jeu de notre ludothèque ? (facultatif)<input id="jx-autre" name="autre_jeu" list="jx-ludo" placeholder="Tapez son nom…"><datalist id="jx-ludo">${LUDO.map(j=>`<option value="${esc(j.nom)}">`).join("")}</datalist></label>
+        <label for="jx-apporte">Vous apportez un jeu ? Lequel, et pour combien de joueurs (facultatif)<input id="jx-apporte" name="jeu_apporte" placeholder="Ex. : Twilight Imperium, 6 joueurs"></label>
+        <fieldset class="jx-resto"><legend>Restauration sur place ? <abbr title="obligatoire">*</abbr></legend>
+          <label class="check"><input type="radio" name="restauration" value="Oui" required> Oui</label>
+          <label class="check"><input type="radio" name="restauration" value="Non"> Non</label>
+          <div class="jx-repas" hidden>${n("jx-midi","repas_midi","Repas du midi (nombre)")}${n("jx-soir","repas_soir","Repas du soir (nombre)")}
+            <label for="jx-regime">Régime particulier ou allergie<input id="jx-regime" name="regime" placeholder="Végétarien, sans gluten…"></label></div></fieldset>
+        <label for="jx-msg">Un message ? (facultatif)<textarea id="jx-msg" name="message" rows="3" maxlength="600"></textarea></label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr" aria-hidden="true">
+        <button class="btn" type="submit" id="jx-btn">Envoyer mon inscription</button>
+        <p class="status" id="jx-status" role="status"></p>
+      </form></div>`);
+}
 R.equipe = () => {
   const H = C.histoire, M = C.membres, TM = C.temoignages.filter(t=>t.texte);
   return pageHero("Qui sommes-nous","L'équipe","","45%")
@@ -347,6 +411,7 @@ function ludoCard(j){
       ${chez(j)}
       ${extListe(j)}
       <div class="ludo-links">${t?`<a class="tag score" href="${artUrl("jeu",t)}">Testé par les Experts →</a>`:""}<a class="ludo-bgg" href="${esc(j.url_bgg)}" target="_blank" rel="noopener">BoardGameGeek ↗</a></div>
+      ${C.journee.publie && C.journee.inscriptions?`<a class="ludo-journee" href="evenement.html?jeu=${encodeURIComponent(j.nom)}#inscription">${jxJeux().some(g=>memeNom(g.nom,j.nom)||String(g.bgg)===String(j.id))?"Je veux y jouer à la Journée des Experts →":"Le demander pour la Journée des Experts →"}</a>`:""}
     </div></article>`;
 }
 const OWNERS = (()=>{ const seen = []; C.membres.forEach(m=>{ if(LUDO.some(j=>(j.proprietaires||[]).includes(m.nom))) seen.push(m.nom); }); LUDO.forEach(j=>(j.proprietaires||[]).forEach(n=>{ if(!seen.includes(n)) seen.push(n); })); return seen; })();
@@ -621,6 +686,43 @@ if(form){
       const r = await fetch(C.contact.formspree, {method:"POST", headers:{"Accept":"application/json"}, body:data});
       if(!r.ok) throw new Error(r.status);
       form.reset(); st.className="status ok"; st.textContent="Message envoyé. Nous vous répondrons par e-mail.";
+    }catch(_){ st.className="status err"; st.textContent = C.contact.email ? "L'envoi a échoué. Écrivez-nous à "+C.contact.email+"." : "L'envoi a échoué. Réessayez dans un moment."; }
+    btn.disabled = false;
+  });
+}
+
+/* Journée des Experts : formulaire d'inscription */
+const jxf = document.getElementById("jx-form");
+if(jxf && C.journee.script) fetch(C.journee.script).then(r=>r.json()).then(jxMaj).catch(()=>{});
+if(jxf){
+  const pre = new URLSearchParams(location.search).get("jeu");
+  const coche = nom => { const c = [...jxf.querySelectorAll('input[name="jeux"]')].find(i=>memeNom(i.value, nom)); if(c){ c.checked = true; return true; } return false; };
+  if(pre && !coche(pre)) jxf.elements.autre_jeu.value = pre;
+  document.querySelectorAll(".jx-go").forEach(a=>a.addEventListener("click", e=>{ e.preventDefault(); coche(a.dataset.jeu); document.getElementById("inscription").scrollIntoView({behavior:"smooth"}); }));
+  const repas = jxf.querySelector(".jx-repas");
+  jxf.querySelectorAll('input[name="restauration"]').forEach(r=>r.addEventListener("change", ()=>{ repas.hidden = jxf.elements.restauration.value !== "Oui"; }));
+  jxf.addEventListener("submit", async e=>{
+    e.preventDefault();
+    const st = document.getElementById("jx-status"), btn = document.getElementById("jx-btn");
+    const jeux = [...jxf.querySelectorAll('input[name="jeux"]:checked')].map(i=>i.value);
+    if(!jeux.length && !jxf.elements.autre_jeu.value.trim() && !jxf.elements.jeu_apporte.value.trim()){ st.className="status err"; st.textContent="Choisissez au moins un jeu (ou indiquez celui que vous apportez)."; return; }
+    const d = new FormData(jxf), nb = d.get("personnes"), resto = d.get("restauration");
+    d.delete("jeux"); d.set("jeux", jeux.join(", ") || "—");
+    if(resto !== "Oui"){ d.delete("repas_midi"); d.delete("repas_soir"); d.delete("regime"); }
+    d.set("_subject", `Journée des Experts : ${d.get("nom")} (${nb} pers.)` + (resto==="Oui" ? ` · repas midi ${d.get("repas_midi")}, soir ${d.get("repas_soir")}` : " · sans repas"));
+    btn.disabled = true; st.className="status"; st.textContent="Envoi…";
+    try{
+      const SCRIPT = C.journee.script;
+      if(SCRIPT){
+        const r = await fetch(SCRIPT, {method:"POST", body:new URLSearchParams([...d.entries()].map(([k,v])=>[k,String(v)]))});
+        const j = await r.json().catch(()=>({}));
+        if(!r.ok || j.ok === false) throw new Error(j.erreur || r.status);
+        fetch(SCRIPT).then(x=>x.json()).then(jxMaj).catch(()=>{});
+      } else {
+        const r = await fetch(C.contact.formspree, {method:"POST", headers:{"Accept":"application/json"}, body:d});
+        if(!r.ok) throw new Error(r.status);
+      }
+      jxf.reset(); repas.hidden = true; st.className="status ok"; st.textContent="Inscription envoyée, merci ! Nous vous confirmons votre place par e-mail.";
     }catch(_){ st.className="status err"; st.textContent = C.contact.email ? "L'envoi a échoué. Écrivez-nous à "+C.contact.email+"." : "L'envoi a échoué. Réessayez dans un moment."; }
     btn.disabled = false;
   });
