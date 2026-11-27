@@ -1909,6 +1909,23 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/254127"
   },
   {
+   "id": "420493",
+   "nom": "Euthia: Cruel Frost",
+   "annee": 2025,
+   "proprietaires": [
+    "Thyl"
+   ],
+   "joueurs_min": 1,
+   "joueurs_max": 4,
+   "duree_min": 60,
+   "duree_max": 480,
+   "poids": 3.5,
+   "age": 14,
+   "note_bgg": 8.04,
+   "image": "images/ludotheque/420493.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/420493"
+  },
+  {
    "id": "155703",
    "nom": "Evolution",
    "annee": 2014,
@@ -4716,9 +4733,9 @@
    "url_bgg": "https://boardgamegeek.com/boardgame/411255"
   },
   {
-   "id": "292670",
-   "nom": "SpaceCorp: Ventures",
-   "annee": 2021,
+   "id": "214029",
+   "nom": "SpaceCorp: 2025-2300AD",
+   "annee": 2018,
    "proprietaires": [
     "Thyl"
    ],
@@ -4726,11 +4743,11 @@
    "joueurs_max": 4,
    "duree_min": 60,
    "duree_max": 240,
-   "poids": 3.12,
+   "poids": 2.98,
    "age": 12,
-   "note_bgg": 8.22,
-   "image": "images/ludotheque/292670.jpg",
-   "url_bgg": "https://boardgamegeek.com/boardgame/292670"
+   "note_bgg": 7.65,
+   "image": "images/ludotheque/214029.jpg",
+   "url_bgg": "https://boardgamegeek.com/boardgame/214029"
   },
   {
    "id": "375459",
@@ -6690,8 +6707,9 @@
   "dune imperium uprising": "397598",
   "cthulhu wars": "139976",
   "sidereal confluence": "202426",
-  "spacecorp": "292670",
+  "spacecorp 2025 2300ad": "214029",
   "clash of cultures": "40765",
+  "euthia": "420493",
   "mare nostrum empires": "174785",
   "root": "237182"
  }
