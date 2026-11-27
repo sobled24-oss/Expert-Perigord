@@ -422,3 +422,25 @@ a.card:hover .fest-cta{filter:brightness(1.12)}
 .jx-puces li{display:inline-flex;align-items:center;gap:6px;padding:5px 6px 5px 12px;border:1px solid rgba(201,162,74,.55);background:rgba(201,162,74,.1);color:#F1E9D8;font-size:.9rem}
 .jx-puces button{border:0;background:none;color:var(--gold-hi);font-size:1.1rem;line-height:1;cursor:pointer;padding:0 4px}
 .jx-puces button:hover{color:#fff}
+/* Sélection de la Journée : cartes compactes (vignette à gauche) */
+.jx-grille{grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.jx-jeu{flex-direction:row;align-items:stretch}
+.jx-img{aspect-ratio:auto;width:96px;flex:none;padding:8px}
+.jx-img .mono{font-size:1.6rem}
+.jx-body{padding:10px 14px 12px;gap:4px;min-width:0}
+.jx-body h3{font-size:.98rem;line-height:1.2}
+.jx-meta,.jx-note,.jx-chez,.jx-places{font-size:.78rem}
+.jx-jauge{height:6px;margin-top:4px}
+.jx-bas{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:2px}
+.jx-go{margin-top:0;padding:6px 12px;font-size:.62rem}
+.card.jx-jeu{padding:0}
+.jx-img{width:84px;padding:8px 6px}
+.jx-body{padding:10px 14px 10px 6px}
+.jx-body h3{font-size:.9rem;letter-spacing:.04em}
+.jx-meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jx-places{white-space:nowrap}
+.jx-go{white-space:nowrap;padding:5px 10px;letter-spacing:.1em}
+.jx-bas{flex-wrap:wrap}
+@media (max-width:600px){.jx-grille{gap:10px}.jx-img{width:72px}.jx-chez{display:none}}
+.jx-grille.replie > .jx-jeu:nth-child(n+7){display:none}
+.jx-plus-wrap{display:flex;justify-content:center;margin-top:18px}

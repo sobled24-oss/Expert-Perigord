@@ -213,7 +213,7 @@ R.evenement = () => C.journee.publie ? journee() : pageHero("Projet en cours", C
 /* ---------- La Journée des Experts : sélection, compteur, inscription ---------- */
 function jxJeux(){ return (C.journee.jeux||[]).filter(g=>g && g.nom).map(g=>{ const l = ludoDe(g.nom, g.bgg), t = testParNom(g.nom);
   return {...g, l, t, places: Number(g.places) || (l && l.joueurs_max) || 4, inscrits: Number(g.inscrits)||0, img: g.image || (l && l.image) || (t && t.couverture) || ""}; }); }
-function jxPlaces(n, places){ return n >= places ? `<b>Table complète</b> · la partie est assurée !` : `<b>${n} / ${places}</b> joueur${n>1?"s":""} inscrit${n>1?"s":""}`; }
+function jxPlaces(n, places){ return n >= places ? `<b title="Assez de joueurs : la partie est assurée">Complète ✓</b>` : `<b>${n} / ${places}</b> inscrit${n>1?"s":""}`; }
 function jxMaj(d){   // compteurs en direct (script Google)
   if(!d || typeof d.total !== "number") return;
   const t = document.querySelector(".jx-compteur"); if(t) t.innerHTML = `<b>${d.total}</b><span>${d.total>1?"personnes inscrites":"personne inscrite"}</span>`;
@@ -235,11 +235,10 @@ function journee(){
       <div class="jx-img">${g.img?`<img src="${esc(g.img)}" alt="Boîte de ${esc(g.nom)}" loading="lazy">`:`<span class="mono">${esc(g.nom.slice(0,2))}</span>`}</div>
       <div class="jx-body"><h3>${esc(g.nom)}</h3>
         <p class="jx-meta">${[joueurs(g.l), duree(g.l), g.l && g.l.poids ? "Poids "+String(Math.round(g.l.poids*10)/10).replace(".",",")+"/5" : ""].filter(Boolean).map(esc).join(" · ")}</p>
-        ${g.note?`<p class="jx-note">${esc(g.note)}</p>`:""}
-        ${g.apporte?`<p class="jx-chez">Apporté par <b>${esc(g.apporte)}</b></p>`:""}
+        ${g.apporte?`<p class="jx-chez">Apporté par <b>${esc(g.apporte)}</b>${g.note?` · ${esc(g.note)}`:""}</p>`:(g.note?`<p class="jx-chez">${esc(g.note)}</p>`:"")}
         <div class="jx-jauge" role="img" aria-label="${g.inscrits} inscrits sur ${g.places} places"><i style="width:${pc}%"></i></div>
-        <p class="jx-places">${jxPlaces(g.inscrits, g.places)}</p>
-        <a class="btn small jx-go" href="evenement.html?jeu=${encodeURIComponent(g.nom)}#inscription" data-jeu="${esc(g.nom)}">Je veux y jouer</a></div></article>`; };
+        <div class="jx-bas"><p class="jx-places">${jxPlaces(g.inscrits, g.places)}</p>
+        <a class="btn small jx-go" href="evenement.html?jeu=${encodeURIComponent(g.nom)}#inscription" data-jeu="${esc(g.nom)}">Je veux y jouer</a></div></div></article>`; };
   const n = (id, nm, lab) => `<label for="${id}">${lab}<select id="${id}" name="${nm}">${[0,1,2,3,4,5,6,7,8].map(i=>`<option>${i}</option>`).join("")}</select></label>`;
   return pageHero(E.date || "Bientôt", E.titre || "La Journée des Experts", E.texte || "", "62%")
   + `<div class="jx-bandeau"><div class="wrap">
@@ -250,7 +249,7 @@ function journee(){
       <li><b>Choisissez vos jeux</b><span>Inscrivez-vous seul ou en groupe en cochant les jeux qui vous tentent : votre place est réservée.</span></li>
       <li><b>On s'occupe de tout</b><span>On vous installe, on complète la table si nécessaire avec d'autres joueurs inscrits et on vous explique les règles : vous n'avez plus qu'à jouer.</span></li>
       <li><b>Venez avec vos gros jeux !</b><span>Apportez le vôtre : nous l'annoncerons ici pour que d'autres joueurs s'y inscrivent.</span></li></ol>`)
-  + sec(head("La sélection des Experts", "Ces jeux qu'on ne sort jamais… sauf ce jour-là", `${J.length} jeux hors des sentiers battus : trop longs, trop gros ou trop rares pour une soirée ordinaire. ${(m=>m?"Le "+m[1]+", c'est":"Ce jour-là, c'est")(String(E.date||"").match(/(\d{1,2}(?:er)?\s+[a-zéû]+)/i))} le moment d'y jouer, règles expliquées par nous.`) + `<div class="grid jx-grille">${J.map(carte).join("")}</div>
+  + sec(head("La sélection des Experts", "Ces jeux qu'on ne sort jamais… sauf ce jour-là", `${J.length} jeux hors des sentiers battus : trop longs, trop gros ou trop rares pour une soirée ordinaire. ${(m=>m?"Le "+m[1]+", c'est":"Ce jour-là, c'est")(String(E.date||"").match(/(\d{1,2}(?:er)?\s+[a-zéû]+)/i))} le moment d'y jouer, règles expliquées par nous.`) + `<div class="grid jx-grille${J.length>6?" replie":""}" id="jx-grille">${J.map(carte).join("")}</div>${J.length>6?`<div class="jx-plus-wrap"><button type="button" class="btn ghost" id="jx-tout" aria-controls="jx-grille" aria-expanded="false">Voir les ${J.length} jeux ↓</button></div>`:""}
       <div class="jx-autre"><div><h3>Un autre jeu vous tente ?</h3><p>Fouillez notre ludothèque (${LUDO.length} jeux) et demandez-le dans le formulaire : nous vous dirons s'il peut être de la partie.</p></div><a class="btn ghost" href="ludotheque.html">Voir la ludothèque →</a></div>`, "sand")
   + sec(`<div class="jx-form-wrap" id="inscription"><div><span class="hand">Inscription</span><h2>Réservez votre place</h2><p>Une inscription par groupe suffit. Vous recevrez une confirmation par e-mail.</p>
         <div class="jx-pourquoi"><b>Pourquoi vous demander vos jeux ?</b><p>Ça nous aide énormément : nous savons ainsi quelles boîtes apporter et quelles règles réviser avant le jour J, pour vous les expliquer dans les meilleures conditions. Même si vous hésitez, cochez tout ce qui vous tente !</p></div>
@@ -696,6 +695,10 @@ if(form){
 
 /* Journée des Experts : formulaire d'inscription */
 const jxf = document.getElementById("jx-form");
+const jxTout = document.getElementById("jx-tout");
+if(jxTout) jxTout.addEventListener("click", ()=>{ const g = document.getElementById("jx-grille"), ouvert = g.classList.toggle("replie") === false;
+  jxTout.setAttribute("aria-expanded", ouvert); jxTout.textContent = ouvert ? "Réduire la liste ↑" : `Voir les ${g.children.length} jeux ↓`;
+  if(!ouvert) g.scrollIntoView({behavior:"smooth", block:"start"}); });
 if(jxf && C.journee.script) fetch(C.journee.script).then(r=>r.json()).then(jxMaj).catch(()=>{});
 if(jxf){
   const pre = new URLSearchParams(location.search).get("jeu");
